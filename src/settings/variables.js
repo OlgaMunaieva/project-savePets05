@@ -9,6 +9,12 @@ const colors = {
   red: '#F43F5E',
 };
 
+const shadow = {
+  shadowDefault: '3px 8px 14px 0px #88C6FD30',
+  shadowHover: '7px 13px 14px 0px #74B1E83D',
+};
+
 export const variables = {
   colors,
+  shadow,
 };
