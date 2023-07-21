@@ -6,7 +6,7 @@ const colors = {
   buttonsHoverBg: '#54ADFF',
   cardsButtonBg: '#CCE4FB',
   accentAddPetCard: '#00C3AD',
-  red: '#F43F5E',
+  accentInputInvalidValue: '#F43F5E',
 };
 
 const shadow = {
