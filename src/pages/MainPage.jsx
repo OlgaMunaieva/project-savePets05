@@ -1,4 +1,4 @@
-import { colors } from 'settings/variables';
+import colors from 'settings/variables';
 
 const styles = {
   container: {
@@ -12,7 +12,7 @@ const styles = {
     fontWeight: 500,
     fontSize: 48,
     textAlign: 'center',
-    color: `${colors.success}`,
+    color: `${colors.text}`,
   },
 };
 
