@@ -3,19 +3,19 @@ import { Link, List, ListItems, NavTag } from './Nav.styled';
 import { useEffect, useState } from 'react';
 
 const Nav = () => {
-  const [size, setSize] = useState(null);
-  const resizeHandler = () => {
-    const clientWidth = window.innerWidth;
-    setSize(clientWidth);
-  };
+  // const [size, setSize] = useState(null);
+  // const resizeHandler = () => {
+  //   const clientWidth = window.innerWidth;
+  //   setSize(clientWidth);
+  // };
 
-  useEffect(() => {
-    window.addEventListener('resize', resizeHandler);
-    resizeHandler();
-    return () => {
-      window.removeEventListener('resize', resizeHandler);
-    };
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener('resize', resizeHandler);
+  //   resizeHandler();
+  //   return () => {
+  //     window.removeEventListener('resize', resizeHandler);
+  //   };
+  // }, []);
 
   return (
     <NavTag>
