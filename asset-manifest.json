@@ -1,22 +1,13 @@
 {
   "files": {
     "main.css": "/project-savePets05/static/css/main.b5320759.css",
-    "main.js": "/project-savePets05/static/js/main.cbf890c3.js",
-    "static/js/954.6553da37.chunk.js": "/project-savePets05/static/js/954.6553da37.chunk.js",
-    "static/js/637.319e1eb0.chunk.js": "/project-savePets05/static/js/637.319e1eb0.chunk.js",
-    "static/js/432.7e32fdc8.chunk.js": "/project-savePets05/static/js/432.7e32fdc8.chunk.js",
-    "static/js/426.cfca2e62.chunk.js": "/project-savePets05/static/js/426.cfca2e62.chunk.js",
-    "static/js/150.941e6e9d.chunk.js": "/project-savePets05/static/js/150.941e6e9d.chunk.js",
-    "static/js/693.799ecd32.chunk.js": "/project-savePets05/static/js/693.799ecd32.chunk.js",
-    "static/js/806.ac7a7335.chunk.js": "/project-savePets05/static/js/806.ac7a7335.chunk.js",
-    "static/js/918.760d2937.chunk.js": "/project-savePets05/static/js/918.760d2937.chunk.js",
+    "main.js": "/project-savePets05/static/js/main.ec876791.js",
     "index.html": "/project-savePets05/index.html",
     "main.b5320759.css.map": "/project-savePets05/static/css/main.b5320759.css.map",
-    "main.cbf890c3.js.map": "/project-savePets05/static/js/main.cbf890c3.js.map",
-    "954.6553da37.chunk.js.map": "/project-savePets05/static/js/954.6553da37.chunk.js.map"
+    "main.ec876791.js.map": "/project-savePets05/static/js/main.ec876791.js.map"
   },
   "entrypoints": [
     "static/css/main.b5320759.css",
-    "static/js/main.cbf890c3.js"
+    "static/js/main.ec876791.js"
   ]
 }
