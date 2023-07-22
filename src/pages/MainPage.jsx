@@ -1,6 +1,6 @@
 // import colors from 'settings/variables';
 
-import Container from 'components/container/container.styled';
+import MainContainer from 'components/mainContainer/MainContainer.styled';
 
 // const styles = {
 //   container: {
@@ -21,7 +21,7 @@ import Container from 'components/container/container.styled';
 export default function MainPage() {
   return (
     <>
-      <Container>
+      <MainContainer>
         <div
           style={{
             height: '100vh',
@@ -35,7 +35,7 @@ export default function MainPage() {
         >
           MainPage
         </div>
-      </Container>
+      </MainContainer>
     </>
   );
 }

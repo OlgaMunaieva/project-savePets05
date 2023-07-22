@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import variables from 'settings/variables';
 
-const Container = styled.div`
+const MainContainer = styled.div`
   margin: 20px 20px 0px;
   ${variables.breakPoints.tablet} {
     margin: 24px 32px 0px;
@@ -11,4 +11,4 @@ const Container = styled.div`
   }
 `;
 
-export default Container;
+export default MainContainer;
