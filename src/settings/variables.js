@@ -21,10 +21,16 @@ const transition = {
   transitionShadow: 'box-shadow 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12)',
 };
 
+const breakPoints = {
+  tablet: '@media screen and (min-width: 767px)',
+  desktop: '@media screen and (min-width: 1280px)',
+};
+
 const variables = {
   colors,
   shadow,
   transition,
+  breakPoints,
 };
 
 export default variables;
