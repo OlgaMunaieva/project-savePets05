@@ -8,6 +8,7 @@ const colors = {
   cardsButtonBg: '#CCE4FB',
   accentAddPetCard: '#00C3AD',
   accentInputInvalidValue: '#F43F5E',
+  simpleWhite: '#111111',
 };
 
 const shadow = {
