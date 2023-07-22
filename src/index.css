@@ -3,7 +3,7 @@
 /* @import './settings/variables.js'; */
 
 body {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   margin: 0;
   font-family: 'Inter', sans-serif;
   font-family: 'Manrope', sans-serif;
