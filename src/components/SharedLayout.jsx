@@ -1,14 +1,8 @@
 import React from 'react';
-import Header from './header/Header';
+// import Header from './header/Header';
 
-const SharedLayout = ({ children }) => {
-  return (
-    <div>
-      test text
-      <Header />
-      {children}
-    </div>
-  );
+const SharedLayout = () => {
+  return <div>test text</div>;
 };
 
 export default SharedLayout;
