@@ -14,7 +14,7 @@ const UserPage = lazy(() => import('../pages/UserPage'));
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<SharedLayout />}>
+      <Route index path="/" element={<SharedLayout />}>
         <Route path="/main" element={<MainPage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/notices" element={<NoticesPage />} />
