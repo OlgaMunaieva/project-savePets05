@@ -9,6 +9,7 @@ const colors = {
   accentAddPetCard: '#00C3AD',
   accentInputInvalidValue: '#F43F5E',
   simpleWhite: '#111111',
+  cardBgColor: '#ffffff',
 };
 
 const shadow = {
