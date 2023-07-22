@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, List, ListItems, NavTag } from './Nav.styled';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
 const Nav = () => {
   // const [size, setSize] = useState(null);
