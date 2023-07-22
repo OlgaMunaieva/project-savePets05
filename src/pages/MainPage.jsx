@@ -16,7 +16,7 @@ export default function MainPage() {
             border: 2,
           }}
         >
-          MainPage
+          Take good care of your small pets
         </div>
       </MainContainer>
     </>
