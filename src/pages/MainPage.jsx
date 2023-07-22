@@ -1,5 +1,7 @@
 // import colors from 'settings/variables';
 
+import Container from 'components/container/container.styled';
+
 // const styles = {
 //   container: {
 //     minHeight: 'calc(100vh - 50px)',
@@ -18,17 +20,22 @@
 
 export default function MainPage() {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
-      MainPage
-    </div>
+    <>
+      <Container>
+        <div
+          style={{
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            fontSize: 40,
+            color: '#010101',
+            border: 2,
+          }}
+        >
+          MainPage
+        </div>
+      </Container>
+    </>
   );
 }
