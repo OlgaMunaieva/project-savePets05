@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project-savePets05/static/css/main.b5320759.css",
-    "main.js": "/project-savePets05/static/js/main.83a094f7.js",
+    "main.js": "/project-savePets05/static/js/main.cbf890c3.js",
     "static/js/954.6553da37.chunk.js": "/project-savePets05/static/js/954.6553da37.chunk.js",
     "static/js/637.319e1eb0.chunk.js": "/project-savePets05/static/js/637.319e1eb0.chunk.js",
     "static/js/432.7e32fdc8.chunk.js": "/project-savePets05/static/js/432.7e32fdc8.chunk.js",
@@ -12,11 +12,11 @@
     "static/js/918.760d2937.chunk.js": "/project-savePets05/static/js/918.760d2937.chunk.js",
     "index.html": "/project-savePets05/index.html",
     "main.b5320759.css.map": "/project-savePets05/static/css/main.b5320759.css.map",
-    "main.83a094f7.js.map": "/project-savePets05/static/js/main.83a094f7.js.map",
+    "main.cbf890c3.js.map": "/project-savePets05/static/js/main.cbf890c3.js.map",
     "954.6553da37.chunk.js.map": "/project-savePets05/static/js/954.6553da37.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b5320759.css",
-    "static/js/main.83a094f7.js"
+    "static/js/main.cbf890c3.js"
   ]
 }
