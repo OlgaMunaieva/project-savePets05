@@ -1,5 +1,6 @@
 @import-normalize;
 /* bring in normalize.css styles */
+/* @import './settings/variables.js'; */
 
 body {
   margin: 0;
@@ -7,6 +8,7 @@ body {
   font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #FDF7F2;
 }
 
 code {
