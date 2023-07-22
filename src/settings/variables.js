@@ -17,7 +17,7 @@ const shadow = {
 
 const transition = {
   transitionColor: 'color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12)',
-  transitionShadow: 'color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12)',
+  transitionShadow: 'box-shadow 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12)',
 };
 
 const variables = {
