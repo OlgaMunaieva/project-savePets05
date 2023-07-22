@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkproject_savePets05=self.webpackChunkproject_savePets05||[]).push([[727],{727:function(e,t,n){n.r(t),n.d(t,{default:function(){return i}});var r=n(329),c=n(156),s=n(184);function i(){return(0,s.jsx)(s.Fragment,{children:(0,s.jsx)(r.Z,{children:(0,s.jsx)("div",{style:{height:"100vh",display:"flex",justifyContent:"center",alignItems:"center",fontSize:40,color:"".concat(c.Z.colors.text),border:2},children:"MainPage"})})})}}}]);
-//# sourceMappingURL=727.f0ee2ad5.chunk.js.map
