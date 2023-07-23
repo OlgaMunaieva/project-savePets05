@@ -16,7 +16,7 @@ const {
     accentAddPetCard,
     accentHeaderButton,
   },
-  breakPoints: { mobile, tablet, desktop },
+  // breakPoints: { mobile, tablet, desktop },
 } = variables;
 
 export const StyledContainer = styled.div`
