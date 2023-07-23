@@ -13,17 +13,11 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-/*
- * POST @ /users/signup
- * body: { name, email, password }
- */
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/api/users/register', credentials);
-      // After successful registration, add the token to the HTTP header
-      setAuthHeader(data.token);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -31,17 +25,13 @@ export const register = createAsyncThunk(
   }
 );
 
-/*
- * POST @ /users/login
- * body: { email, password }
- */
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/api/users/login', credentials);
-      // After successful login, add the token to the HTTP header
-      setAuthHeader(data.token);
+      console.log(data);
+      setAuthHeader(data.token?.access);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
