@@ -1,12 +1,16 @@
-import { Link } from 'react-router-dom';
 import logo from '../../../images/icons/logo.svg';
-import { Logo } from './Logo.styled';
+import logoMob from '../../../images/icons/logo-mob.svg';
+import { LinkLogo, Logo } from './Logo.styled';
 
-const LogoComponent = () => {
+const LogoComponent = ({ itsMobile }) => {
   return (
-    <Link to="/">
-      <Logo src={logo} alt="Logo" />
-    </Link>
+    <LinkLogo to="/">
+      {itsMobile ? (
+        <Logo src={logoMob} alt="Logo" />
+      ) : (
+        <Logo src={logo} alt="Logo" />
+      )}
+    </LinkLogo>
   );
 };
 

@@ -1,20 +1,23 @@
 import { useState } from 'react';
 import {
   BtnWrapper,
+  DivLogin,
+  Icon,
   LinkTo,
   LinksLogoutTab,
   List,
   ListItem,
   LogOutIcon,
   MobMenus,
+  MobileUser,
   Wrap,
 } from './MobMenu.styled';
 import { ReactComponent as Burger } from '../../../images/icons/menu-hamburger.svg';
 import { ReactComponent as BurgerCross } from '../../../images/icons/cross-small.svg';
 import LogoComponent from '../logo/Logo';
-// import { LinksLogout } from '../navigation/userNav/UserNav.styled';
+import AuthBtn from '../buttons/AuthBtn';
 
-const MobMenu = () => {
+const MobMenu = ({ isLogin, size, userName }) => {
   const [isOpen, setOpen] = useState(true);
 
   return (
@@ -37,11 +40,26 @@ const MobMenu = () => {
 
       {!isOpen ? (
         <MobMenus>
-          <LogoComponent />
-          <LinksLogoutTab>
-            Log out
-            <LogOutIcon />
-          </LinksLogoutTab>
+          <LogoComponent itsMobile={size} />
+          <></>
+          {!isLogin ? (
+            <LinksLogoutTab>
+              Log out
+              <LogOutIcon />
+            </LinksLogoutTab>
+          ) : null}
+
+          {size && isLogin ? (
+            <DivLogin>
+              <AuthBtn />
+            </DivLogin>
+          ) : null}
+          {size && !isLogin ? (
+            <MobileUser>
+              <Icon />
+              {userName}
+            </MobileUser>
+          ) : null}
           <Wrap>
             <List>
               <ListItem>
