@@ -23,7 +23,7 @@ export const Text = styled.span`
 
 export const UserIcon = styled(UserIcons)``;
 
-export const Links = styled(Link)`
+export const LinksLogout = styled(Link)`
 @media screen and (max-width: 1279px) {
      display: none;
    }
@@ -42,21 +42,25 @@ export const Links = styled(Link)`
   transition: all 0.25s ease-in-out;
   &:hover,
   &:focus {
-    background-color: ${colors.colors.buttonsGr}
+    background-color: ${colors.colors.buttonsGr};
     box-shadow: ${colors.shadow.shadowHover};
 
    
 `;
 
 export const UserLinK = styled(Link)`
+  padding-right: 16px;
   display: flex;
   align-items: center;
   background-color: transparent;
-   transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
   &:hover,
   &:focus {
     transform: scale(1.03);
-    
+  }
+  @media screen and (max-width: 1279px) {
+    padding-right: 60px;
+  }
 `;
 export const LogOutIcon = styled(LogoutIcon)`
   margin-left: 8px;
