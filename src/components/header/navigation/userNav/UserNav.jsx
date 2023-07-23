@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
-  Links,
+  LinksLogout,
   List,
   ListItem,
   LogOutIcon,
@@ -9,16 +9,33 @@ import {
   UserIcon,
   UserLinK,
 } from './UserNav.styled';
+import { useLocation } from 'react-router-dom';
 
 const userName = 'Sergio';
 const UserNav = () => {
+  const [isHome, setHome] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const locationScaner = () => {
+      if (location.pathname === '/') {
+        setHome(false);
+        return;
+      }
+      setHome(true);
+    };
+    locationScaner();
+  }, [location.pathname]);
+
   return (
     <List>
       <ListItem>
-        <Links>
-          Log out
-          <LogOutIcon />
-        </Links>
+        {isHome ? (
+          <LinksLogout>
+            Log out
+            <LogOutIcon />
+          </LinksLogout>
+        ) : null}
       </ListItem>
       <ListItem>
         <UserLinK>

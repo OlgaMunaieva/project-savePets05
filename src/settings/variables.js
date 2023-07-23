@@ -10,7 +10,8 @@ const colors = {
   accentInputInvalidValue: '#F43F5E',
   simpleBlack: '#111111',
   placeHolderColor: '#888888',
-  whiteColor: '#FFFFFF',
+  simpleWhite: '#111111',
+  cardBgColor: '#ffffff',
 };
 
 const shadow = {
@@ -24,8 +25,9 @@ const transition = {
 };
 
 const breakPoints = {
+  mobile: '@media screen and (min-width: 479px)',
   tablet: '@media screen and (min-width: 767px)',
-  desktop: '@media screen and (min-width: 1280px)',
+  desktop: '@media screen and (min-width: 1279px)',
 };
 
 const variables = {

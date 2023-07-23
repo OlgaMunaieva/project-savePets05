@@ -7,6 +7,9 @@ export const List = styled.ul`
   display: flex;
   align-items: center;
   gap: 20px;
+  @media screen and (max-width: 1279px) {
+    padding-right: 60px;
+  }
 `;
 export const ListItem = styled.li``;
 export const LinkLogin = styled(Link)`

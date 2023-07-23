@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './SharedLayout';
 import { lazy } from 'react';
+// import PetModal from './petModal/PetModal';
+
 // import AddPetPage from 'pages/AddPetPage';
 import LoginPage from 'pages/LoginPage';
 // import ModalApproveAction from 'pages/ModalApproveAction';
@@ -14,6 +16,7 @@ const MainPage = lazy(() => import('../pages/MainPage'));
 
 const App = () => {
   return (
+    // <PetModal/>
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<MainPage />} />
