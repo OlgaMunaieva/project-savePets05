@@ -10,13 +10,13 @@ export default function MainPage() {
           <PictureContainer.PawContainer>
             <div
               style={{
+                width: '100vw',
                 height: '100vh',
-                display: 'flex',
+                // display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
                 fontSize: 40,
                 color: `${variables.colors.text}`,
-                border: 2,
               }}
             >
               Take good care of your small pets
