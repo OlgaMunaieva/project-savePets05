@@ -41,7 +41,7 @@ const RelativeContainer = styled.div`
 `;
 
 const PawContainer = styled.div`
-  position: absolute;
+  /* position: absolute; */
   /* width: 100%; */
   opacity: 0.12px;
   background-image: url(${pawprintMobile1}), url(${pawprintMobile2}),
@@ -51,7 +51,7 @@ const PawContainer = styled.div`
   background-repeat: no-repeat;
   background-position: top 290px left 78px, top 465px left 269px,
     top 266px left 306px, top 41px left 312px, top 95px left -8px,
-    top 330px left -8px, top 160px left 193px, top 460px left 40px, center;
+    top 330px left -8px, top 160px left 193px, top 460px left 40px, left;
 
   ${variables.breakPoints.mobile} {
     background-image: url(${pawprintTablet1}), url(${pawprintTablet2}),
@@ -59,16 +59,16 @@ const PawContainer = styled.div`
       url(${pawprintTablet6}), url(${pawprintTablet7}), url(${pawprintTablet8});
     background-size: 157px, 157px, 157px, 58px, 58px, 56px, 56px, 56px, cover;
     background-repeat: no-repeat;
-    background-position: top 671px left 235px, top 1032px left 613px,
-      top 624px left 688px, top 178px left 699px, top 285px left 64px,
-      top 750px left 64px, top 413px left 464px, top 1009px left 160px, center;
+    background-position: top 603px left 203px, top 964px left 581px,
+      top 556px left 656px, top 110px left 667px, top 217px left 32px,
+      top 682px left 32px, top 345px left 432px, top 941px left 128px, left;
   }
-  ${variables.breakPoints.desktop} {
+  ${variables.breakPoints.tablet} {
     background-image: url(${pawprintDesktop1}), url(${pawprintDesktop2}),
       url(${pawprintDesktop3}), url(${pawprintDesktop4}),
       url(${pawprintDesktop5}), url(${pawprintDesktop6}),
       url(${pawprintDesktop7});
-    background-position: top 671px left 235px, top 1032px left 613px,
+    background-position: top 671px left 233px, top 1032px left 613px,
       top 114px left 1214px, top 178px left 699px, top 285px left 64px,
       top 750px left 64px, top 413px left 464px, center;
   }
