@@ -12,10 +12,11 @@ const {
     buttonsHoverBg,
     placeHolderColor,
     accentInputInvalidValue,
-    whiteColor,
+    cardBgColor,
     accentAddPetCard,
     accentHeaderButton,
   },
+  // breakPoints: { mobile, tablet, desktop },
 } = variables;
 
 export const StyledContainer = styled.div`
@@ -53,8 +54,7 @@ export const InputContainer = styled.div`
 
 export const StyledInput = styled(Field)`
   font-family: 'Manrope', sans-serif;
-  position: relative;
-  width: 460px;
+  width: 260px;
   padding: 12px 16px;
   border-radius: 40px;
   border: 1px solid ${buttonsHoverBg};
@@ -63,6 +63,9 @@ export const StyledInput = styled(Field)`
   transform: scale(1);
   transition: transform 0.5s ease;
 
+  @media (min-width: 479px) {
+    width: 460px;
+  }
   &:focus {
     outline: transparent;
     border-color: ${buttonsHoverBg};
@@ -129,10 +132,11 @@ export const StyledIconCheck = styled(BsCheckLg)`
 
 export const StyledError = styled(ErrorMessage)`
   color: ${accentInputInvalidValue};
-  position: absolute;
-  left: 16px;
+
+  margin-left: 16px;
   font-size: 12px;
-  bottom: ${props => (props.name === 'password' ? '-30px' : '-17px')};
+  display: block;
+  margin-top: 5px;
 `;
 
 export const StyledIconEye = styled(AiOutlineEyeInvisible)`
@@ -168,7 +172,7 @@ export const StyledButton = styled.button`
   border-radius: 40px;
   background-color: ${buttonsHoverBg};
   border: transparent;
-  color: ${whiteColor};
+  color: ${cardBgColor};
   margin-bottom: 16px;
   cursor: pointer;
   transition: all 0.5s ease;
