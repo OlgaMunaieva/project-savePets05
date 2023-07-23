@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Formik } from 'formik';
-import SchemaValidateForm from './utils/SchemaValidateForm';
+import { getValidationSchema } from './utils/SchemaValidateForm';
+import { useNavigate } from 'react-router-dom';
 
 import {
   StyledInputsContainer,
@@ -28,6 +29,8 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
     confirmPassword: false,
   });
 
+  const navigate = useNavigate();
+
   const handleToggleField = fieldName => {
     setShowFields(prevState => ({
       ...prevState,
@@ -36,6 +39,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
   };
 
   const isRegisterForm = formType === 'register';
+  const validationSchema = getValidationSchema(isRegisterForm);
 
   const handleFormSubmit = (values, { setSubmitting }) => {
     onSubmit({
@@ -43,6 +47,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
       email: values.email.trim(),
       password: values.password.trim(),
     });
+    navigate('/userpage');
   };
 
   return (
@@ -54,7 +59,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
           password: '',
           confirmPassword: '',
         }}
-        validationSchema={SchemaValidateForm}
+        validationSchema={validationSchema}
         onSubmit={handleFormSubmit}
       >
         {({
@@ -203,11 +208,9 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                 </>
               )}
             </StyledInputsContainer>
-
             <StyledButton type="submit">
               {isRegisterForm ? 'Registration' : 'Login'}
             </StyledButton>
-
             <StyledText>
               {isRegisterForm
                 ? 'Already have an account? '

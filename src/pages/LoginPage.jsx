@@ -5,9 +5,8 @@ import { logIn } from 'redux/auth/authOperations';
 const LoginPage = () => {
   const dispatch = useDispatch();
 
-  const handleLogin = userData => {
-    console.log('Handle login is called:', userData);
-    dispatch(logIn(userData));
+  const handleLogin = ({ email, password }) => {
+    dispatch(logIn({ email, password }));
   };
 
   return (
