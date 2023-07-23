@@ -10,12 +10,18 @@ export default function MainPage() {
         {/* <MainContainer> */}
         <div
           style={{
-            width: '100%',
+            fontSize: '32px',
+            fontWeight: 700,
+            lineHeight: '44px',
+            letterSpacing: '0em',
+            textAlign: 'left',
+
+            // width: '100%',
             height: '100vh',
             // display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            fontSize: 40,
+            // justifyContent: 'center',
+            // alignItems: 'center',
+            // fontSize: 40,
             color: `${variables.colors.text}`,
           }}
         >

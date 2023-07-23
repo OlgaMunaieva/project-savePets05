@@ -49,9 +49,9 @@ const PawContainer = styled.div`
     url(${pawprintMobile6}), url(${pawprintMobile7}), url(${pawprintMobile8});
   background-size: 79px, 79px, 79px, 29px, 29px, 28px, 28px, 28px, cover;
   background-repeat: no-repeat;
-  background-position: top 290px left 78px, top 465px left 269px,
-    top 266px left 306px, top 41px left 312px, top 95px left -8px,
-    top 330px left -8px, top 160px left 193px, top 460px left 40px, left;
+  background-position: top 220px left 78px, top 395px left 269px,
+    top 196px left 306px, top -29px left 312px, top 25px left -8px,
+    top 240px left -8px, top 90px left 193px, top 390px left 40px, left;
 
   ${variables.breakPoints.mobile} {
     background-image: url(${pawprintTablet1}), url(${pawprintTablet2}),
