@@ -25,34 +25,35 @@ import pawprintMobile8 from '../../images/pawprint/pawprint-mobile-8.png';
 import pawprintTablet8 from '../../images/pawprint/pawprint-tablet-8.png';
 
 const RelativeContainer = styled.div`
-  /* position: relative; */
-  margin: 0 auto;
-  min-width: 320px;
-  height: 601px;
+  position: relative;
+  /* margin: 0 auto; */
+  /* max-width: 320px; */
+  /* height: 601px; */
 
   ${variables.breakPoints.tablet} {
-    min-width: 768px;
-    height: 1193px;
+    /* max-width: 768px; */
+    /* height: 1193px; */
   }
   ${variables.breakPoints.desktop} {
-    min-width: 1280px;
-    height: 770px;
+    /* max-width: 1280px; */
+    /* height: 770px; */
   }
 `;
 
 const PawContainer = styled.div`
   position: absolute;
+  /* width: 100%; */
   opacity: 0.12px;
   background-image: url(${pawprintMobile1}), url(${pawprintMobile2}),
     url(${pawprintMobile3}), url(${pawprintMobile4}), url(${pawprintMobile5}),
     url(${pawprintMobile6}), url(${pawprintMobile7}), url(${pawprintMobile8});
   background-size: 79px, 79px, 79px, 29px, 29px, 28px, 28px, 28px, cover;
   background-repeat: no-repeat;
-  background-position: top 338px left 98px, top 519px left 289px,
-    top 314px left 326px, top 89px left 332px, top 143px left 12px,
-    top 378px left 12px, top 208px left 213px, top 508px left 60px, center;
+  background-position: top 290px left 78px, top 465px left 269px,
+    top 266px left 306px, top 41px left 312px, top 95px left -8px,
+    top 330px left -8px, top 160px left 193px, top 460px left 40px, center;
 
-  ${variables.breakPoints.tablet} {
+  ${variables.breakPoints.mobile} {
     background-image: url(${pawprintTablet1}), url(${pawprintTablet2}),
       url(${pawprintTablet3}), url(${pawprintTablet4}), url(${pawprintTablet5}),
       url(${pawprintTablet6}), url(${pawprintTablet7}), url(${pawprintTablet8});
