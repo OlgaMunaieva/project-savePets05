@@ -5,6 +5,7 @@ import { Div } from './Navigation.styled';
 import LogoComponent from '../logo/Logo';
 import { useEffect, useState } from 'react';
 import MobMenu from '../mobMenu/MobMenu';
+import { useResize } from 'hooks/useResize';
 
 const isLogin = false;
 const userName = 'Santa';
@@ -13,26 +14,27 @@ const Navigation = () => {
   const [sizeTab, setsizeTab] = useState(true);
   const [itsMobile, setitsMobile] = useState(false);
 
-  const resizeHandler = () => {
-    const clientWidth = window.innerWidth;
-    if (clientWidth <= 766) {
+  const { width } = useResize();
+
+  const resizeHandler = width => {
+    if (width <= 766) {
       setitsMobile(true);
-    } else if (clientWidth < 1279) {
+      setsizeTab(false);
+      setsizeDesk(false);
+    } else if (width < 1279) {
       setsizeTab(true);
       setitsMobile(false);
       setsizeDesk(false);
-    } else if (clientWidth >= 1280) {
+    } else if (width >= 1280) {
       setsizeDesk(true);
       setsizeTab(false);
+      setitsMobile(false);
     }
   };
+
   useEffect(() => {
-    window.addEventListener('resize', resizeHandler);
-    resizeHandler();
-    return () => {
-      window.removeEventListener('resize', resizeHandler);
-    };
-  }, [itsMobile]);
+    resizeHandler(width);
+  }, [width]);
   return (
     <Div>
       <LogoComponent itsMobile={itsMobile} />
@@ -42,7 +44,7 @@ const Navigation = () => {
       ) : (
         <UserNav userName={userName} size={itsMobile} />
       )}
-      {!sizeTab ? null : (
+      {!sizeTab && !itsMobile ? null : (
         <MobMenu userName={userName} size={itsMobile} isLogin={isLogin} />
       )}
     </Div>
