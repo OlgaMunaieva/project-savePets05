@@ -10,7 +10,7 @@ const initialState = {
 
 const handleFulfilled = (state, action) => {
   state.user = action.payload.user;
-  state.token = action.payload.token;
+  state.token = action.payload.token?.access;
   state.isLoggedIn = true;
 };
 
