@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/project-savePets05/static/css/main.b7d0ba3d.css",
-    "main.js": "/project-savePets05/static/js/main.ed7af79e.js",
-    "static/js/108.f9fcd167.chunk.js": "/project-savePets05/static/js/108.f9fcd167.chunk.js",
+    "main.js": "/project-savePets05/static/js/main.dc2b39fe.js",
+    "static/js/108.97dcc5fe.chunk.js": "/project-savePets05/static/js/108.97dcc5fe.chunk.js",
     "static/media/logo.svg": "/project-savePets05/static/media/logo.6e2f51eeb062dc6472f5e4aa1de019f4.svg",
     "static/media/footprint.svg": "/project-savePets05/static/media/footprint.46c1f18461334812d7f4db85ef209688.svg",
     "index.html": "/project-savePets05/index.html",
@@ -11,11 +11,11 @@
     "static/media/cross-small.svg": "/project-savePets05/static/media/cross-small.8da70af0e6f5ef55f05592dc1412e003.svg",
     "static/media/menu-hamburger.svg": "/project-savePets05/static/media/menu-hamburger.e5ce08a82de7546bfde31ea978aefa46.svg",
     "main.b7d0ba3d.css.map": "/project-savePets05/static/css/main.b7d0ba3d.css.map",
-    "main.ed7af79e.js.map": "/project-savePets05/static/js/main.ed7af79e.js.map",
-    "108.f9fcd167.chunk.js.map": "/project-savePets05/static/js/108.f9fcd167.chunk.js.map"
+    "main.dc2b39fe.js.map": "/project-savePets05/static/js/main.dc2b39fe.js.map",
+    "108.97dcc5fe.chunk.js.map": "/project-savePets05/static/js/108.97dcc5fe.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b7d0ba3d.css",
-    "static/js/main.ed7af79e.js"
+    "static/js/main.dc2b39fe.js"
   ]
 }
