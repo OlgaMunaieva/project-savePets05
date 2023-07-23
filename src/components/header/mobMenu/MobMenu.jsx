@@ -12,7 +12,7 @@ import {
 import { ReactComponent as Burger } from '../../../images/icons/menu-hamburger.svg';
 import { ReactComponent as BurgerCross } from '../../../images/icons/cross-small.svg';
 import LogoComponent from '../logo/Logo';
-import { LinksLogout } from '../navigation/userNav/UserNav.styled';
+// import { LinksLogout } from '../navigation/userNav/UserNav.styled';
 
 const MobMenu = () => {
   const [isOpen, setOpen] = useState(true);
