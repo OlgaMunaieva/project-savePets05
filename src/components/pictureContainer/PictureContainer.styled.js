@@ -68,9 +68,9 @@ const PawContainer = styled.div`
       url(${pawprintDesktop3}), url(${pawprintDesktop4}),
       url(${pawprintDesktop5}), url(${pawprintDesktop6}),
       url(${pawprintDesktop7});
-    background-position: top 671px left 233px, top 1032px left 613px,
-      top 114px left 1214px, top 178px left 699px, top 285px left 64px,
-      top 750px left 64px, top 413px left 464px, center;
+    background-position: top 571px left 183px, top 932px left 563px,
+      top 14px left 1164px, top 78px left 649px, top 185px left 14px,
+      top 650px left 14px, top 313px left 414px, center;
   }
 `;
 
