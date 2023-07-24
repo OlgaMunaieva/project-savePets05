@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Formik } from 'formik';
 import { getValidationSchema } from './utils/SchemaValidateForm';
-import { useLocation, useNavigate } from 'react-router-dom';
+// import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
   StyledInputsContainer,
@@ -29,7 +29,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
     confirmPassword: false,
   });
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleToggleField = fieldName => {
     setShowFields(prevState => ({
