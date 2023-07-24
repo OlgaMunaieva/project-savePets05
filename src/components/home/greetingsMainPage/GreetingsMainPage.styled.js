@@ -6,7 +6,7 @@ const GreetingsMainPage = styled.div`
   padding-top: 108px;
   font-size: 32px;
   font-weight: 700;
-  line-height: 44px;
+  line-height: 1.375;
   letter-spacing: 0em;
   text-align: left;
   height: 100vh;
@@ -16,17 +16,17 @@ const GreetingsMainPage = styled.div`
     padding-top: 148px;
     padding-left: 32px;
     font-size: 68px;
-    line-height: 100px;
+    line-height: 1.47;
   }
 
   ${variables.breakPoints.desktop} {
     padding-top: 256px;
     padding-left: 16px;
-    width: 501px;
+    max-width: 510px; // по макету 501, но текст не располагается как нужно
     min-height: 264px;
     font-size: 68px;
     font-weight: 800;
-    line-height: 88px;
+    line-height: 1.3;
     letter-spacing: 0em;
     text-align: left;
   }

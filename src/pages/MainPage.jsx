@@ -1,4 +1,5 @@
-import GreetingsMainPage from 'components/greetingsMainPage/GreetingsMainPage.styled';
+import GreetingsMainPage from 'components/home/greetingsMainPage/GreetingsMainPage.styled';
+import HomeImages from 'components/home/homeImages/HomeImages';
 import PictureContainer from 'components/pictureContainer/PictureContainer.styled';
 
 export default function MainPage() {
@@ -7,6 +8,7 @@ export default function MainPage() {
       {/* <PictureContainer.RelativeContainer> */}
       <PictureContainer.PawContainer>
         <GreetingsMainPage>Take good care of your small pets</GreetingsMainPage>
+        <HomeImages />
       </PictureContainer.PawContainer>
       {/* </PictureContainer.RelativeContainer> */}
     </>
