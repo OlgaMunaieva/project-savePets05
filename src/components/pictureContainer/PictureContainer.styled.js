@@ -43,34 +43,39 @@ const RelativeContainer = styled.div`
 const PawContainer = styled.div`
   /* position: absolute; */
   /* width: 100%; */
-  opacity: 0.12px;
+  margin-left: -20px;
+  margin-right: -20px;
   background-image: url(${pawprintMobile1}), url(${pawprintMobile2}),
     url(${pawprintMobile3}), url(${pawprintMobile4}), url(${pawprintMobile5}),
     url(${pawprintMobile6}), url(${pawprintMobile7}), url(${pawprintMobile8});
   background-size: 79px, 79px, 79px, 29px, 29px, 28px, 28px, 28px, cover;
   background-repeat: no-repeat;
-  background-position: top 220px left 78px, top 395px left 269px,
-    top 196px left 306px, top -29px left 312px, top 25px left -8px,
-    top 240px left -8px, top 90px left 193px, top 390px left 40px, left;
+  background-position: top 338px left 98px, top 519px left 289px,
+    top 314px left 326px, top 89px left 332px, top 143px left 12px,
+    top 378px left 12px, top 208px left 213px, top 508px left 60px, center;
 
-  ${variables.breakPoints.mobile} {
+  ${variables.breakPoints.tablet} {
+    margin-left: -32px;
+    margin-right: -32px;
     background-image: url(${pawprintTablet1}), url(${pawprintTablet2}),
       url(${pawprintTablet3}), url(${pawprintTablet4}), url(${pawprintTablet5}),
       url(${pawprintTablet6}), url(${pawprintTablet7}), url(${pawprintTablet8});
     background-size: 157px, 157px, 157px, 58px, 58px, 56px, 56px, 56px, cover;
     background-repeat: no-repeat;
-    background-position: top 603px left 203px, top 964px left 581px,
-      top 556px left 656px, top 110px left 667px, top 217px left 32px,
-      top 682px left 32px, top 345px left 432px, top 941px left 128px, left;
+    background-position: top 671px left 235px, top 1032px left 613px,
+      top 624px left 688px, top 178px left 699px, top 285px left 64px,
+      top 750px left 64px, top 413px left 464px, top 1009px left 160px, left;
   }
-  ${variables.breakPoints.tablet} {
+  ${variables.breakPoints.desktop} {
+    margin-left: -16px;
+    margin-right: -16px;
     background-image: url(${pawprintDesktop1}), url(${pawprintDesktop2}),
       url(${pawprintDesktop3}), url(${pawprintDesktop4}),
       url(${pawprintDesktop5}), url(${pawprintDesktop6}),
       url(${pawprintDesktop7});
-    background-position: top 571px left 183px, top 932px left 563px,
-      top 14px left 1164px, top 78px left 649px, top 185px left 14px,
-      top 650px left 14px, top 313px left 414px, center;
+    background-position: top 671px left 235px, top 515px left 1268px,
+      top 114px left 1213px, top 178px left 699px, top 285px left 64px,
+      top 750px left 64px, top 413px left 464px, center;
   }
 `;
 
