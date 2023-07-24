@@ -1,0 +1,13 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-big-dog" viewBox="0 0 29 32">
+<path fill="#54adff" style="fill: var(--color1, #54adff)" d="M26.313 11.035c3.823 2.211 3.819 7.732-0.007 9.937l-17.701 10.203c-3.826 2.206-8.606-0.558-8.602-4.975l0.015-20.431c0.003-4.417 4.786-7.174 8.61-4.963l17.686 10.228z"></path>
+</symbol>
+<symbol id="icon-cat" viewBox="0 0 48 32">
+<path d="M47.757 43.152c-0.070 7.249-7.961 11.705-14.205 8.019l-28.88-17.048c-6.243-3.685-6.156-12.747 0.157-16.311l29.203-16.487c6.313-3.564 14.117 1.043 14.047 8.292l-0.324 33.534z"></path>
+</symbol>
+<symbol id="icon-small-dog" viewBox="0 0 32 32">
+<path fill="#ffc107" style="fill: var(--color2, #ffc107)" d="M22.181 0.892c4.128-2.401 9.307 0.567 9.323 5.343l0.071 22.091c0.015 4.776-5.145 7.777-9.288 5.402l-19.167-10.984c-4.143-2.374-4.163-8.344-0.035-10.745l19.096-11.107z"></path>
+</symbol>
+</defs>
+</svg>
