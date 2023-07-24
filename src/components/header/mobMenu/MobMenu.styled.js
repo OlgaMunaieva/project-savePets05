@@ -87,14 +87,19 @@ export const ListItem = styled.li`
   text-align: center;
 `;
 export const LinkTo = styled(NavLink)`
+  @media screen and (max-width: 766px) {
+    line-height: 43px;
+    line-height: 43px;
+  }
   font-weight: 500;
   font-size: 32px;
-  line-height: 43px;
+
   letter-spacing: 0.04em;
   color: ${variables.colors.simpleWhite};
   transition: ${variables.transition.transitionColor};
   @media screen and (min-width: 767px) {
     font-size: 48px;
+    line-height: 65px;
   }
   &:hover,
   &:focus,
