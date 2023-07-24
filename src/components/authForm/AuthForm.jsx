@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Formik } from 'formik';
 import { getValidationSchema } from './utils/SchemaValidateForm';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
   StyledInputsContainer,
@@ -47,7 +47,11 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
       email: values.email.trim(),
       password: values.password.trim(),
     });
-    navigate('/userpage');
+    // if (isRegisterForm) {
+    //   navigate('/userpage', { state: { pathname: 'register' } });
+    // } else {
+    //   navigate('/userpage', { state: { pathname: 'login' } });
+    // }
   };
 
   return (
