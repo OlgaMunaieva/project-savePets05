@@ -70,30 +70,36 @@ export const LogOutIcon = styled(LogoutIcon)`
 
 export const Wrap = styled.div`
   @media screen and (max-width: 766px) {
-    padding-top: 0px;
+    margin-top: 20px;
   }
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 92px;
+  margin-top: 92px;
 `;
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
-  row-gap: 60px;
+  row-gap: 20px;
 `;
 export const ListItem = styled.li`
+  display: block;
   text-align: center;
 `;
 export const LinkTo = styled(NavLink)`
+  @media screen and (max-width: 766px) {
+    line-height: 43px;
+    line-height: 43px;
+  }
   font-weight: 500;
   font-size: 32px;
-  line-height: 43px;
+
   letter-spacing: 0.04em;
   color: ${variables.colors.simpleWhite};
   transition: ${variables.transition.transitionColor};
   @media screen and (min-width: 767px) {
     font-size: 48px;
+    line-height: 65px;
   }
   &:hover,
   &:focus,
@@ -111,8 +117,8 @@ export const MobileUser = styled(Link)`
   font-weight: 500;
   letter-spacing: 0.04em;
   padding: 8px 16px;
-  margin-top: 40px;
-  margin-bottom: 84px;
+  margin-top: 25px;
+  margin-bottom: 67px;
 `;
 export const Icon = styled(UserIcon)`
   margin-right: 12px;
