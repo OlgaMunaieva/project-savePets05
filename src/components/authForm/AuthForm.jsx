@@ -92,7 +92,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                             : 'success'
                           : 'initial'
                       }`}
-                      touched={touched.name}
+                      touched={touched.name?.toString()}
                       type="name"
                       name="name"
                       onChange={handleChange}
@@ -122,7 +122,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                         : 'success'
                       : 'initial'
                   }`}
-                  touched={touched.email}
+                  touched={touched.email?.toString()}
                   type="email"
                   name="email"
                   onChange={handleChange}
@@ -149,7 +149,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                         : 'success'
                       : 'initial'
                   }`}
-                  touched={touched.password}
+                  touched={touched.password?.toString()}
                   type={showFields.password ? 'text' : 'password'}
                   name="password"
                   onChange={handleChange}
@@ -159,7 +159,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                 />
                 <StyledIconEye
                   showFields={showFields.password}
-                  touched={touched.password}
+                  touched={touched.password?.toString()}
                   errors={errors.password}
                   onClick={() => handleToggleField('password')}
                 />
@@ -183,7 +183,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                             : 'success'
                           : 'initial'
                       }`}
-                      touched={touched.confirmPassword}
+                      touched={touched.confirmPassword?.toString()}
                       type={showFields.confirmPassword ? 'text' : 'password'}
                       name="confirmPassword"
                       onChange={handleChange}
@@ -193,7 +193,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                     />
                     <StyledIconEye
                       showFields={showFields.confirmPassword}
-                      touched={touched.confirmPassword}
+                      touched={touched.confirmPassword?.toString()}
                       errors={errors.confirmPassword}
                       onClick={() => handleToggleField('confirmPassword')}
                     />
