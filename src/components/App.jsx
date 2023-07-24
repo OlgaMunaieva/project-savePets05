@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './SharedLayout';
-import { lazy, useEffect } from 'react';
+import { lazy } from 'react';
 // import PetModal from './petModal/PetModal';
 
 // import AddPetPage from 'pages/AddPetPage';
@@ -10,18 +10,11 @@ import LoginPage from 'pages/LoginPage';
 // import NoticesPage from 'pages/NoticesPage';
 // import OurFriendsPage from 'pages/OurFriendsPage';
 import RegisterPage from 'pages/RegisterPage';
-import { useDispatch } from 'react-redux';
-import { refreshUser } from 'redux/auth/authOperations';
 // import UserPage from 'pages/UserPage';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 
 const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
   return (
     // <PetModal/>
     <Routes>
