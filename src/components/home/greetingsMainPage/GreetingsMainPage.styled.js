@@ -23,10 +23,10 @@ const GreetingsMainPage = styled.div`
     padding-top: 256px;
     padding-left: 16px;
     max-width: 510px; // по макету 501, но текст не располагается как нужно
-    min-height: 1.3;
+    min-height: 264px;
     font-size: 68px;
     font-weight: 800;
-    line-height: 88px;
+    line-height: 1.3;
     letter-spacing: 0em;
     text-align: left;
   }

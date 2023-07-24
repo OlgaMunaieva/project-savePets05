@@ -45,6 +45,7 @@ const PawContainer = styled.div`
   /* width: 100%; */
   margin-left: -20px;
   margin-right: -20px;
+  /* opacity: 0.1; */
   background-image: url(${pawprintMobile1}), url(${pawprintMobile2}),
     url(${pawprintMobile3}), url(${pawprintMobile4}), url(${pawprintMobile5}),
     url(${pawprintMobile6}), url(${pawprintMobile7}), url(${pawprintMobile8});
