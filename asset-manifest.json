@@ -1,8 +1,10 @@
 {
   "files": {
     "main.css": "/project-savePets05/static/css/main.b7d0ba3d.css",
-    "main.js": "/project-savePets05/static/js/main.40ab5dde.js",
-    "static/js/916.654403eb.chunk.js": "/project-savePets05/static/js/916.654403eb.chunk.js",
+    "main.js": "/project-savePets05/static/js/main.bb2cdea3.js",
+    "static/js/626.1c74ebbf.chunk.js": "/project-savePets05/static/js/626.1c74ebbf.chunk.js",
+    "static/media/big-dog@2x.jpg": "/project-savePets05/static/media/big-dog@2x.b894afe2f323bacfe0f3.jpg",
+    "static/media/big-dog.jpg": "/project-savePets05/static/media/big-dog.635fb1834d7b27bd8be8.jpg",
     "static/media/logo-mob.svg": "/project-savePets05/static/media/logo-mob.baf94e4ce1e8af9e0a837c4eceef3908.svg",
     "static/media/logo.svg": "/project-savePets05/static/media/logo.6e2f51eeb062dc6472f5e4aa1de019f4.svg",
     "static/media/footprint.svg": "/project-savePets05/static/media/footprint.46c1f18461334812d7f4db85ef209688.svg",
@@ -12,11 +14,11 @@
     "static/media/cross-small.svg": "/project-savePets05/static/media/cross-small.8da70af0e6f5ef55f05592dc1412e003.svg",
     "static/media/menu-hamburger.svg": "/project-savePets05/static/media/menu-hamburger.e5ce08a82de7546bfde31ea978aefa46.svg",
     "main.b7d0ba3d.css.map": "/project-savePets05/static/css/main.b7d0ba3d.css.map",
-    "main.40ab5dde.js.map": "/project-savePets05/static/js/main.40ab5dde.js.map",
-    "916.654403eb.chunk.js.map": "/project-savePets05/static/js/916.654403eb.chunk.js.map"
+    "main.bb2cdea3.js.map": "/project-savePets05/static/js/main.bb2cdea3.js.map",
+    "626.1c74ebbf.chunk.js.map": "/project-savePets05/static/js/626.1c74ebbf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b7d0ba3d.css",
-    "static/js/main.40ab5dde.js"
+    "static/js/main.bb2cdea3.js"
   ]
 }
