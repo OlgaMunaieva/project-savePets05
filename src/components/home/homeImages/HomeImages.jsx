@@ -11,21 +11,21 @@ const HomeImages = () => {
     <div>
       <picture>
         <source
-          srcset={`${BigDogDesktop} 1x, ${BigDogDesktop2x} 2x`}
+          srcSet={`${BigDogDesktop} 1x, ${BigDogDesktop2x} 2x`}
           media="(min-width: 1280px)"
           type="image/jpeg"
           width="532"
           height="537"
         />
         <source
-          srcset={`${BigDogTablet} 1x, ${BigDogTablet2x} 2x`}
+          srcSet={`${BigDogTablet} 1x, ${BigDogTablet2x} 2x`}
           media="(min-width: 768px)"
           type="image/jpeg"
           width="532"
           height="537"
         />
         <source
-          srcset={`${BigDog} 1x, ${BigDog2x} 2x`}
+          srcSet={`${BigDog} 1x, ${BigDog2x} 2x`}
           media="(max-width: 767px)"
           type="image/jpeg"
           width="256"
