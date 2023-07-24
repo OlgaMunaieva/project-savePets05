@@ -21,7 +21,7 @@ export const LinkLogin = styled(Link)`
   border-radius: 40px;
   display: flex;
   align-items: center;
-  padding: 8px 41px;
+  padding: 8px 40px;
   color: ${variables.colors.secondaryText};
   font-style: normal;
   font-weight: 700;
@@ -38,7 +38,7 @@ export const LinkLogin = styled(Link)`
 
 export const LinkReg = styled(LinkLogin)`
   @media screen and (max-width: 766px) {
-    padding: 6px 27.4px;
+    padding: 7px 30px;
   }
   font-weight: 600;
   padding: 6px 19px;

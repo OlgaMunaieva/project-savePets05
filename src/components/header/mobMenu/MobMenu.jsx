@@ -16,9 +16,12 @@ import { ReactComponent as Burger } from '../../../images/icons/menu-hamburger.s
 import { ReactComponent as BurgerCross } from '../../../images/icons/cross-small.svg';
 import LogoComponent from '../logo/Logo';
 import AuthBtn from '../buttons/AuthBtn';
+import { useDispatch } from 'react-redux';
+import { logOut } from 'redux/auth/authOperations';
 
 const MobMenu = ({ isLogin, size, userName }) => {
   const [isOpen, setOpen] = useState(true);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -42,19 +45,19 @@ const MobMenu = ({ isLogin, size, userName }) => {
         <MobMenus>
           <LogoComponent itsMobile={size} />
           <></>
-          {!isLogin ? (
-            <LinksLogoutTab>
+          {isLogin ? (
+            <LinksLogoutTab onClick={() => dispatch(logOut())}>
               Log out
               <LogOutIcon />
             </LinksLogoutTab>
           ) : null}
 
-          {size && isLogin ? (
+          {size && !isLogin ? (
             <DivLogin>
               <AuthBtn />
             </DivLogin>
           ) : null}
-          {size && !isLogin ? (
+          {size && isLogin ? (
             <MobileUser>
               <Icon />
               {userName}
