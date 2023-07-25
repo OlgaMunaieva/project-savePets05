@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, Form, ErrorMessage, Field } from 'formik';
 import { Step1, Step2, Step3 } from './Steps';
-import * as Yup from 'yup';
-
+import validationSchema from './SchemaAddPet';
 import {
   Container,
   ButtonContainer,
@@ -25,10 +24,10 @@ const AddPet = () => {
     petType: '',
     petImage: '',
     comments: '',
-    addType: '',
+    addTitle: '',
     location: '',
     price: '',
-    sex: '',
+    petSex: '',
   };
 
   const handleSubmit = (values, { setSubmitting }) => {
@@ -48,20 +47,16 @@ const AddPet = () => {
         if (!values.petName || !values.petBirthDate || !values.petType) {
           return;
         }
-      } else if (values.adType === 'sell') {
-        if (!values.addType) {
-          return;
-        }
       } else if (
-        values.adType === 'lostFound' ||
-        values.adType === 'inGoodHands'
+        values.adType === 'sell' ||
+        values.adType === 'inGoodHands' ||
+        values.adType === 'lostFound'
       ) {
-        // Додаємо перевірку для опції "lost/found"
         if (
+          !values.addTitle ||
           !values.petName ||
           !values.petBirthDate ||
-          !values.petType ||
-          !values.addType
+          !values.petType
         ) {
           return;
         }
@@ -69,11 +64,16 @@ const AddPet = () => {
     } else if (step === 3) {
       // Перевіряємо наявність обов'язкових полів на третьому кроці
       if (values.adType === 'yourPet') {
-        if (!values.petImage || !values.comments) {
+        if (!values.petImage) {
           return;
         }
       } else if (values.adType === 'sell') {
-        if (!values.location || !values.price) {
+        if (
+          !values.location ||
+          !values.price ||
+          !values.petImage ||
+          !values.petSex
+        ) {
           return;
         }
       } else if (
@@ -81,7 +81,7 @@ const AddPet = () => {
         values.adType === 'inGoodHands'
       ) {
         // Додаємо перевірку для опції "lost/found та in good hands"
-        if (!values.location) {
+        if (!values.location || !values.petImage || !values.petSex) {
           return;
         }
       }
@@ -97,43 +97,6 @@ const AddPet = () => {
     window.history.back(); // Переходимо на попередню сторінку
   };
 
-  // Оголошуємо основну схему валідації з використанням Yup
-  const validationSchema = Yup.object().shape({
-    adType: Yup.string().required('Required'),
-    petName: Yup.string().when('adType', {
-      is: 'yourPet',
-      then: Yup.string().required('Required'),
-    }),
-    petBirthDate: Yup.string().when('adType', {
-      is: 'yourPet',
-      then: Yup.string().required('Required'),
-    }),
-    petType: Yup.string().when('adType', {
-      is: 'yourPet',
-      then: Yup.string().required('Required'),
-    }),
-    petImage: Yup.string().when('adType', {
-      is: 'yourPet',
-      then: Yup.string().required('Required'),
-    }),
-    comments: Yup.string().when('adType', {
-      is: 'yourPet',
-      then: Yup.string().required('Required'),
-    }),
-    addType: Yup.string().when('adType', {
-      is: 'sell',
-      then: Yup.string().required('Required'),
-    }),
-    location: Yup.string().when('adType', {
-      is: 'yourPet',
-      then: Yup.string().required('Required'),
-    }),
-    price: Yup.string().when('adType', {
-      is: 'yourPet',
-      then: Yup.string().required('Required'),
-    }),
-  });
-
   return (
     <Container>
       <Formik
@@ -144,14 +107,29 @@ const AddPet = () => {
         {({ values, handleChange, isValid }) => (
           <Form>
             <StepIndicatorContainer>
-              <StepIndicator active={step === 1} completed={step > 1}>
-                <StepText active={step === 1}>Choose option</StepText>
+              <StepIndicator
+                active={step === 1 ? 'true' : 'false'}
+                completed={step > 1 ? 'true' : 'false'}
+              >
+                <StepText active={step === 1 ? 'true' : 'false'}>
+                  Choose option
+                </StepText>
               </StepIndicator>
-              <StepIndicator active={step === 2} completed={step > 2}>
-                <StepText active={step === 2}>Personal details</StepText>
+              <StepIndicator
+                active={step === 2 ? 'true' : 'false'}
+                completed={step > 2 ? 'true' : 'false'}
+              >
+                <StepText active={step === 2 ? 'true' : 'false'}>
+                  Personal details
+                </StepText>
               </StepIndicator>
-              <StepIndicator active={step === 3} completed={step > 3}>
-                <StepText active={step === 3}>More info</StepText>
+              <StepIndicator
+                active={step === 3 ? 'true' : 'false'}
+                completed={step > 3 ? 'true' : 'false'}
+              >
+                <StepText active={step === 3 ? 'true' : 'false'}>
+                  More info
+                </StepText>
               </StepIndicator>
             </StepIndicatorContainer>
             {step === 1 && <Step1 handleChange={handleChange} />}
@@ -168,14 +146,14 @@ const AddPet = () => {
                   values.adType === 'inGoodHands') && (
                   <div>
                     {/* Додати поле для типу оголошення на другому кроці при обраній опції "sell" */}
-                    <label>Type of ad:</label>
+                    <label>Title of add:</label>
                     <Field
                       type="text"
-                      name="addType"
-                      value={values.addType}
+                      name="addTitle"
+                      value={values.addTitle}
                       onChange={handleChange}
                     />
-                    <ErrorMessageText component="label" name="addType" />
+                    <ErrorMessageText component="label" name="addTitle" />
                   </div>
                 )}
               </>
@@ -183,7 +161,7 @@ const AddPet = () => {
             {step === 3 && (
               <>
                 {values.adType === 'yourPet' ? (
-                  <Step3 handleChange={handleChange} sex={values.sex} />
+                  <Step3 handleChange={handleChange} petSex={values.petSex} />
                 ) : null}
                 {(values.adType === 'sell' ||
                   values.adType === 'lostFound' ||
@@ -194,9 +172,9 @@ const AddPet = () => {
                     <label>
                       <Field
                         type="radio"
-                        name="sex"
+                        name="petSex"
                         value="male"
-                        checked={values.sex === 'male'}
+                        checked={values.petSex === 'male'}
                         onChange={handleChange}
                       />{' '}
                       Male
@@ -204,9 +182,9 @@ const AddPet = () => {
                     <label>
                       <Field
                         type="radio"
-                        name="sex"
+                        name="petSex"
                         value="female"
-                        checked={values.sex === 'female'}
+                        checked={values.petSex === 'female'}
                         onChange={handleChange}
                       />{' '}
                       Female

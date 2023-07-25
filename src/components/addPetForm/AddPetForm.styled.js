@@ -1,6 +1,6 @@
 // AddPet.styled.js
 import styled from 'styled-components';
-import { ErrorMessage } from 'formik';
+import { ErrorMessage, Field } from 'formik';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -54,35 +54,37 @@ export const StepIndicator = styled.div`
   height: 10px;
   width: calc(100% / 3);
   background-color: ${props =>
-    props.active
+    props.active === 'true'
       ? 'blue'
-      : props.completed
+      : props.completed === 'true'
       ? 'green'
-      : 'gray'}; /* Змініть дефолтний колір фону */
+      : 'gray'};
   margin: 0 5px;
-  position: relative; /* Додайте властивість position: relative; */
+  position: relative;
 `;
 export const StepText = styled.div`
-  position: absolute; /* Зробіть текст абсолютно позиціонованим */
-  top: -20px; /* Змініть відступ вгору за необхідністю */
+  position: absolute;
+  top: -20px;
   left: 0;
-  font-family: Manrope;
   font-size: 10px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   color: ${props =>
-    props.active
+    props.active === 'true'
       ? 'blue'
-      : props.completed
+      : props.completed === 'true'
       ? 'green'
-      : 'gray'}; /* Колір тексту в залежності від стану кроку */
-  font-weight: ${props =>
-    props.active ? 'bold' : 'normal'}; /* Зробіть активний текст жирним */
+      : 'gray'};
+  font-weight: ${props => (props.active === 'true' ? 'bold' : 'normal')};
 `;
 
 export const ErrorMessageText = styled(ErrorMessage)`
   color: red;
   font-size: 12px;
   margin-top: 5px;
+`;
+
+export const Input = styled(Field)`
+  margin-bottom: 24px;
 `;
