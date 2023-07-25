@@ -22,6 +22,7 @@ const App = () => {
         <Route index element={<MainPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        {/* <Route path="/friends" element={<OurFriendsPage />} /> */}
       </Route>
     </Routes>
     // <div>
