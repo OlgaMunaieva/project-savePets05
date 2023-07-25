@@ -55,7 +55,7 @@ export const StyledRow = styled(AiOutlineArrowLeft)`
     width: 40px;
   }
 
-  @media (min-width: 767px) {
+  @media (min-width: 1279px) {
     display: none;
   }
 `;
