@@ -12,6 +12,8 @@ import { refreshUser } from 'redux/auth/authOperations';
 // import ModalApproveAction from 'pages/ModalApproveAction';
 // import NewsPage from 'pages/NewsPage';
 
+// import AddPet from './addPetForm/AddPetForm';
+
 const MainPage = lazy(() => import('../pages/MainPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));

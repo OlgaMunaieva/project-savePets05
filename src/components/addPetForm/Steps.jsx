@@ -1,11 +1,11 @@
 import React from 'react';
 import { Field } from 'formik';
-import { ErrorMessageText } from './AddPetForm.styled';
+import { ErrorMessageText, Input } from './AddPetForm.styled';
 
 const Step1 = ({ handleChange }) => (
   <div>
     <label>
-      <input
+      <Field
         type="radio"
         name="adType"
         value="yourPet"
@@ -15,12 +15,12 @@ const Step1 = ({ handleChange }) => (
     </label>
     <br />
     <label>
-      <input type="radio" name="adType" value="sell" onChange={handleChange} />
+      <Field type="radio" name="adType" value="sell" onChange={handleChange} />
       sell
     </label>
     <br />
     <label>
-      <input
+      <Field
         type="radio"
         name="adType"
         value="lostFound"
@@ -30,7 +30,7 @@ const Step1 = ({ handleChange }) => (
     </label>
     <br />
     <label>
-      <input
+      <Field
         type="radio"
         name="adType"
         value="inGoodHands"
@@ -44,11 +44,11 @@ const Step1 = ({ handleChange }) => (
 const Step2 = ({ handleChange, petName, petBirthDate, petType }) => (
   <div>
     <label>Pet's Name:</label>
-    <Field type="text" name="petName" value={petName} onChange={handleChange} />
+    <Input type="text" name="petName" value={petName} onChange={handleChange} />
     <ErrorMessageText component="label" name="petName" />
     <br />
     <label>Date of Birth:</label>
-    <Field
+    <Input
       type="text"
       name="petBirthDate"
       value={petBirthDate}
@@ -57,7 +57,7 @@ const Step2 = ({ handleChange, petName, petBirthDate, petType }) => (
     <ErrorMessageText component="label" name="petBirthDate" />
     <br />
     <label>Type of Pet:</label>
-    <Field type="text" name="petType" value={petType} onChange={handleChange} />
+    <Input type="text" name="petType" value={petType} onChange={handleChange} />
     <ErrorMessageText component="label" name="petType" />
   </div>
 );
