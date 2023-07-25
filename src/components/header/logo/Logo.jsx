@@ -4,7 +4,7 @@ import { LinkLogo, Logo } from './Logo.styled';
 
 const LogoComponent = ({ itsMobile }) => {
   return (
-    <LinkLogo to="/">
+    <LinkLogo to="/main">
       {itsMobile ? (
         <Logo src={logoMob} alt="Logo" />
       ) : (
