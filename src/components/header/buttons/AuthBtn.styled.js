@@ -21,7 +21,7 @@ export const LinkLogin = styled(Link)`
   border-radius: 40px;
   display: flex;
   align-items: center;
-  padding: 8px 40px;
+  padding: 8px 39.75px;
   color: ${variables.colors.secondaryText};
   font-style: normal;
   font-weight: 700;
@@ -38,10 +38,13 @@ export const LinkLogin = styled(Link)`
 
 export const LinkReg = styled(LinkLogin)`
   @media screen and (max-width: 766px) {
-    padding: 7px 30px;
+    padding: 7px 30px; (146 40)
+  }
+  @media screen and (min-width: 767px) and (max-width: 1279px) {
+    padding:7px 20.5px;
   }
   font-weight: 600;
-  padding: 6px 19px;
+  padding: 7px 20.4px;
   background-color: transparent;
   color: ${variables.colors.accentHeaderButton};
   border: 2px solid ${variables.colors.accentHeaderButton};
