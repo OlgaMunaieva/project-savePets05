@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   BtnWrapper,
   DivLogin,
@@ -20,18 +21,18 @@ import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/authOperations';
 import { motion, AnimatePresence } from 'framer-motion';
 import BodyScroll from './BodyScroll';
-import { useLocation } from 'react-router';
+// import { useLocation } from 'react-router';
 
 const MobMenu = ({ isLogin, size, userName }) => {
   const [isOpen, setOpen] = useState(true);
   const dispatch = useDispatch();
-  const location = useLocation();
+  // const location = useLocation();
 
-  useEffect(() => {
-    if (!isOpen) {
-      setOpen(!isOpen);
-    }
-  }, [location]);
+  // useEffect(() => {
+  //   if (!isOpen) {
+  //     setOpen(!isOpen);
+  //   }
+  // }, [location]);
 
   return (
     <>
