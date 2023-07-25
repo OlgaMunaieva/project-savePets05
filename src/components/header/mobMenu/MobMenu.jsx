@@ -109,7 +109,7 @@ const MobMenu = ({ isLogin, size, userName }) => {
                         delay: 0.5,
                       }}
                     >
-                      <LinkTo>Find pet</LinkTo>
+                      <LinkTo to="/notices/sell">Find pet</LinkTo>
                     </motion.div>
                   </ListItem>
                   <ListItem>
@@ -121,7 +121,7 @@ const MobMenu = ({ isLogin, size, userName }) => {
                         delay: 0.5,
                       }}
                     >
-                      <LinkTo>Our friends</LinkTo>
+                      <LinkTo to="/friends">Our friends</LinkTo>
                     </motion.div>
                   </ListItem>
                 </List>
