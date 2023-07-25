@@ -6,13 +6,13 @@ import LogoComponent from '../logo/Logo';
 import { useEffect, useState } from 'react';
 import MobMenu from '../mobMenu/MobMenu';
 import { useResize } from 'hooks/useResize';
-import { selectIsLoggedIn } from 'redux/auth/authSelectors';
+import { selectIsLoggedIn, selectUserName } from 'redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
 
-const userName = 'Pavlo';
 const Navigation = () => {
+  const { name } = useSelector(selectUserName);
+
   const isLogin = useSelector(selectIsLoggedIn);
-  console.log(isLogin);
   const [sizeDesk, setsizeDesk] = useState(false);
   const [sizeTab, setsizeTab] = useState(true);
   const [itsMobile, setitsMobile] = useState(false);
@@ -45,10 +45,10 @@ const Navigation = () => {
       {!isLogin ? (
         <AuthNav size={itsMobile} />
       ) : (
-        <UserNav userName={userName} size={itsMobile} />
+        <UserNav userName={name} size={itsMobile} />
       )}
       {!sizeTab && !itsMobile ? null : (
-        <MobMenu userName={userName} size={itsMobile} isLogin={isLogin} />
+        <MobMenu userName={name} size={itsMobile} isLogin={isLogin} />
       )}
     </Div>
   );

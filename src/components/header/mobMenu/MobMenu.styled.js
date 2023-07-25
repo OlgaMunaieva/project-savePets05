@@ -7,14 +7,15 @@ import variables from 'settings/variables';
 
 export const MobMenus = styled.div`
   position: absolute;
+
   @media screen and (max-width: 766px) {
     padding: 22px 20px;
   }
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  transform: translate(-50%, -50%);
+
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   padding: 24px 32px;
   background-color: #fdf7f2;
 `;
@@ -40,7 +41,10 @@ export const LinksLogoutTab = styled(Link)`
 position: absolute;
 @media screen and (min-width: 767px) {
 top:25px;
-right:80px;}
+right:80px;
+
+
+}
 
 display:inline-flex;
 align-items: center;
@@ -72,6 +76,7 @@ export const Wrap = styled.div`
   @media screen and (max-width: 766px) {
     margin-top: 20px;
   }
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,6 +86,7 @@ export const List = styled.ul`
   display: flex;
   flex-direction: column;
   row-gap: 20px;
+  height: 100vh;
 `;
 export const ListItem = styled.li`
   display: block;
@@ -96,7 +102,7 @@ export const LinkTo = styled(NavLink)`
 
   letter-spacing: 0.04em;
   color: ${variables.colors.simpleWhite};
-  transition: ${variables.transition.transitionColor};
+  transition: all 0.25s ease-in-out;
   @media screen and (min-width: 767px) {
     font-size: 48px;
     line-height: 65px;
