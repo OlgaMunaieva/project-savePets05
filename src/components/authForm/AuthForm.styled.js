@@ -1,8 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 import { IoClose } from 'react-icons/io5';
 import { BsCheckLg } from 'react-icons/bs';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import variables from 'settings/variables';
 
@@ -16,36 +17,92 @@ const {
     accentAddPetCard,
     accentHeaderButton,
   },
-  // breakPoints: { mobile, tablet, desktop },
 } = variables;
 
+const pulseAnimation = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+
 export const StyledContainer = styled.div`
-  padding: 80px 0;
+  position: relative;
+  z-index: 10;
+  padding: 40px 0;
+
+  @media (min-width: 479px) {
+    padding-top: 80px;
+    padding-bottom: 140px;
+  }
+`;
+
+export const StyledRow = styled(AiOutlineArrowLeft)`
+  position: absolute;
+  left: 20px;
+  top: 40px;
+  width: 26px;
+  height: 26px;
+  color: ${accentHeaderButton};
+  animation: ${pulseAnimation} 1.5s infinite;
+
+  &:hover {
+    width: 40px;
+  }
+
+  @media (min-width: 767px) {
+    display: none;
+  }
 `;
 
 export const StyledForm = styled(Form)`
+  position: relative;
   display: flex;
   flex-direction: column;
-  max-width: 610px;
+  max-width: 280px;
   margin: 0 auto;
-  padding: 60px 75px;
+  padding: 40px 12px;
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
-  border-radius: 40px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  background-color: ${cardBgColor};
+
+  @media (min-width: 479px) {
+    max-width: 610px;
+    padding: 60px 75px;
+    border-radius: 40px;
+  }
 `;
 
 export const StyledTitle = styled.h1`
   color: ${simpleBlack};
   text-align: center;
-  font-size: 36px;
+  font-size: 24px;
   font-weight: 500;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+
+  @media (min-width: 479px) {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
 `;
 
 export const StyledInputsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  margin-bottom: 50px;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 40px;
+
+  @media (min-width: 479px) {
+    gap: 32px;
+    margin-bottom: 50px;
+  }
 `;
 
 export const InputContainer = styled.div`
@@ -54,7 +111,8 @@ export const InputContainer = styled.div`
 
 export const StyledInput = styled(Field)`
   font-family: 'Manrope', sans-serif;
-  width: 260px;
+  font-size: 16px;
+  width: 250px;
   padding: 12px 16px;
   border-radius: 40px;
   border: 1px solid ${buttonsHoverBg};
@@ -64,7 +122,7 @@ export const StyledInput = styled(Field)`
   transition: transform 0.5s ease;
 
   @media (min-width: 479px) {
-    width: 460px;
+    width: 430px;
   }
   &:focus {
     outline: transparent;
@@ -164,7 +222,7 @@ export const StyledIconEye = styled(AiOutlineEyeInvisible)`
 
 export const StyledButton = styled.button`
   font-family: 'Manrope', sans-serif;
-  max-width: 460px;
+  max-width: 250px;
   font-size: 20px;
   font-weight: 600;
   padding: 10px 28px;
@@ -173,9 +231,14 @@ export const StyledButton = styled.button`
   background-color: ${buttonsHoverBg};
   border: transparent;
   color: ${cardBgColor};
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   cursor: pointer;
   transition: all 0.5s ease;
+
+  @media (min-width: 479px) {
+    max-width: 460px;
+    margin-bottom: 16px;
+  }
 
   &:hover {
     background-color: ${accentHeaderButton};

@@ -12,13 +12,13 @@ const AuthBtn = () => {
   return (
     <List>
       <ListItem>
-        <LinkLogin>
+        <LinkLogin to="/login">
           <Text>Log IN</Text>
           <Icon />
         </LinkLogin>
       </ListItem>
       <ListItem>
-        <LinkReg>Registration</LinkReg>
+        <LinkReg to="/register">Registration</LinkReg>
       </ListItem>
     </List>
   );
