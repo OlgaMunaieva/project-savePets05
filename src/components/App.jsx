@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './SharedLayout';
 import { lazy } from 'react';
+import RestrictedRoute from './RestrictedRoute';
+import PrivateRoute from './PrivateRoute';
 
 // import PetModal from './petModal/PetModal';
 // import AddPetPage from 'pages/AddPetPage';
@@ -14,17 +16,31 @@ const NoticesPage = lazy(() => import('../pages/NoticesPage'));
 const UserPage = lazy(() => import('../pages/UserPage'));
 const OurFriendsPage = lazy(() => import('../pages/OurFriendsPage'));
 
-
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<MainPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-          <Route path="/user" element={<UserPage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/user" component={<RegisterPage />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/user"
+          element={
+            <PrivateRoute redirectTo="/login" component={<UserPage />} />
+          }
+        />
         <Route path="/notices/sell" element={<NoticesPage />} />
-          <Route path="/friends" element={<OurFriendsPage />} />
+        <Route path="/friends" element={<OurFriendsPage />} />
       </Route>
     </Routes>
     // <div>
