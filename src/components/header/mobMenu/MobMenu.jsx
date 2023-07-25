@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   BtnWrapper,
   DivLogin,
@@ -20,11 +20,18 @@ import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/authOperations';
 import { motion, AnimatePresence } from 'framer-motion';
 import BodyScroll from './BodyScroll';
+import { useLocation } from 'react-router';
 
 const MobMenu = ({ isLogin, size, userName }) => {
   const [isOpen, setOpen] = useState(true);
-
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!isOpen) {
+      setOpen(!isOpen);
+    }
+  }, [location]);
 
   return (
     <>
@@ -65,7 +72,6 @@ const MobMenu = ({ isLogin, size, userName }) => {
               }}
             >
               <LogoComponent itsMobile={size} />
-              <></>
 
               {size && !isLogin ? (
                 <DivLogin>
@@ -81,7 +87,7 @@ const MobMenu = ({ isLogin, size, userName }) => {
                     delay: 0.2,
                   }}
                 >
-                  <MobileUser>
+                  <MobileUser to="/user">
                     <Icon />
                     {userName}
                   </MobileUser>
@@ -135,11 +141,11 @@ const MobMenu = ({ isLogin, size, userName }) => {
         <AnimatePresence>
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: 11 }}
             exit={{ opacity: 0.1 }}
             transition={{
               duration: 0.3,
-              delay: 0.7,
+              delay: 0.1,
             }}
           >
             <LinksLogoutTab onClick={() => dispatch(logOut())}>
