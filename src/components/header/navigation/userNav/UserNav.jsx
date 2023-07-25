@@ -1,30 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { List, ListItem } from './UserNav.styled';
+import { useLocation } from 'react-router-dom';
+import UserLink from 'components/header/buttons/UserLink';
+import LogoutBtn from 'components/header/buttons/LogoutBtn';
 
-import {
-  Links,
-  List,
-  ListItem,
-  LogOutIcon,
-  Text,
-  UserIcon,
-  UserLinK,
-} from './UserNav.styled';
+const UserNav = ({ size, userName }) => {
+  const [isHome, setHome] = useState(false);
+  const location = useLocation();
 
-const userName = 'Sergio';
-const UserNav = () => {
+  useEffect(() => {
+    const locationScaner = () => {
+      if (location.pathname === '/news') {
+        setHome(false);
+        return;
+      }
+      setHome(true);
+    };
+    locationScaner();
+  }, [location.pathname]);
+
   return (
     <List>
+      <ListItem>{isHome ? <LogoutBtn /> : null}</ListItem>
       <ListItem>
-        <Links>
-          Log out
-          <LogOutIcon />
-        </Links>
-      </ListItem>
-      <ListItem>
-        <UserLinK>
-          <UserIcon />
-          <Text>{userName}</Text>
-        </UserLinK>
+        <UserLink size={size} userName={userName} />
       </ListItem>
     </List>
   );

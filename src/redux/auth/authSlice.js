@@ -6,12 +6,21 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+  error: null,
 };
 
 const handleFulfilled = (state, action) => {
   state.user = action.payload.user;
-  state.token = action.payload.token;
+  state.token = action.payload.token?.access;
   state.isLoggedIn = true;
+};
+
+const handleRegisterPending = state => {
+  state.error = null;
+};
+
+const handleRegisterRejected = (state, action) => {
+  state.error = action.payload;
 };
 
 const handleLogOutFulfilled = state => {
@@ -33,6 +42,8 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(register.fulfilled, handleFulfilled)
+      .addCase(register.pending, handleRegisterPending)
+      .addCase(register.rejected, handleRegisterRejected)
       .addCase(logIn.fulfilled, handleFulfilled)
       .addCase(logOut.fulfilled, handleLogOutFulfilled)
       .addCase(refreshUser.fulfilled, handleRefreshUserFulfilled)

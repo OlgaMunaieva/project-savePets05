@@ -1,24 +1,16 @@
-import MainContainer from 'components/mainContainer/MainContainer.styled';
-import variables from 'settings/variables';
+import GreetingsMainPage from 'components/home/greetingsMainPage/GreetingsMainPage.styled';
+import HomeImages from 'components/home/homeImages/HomeImages';
+import PictureContainer from 'components/pictureContainer/PictureContainer.styled';
 
 export default function MainPage() {
   return (
     <>
-      <MainContainer>
-        <div
-          style={{
-            height: '100vh',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            fontSize: 40,
-            color: `${variables.colors.text}`,
-            border: 2,
-          }}
-        >
-          Take good care of your small pets
-        </div>
-      </MainContainer>
+      {/* <PictureContainer.RelativeContainer> */}
+      <PictureContainer.PawContainer>
+        <GreetingsMainPage>Take good care of your small pets</GreetingsMainPage>
+        <HomeImages />
+      </PictureContainer.PawContainer>
+      {/* </PictureContainer.RelativeContainer> */}
     </>
   );
 }

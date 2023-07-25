@@ -1,28 +1,7 @@
-import React from 'react';
+import AuthBtn from 'components/header/buttons/AuthBtn';
 
-import {
-  Icon,
-  LinkLogin,
-  LinkReg,
-  List,
-  ListItem,
-  Text,
-} from './AuthNav.styled';
-
-const AuthNav = () => {
-  return (
-    <List>
-      <ListItem>
-        <LinkLogin>
-          <Text>Log IN</Text>
-          <Icon />
-        </LinkLogin>
-      </ListItem>
-      <ListItem>
-        <LinkReg>Registration</LinkReg>
-      </ListItem>
-    </List>
-  );
+const AuthNav = ({ size }) => {
+  return <>{size ? null : <AuthBtn />}</>;
 };
 
 export default AuthNav;
