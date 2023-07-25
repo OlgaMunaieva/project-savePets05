@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Formik } from 'formik';
 import { getValidationSchema } from './utils/SchemaValidateForm';
+import { Link } from 'react-router-dom';
 // import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
@@ -17,6 +18,7 @@ import {
   StyledTitle,
   StyledText,
   StyledLink,
+  StyledRow,
 } from './AuthForm.styled';
 
 const clearInputValue = (setFieldValue, fieldName) => {
@@ -41,7 +43,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
   const isRegisterForm = formType === 'register';
   const validationSchema = getValidationSchema(isRegisterForm);
 
-  const handleFormSubmit = (values, { setSubmitting }) => {
+  const handleFormSubmit = values => {
     onSubmit({
       name: values.name.trim(),
       email: values.email.trim(),
@@ -73,10 +75,12 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
           handleSubmit,
           touched,
           errors,
-          isSubmitting,
           setFieldValue,
         }) => (
           <StyledForm onSubmit={handleSubmit} autoComplete="off">
+            <Link to="/">
+              <StyledRow />
+            </Link>
             <StyledTitle>
               {isRegisterForm ? 'Registration' : 'Login'}
             </StyledTitle>

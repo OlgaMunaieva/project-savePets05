@@ -5,7 +5,11 @@ const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,16}$/;
 export const getValidationSchema = isRegisterForm => {
   return Yup.object().shape({
     name: isRegisterForm
-      ? Yup.string().trim().required('Required')
+      ? Yup.string()
+          .min(2, 'Name must be at least 2 characters')
+          .max(16, 'Name must be at most 16 characters')
+          .trim()
+          .required('Required')
       : Yup.string().trim(),
 
     email: Yup.string().email('Invalid email address').required('Required'),

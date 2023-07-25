@@ -1,8 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 import { IoClose } from 'react-icons/io5';
 import { BsCheckLg } from 'react-icons/bs';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import variables from 'settings/variables';
 
@@ -18,7 +19,21 @@ const {
   },
 } = variables;
 
+const pulseAnimation = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+
 export const StyledContainer = styled.div`
+  position: relative;
+  z-index: 10;
   padding: 40px 0;
 
   @media (min-width: 479px) {
@@ -27,7 +42,26 @@ export const StyledContainer = styled.div`
   }
 `;
 
+export const StyledRow = styled(AiOutlineArrowLeft)`
+  position: absolute;
+  left: 20px;
+  top: 40px;
+  width: 26px;
+  height: 26px;
+  color: ${accentHeaderButton};
+  animation: ${pulseAnimation} 1.5s infinite;
+
+  &:hover {
+    width: 40px;
+  }
+
+  @media (min-width: 1279px) {
+    display: none;
+  }
+`;
+
 export const StyledForm = styled(Form)`
+  position: relative;
   display: flex;
   flex-direction: column;
   max-width: 280px;
@@ -36,6 +70,7 @@ export const StyledForm = styled(Form)`
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
   border-radius: 20px;
   box-sizing: border-box;
+  background-color: ${cardBgColor};
 
   @media (min-width: 479px) {
     max-width: 610px;

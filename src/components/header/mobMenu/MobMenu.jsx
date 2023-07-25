@@ -18,65 +18,136 @@ import LogoComponent from '../logo/Logo';
 import AuthBtn from '../buttons/AuthBtn';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/authOperations';
+import { motion, AnimatePresence } from 'framer-motion';
+import BodyScroll from './BodyScroll';
 
 const MobMenu = ({ isLogin, size, userName }) => {
   const [isOpen, setOpen] = useState(true);
+
   const dispatch = useDispatch();
 
   return (
     <>
       <BtnWrapper>
         {isOpen ? (
-          <Burger
-            onClick={() => {
-              setOpen(false);
-            }}
-          />
+          <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0.5, scale: 0.6 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0.5, scale: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <Burger
+                onClick={() => {
+                  setOpen(!isOpen);
+                }}
+              />
+            </motion.div>
+          </AnimatePresence>
         ) : (
           <BurgerCross
             onClick={() => {
-              setOpen(true);
+              setOpen(!isOpen);
             }}
           />
         )}
       </BtnWrapper>
+      <AnimatePresence>
+        {!isOpen ? (
+          <MobMenus>
+            <BodyScroll />
+            <motion.div
+              initial={{ opacity: 0.5, x: -301 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -301 }}
+              transition={{
+                duration: 0.5,
+              }}
+            >
+              <LogoComponent itsMobile={size} />
+              <></>
 
-      {!isOpen ? (
-        <MobMenus>
-          <LogoComponent itsMobile={size} />
-          <></>
-          {isLogin ? (
+              {size && !isLogin ? (
+                <DivLogin>
+                  <AuthBtn />
+                </DivLogin>
+              ) : null}
+              {size && isLogin ? (
+                <motion.div
+                  initial={{ scale: 0.3, opacity: 0.5, y: -301 }}
+                  animate={{ scale: 1, opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.2,
+                  }}
+                >
+                  <MobileUser>
+                    <Icon />
+                    {userName}
+                  </MobileUser>
+                </motion.div>
+              ) : null}
+              <Wrap>
+                <List>
+                  <ListItem>
+                    <motion.div
+                      initial={{ scaleY: 0, opacity: 0.5 }}
+                      animate={{ scaleY: 1, opacity: 1 }}
+                      transition={{
+                        duration: 0.2,
+                        delay: 0.5,
+                      }}
+                    >
+                      <LinkTo to="/news">News</LinkTo>
+                    </motion.div>
+                  </ListItem>
+                  <ListItem>
+                    <motion.div
+                      initial={{ scaleY: 0, opacity: 0.5 }}
+                      animate={{ scaleY: 1, opacity: 1 }}
+                      transition={{
+                        duration: 0.2,
+                        delay: 0.5,
+                      }}
+                    >
+                      <LinkTo to="/notices/sell">Find pet</LinkTo>
+                    </motion.div>
+                  </ListItem>
+                  <ListItem>
+                    <motion.div
+                      initial={{ scaleY: 0, opacity: 0.5 }}
+                      animate={{ scaleY: 1, opacity: 1 }}
+                      transition={{
+                        duration: 0.2,
+                        delay: 0.5,
+                      }}
+                    >
+                      <LinkTo to="/friends">Our friends</LinkTo>
+                    </motion.div>
+                  </ListItem>
+                </List>
+              </Wrap>
+            </motion.div>
+          </MobMenus>
+        ) : null}
+      </AnimatePresence>
+      {isLogin && !isOpen ? (
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0.1 }}
+            transition={{
+              duration: 0.3,
+              delay: 0.7,
+            }}
+          >
             <LinksLogoutTab onClick={() => dispatch(logOut())}>
               Log out
               <LogOutIcon />
             </LinksLogoutTab>
-          ) : null}
-
-          {size && !isLogin ? (
-            <DivLogin>
-              <AuthBtn />
-            </DivLogin>
-          ) : null}
-          {size && isLogin ? (
-            <MobileUser>
-              <Icon />
-              {userName}
-            </MobileUser>
-          ) : null}
-          <Wrap>
-            <List>
-              <ListItem>
-                <LinkTo>News</LinkTo>
-              </ListItem>
-              <ListItem>
-                <LinkTo>Find pet</LinkTo>
-              </ListItem>
-              <ListItem>
-                <LinkTo>Our friends</LinkTo>
-              </ListItem>
-            </List>
-          </Wrap>
-        </MobMenus>
+          </motion.div>
+        </AnimatePresence>
       ) : null}
     </>
   );
