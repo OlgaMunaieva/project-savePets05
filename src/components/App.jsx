@@ -8,7 +8,7 @@ import { lazy } from 'react';
 // import NoticesPage from 'pages/NoticesPage';
 // import OurFriendsPage from 'pages/OurFriendsPage';
 // import RegisterPage from 'pages/RegisterPage';
-// import UserPage from 'pages/UserPage';
+import UserPage from 'pages/UserPage';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 
@@ -17,6 +17,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<MainPage />} />
+        <Route path="user" element={<UserPage />} />
       </Route>
     </Routes>
     // <div>
