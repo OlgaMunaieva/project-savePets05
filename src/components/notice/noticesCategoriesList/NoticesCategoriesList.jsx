@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import NoticesCategoryItem from '../noticeCategoryItem/NoticeCategoryItem';
 
 import React from 'react';
@@ -32,14 +31,3 @@ const NoticesCategoriesList = ({ pets }) => {
 };
 
 export default NoticesCategoriesList;
-
-// NoticesCategoriesList.propTypes = {
-//   contacts: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.string.isRequired,
-//       name: PropTypes.string.isRequired,
-//       number: PropTypes.string.isRequired,
-//     }).isRequired
-//   ),
-//   onRemoveContacts: PropTypes.func.isRequired,
-// };

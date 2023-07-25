@@ -3,6 +3,8 @@
 // import PropTypes from 'prop-types';
 
 // import { number } from 'yup';
+// import { useSelector } from 'react-redux';
+// import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import icons from '../../../images/icons/icons-card.svg';
 import {
   BtnFavorite,
@@ -21,17 +23,31 @@ import {
   TitleWrapper,
 } from './NoticeCategoryItem.styled';
 
-
 const NoticesCategoryItem = ({ category, gender, birthday, city, title }) => {
-  const today = new Date();
-  const birthdays = new Date(birthday);
-  const todayD =
-    (today.getFullYear() * 12 + today.getMonth()) * 31 + today.getDate() - 1;
-  const birthdayD =
-    (birthdays.getFullYear() * 12 + birthdays.getMonth()) * 31 +
-    birthdays.getDate() -
-    1;
-  const age = Math.ceil((todayD - birthdayD) / 31 / 12);
+  // const isLogin = useSelector(selectIsLoggedIn);
+
+  // const favoriteClickHandle = () => {
+  //   if (!isLogin) {
+  //     alert('You need to sign in');
+  //   }
+  //   dispatch(
+  //     favoriteNotice({
+  //       id: _id,
+  //     })
+  //   );
+  // };
+
+  const getAge = date => {
+    const dateArr = date.split('.');
+    const birthdayDate = `${dateArr[2]}.${dateArr[1]}.${dateArr[0]}`;
+    const age =
+      (new Date().getTime() - new Date(birthdayDate)) /
+      (24 * 3600 * 1000 * 365.25);
+    if (age < 1) {
+      return `${Math.floor((age * 365.25) / 30)} month`;
+    }
+    return Math.floor(age) === 1 ? `1 year` : `${Math.floor(age)} years`;
+  };
 
   return (
     <>
@@ -63,7 +79,7 @@ const NoticesCategoryItem = ({ category, gender, birthday, city, title }) => {
               <Icon width={24} height={24}>
                 <use href={icons + '#clock'}></use>
               </Icon>
-              <DescriptionItemText>{age} year</DescriptionItemText>
+              <DescriptionItemText>{getAge(birthday)}</DescriptionItemText>
             </DescriptionItem>
             <DescriptionItem>
               {gender === 'male' ? (
