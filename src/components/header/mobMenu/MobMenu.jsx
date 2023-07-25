@@ -1,4 +1,3 @@
-// import { useEffect, useState } from 'react';
 import { useState } from 'react';
 import {
   BtnWrapper,
@@ -21,18 +20,13 @@ import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/authOperations';
 import { motion, AnimatePresence } from 'framer-motion';
 import BodyScroll from './BodyScroll';
-// import { useLocation } from 'react-router';
 
 const MobMenu = ({ isLogin, size, userName }) => {
   const [isOpen, setOpen] = useState(true);
+  function toggleMenu() {
+    setOpen(true);
+  }
   const dispatch = useDispatch();
-  // const location = useLocation();
-
-  // useEffect(() => {
-  //   if (!isOpen) {
-  //     setOpen(!isOpen);
-  //   }
-  // }, [location]);
 
   return (
     <>
@@ -72,11 +66,11 @@ const MobMenu = ({ isLogin, size, userName }) => {
                 duration: 0.5,
               }}
             >
-              <LogoComponent itsMobile={size} />
+              <LogoComponent toggle={toggleMenu} itsMobile={size} />
 
               {size && !isLogin ? (
                 <DivLogin>
-                  <AuthBtn />
+                  <AuthBtn toggle={toggleMenu} />
                 </DivLogin>
               ) : null}
               {size && isLogin ? (
@@ -88,7 +82,7 @@ const MobMenu = ({ isLogin, size, userName }) => {
                     delay: 0.2,
                   }}
                 >
-                  <MobileUser to="/user">
+                  <MobileUser onClick={() => setOpen(!isOpen)} to="/user">
                     <Icon />
                     {userName}
                   </MobileUser>
@@ -105,7 +99,9 @@ const MobMenu = ({ isLogin, size, userName }) => {
                         delay: 0.5,
                       }}
                     >
-                      <LinkTo to="/news">News</LinkTo>
+                      <LinkTo onClick={() => setOpen(!isOpen)} to="/news">
+                        News
+                      </LinkTo>
                     </motion.div>
                   </ListItem>
                   <ListItem>
@@ -117,7 +113,12 @@ const MobMenu = ({ isLogin, size, userName }) => {
                         delay: 0.5,
                       }}
                     >
-                      <LinkTo to="/notices/sell">Find pet</LinkTo>
+                      <LinkTo
+                        onClick={() => setOpen(!isOpen)}
+                        to="/notices/sell"
+                      >
+                        Find pet
+                      </LinkTo>
                     </motion.div>
                   </ListItem>
                   <ListItem>
@@ -129,7 +130,9 @@ const MobMenu = ({ isLogin, size, userName }) => {
                         delay: 0.5,
                       }}
                     >
-                      <LinkTo to="/friends">Our friends</LinkTo>
+                      <LinkTo onClick={() => setOpen(!isOpen)} to="/friends">
+                        Our friends
+                      </LinkTo>
                     </motion.div>
                   </ListItem>
                 </List>
