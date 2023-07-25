@@ -4,6 +4,7 @@ import { register } from 'redux/auth/authOperations';
 import toast from 'react-hot-toast';
 import { useEffect } from 'react';
 import { selectError } from 'redux/auth/authSelectors';
+import PictureContainer from 'components/pictureContainer/PictureContainer.styled';
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -30,14 +31,14 @@ const RegisterPage = () => {
   }, [error]);
 
   return (
-    <>
+    <PictureContainer.PawContainer>
       <AuthForm
         onSubmit={handleRegistration}
         formType="register"
         showNameField={true}
         showConfirmPassword={true}
       />
-    </>
+    </PictureContainer.PawContainer>
   );
 };
 
