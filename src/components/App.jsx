@@ -66,6 +66,10 @@ const App = () => {
       //   {/* <ModalApproveAction /> */}
       //   {/* <NewsPage /> */}
       // </div>
+      //   <Route path="/notices/">
+      //  <Route index element={<Navigate to="/notices/sell" />} />
+      //   <Route path=":categoryName" element={<NoticesPage />} />
+      // </Route>
     )
   );
 };
