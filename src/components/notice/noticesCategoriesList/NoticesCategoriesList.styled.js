@@ -3,7 +3,7 @@ import variables from 'settings/variables';
 
 export const Container = styled.div`
   width: 100%;
-  min-width: 320px;
+  // min-width: 280px;
   margin: 24px auto;
   margin-bottom: 40px;
 
@@ -13,7 +13,7 @@ export const Container = styled.div`
     margin-bottom: 60px;
   }
   ${variables.breakPoints.desktop} {
-    width: 1280px;
+    width: 1248px;
     margin-top: 42px;
     margin-bottom: 68px;
   }
