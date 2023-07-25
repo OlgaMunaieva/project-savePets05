@@ -9,17 +9,18 @@ export const Container = styled.div`
 
   ${variables.breakPoints.tablet} {
     width: 768px;
-    margin-top: 40px;
-    margin-bottom: 60px;
+    // margin-top: 40px;
+    // margin-bottom: 60px;
   }
   ${variables.breakPoints.desktop} {
     width: 1248px;
-    margin-top: 42px;
-    margin-bottom: 68px;
+    // margin-top: 42px;
+    // margin-bottom: 68px;
   }
 `;
 
 export const List = styled.ul`
+  margin: 0 auto;
   display: flex;
   row-gap: 24px;
   flex-direction: column;

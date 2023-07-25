@@ -3,7 +3,7 @@ import variables from 'settings/variables';
 
 export const Item = styled.li`
   list-style: none;
-  max-width: 280px;
+  width: 280px;
   padding-bottom: 24px;
   user-select: none;
   background-color: ${variables.colors.cardBgColor};
