@@ -93,7 +93,7 @@ const MobMenu = ({ isLogin, size, userName }) => {
                       initial={{ scaleY: 0, opacity: 0.5 }}
                       animate={{ scaleY: 1, opacity: 1 }}
                       transition={{
-                        duration: 0.4,
+                        duration: 0.2,
                         delay: 0.5,
                       }}
                     >
@@ -105,7 +105,7 @@ const MobMenu = ({ isLogin, size, userName }) => {
                       initial={{ scaleY: 0, opacity: 0.5 }}
                       animate={{ scaleY: 1, opacity: 1 }}
                       transition={{
-                        duration: 0.4,
+                        duration: 0.2,
                         delay: 0.5,
                       }}
                     >
@@ -117,7 +117,7 @@ const MobMenu = ({ isLogin, size, userName }) => {
                       initial={{ scaleY: 0, opacity: 0.5 }}
                       animate={{ scaleY: 1, opacity: 1 }}
                       transition={{
-                        duration: 0.4,
+                        duration: 0.2,
                         delay: 0.5,
                       }}
                     >
