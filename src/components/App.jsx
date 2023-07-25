@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import SharedLayout from './SharedLayout';
 import { lazy, useEffect } from 'react';
 import RestrictedRoute from './RestrictedRoute';
@@ -57,7 +57,10 @@ const App = () => {
             }
           />
           <Route path="/main" element={<MainPage />} />
-          <Route path="/notices/sell" element={<NoticesPage />} />
+          <Route path="/notices/">
+            <Route index element={<Navigate to="/notices/sell" />} />
+            <Route path=":categoryName" element={<NoticesPage />} />
+          </Route>
           <Route path="/friends" element={<OurFriendsPage />} />
         </Route>
       </Routes>
@@ -66,10 +69,6 @@ const App = () => {
       //   {/* <ModalApproveAction /> */}
       //   {/* <NewsPage /> */}
       // </div>
-      //   <Route path="/notices/">
-      //  <Route index element={<Navigate to="/notices/sell" />} />
-      //   <Route path=":categoryName" element={<NoticesPage />} />
-      // </Route>
     )
   );
 };
