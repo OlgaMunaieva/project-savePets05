@@ -10,13 +10,16 @@ import { lazy } from 'react';
 // import NoticesPage from 'pages/NoticesPage';
 // import OurFriendsPage from 'pages/OurFriendsPage';
 // import RegisterPage from 'pages/RegisterPage';
+
 // import NoticesPage from 'pages/NoticesPage';
 // import UserPage from 'pages/UserPage';
+
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const NoticesPage = lazy(() => import('../pages/NoticesPage'));
+const UserPage = lazy(() => import('../pages/UserPage'));
 
 const App = () => {
   return (
@@ -26,6 +29,7 @@ const App = () => {
         <Route index element={<MainPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+          <Route path="/user" element={<UserPage />} />
         <Route path="/notices/sell" element={<NoticesPage />} />
       </Route>
     </Routes>
