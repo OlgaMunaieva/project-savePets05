@@ -43,7 +43,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
   const isRegisterForm = formType === 'register';
   const validationSchema = getValidationSchema(isRegisterForm);
 
-  const handleFormSubmit = (values, { setSubmitting }) => {
+  const handleFormSubmit = values => {
     onSubmit({
       name: values.name.trim(),
       email: values.email.trim(),
@@ -75,7 +75,6 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
           handleSubmit,
           touched,
           errors,
-          isSubmitting,
           setFieldValue,
         }) => (
           <StyledForm onSubmit={handleSubmit} autoComplete="off">

@@ -13,6 +13,7 @@ const handleFulfilled = (state, action) => {
   state.user = action.payload.user;
   state.token = action.payload.token?.access;
   state.isLoggedIn = true;
+  state.error = null;
 };
 
 const handleRegisterPending = state => {
