@@ -4,14 +4,14 @@ import variables from 'settings/variables';
 const MainContainer = styled.div`
   padding: 20px 20px 0px;
   margin: 0 auto;
-  /* max-width: 280px; */
+  max-width: 320px;
   ${variables.breakPoints.tablet} {
     padding: 24px 32px 0px;
-    /* max-width: 704px; */
+    max-width: 768px;
   }
   ${variables.breakPoints.desktop} {
     padding: 20px 16px 0px;
-    /* max-width: 1248px; */
+    max-width: 1280px;
   }
 `;
 

@@ -42,6 +42,7 @@ const RelativeContainer = styled.div`
 
 const PawContainer = styled.div`
   padding: 20px 20px 0px;
+  max-width: 320px;
   margin: 0 auto;
   background-image: url(${pawprintMobile1}), url(${pawprintMobile2}),
     url(${pawprintMobile3}), url(${pawprintMobile4}), url(${pawprintMobile5}),
@@ -54,6 +55,7 @@ const PawContainer = styled.div`
 
   ${variables.breakPoints.tablet} {
     padding: 24px 32px 0px;
+    max-width: 768px;
     background-image: url(${pawprintTablet1}), url(${pawprintTablet2}),
       url(${pawprintTablet3}), url(${pawprintTablet4}), url(${pawprintTablet5}),
       url(${pawprintTablet6}), url(${pawprintTablet7}), url(${pawprintTablet8});
@@ -65,6 +67,7 @@ const PawContainer = styled.div`
   }
   ${variables.breakPoints.desktop} {
     padding: 20px 16px 0px;
+    max-width: 1280px;
     background-image: url(${pawprintDesktop1}), url(${pawprintDesktop2}),
       url(${pawprintDesktop3}), url(${pawprintDesktop4}),
       url(${pawprintDesktop5}), url(${pawprintDesktop6}),
