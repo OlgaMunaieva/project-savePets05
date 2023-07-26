@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-import { ModalWindow, ModalContent, ExitButton } from './Modal.styled';
+import { ModalWindow, ModalContent, ExitButton } from './NoticeModal.styled';
 
-import CrossIcon from '..//../images/icons/CrossIcon.svg';
+import CrossIcon from '../../../images/icons/CrossIcon.svg';
 
 const modalRoot = document.body;
 
