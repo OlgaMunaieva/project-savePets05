@@ -68,3 +68,5 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const clearError = error => (error = null);

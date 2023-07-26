@@ -16,10 +16,6 @@ const handleFulfilled = (state, action) => {
   state.error = null;
 };
 
-const handleRegisterPending = state => {
-  state.error = null;
-};
-
 const handleRegisterRejected = (state, action) => {
   state.error = action.payload;
 };
@@ -39,11 +35,14 @@ const handleRefreshUserFulfilled = (state, action) => {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    clearError: state => {
+      state.error = null;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(register.fulfilled, handleFulfilled)
-      .addCase(register.pending, handleRegisterPending)
       .addCase(register.rejected, handleRegisterRejected)
       .addCase(logIn.fulfilled, handleFulfilled)
       .addCase(logOut.fulfilled, handleLogOutFulfilled)
@@ -56,5 +55,7 @@ const authSlice = createSlice({
       });
   },
 });
+
+export const { clearError } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;
