@@ -4,7 +4,6 @@ import { register } from 'redux/auth/authOperations';
 import toast from 'react-hot-toast';
 import { useEffect } from 'react';
 import { selectError } from 'redux/auth/authSelectors';
-import PictureContainer from 'components/pictureContainer/PictureContainer.styled';
 import { clearError } from '../redux/auth/authSlice';
 import { motion } from 'framer-motion';
 
@@ -34,23 +33,21 @@ const RegisterPage = () => {
       });
     }
     return () => dispatch(clearError());
-  }, [error]);
+  }, [error, dispatch]);
 
   return (
-    <PictureContainer.PawContainer>
-      <motion.div
-        initial={{ x: '-100%' }}
-        animate={{ x: 0 }}
-        transition={{ duration: 0.7 }}
-      >
-        <AuthForm
-          onSubmit={handleRegistration}
-          formType="register"
-          showNameField={true}
-          showConfirmPassword={true}
-        />
-      </motion.div>
-    </PictureContainer.PawContainer>
+    <motion.div
+      initial={{ x: '-100%' }}
+      animate={{ x: 0 }}
+      transition={{ duration: 0.7 }}
+    >
+      <AuthForm
+        onSubmit={handleRegistration}
+        formType="register"
+        showNameField={true}
+        showConfirmPassword={true}
+      />
+    </motion.div>
   );
 };
 
