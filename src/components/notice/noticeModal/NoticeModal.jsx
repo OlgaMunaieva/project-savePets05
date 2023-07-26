@@ -22,7 +22,7 @@ import {
   PetСharacteristicsProperty,
   PetСharacteristicsValue,
   PetСharacteristicsValueLink,
-} from './PetModal.styled';
+} from './NoticeModal.styled';
 
 const petСharacteristics = [
   'Name',
