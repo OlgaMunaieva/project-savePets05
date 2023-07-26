@@ -8,10 +8,11 @@ import PictureContainer from './pictureContainer/PictureContainer.styled';
 const SharedLayout = () => {
   const location = useLocation();
   const ContainerToRender =
-    location.pathname === '/main' ||
     location.pathname === '/' ||
+    location.pathname === '/main' ||
     location.pathname === '/register' ||
-    location.pathname === '/login'
+    location.pathname === '/login' ||
+    location.pathname === '/add-pet'
       ? PictureContainer.PawContainer
       : MainContainer;
 
