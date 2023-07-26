@@ -1,3 +1,5 @@
+
+
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -6,11 +8,19 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 28px;
   font-family: Manrope, sans-serif;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const PetMainWrapper = styled.div`
   display: flex;
   gap: 24px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -18,6 +28,12 @@ export const ImageWrapper = styled.div`
   width: 262px;
   height: 298px;
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
 `;
 
 export const PetImage = styled.img`
@@ -50,6 +66,11 @@ export const PetDetailsWrapper = styled.div`
   gap: 20px;
   height: 298px;
   width: 239px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const PetTitle = styled.p`
@@ -107,6 +128,12 @@ export const BottomBlock = styled.div`
   height: 100%;
   justify-content: space-between;
   align-items: flex-end;
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
 `;
 
 export const CommentsParagraph = styled.p`
@@ -123,6 +150,10 @@ export const CommentsParagraph = styled.p`
 export const ButtonsWrapper = styled.div`
   display: flex;
   gap: 17px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const ModalButton = styled.button`
@@ -139,6 +170,10 @@ export const ModalButton = styled.button`
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.64px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const AddToButton = styled(ModalButton)`
