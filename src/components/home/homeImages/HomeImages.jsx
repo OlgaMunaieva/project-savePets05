@@ -7,12 +7,17 @@ import Cat from '../../../images/homeImages/mobile/cat-mobile.png';
 import Cat2x from '../../../images/homeImages/mobile/cat-mobile@2x.png';
 import BigDogTablet from '../../../images/homeImages/tablet/big-dog-tablet.png';
 import BigDogTablet2x from '../../../images/homeImages/tablet/big-dog-tablet@2x.png';
+import SmallDogTablet from '../../../images/homeImages/tablet/small-dog-tablet.png';
+import SmallDogTablet2x from '../../../images/homeImages/tablet/small-dog-tablet@2x.png';
+import CatTablet from '../../../images/homeImages/tablet/cat-tablet.png';
+import CatTablet2x from '../../../images/homeImages/tablet/cat-tablet@2x.png';
 import BigDogDesktop from '../../../images/homeImages/desktop/big-dog-desktop.png';
 import BigDogDesktop2x from '../../../images/homeImages/desktop/big-dog-desktop@2x.png';
+import SmallDogDesktop from '../../../images/homeImages/desktop/small-dog-desktop.png';
+import SmallDogDesktop2x from '../../../images/homeImages/desktop/small-dog-desktop@2x.png';
+import CatDesktop from '../../../images/homeImages/desktop/cat-desktop.png';
+import CatDesktop2x from '../../../images/homeImages/desktop/cat-desktop@2x.png';
 import Pictures from './HomeImages.styled';
-// import spriteImage from '../../../images/sprite.svg';
-// import BigDogDesktop3 from '../../../images/homeImages/23aab0bf-039c-48f9-a1b4-b12103fca523 1.jpg';
-// import BigDogDesktop3x from '../../../images/homeImages/23aab0bf-039c-48f9-a1b4-b12103fca523 1 (1).jpg';
 
 const HomeImages = () => {
   return (
@@ -48,20 +53,20 @@ const HomeImages = () => {
         />
       </picture>
       <picture>
-        {/* <source
-          srcSet={`${BigDogDesktop} 1x, ${BigDogDesktop2x} 2x`}
+        <source
+          srcSet={`${SmallDogDesktop} 1x, ${SmallDogDesktop2x} 2x`}
           media="(min-width: 1280px)"
           type="image/jpeg"
-          width="532"
-          height="537"
-        /> */}
-        {/* <source
-          srcSet={`${BigDogTablet} 1x, ${BigDogTablet2x} 2x`}
+          width="426"
+          height="417"
+        />
+        <source
+          srcSet={`${SmallDogTablet} 1x, ${SmallDogTablet2x} 2x`}
           media="(min-width: 768px)"
           type="image/jpeg"
-          width="532"
-          height="537"
-        /> */}
+          width="426"
+          height="417"
+        />
         <source
           srcSet={`${SmallDog} 1x, ${SmallDog2x} 2x`}
           media="(max-width: 767px)"
@@ -70,41 +75,41 @@ const HomeImages = () => {
           height="201"
         />
         <Pictures.SmallDogImg
-          src={SmallDog}
-          srcSet={`${SmallDog2x} 2x`}
-          alt="Big dog"
-          width="205"
-          height="201"
+          src={SmallDogDesktop}
+          srcSet={`${SmallDogDesktop2x} 2x`}
+          alt="Small dog"
+          width="426"
+          height="417"
         />
       </picture>
       <picture>
-        {/* <source
-          srcSet={`${BigDogDesktop} 1x, ${BigDogDesktop2x} 2x`}
+        <source
+          srcSet={`${CatDesktop} 1x, ${CatDesktop2x} 2x`}
           media="(min-width: 1280px)"
           type="image/jpeg"
-          width="532"
-          height="537"
-        /> */}
-        {/* <source
-          srcSet={`${BigDogTablet} 1x, ${BigDogTablet2x} 2x`}
+          width="362"
+          height="361"
+        />
+        <source
+          srcSet={`${CatTablet} 1x, ${CatTablet2x} 2x`}
           media="(min-width: 768px)"
           type="image/jpeg"
-          width="532"
-          height="537"
-        /> */}
+          width="362"
+          height="361"
+        />
         <source
           srcSet={`${Cat} 1x, ${Cat2x} 2x`}
           media="(max-width: 767px)"
           type="image/jpeg"
-          width="256"
-          height="258"
+          width="174"
+          height="174"
         />
         <Pictures.CatImg
-          src={Cat}
-          srcSet={`${Cat2x} 2x`}
-          alt="Big dog"
-          width="532"
-          height="537"
+          src={CatDesktop}
+          srcSet={`${CatDesktop2x} 2x`}
+          alt="Cat"
+          width="362"
+          height="361"
         />
       </picture>
     </Pictures.MainPageContainer>
