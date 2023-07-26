@@ -5,6 +5,7 @@ import BigDogTablet from '../../../images/homeImages/tablet/big-dog-tablet.png';
 import BigDogTablet2x from '../../../images/homeImages/tablet/big-dog-tablet@2x.png';
 import BigDogDesktop from '../../../images/homeImages/desktop/big-dog-desktop.png';
 import BigDogDesktop2x from '../../../images/homeImages/desktop/big-dog-desktop@2x.png';
+import Pictures from './HomeImages.styled';
 // import spriteImage from '../../../images/sprite.svg';
 // import BigDogDesktop3 from '../../../images/homeImages/23aab0bf-039c-48f9-a1b4-b12103fca523 1.jpg';
 // import BigDogDesktop3x from '../../../images/homeImages/23aab0bf-039c-48f9-a1b4-b12103fca523 1 (1).jpg';
@@ -31,7 +32,7 @@ const HomeImages = () => {
       <svg width="390" height="390" fill="currentColor" viewBox="0 0 24 24">
         <use href={spriteImage + '#icon-big-dog'} />
       </svg> */}
-      <picture>
+      <Pictures.BigDogContainer>
         <source
           srcSet={`${BigDogDesktop} 1x, ${BigDogDesktop2x} 2x`}
           media="(min-width: 1280px)"
@@ -53,14 +54,14 @@ const HomeImages = () => {
           width="256"
           height="258"
         />
-        <img
+        <Pictures.BigDogImg
           src={BigDogDesktop}
           srcSet={`${BigDogDesktop2x} 2x`}
           alt="Big dog"
           width="532"
           height="537"
         />
-      </picture>
+      </Pictures.BigDogContainer>
     </div>
   );
 };
