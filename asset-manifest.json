@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/project-savePets05/static/css/main.b7d0ba3d.css",
-    "main.js": "/project-savePets05/static/js/main.a5dfdce8.js",
-    "static/js/426.e0e9055e.chunk.js": "/project-savePets05/static/js/426.e0e9055e.chunk.js",
+    "main.js": "/project-savePets05/static/js/main.204a7ad9.js",
+    "static/js/426.11f6f03a.chunk.js": "/project-savePets05/static/js/426.11f6f03a.chunk.js",
     "static/js/432.788eedd7.chunk.js": "/project-savePets05/static/js/432.788eedd7.chunk.js",
     "static/js/637.d10d126f.chunk.js": "/project-savePets05/static/js/637.d10d126f.chunk.js",
     "static/js/948.0cf279b2.chunk.js": "/project-savePets05/static/js/948.0cf279b2.chunk.js",
@@ -31,8 +31,8 @@
     "static/media/cross-small.svg": "/project-savePets05/static/media/cross-small.8da70af0e6f5ef55f05592dc1412e003.svg",
     "static/media/menu-hamburger.svg": "/project-savePets05/static/media/menu-hamburger.e5ce08a82de7546bfde31ea978aefa46.svg",
     "main.b7d0ba3d.css.map": "/project-savePets05/static/css/main.b7d0ba3d.css.map",
-    "main.a5dfdce8.js.map": "/project-savePets05/static/js/main.a5dfdce8.js.map",
-    "426.e0e9055e.chunk.js.map": "/project-savePets05/static/js/426.e0e9055e.chunk.js.map",
+    "main.204a7ad9.js.map": "/project-savePets05/static/js/main.204a7ad9.js.map",
+    "426.11f6f03a.chunk.js.map": "/project-savePets05/static/js/426.11f6f03a.chunk.js.map",
     "432.788eedd7.chunk.js.map": "/project-savePets05/static/js/432.788eedd7.chunk.js.map",
     "637.d10d126f.chunk.js.map": "/project-savePets05/static/js/637.d10d126f.chunk.js.map",
     "948.0cf279b2.chunk.js.map": "/project-savePets05/static/js/948.0cf279b2.chunk.js.map",
@@ -44,6 +44,6 @@
   },
   "entrypoints": [
     "static/css/main.b7d0ba3d.css",
-    "static/js/main.a5dfdce8.js"
+    "static/js/main.204a7ad9.js"
   ]
 }
