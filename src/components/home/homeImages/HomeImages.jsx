@@ -17,7 +17,7 @@ import Pictures from './HomeImages.styled';
 const HomeImages = () => {
   return (
     <Pictures.MainPageContainer>
-      <Pictures.BigDogContainer>
+      <picture>
         <source
           srcSet={`${BigDogDesktop} 1x, ${BigDogDesktop2x} 2x`}
           media="(min-width: 1280px)"
@@ -46,8 +46,8 @@ const HomeImages = () => {
           width="532"
           height="537"
         />
-      </Pictures.BigDogContainer>
-      <Pictures.SmallDogContainer>
+      </picture>
+      <picture>
         {/* <source
           srcSet={`${BigDogDesktop} 1x, ${BigDogDesktop2x} 2x`}
           media="(min-width: 1280px)"
@@ -76,8 +76,8 @@ const HomeImages = () => {
           width="205"
           height="201"
         />
-      </Pictures.SmallDogContainer>
-      <Pictures.CatContainer>
+      </picture>
+      <picture>
         {/* <source
           srcSet={`${BigDogDesktop} 1x, ${BigDogDesktop2x} 2x`}
           media="(min-width: 1280px)"
@@ -106,7 +106,7 @@ const HomeImages = () => {
           width="532"
           height="537"
         />
-      </Pictures.CatContainer>
+      </picture>
     </Pictures.MainPageContainer>
   );
 };
