@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const GreetingsMainPage = styled.div`
   padding-left: 20px;
   padding-top: 108px;
+  max-width: 280px;
   font-size: 32px;
   font-weight: 700;
   line-height: 1.375;

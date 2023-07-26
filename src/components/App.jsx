@@ -20,6 +20,7 @@ const LoginPage = lazy(() => import('../pages/LoginPage'));
 const NoticesPage = lazy(() => import('../pages/NoticesPage'));
 const UserPage = lazy(() => import('../pages/UserPage'));
 const OurFriendsPage = lazy(() => import('../pages/OurFriendsPage'));
+const NotFound = lazy(() => import('../pages/NotFound'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ const App = () => {
           </Route>
           <Route path="/friends" element={<OurFriendsPage />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       // <div>
       //   {/* <AddPetPage /> */}
