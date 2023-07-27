@@ -30,9 +30,9 @@ const BigDogImg = styled.img`
   }
   ${variables.breakPoints.desktop} {
     width: 704px;
-    top: 0px;
+    top: 28px;
     left: 8px;
-    margin: -40px 32px;
+    margin: 0 32px;
   }
 `;
 
@@ -48,7 +48,7 @@ const SmallDogImg = styled.img`
   }
   ${variables.breakPoints.desktop} {
     width: 540px;
-    top: 290px;
+    top: 346px;
     left: -160px;
   }
 `;
@@ -65,7 +65,7 @@ const CatImg = styled.img`
   }
   ${variables.breakPoints.desktop} {
     width: 420px;
-    top: 490px;
+    top: 550px;
     left: 266px;
   }
 `;
