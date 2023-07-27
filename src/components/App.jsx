@@ -20,7 +20,7 @@ const LoginPage = lazy(() => import('../pages/LoginPage'));
 const NoticesPage = lazy(() => import('../pages/NoticesPage'));
 const UserPage = lazy(() => import('../pages/UserPage'));
 const OurFriendsPage = lazy(() => import('../pages/OurFriendsPage'));
-const NotFound = lazy(() => import('../pages/NotFound'));
+const ErrorPage = lazy(() => import('../pages/ErrorPage'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -59,13 +59,13 @@ const App = () => {
             }
           />
           <Route path="/main" element={<MainPage />} />
-          <Route path="/notices/">
+          <Route path="/notices">
             <Route index element={<Navigate to="/notices/sell" />} />
             <Route path=":categoryName" element={<NoticesPage />} />
           </Route>
           <Route path="/friends" element={<OurFriendsPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
       </Routes>
       // <div>
       //   {/* <AddPetPage /> */}

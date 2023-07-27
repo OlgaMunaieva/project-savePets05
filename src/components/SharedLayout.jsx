@@ -8,13 +8,14 @@ import PictureContainer from './pictureContainer/PictureContainer.styled';
 const SharedLayout = () => {
   const location = useLocation();
   const ContainerToRender =
-    location.pathname === '/' ||
-    location.pathname === '/main' ||
-    location.pathname === '/register' ||
-    location.pathname === '/login' ||
-    location.pathname === '/add-pet'
-      ? PictureContainer.PawContainer
-      : MainContainer;
+    location.pathname === '/notices/sell' ||
+    location.pathname === '/notices' ||
+    location.pathname === '/news' ||
+    location.pathname === '/friends' ||
+    location.pathname === '/notices/lost-found' ||
+    location.pathname === ' /notices/for-free'
+      ? MainContainer
+      : PictureContainer.PawContainer;
 
   return (
     <ContainerToRender>
