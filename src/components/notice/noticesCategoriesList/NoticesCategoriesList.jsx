@@ -12,15 +12,16 @@ const NoticesCategoriesList = ({ pets }) => {
         </Notification>
       ) : (
         <List>
-          {pets.map(({ _id, category, gender, birthday, city, title }) => {
+          {pets.map(({ id, category, sex, age, location, title, photoUrl }) => {
             return (
               <NoticesCategoryItem
-                key={_id}
+                key={id}
                 category={category}
-                gender={gender}
-                birthday={birthday}
-                city={city}
+                sex={sex}
+                age={age}
+                location={location}
                 title={title}
+                photoUrl={photoUrl}
               />
             );
           })}
@@ -29,5 +30,4 @@ const NoticesCategoriesList = ({ pets }) => {
     </Container>
   );
 };
-
 export default NoticesCategoriesList;
