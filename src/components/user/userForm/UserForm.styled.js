@@ -5,10 +5,12 @@ import variables from '../../../settings/variables';
 
 const {
   colors: { cardBgColor, buttonsHoverBg, simpleWhite },
-  shadow: { shadowDefault },
+  shadow: { shadowDefault, shadowHover },
+  transition: { transitionShadow },
 } = variables;
 
 export const StyledForm = styled(Form)`
+  position: relative;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
@@ -45,4 +47,96 @@ export const StyledLabel = styled.label`
   line-height: 1.39;
   letter-spacing: 0.04em;
   color: ${simpleWhite};
+`;
+export const UserAvatar = styled.img`
+  margin: 0 auto 9px auto;
+  max-height: 182px;
+  object-fit: cover;
+`;
+
+export const ButtonEditPhoto = styled.button`
+  margin: 0 auto 20px auto;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.83;
+  letter-spacing: 0.04em;
+  color: ${simpleWhite};
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  transition: ${transitionShadow};
+  &:hover,
+  &:focus {
+    box-shadow: ${shadowHover};
+    border-radius: 5px;
+  }
+`;
+
+export const ButtonUpload = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  transition: ${transitionShadow};
+  &:hover,
+  &:focus {
+    box-shadow: ${shadowHover};
+    border-radius: 50%;
+  }
+`;
+
+export const ButtonCancelUpload = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  transition: ${transitionShadow};
+  &:hover,
+  &:focus {
+    box-shadow: ${shadowHover};
+    border-radius: 50%;
+  }
+`;
+
+export const ContainerButtonsUpload = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin-bottom: 20px;
+  gap: 8px;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.83;
+  letter-spacing: 0.04em;
+  color: ${simpleWhite};
+`;
+
+export const ButtonClose = styled.button`
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  transition: ${transitionShadow};
+  &:hover,
+  &:focus {
+    box-shadow: ${shadowHover};
+    border-radius: 50%;
+  }
 `;

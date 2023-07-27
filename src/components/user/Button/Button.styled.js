@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import variables from '../../../settings/variables';
+
 const {
   colors: { cardBgColor, buttonsHoverBg, secondaryText, buttonsGr },
   transition: { transitionColor },
 } = variables;
 
 export const StyledButton = styled.button`
+  display: inline-block;
   padding-top: 9px;
   padding-bottom: 9px;
   width: 129px;
@@ -27,7 +29,8 @@ export const StyledButton = styled.button`
   }};
   cursor: pointer;
   transition: ${transitionColor};
-  &:hover {
+  &:hover,
+  &:focus {
     background-image: ${buttonsGr};
     color: ${secondaryText};
     place-content: center;

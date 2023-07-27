@@ -30,11 +30,26 @@ const breakPoints = {
   desktop: '@media screen and (min-width: 1279px)',
 };
 
+const visualHidden = {
+  position: 'absolute',
+  whiteSpace: 'nowrap',
+  width: 1,
+  height: 1,
+  overflow: 'hidden',
+  border: 0,
+  padding: 0,
+  clip: 'rect(0 0 0 0)',
+  WebkitClipPath: 'inset(50%)',
+  clipPath: 'inset(50%)',
+  margin: -1,
+};
+
 const variables = {
   colors,
   shadow,
   transition,
   breakPoints,
+  visualHidden,
 };
 
 export default variables;
