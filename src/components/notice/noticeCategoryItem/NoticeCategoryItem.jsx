@@ -1,10 +1,3 @@
-// import { useState } from 'react';
-// import { useSearchParams } from 'react-router-dom';
-// import PropTypes from 'prop-types';
-
-// import { number } from 'yup';
-// import { useSelector } from 'react-redux';
-// import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import icons from '../../../images/icons/icons-card.svg';
 import {
   BtnFavorite,
@@ -23,7 +16,16 @@ import {
   TitleWrapper,
 } from './NoticeCategoryItem.styled';
 
-const NoticesCategoryItem = ({ category, gender, birthday, city, title }) => {
+const BaseUrlImg = 'https://res.cloudinary.com/dfvviqdic/image/upload/';
+
+const NoticesCategoryItem = ({
+  category,
+  sex,
+  age,
+  location,
+  title,
+  photoUrl,
+}) => {
   // const isLogin = useSelector(selectIsLoggedIn);
 
   // const favoriteClickHandle = () => {
@@ -37,27 +39,19 @@ const NoticesCategoryItem = ({ category, gender, birthday, city, title }) => {
   //   );
   // };
 
-  const getAge = date => {
-    const dateArr = date.split('.');
-    const birthdayDate = `${dateArr[2]}.${dateArr[1]}.${dateArr[0]}`;
-    const age =
-      (new Date().getTime() - new Date(birthdayDate)) /
-      (24 * 3600 * 1000 * 365.25);
-    if (age < 1) {
-      return `${Math.floor((age * 365.25) / 30)} month`;
+  const getAge = age => {
+    const year = Math.floor(age / 12);
+    if (age < 12) {
+      return `${age} month`;
     }
-    return Math.floor(age) === 1 ? `1 year` : `${Math.floor(age)} years`;
+    return Math.floor(year) === 12 ? `1 year` : `${Math.floor(year)} years`;
   };
 
   return (
     <>
       <Item>
         <ImgWrapper>
-          <Img
-            src="https://ribalych.com/media/24019/conversions/40626-668.webp"
-            alt="pet"
-            loading="lazy"
-          />
+          <Img src={BaseUrlImg + photoUrl} alt="pet" loading="lazy" />
           <Status>
             <StatusText>{category}</StatusText>
             <div>
@@ -73,16 +67,16 @@ const NoticesCategoryItem = ({ category, gender, birthday, city, title }) => {
               <Icon width={24} height={24}>
                 <use href={icons + '#location'}></use>
               </Icon>
-              <DescriptionItemText>{city}</DescriptionItemText>
+              <DescriptionItemText>{location}</DescriptionItemText>
             </DescriptionItem>
             <DescriptionItem>
               <Icon width={24} height={24}>
                 <use href={icons + '#clock'}></use>
               </Icon>
-              <DescriptionItemText>{getAge(birthday)}</DescriptionItemText>
+              <DescriptionItemText>{getAge(age)}</DescriptionItemText>
             </DescriptionItem>
             <DescriptionItem>
-              {gender === 'male' ? (
+              {sex === 'male' ? (
                 <Icon width={24} height={24}>
                   <use href={icons + '#male'} width={24} height={24}></use>
                 </Icon>
@@ -91,7 +85,7 @@ const NoticesCategoryItem = ({ category, gender, birthday, city, title }) => {
                   <use href={icons + '#female'} width={24} height={24}></use>
                 </Icon>
               )}
-              <DescriptionItemText>{gender}</DescriptionItemText>
+              <DescriptionItemText>{sex}</DescriptionItemText>
             </DescriptionItem>
           </Description>
         </ImgWrapper>
