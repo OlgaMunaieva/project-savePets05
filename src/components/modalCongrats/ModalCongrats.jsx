@@ -7,6 +7,19 @@ import {
   StyledButton,
 } from './ModalCongrats.styled';
 
+// const UserPage = () => {
+//   const [isModalOpen, setIsModalOpen] = useState(true);
+//   const location = useLocation();
+//   const pathname = location.state?.pathname || null;
+
+//   const openModal = () => {
+//     setIsModalOpen(true);
+//   };
+
+//   const closeModal = () => {
+//     setIsModalOpen(false);
+//   };
+
 const ModalCongrats = ({ closeModal, openModal }) => {
   const navigate = useNavigate();
   return (

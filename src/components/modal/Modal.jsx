@@ -3,11 +3,12 @@ import { createPortal } from 'react-dom';
 
 import { ModalWindow, ModalContent, ExitButton } from './Modal.styled';
 
-import CrossIcon from '..//../images/icons/CrossIcon.svg';
+import CrossIcon from '../../images/icons/CrossIcon.svg';
 
 const modalRoot = document.body;
 
 const Modal = ({ closeModal, isOpenedModal, children, width }) => {
+
   useEffect(() => {
     const toggleModal = e => {
       if (e.code !== 'Escape') return;
@@ -19,6 +20,16 @@ const Modal = ({ closeModal, isOpenedModal, children, width }) => {
       window.removeEventListener('keydown', toggleModal);
     };
   }, [isOpenedModal, toggleModal]);
+
+  useEffect(() => {
+    const handleKeyDown = e => toggleModal(e);
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [toggleModal]);
 
   const onClickOverlay = e => {
     if (e.target === e.currentTarget) closeModal();

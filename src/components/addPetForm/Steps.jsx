@@ -1,21 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Field } from 'formik';
 import { ErrorMessageText, Input } from './AddPetForm.styled';
 
-const Step1 = ({ handleChange }) => (
+const Step1 = ({ handleChange, setAdType }) => (
   <div>
     <label>
       <Field
         type="radio"
         name="adType"
         value="yourPet"
-        onChange={handleChange}
+        onChange={e => {
+          handleChange(e);
+          setAdType(e.target.value);
+        }}
       />
       your pet
     </label>
     <br />
     <label>
-      <Field type="radio" name="adType" value="sell" onChange={handleChange} />
+      <Field
+        type="radio"
+        name="adType"
+        value="sell"
+        onChange={e => {
+          handleChange(e);
+          setAdType(e.target.value);
+        }}
+      />
       sell
     </label>
     <br />
@@ -24,7 +35,10 @@ const Step1 = ({ handleChange }) => (
         type="radio"
         name="adType"
         value="lostFound"
-        onChange={handleChange}
+        onChange={e => {
+          handleChange(e);
+          setAdType(e.target.value);
+        }}
       />
       lost/found
     </label>
@@ -34,7 +48,10 @@ const Step1 = ({ handleChange }) => (
         type="radio"
         name="adType"
         value="inGoodHands"
-        onChange={handleChange}
+        onChange={e => {
+          handleChange(e);
+          setAdType(e.target.value);
+        }}
       />
       in good hands
     </label>
@@ -63,17 +80,33 @@ const Step2 = ({ handleChange, petName, petBirthDate, petType }) => (
 );
 
 const Step3 = ({ handleChange, petImage, comments }) => {
+  const [selectedImage, setSelectedImage] = useState(petImage || null);
+
+  const handleImageChange = event => {
+    const file = event.currentTarget.files[0];
+    setSelectedImage(file);
+    if (file) {
+      handleChange({
+        target: {
+          name: 'petImage',
+          value: file,
+        },
+      });
+    }
+  };
   return (
     <div>
       <label htmlFor="petImage">Load the pet's image:</label>
-      <Field
+      <input
         type="file"
         id="petImage"
         name="petImage"
         accept="image/*"
-        onChange={handleChange}
-        value={petImage}
+        onChange={handleImageChange}
       />
+      {selectedImage && (
+        <img src={URL.createObjectURL(selectedImage)} alt="Selected Pet" />
+      )}
       <ErrorMessageText component="label" name="petImage" />
       <br />
       <label htmlFor="comments">Comments:</label>

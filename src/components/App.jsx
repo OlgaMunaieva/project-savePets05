@@ -6,13 +6,17 @@ import PrivateRoute from './PrivateRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/auth/authSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
+// import AddPet from './addPetForm/AddPetForm';
+
+// AddPetForm-bugfix
+//import PetModal from './petModal/PetModal';
+//import AddPetPage from 'pages/AddPetPage';
+//import ModalApproveAction from 'pages/ModalApproveAction';
+//import NewsPage from 'pages/NewsPage';
 
 // import NoticeModal from './notice/noticeModal/NoticeModal';
-// import AddPetPage from 'pages/AddPetPage';
 // import ModalApproveAction from 'pages/ModalApproveAction';
 // import NewsPage from 'pages/NewsPage';
-
-// import AddPet from './addPetForm/AddPetForm';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
@@ -20,6 +24,7 @@ const LoginPage = lazy(() => import('../pages/LoginPage'));
 const NoticesPage = lazy(() => import('../pages/NoticesPage'));
 const UserPage = lazy(() => import('../pages/UserPage'));
 const OurFriendsPage = lazy(() => import('../pages/OurFriendsPage'));
+const AddPetPage = lazy(() => import('../pages/AddPetPage'));
 const ErrorPage = lazy(() => import('../pages/ErrorPage'));
 
 const App = () => {
@@ -64,11 +69,11 @@ const App = () => {
             <Route path=":categoryName" element={<NoticesPage />} />
           </Route>
           <Route path="/friends" element={<OurFriendsPage />} />
+          <Route path="/add-pet" element={<AddPetPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
       // <div>
-      //   {/* <AddPetPage /> */}
       //   {/* <ModalApproveAction /> */}
       //   {/* <NewsPage /> */}
       // </div>

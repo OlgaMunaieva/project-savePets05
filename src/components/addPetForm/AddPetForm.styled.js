@@ -62,7 +62,7 @@ export const StepIndicator = styled.div`
   margin: 0 5px;
   position: relative;
 `;
-export const StepText = styled.div`
+export const StepText = styled.span`
   position: absolute;
   top: -20px;
   left: 0;
@@ -80,6 +80,12 @@ export const StepText = styled.div`
 `;
 
 export const ErrorMessageText = styled(ErrorMessage)`
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+`;
+
+export const ErrorText = styled.span`
   color: red;
   font-size: 12px;
   margin-top: 5px;
