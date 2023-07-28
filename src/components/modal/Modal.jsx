@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 import { ModalWindow, ModalContent, ExitButton } from './Modal.styled';
@@ -8,12 +8,15 @@ import CrossIcon from '../../images/icons/CrossIcon.svg';
 const modalRoot = document.body;
 
 const Modal = ({ closeModal, isOpenedModal, children, width }) => {
-
-  useEffect(() => {
-    const toggleModal = e => {
+  const toggleModal = useCallback(
+    e => {
       if (e.code !== 'Escape') return;
       closeModal();
-    };
+    },
+    [closeModal]
+  );
+
+  useEffect(() => {
     window.addEventListener('keydown', toggleModal);
 
     return () => {
