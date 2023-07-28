@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Formik } from 'formik';
 import { getValidationSchema } from './utils/SchemaValidateForm';
-import { Link } from 'react-router-dom';
-// import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import {
   StyledInputsContainer,
@@ -31,7 +30,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
     confirmPassword: false,
   });
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleToggleField = fieldName => {
     setShowFields(prevState => ({
@@ -49,15 +48,10 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
       email: values.email.trim(),
       password: values.password.trim(),
     });
-    // if (isRegisterForm) {
-    //   navigate('/userpage', { state: { pathname: 'register' } });
-    // } else {
-    //   navigate('/userpage', { state: { pathname: 'login' } });
-    // }
   };
 
   return (
-    <StyledContainer>
+    <StyledContainer data-isregisterform={isRegisterForm}>
       <Formik
         initialValues={{
           name: '',
@@ -78,9 +72,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
           setFieldValue,
         }) => (
           <StyledForm onSubmit={handleSubmit} autoComplete="off">
-            <Link to="/">
-              <StyledRow />
-            </Link>
+            <StyledRow onClick={() => navigate(-1)} />
             <StyledTitle>
               {isRegisterForm ? 'Registration' : 'Login'}
             </StyledTitle>
@@ -162,7 +154,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                   placeholder="Password"
                 />
                 <StyledIconEye
-                  showFields={showFields.password}
+                  data-showfields={showFields.password}
                   touched={touched.password?.toString()}
                   errors={errors.password}
                   onClick={() => handleToggleField('password')}
@@ -196,7 +188,7 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                       placeholder="Confirm password"
                     />
                     <StyledIconEye
-                      showFields={showFields.confirmPassword}
+                      data-showfields={showFields.confirmPassword}
                       touched={touched.confirmPassword?.toString()}
                       errors={errors.confirmPassword}
                       onClick={() => handleToggleField('confirmPassword')}

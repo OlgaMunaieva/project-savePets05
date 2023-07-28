@@ -16,7 +16,7 @@ const handleFulfilled = (state, action) => {
   state.error = null;
 };
 
-const handleRegisterRejected = (state, action) => {
+const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
@@ -43,7 +43,8 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(register.fulfilled, handleFulfilled)
-      .addCase(register.rejected, handleRegisterRejected)
+      .addCase(register.rejected, handleRejected)
+      .addCase(logIn.rejected, handleRejected)
       .addCase(logIn.fulfilled, handleFulfilled)
       .addCase(logOut.fulfilled, handleLogOutFulfilled)
       .addCase(refreshUser.fulfilled, handleRefreshUserFulfilled)

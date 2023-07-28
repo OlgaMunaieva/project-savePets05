@@ -43,13 +43,15 @@ import styled from 'styled-components';
 // ModalWindow styles remain unchanged for mobile and tablet
 
 export const ModalWindow = styled.div`
-  /* position: fixed; */
+  position: fixed;
+
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(97, 97, 97, 0.6);
-  backdrop-filter: blur(4px);
+  /* backdrop-filter: blur(4px); */
+  z-index: 52;
 `;
 
 // Update ExitButton styles for mobile and tablet

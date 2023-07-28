@@ -8,10 +8,18 @@ import CrossIcon from '../../images/icons/CrossIcon.svg';
 const modalRoot = document.body;
 
 const Modal = ({ closeModal, isOpenedModal, children, width }) => {
-  const toggleModal = e => {
-    if (e.code !== 'Escape') return;
-    closeModal();
-  };
+
+  useEffect(() => {
+    const toggleModal = e => {
+      if (e.code !== 'Escape') return;
+      closeModal();
+    };
+    window.addEventListener('keydown', toggleModal);
+
+    return () => {
+      window.removeEventListener('keydown', toggleModal);
+    };
+  }, [isOpenedModal, toggleModal]);
 
   useEffect(() => {
     const handleKeyDown = e => toggleModal(e);
