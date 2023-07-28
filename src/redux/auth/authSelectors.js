@@ -5,3 +5,5 @@ export const selectUserName = state => state.auth.user;
 export const selectIsRefreshing = state => state.auth.isRefreshing;
 
 export const selectError = state => state.auth.error;
+
+export const selectToken = state => state.auth.user.token;

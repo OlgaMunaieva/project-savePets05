@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchNotices, fetchByCategory } from './operations';
+import {
+  fetchNotices,
+  fetchByCategory,
+  putFavorite,
+  fetchFavorite,
+} from './operations';
 
 export const noticesSlice = createSlice({
   name: 'notices',
@@ -34,6 +39,38 @@ export const noticesSlice = createSlice({
       state.items = action.payload;
     },
     [fetchByCategory.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    // fetch favorite
+    [fetchFavorite.pending](state, action) {
+      state.isLoading = true;
+    },
+    [fetchFavorite.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
+    },
+    [fetchFavorite.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+      for (let i = 0; i < state.items.length; ++i) {
+        if (state.items[i]._id === action.payload._id) {
+          state.items[i] = action.payload;
+          break;
+        }
+      }
+    },
+    // put favorite
+    [putFavorite.pending](state, action) {
+      state.isLoading = true;
+    },
+    [putFavorite.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      // console.log(state);
+    },
+    [putFavorite.rejected](state, action) {
       state.isLoading = false;
       state.error = action.payload;
     },
