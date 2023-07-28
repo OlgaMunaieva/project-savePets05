@@ -2,11 +2,12 @@ import NoticesCategoriesList from 'components/notice/noticesCategoriesList/Notic
 import { NoticesCategoriesNav } from 'components/notice/noticesCategoriesNav/NoticesCategoriesNav';
 import TitlePage from 'components/title/TitlePage';
 import { useEffect, useState } from 'react';
-import { fetchByCategory } from 'redux/notices/operations';
+import { fetchByCategory, fetchFavorite } from 'redux/notices/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNotices } from 'redux/notices/selectors';
 import { useParams } from 'react-router-dom';
 import { useResize } from 'hooks/useResize';
+import { fetchNotices } from '../redux/notices/operations';
 
 const NoticesPage = () => {
   const notices = useSelector(selectNotices);
@@ -25,11 +26,22 @@ const NoticesPage = () => {
     }
   };
 
+  const category = params.categoryName;
   useEffect(() => {
+    // document.title = 'YourPet | Find pet';
     resizeHandler(width);
-    // dispatch(fetchNotices(params));
-    dispatch(fetchByCategory({ limit: limit, category: params.categoryName }));
-  }, [dispatch, limit, params, width]);
+    if (category !== 'favorite' && category !== 'own') {
+      dispatch(
+        fetchByCategory({
+          category,
+          limit: limit,
+        })
+      );
+    }
+    if (category === 'favorite') {
+      dispatch(fetchFavorite());
+    }
+  }, [dispatch, category, limit, width]);
 
   return (
     <>
