@@ -37,14 +37,19 @@ export const StyledInput = styled(Field)`
   border-radius: 20px;
   font-family: inherit;
   font-size: 16px;
+  line-height: 1.36;
+  letter-spacing: 0.04em;
   color: ${simpleWhite};
+  &:disabled {
+    background-color: inherit;
+  }
 `;
 
 export const StyledLabel = styled.label`
   font-family: inherit;
   font-size: 18px;
   font-weight: 600;
-  line-height: 1.39;
+  line-height: 1.36;
   letter-spacing: 0.04em;
   color: ${simpleWhite};
 `;
@@ -123,6 +128,25 @@ export const ContainerButtonsUpload = styled.div`
 `;
 
 export const ButtonClose = styled.button`
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  transition: ${transitionShadow};
+  &:hover,
+  &:focus {
+    box-shadow: ${shadowHover};
+    border-radius: 50%;
+  }
+`;
+
+export const ButtonEditUserInfo = styled.button`
   position: absolute;
   top: 18px;
   right: 18px;
