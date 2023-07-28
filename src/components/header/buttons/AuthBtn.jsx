@@ -8,17 +8,19 @@ import {
   LinkReg,
 } from './AuthBtn.styled';
 
-const AuthBtn = () => {
+const AuthBtn = ({ toggle }) => {
   return (
     <List>
       <ListItem>
-        <LinkLogin to="/login">
+        <LinkLogin to="/login" onClick={() => toggle()}>
           <Text>Log IN</Text>
           <Icon />
         </LinkLogin>
       </ListItem>
       <ListItem>
-        <LinkReg to="/register">Registration</LinkReg>
+        <LinkReg onClick={() => toggle()} to="/register">
+          Registration
+        </LinkReg>
       </ListItem>
     </List>
   );

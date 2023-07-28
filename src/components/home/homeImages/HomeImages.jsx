@@ -1,36 +1,27 @@
 import React from 'react';
-import BigDog from '../../../images/homeImages/mobile/big-dog.jpg';
-import BigDog2x from '../../../images/homeImages/mobile/big-dog@2x.jpg';
-import BigDogTablet from '../../../images/homeImages/tablet/big-dog.jpg';
-import BigDogTablet2x from '../../../images/homeImages/tablet/big-dog@2x.jpg';
-import BigDogDesktop from '../../../images/homeImages/desktop/big-dog.jpg';
-import BigDogDesktop2x from '../../../images/homeImages/desktop/big-dog@2x.jpg';
-import spriteImage from '../../../images/sprite.svg';
-import BigDogDesktop3 from '../../../images/homeImages/23aab0bf-039c-48f9-a1b4-b12103fca523 1.jpg';
-import BigDogDesktop3x from '../../../images/homeImages/23aab0bf-039c-48f9-a1b4-b12103fca523 1 (1).jpg';
+import BigDog from '../../../images/homeImages/mobile/big-dog-mobile.png';
+import BigDog2x from '../../../images/homeImages/mobile/big-dog-mobile@2x.png';
+import SmallDog from '../../../images/homeImages/mobile/small-dog-mobile.png';
+import SmallDog2x from '../../../images/homeImages/mobile/small-dog-mobile@2x.png';
+import Cat from '../../../images/homeImages/mobile/cat-mobile.png';
+import Cat2x from '../../../images/homeImages/mobile/cat-mobile@2x.png';
+import BigDogTablet from '../../../images/homeImages/tablet/big-dog-tablet.png';
+import BigDogTablet2x from '../../../images/homeImages/tablet/big-dog-tablet@2x.png';
+import SmallDogTablet from '../../../images/homeImages/tablet/small-dog-tablet.png';
+import SmallDogTablet2x from '../../../images/homeImages/tablet/small-dog-tablet@2x.png';
+import CatTablet from '../../../images/homeImages/tablet/cat-tablet.png';
+import CatTablet2x from '../../../images/homeImages/tablet/cat-tablet@2x.png';
+import BigDogDesktop from '../../../images/homeImages/desktop/big-dog-desktop.png';
+import BigDogDesktop2x from '../../../images/homeImages/desktop/big-dog-desktop@2x.png';
+import SmallDogDesktop from '../../../images/homeImages/desktop/small-dog-desktop.png';
+import SmallDogDesktop2x from '../../../images/homeImages/desktop/small-dog-desktop@2x.png';
+import CatDesktop from '../../../images/homeImages/desktop/cat-desktop.png';
+import CatDesktop2x from '../../../images/homeImages/desktop/cat-desktop@2x.png';
+import Pictures from './HomeImages.styled';
 
 const HomeImages = () => {
   return (
-    <div>
-      <div
-        style={{
-          background: `url(${spriteImage + '#icon-big-dog'}) no-repeat`,
-          width: '390px',
-          height: '390px',
-          // Додайте інші стилі за необхідністю
-        }}
-      >
-        <img
-          src={BigDogDesktop3}
-          srcSet={`${BigDogDesktop3x} 2x`}
-          alt="Big dog"
-          width="390"
-          height="390"
-        />
-      </div>
-      <svg width="390" height="390" fill="currentColor" viewBox="0 0 24 24">
-        <use href={spriteImage + '#icon-big-dog'} />
-      </svg>
+    <Pictures.MainPageContainer>
       <picture>
         <source
           srcSet={`${BigDogDesktop} 1x, ${BigDogDesktop2x} 2x`}
@@ -53,7 +44,7 @@ const HomeImages = () => {
           width="256"
           height="258"
         />
-        <img
+        <Pictures.BigDogImg
           src={BigDogDesktop}
           srcSet={`${BigDogDesktop2x} 2x`}
           alt="Big dog"
@@ -61,7 +52,67 @@ const HomeImages = () => {
           height="537"
         />
       </picture>
-    </div>
+      <picture>
+        <source
+          srcSet={`${SmallDogDesktop} 1x, ${SmallDogDesktop2x} 2x`}
+          media="(min-width: 1280px)"
+          type="image/jpeg"
+          width="426"
+          height="417"
+        />
+        <source
+          srcSet={`${SmallDogTablet} 1x, ${SmallDogTablet2x} 2x`}
+          media="(min-width: 768px)"
+          type="image/jpeg"
+          width="426"
+          height="417"
+        />
+        <source
+          srcSet={`${SmallDog} 1x, ${SmallDog2x} 2x`}
+          media="(max-width: 767px)"
+          type="image/jpeg"
+          width="205"
+          height="201"
+        />
+        <Pictures.SmallDogImg
+          src={SmallDogDesktop}
+          srcSet={`${SmallDogDesktop2x} 2x`}
+          alt="Small dog"
+          width="426"
+          height="417"
+        />
+      </picture>
+      <picture>
+        <source
+          srcSet={`${CatDesktop} 1x, ${CatDesktop2x} 2x`}
+          media="(min-width: 1280px)"
+          type="image/jpeg"
+          width="362"
+          height="361"
+        />
+        <source
+          srcSet={`${CatTablet} 1x, ${CatTablet2x} 2x`}
+          media="(min-width: 768px)"
+          type="image/jpeg"
+          width="362"
+          height="361"
+        />
+        <source
+          srcSet={`${Cat} 1x, ${Cat2x} 2x`}
+          media="(max-width: 767px)"
+          type="image/jpeg"
+          width="174"
+          height="174"
+        />
+        <Pictures.CatImg
+          src={CatDesktop}
+          srcSet={`${CatDesktop2x} 2x`}
+          alt="Cat"
+          width="362"
+          height="361"
+        />
+      </picture>
+    </Pictures.MainPageContainer>
   );
 };
 

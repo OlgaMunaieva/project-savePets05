@@ -24,28 +24,14 @@ import pawprintDesktop7 from '../../images/pawprint/pawprint-desktop-7.png';
 import pawprintMobile8 from '../../images/pawprint/pawprint-mobile-8.png';
 import pawprintTablet8 from '../../images/pawprint/pawprint-tablet-8.png';
 
-const RelativeContainer = styled.div`
-  position: relative;
-  /* margin: 0 auto; */
-  /* max-width: 320px; */
-  /* height: 601px; */
-
-  ${variables.breakPoints.tablet} {
-    /* max-width: 768px; */
-    /* height: 1193px; */
-  }
-  ${variables.breakPoints.desktop} {
-    /* max-width: 1280px; */
-    /* height: 770px; */
-  }
-`;
-
 const PawContainer = styled.div`
-  /* position: absolute; */
-  /* width: 100%; */
-  margin-left: -20px;
-  margin-right: -20px;
-  /* opacity: 0.1; */
+  position: relative;
+  padding: 20px 20px 0px;
+  width: 100vw;
+  height: 100vh;
+  /* max-width: 320px;
+  min-height: 700px; */
+  margin: 0 auto;
   background-image: url(${pawprintMobile1}), url(${pawprintMobile2}),
     url(${pawprintMobile3}), url(${pawprintMobile4}), url(${pawprintMobile5}),
     url(${pawprintMobile6}), url(${pawprintMobile7}), url(${pawprintMobile8});
@@ -56,8 +42,9 @@ const PawContainer = styled.div`
     top 378px left 12px, top 208px left 213px, top 508px left 60px, center;
 
   ${variables.breakPoints.tablet} {
-    margin-left: -32px;
-    margin-right: -32px;
+    padding: 24px 32px 0px;
+    /* max-width: 768px;
+    min-height: 1193px; */
     background-image: url(${pawprintTablet1}), url(${pawprintTablet2}),
       url(${pawprintTablet3}), url(${pawprintTablet4}), url(${pawprintTablet5}),
       url(${pawprintTablet6}), url(${pawprintTablet7}), url(${pawprintTablet8});
@@ -68,8 +55,10 @@ const PawContainer = styled.div`
       top 750px left 64px, top 413px left 464px, top 1009px left 160px, left;
   }
   ${variables.breakPoints.desktop} {
-    margin-left: -16px;
-    margin-right: -16px;
+    padding: 20px 16px 0px;
+    /* max-width: 1280px;
+    min-height: 768px; */
+    /* height: 900px; */
     background-image: url(${pawprintDesktop1}), url(${pawprintDesktop2}),
       url(${pawprintDesktop3}), url(${pawprintDesktop4}),
       url(${pawprintDesktop5}), url(${pawprintDesktop6}),
@@ -81,7 +70,6 @@ const PawContainer = styled.div`
 `;
 
 const PictureContainer = {
-  RelativeContainer,
   PawContainer,
 };
 

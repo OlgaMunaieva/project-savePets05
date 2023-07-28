@@ -15,6 +15,12 @@ export const Item = styled.li`
   ${variables.breakPoints.desktop} {
     width: 288px;
   }
+  transition: transform 150ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.02);
+  }
 `;
 
 export const ImgWrapper = styled.div`
@@ -86,6 +92,7 @@ export const Description = styled.ul`
 `;
 
 export const DescriptionItem = styled.li`
+  position: relative;
   display: flex;
   justify-content: center;
   gap: 3px;
@@ -96,8 +103,32 @@ export const DescriptionItem = styled.li`
   color: transparent;
   user-select: none;
   background-color: ${variables.colors.cardsButtonBg};
+  transition: ${variables.transition.transitionColor},
+    background-color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
 
-  transition: background-color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
+  &.active {
+    color: ${variables.colors.secondaryText};
+    background-color: ${variables.colors.buttonsHoverBg};
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: ${variables.colors.buttonsGr};
+    border-radius: 40px;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
+  }
+
+  &:hover::before,
+  &:focus::before {
+    opacity: 1;
+  }
 
   &:hover,
   &:focus {
@@ -106,6 +137,7 @@ export const DescriptionItem = styled.li`
 `;
 
 export const Icon = styled.svg`
+  z-index: 2;
   fill: currentColor;
   stroke: ${variables.colors.buttonsHoverBg};
   min-width: 24px;
@@ -118,6 +150,7 @@ export const Icon = styled.svg`
 `;
 
 export const DescriptionItemText = styled.span`
+  z-index: 2;
   font-weight: 600;
   font-size: 12px;
   line-height: 16px;
@@ -185,7 +218,36 @@ export const BtnLearn = styled.button`
   background: transparent;
   color: ${variables.colors.buttonsHoverBg};
   transition: ${variables.transition.transitionColor},
-    background 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
+    background-color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
+
+  &.active {
+    color: ${variables.colors.secondaryText};
+    background-color: ${variables.colors.buttonsHoverBg};
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: ${variables.colors.buttonsGr};
+    border-radius: 40px;
+    opacity: 0;
+    transition: opacity 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
+  }
+
+  &:hover::before,
+  &:focus::before {
+    z-index: -1;
+    opacity: 1;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: ${variables.colors.buttonsHoverBg};
+  }
 
   &:hover,
   &:focus {

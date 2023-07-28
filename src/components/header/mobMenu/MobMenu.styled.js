@@ -7,7 +7,7 @@ import variables from 'settings/variables';
 
 export const MobMenus = styled.div`
   position: absolute;
-
+  z-index: 20;
   @media screen and (max-width: 766px) {
     padding: 22px 20px;
   }
@@ -26,7 +26,7 @@ export const BtnWrapper = styled.div`
     top: 25px;
     right: 20px;
   }
-  z-index: 10;
+  z-index: 51;
   top: 32px;
   right: 32px;
   transition: all 0.25s ease-in-out;
@@ -45,7 +45,7 @@ right:80px;
 
 
 }
-
+z-index: 21;
 display:inline-flex;
 align-items: center;
 padding: 8px 20px 8px 20px;
