@@ -17,7 +17,7 @@ const LoginPage = lazy(() => import('../pages/LoginPage'));
 const NoticesPage = lazy(() => import('../pages/NoticesPage'));
 const UserPage = lazy(() => import('../pages/UserPage'));
 const OurFriendsPage = lazy(() => import('../pages/OurFriendsPage'));
-const AddPetPage = lazy(() => import('../pages/AddPetPage'));
+// const AddPetPage = lazy(() => import('../pages/AddPetPage'));
 const ErrorPage = lazy(() => import('../pages/ErrorPage'));
 
 const App = () => {
@@ -62,7 +62,7 @@ const App = () => {
             <Route path=":categoryName" element={<NoticesPage />} />
           </Route>
           <Route path="/friends" element={<OurFriendsPage />} />
-          <Route path="/add-pet" element={<AddPetPage />} />
+          {/* <Route path="/add-pet" element={<AddPetPage />} /> */}
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
