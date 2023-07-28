@@ -6,7 +6,7 @@ import PrivateRoute from './PrivateRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/auth/authSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
-import AddPet from './addPetForm/AddPetForm';
+// import AddPet from './addPetForm/AddPetForm';
 
 // AddPetForm-bugfix
 //import PetModal from './petModal/PetModal';
