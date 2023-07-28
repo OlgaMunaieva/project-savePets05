@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import Modal from '../modal/Modal';
-import HeartIcon from '../..//images//icons/HeartIcon.svg';
-import ImagePet from '..//../images/PetImage.jpg';
+import React, { useEffect, useState } from "react";
+import Modal from "../modal/Modal";
+import HeartIcon from "../..//images//icons/HeartIcon.svg";
+import ImagePet  from "..//../images/PetImage.jpg";
 
 import {
   AddToButton,
@@ -22,33 +22,42 @@ import {
   PetСharacteristicsProperty,
   PetСharacteristicsValue,
   PetСharacteristicsValueLink,
-} from './PetModal.styled';
+} from "./PetModal.styled";
+
+
 
 const petСharacteristics = [
-  'Name',
-  'Biirthday',
-  'Type',
-  'Place',
-  'The sex',
-  'Email',
-  'Phone',
+  "Name",
+  "Biirthday",
+  "Type",
+  "Place",
+  "The sex",
+  "Email",
+  "Phone",
 ];
 
-const PetModal = ({ closeModal }) => {
-  const [petData, setPetData] = useState({
-    name: 'Rich',
-    birthday: '21.09.2020',
-    type: 'Pomeranian',
-    place: 'Lviv',
-    theSex: 'male',
-    email: 'user@mail.com',
-    phone: '+380971234567',
-  });
+const PetModal = ({
+ closeModal
+}) => {
+  const [petData, setPetData] = useState(
+    {
+    name: "Rich",
+    birthday: "21.09.2020",
+    type: "Pomeranian",
+    place: "Lviv",
+    theSex: "male",
+    email: "user@mail.com",
+    phone: "+380971234567",
+  }
+  );
   // const petDetailsList = Object.values(petDetails);
-  const [petDetailsList, setPetDetailsList] = useState([]);
-  useEffect(() => {
-    setPetDetailsList(Object.values(petData));
-  }, [petData]);
+  const [petDetailsList, setPetDetailsList] = useState (
+  []
+  )
+  useEffect(()=>{
+    setPetDetailsList( Object.values(petData))
+  },[petData]
+  )
 
   const fetchPetData = async () => {
     ///
@@ -56,11 +65,11 @@ const PetModal = ({ closeModal }) => {
   const onClickAddTo = async () => {
     ///
   };
-  const onClickContact = async () => {
+  const onClickContact= async () => {
     ///
   };
   return (
-    <Modal closeModal={() => closeModal()}>
+    <Modal closeModal={()=>closeModal()}>
       <Container>
         <PetMainWrapper>
           <ImageWrapper>
@@ -75,14 +84,14 @@ const PetModal = ({ closeModal }) => {
                   <PetСharacteristicsProperty>
                     {characteristic}:
                   </PetСharacteristicsProperty>
-                  {characteristic !== 'Email' && characteristic !== 'Phone' ? (
+                  {characteristic !== "Email" && characteristic !== "Phone" ? (
                     <PetСharacteristicsValue>
                       {petDetailsList[index]}
                     </PetСharacteristicsValue>
                   ) : (
                     <PetСharacteristicsValueLink
                       href={
-                        characteristic === 'Email'
+                        characteristic === "Email"
                           ? `mailto:${petDetailsList[index]}`
                           : `tel:${petDetailsList[index]}`
                       }
@@ -97,14 +106,12 @@ const PetModal = ({ closeModal }) => {
         </PetMainWrapper>
         <BottomBlock>
           <CommentsParagraph>
-            <PetСharacteristicsProperty>Comments:</PetСharacteristicsProperty>{' '}
-            Rich would be the perfect addition to an active family that loves to
-            play and go on walks. I bet he would love having a doggy playmate
-            too!
+            <PetСharacteristicsProperty>Comments:</PetСharacteristicsProperty>{" "}
+            Rich would be the perfect addition to an active family that loves to play and go on walks. I bet he would love having a doggy playmate too!
           </CommentsParagraph>
           <ButtonsWrapper>
             <AddToButton onClick={onClickAddTo}>
-              <span>Add to </span>{' '}
+              <span>Add to </span>{" "}
               <StyledHeartIcon src={HeartIcon} alt="Heart" />
             </AddToButton>
             <ContactButton onClick={onClickContact}>Contact</ContactButton>
