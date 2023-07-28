@@ -6,6 +6,13 @@ import PrivateRoute from './PrivateRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/auth/authSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
+import AddPet from './addPetForm/AddPetForm';
+
+// AddPetForm-bugfix
+//import PetModal from './petModal/PetModal';
+//import AddPetPage from 'pages/AddPetPage';
+//import ModalApproveAction from 'pages/ModalApproveAction';
+//import NewsPage from 'pages/NewsPage';
 
 // import NoticeModal from './notice/noticeModal/NoticeModal';
 // import ModalApproveAction from 'pages/ModalApproveAction';
