@@ -38,7 +38,11 @@ export const StyledContainer = styled.div`
 
   @media (min-width: 479px) {
     padding-top: 80px;
-    padding-bottom: 140px;
+
+    ${props =>
+      props['data-isregisterform']
+        ? `padding-bottom: 140px`
+        : `padding-bottom: 290px`}
   }
 `;
 
@@ -122,7 +126,10 @@ export const StyledInput = styled(Field)`
   transition: transform 0.5s ease;
 
   @media (min-width: 479px) {
-    width: 430px;
+    width: 380px;
+  }
+  @media (min-width: 569px) {
+    width: 460px;
   }
   &:focus {
     outline: transparent;
@@ -190,7 +197,7 @@ export const StyledIconCheck = styled(BsCheckLg)`
 
 export const StyledError = styled(ErrorMessage)`
   color: ${accentInputInvalidValue};
-
+  max-width: 430px;
   margin-left: 16px;
   font-size: 12px;
   display: block;
@@ -213,7 +220,7 @@ export const StyledIconEye = styled(AiOutlineEyeInvisible)`
   }
 
   color: ${props =>
-    props.showFields ? `${placeHolderColor}` : `${buttonsHoverBg}`};
+    props['data-showfields'] ? `${placeHolderColor}` : `${buttonsHoverBg}`};
   margin-right: ${props =>
     (props.touched && !props.errors) || (props.touched && props.errors)
       ? '30px'

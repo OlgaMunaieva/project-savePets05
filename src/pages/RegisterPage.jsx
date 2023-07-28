@@ -13,13 +13,13 @@ const RegisterPage = () => {
 
   const handleRegistration = userData => {
     dispatch(register(userData));
+    const redirectToPath = '/register';
+    localStorage.setItem('redirectPath', redirectToPath);
   };
-
-  console.log(clearError);
 
   useEffect(() => {
     if (error) {
-      toast.error('User with the same email already exists', {
+      toast.error(`${error}`, {
         duration: 2000,
         position: 'top-center',
         style: {

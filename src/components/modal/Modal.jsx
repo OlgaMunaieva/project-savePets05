@@ -9,17 +9,16 @@ const modalRoot = document.body;
 
 const Modal = ({ closeModal, isOpenedModal, children, width }) => {
   useEffect(() => {
+    const toggleModal = e => {
+      if (e.code !== 'Escape') return;
+      closeModal();
+    };
     window.addEventListener('keydown', toggleModal);
 
     return () => {
       window.removeEventListener('keydown', toggleModal);
     };
-  }, [isOpenedModal]);
-
-  const toggleModal = e => {
-    if (e.code !== 'Escape') return;
-    closeModal();
-  };
+  }, [isOpenedModal, toggleModal]);
 
   const onClickOverlay = e => {
     if (e.target === e.currentTarget) closeModal();
