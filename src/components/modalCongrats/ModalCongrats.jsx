@@ -8,7 +8,7 @@ import {
   StyledTitle,
   StyledText,
   StyledButton,
-} from './RegisterPage.styled';
+} from './ModalCongrats.styled';
 
 const UserPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(true);
