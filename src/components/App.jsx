@@ -6,13 +6,12 @@ import PrivateRoute from './PrivateRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/auth/authSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
+import AddPet from './addPetForm/AddPetForm';
 
-// import PetModal from './petModal/PetModal';
-// import AddPetPage from 'pages/AddPetPage';
-// import ModalApproveAction from 'pages/ModalApproveAction';
-// import NewsPage from 'pages/NewsPage';
-
-// import AddPet from './addPetForm/AddPetForm';
+import PetModal from './petModal/PetModal';
+import AddPetPage from 'pages/AddPetPage';
+import ModalApproveAction from 'pages/ModalApproveAction';
+import NewsPage from 'pages/NewsPage';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
