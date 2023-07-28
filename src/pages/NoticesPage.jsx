@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectNotices } from 'redux/notices/selectors';
 import { useParams } from 'react-router-dom';
 import { useResize } from 'hooks/useResize';
-import { fetchNotices } from '../redux/notices/operations';
+// import { fetchNotices } from '../redux/notices/operations';
 
 const NoticesPage = () => {
   const notices = useSelector(selectNotices);

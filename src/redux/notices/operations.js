@@ -1,16 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import { selectToken } from 'redux/auth/authSelectors';
+// import { selectToken } from 'redux/auth/authSelectors';
 
 // import { selectToken, selectUser } from 'redux/auth/authSelectors';
 // import { selectToken } from 'redux/auth/authSelectors';
 
 axios.defaults.baseURL = 'https://project-savepets05-be.onrender.com';
 
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+// const setAuthHeader = token => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
 
 export const fetchNotices = createAsyncThunk(
   'notices/fetchSell',
