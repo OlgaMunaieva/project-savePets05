@@ -12,6 +12,7 @@ const colors = {
   placeHolderColor: '#888888',
   simpleWhite: '#111111',
   cardBgColor: '#ffffff',
+  overlyColor: 'rgba(97, 97, 97, 0.6)',
 };
 
 const shadow = {
