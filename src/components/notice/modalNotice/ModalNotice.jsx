@@ -1,23 +1,20 @@
 import { useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-import {
-  ModalWindow,
-  ModalContent,
-  ExitButton,
-} from '../../modal/Modal.styled';
+import { ModalWindow } from '../../modal/Modal.styled';
 
 import CrossIcon from '../../../images/icons/CrossIcon.svg';
+import { ExitButton, ModalContent } from './ModalNotice.styled';
 
 const modalRoot = document.body;
 
-const ModalNotice = ({ closeModal, isOpenedModal, children }) => {
+const ModalNotice = ({ onClose, isOpenedModal, children }) => {
   const toggleModal = useCallback(
     e => {
       if (e.code !== 'Escape') return;
-      closeModal();
+      onClose();
     },
-    [closeModal]
+    [onClose]
   );
 
   useEffect(() => {
@@ -39,13 +36,13 @@ const ModalNotice = ({ closeModal, isOpenedModal, children }) => {
   }, [toggleModal]);
 
   const onClickOverlay = e => {
-    if (e.target === e.currentTarget) closeModal();
+    if (e.target === e.currentTarget) onClose();
   };
 
   return createPortal(
     <ModalWindow onClick={onClickOverlay}>
       <ModalContent>
-        <ExitButton onClick={() => closeModal()}>
+        <ExitButton onClick={() => onClose()}>
           <img src={CrossIcon} alt="Cross" width={24} height={24} />
         </ExitButton>
         {children}
