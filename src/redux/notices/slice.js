@@ -13,6 +13,7 @@ const noticesSlice = createSlice({
     isLoading: false,
     error: null,
     status: 0,
+    totalPages: null,
   },
 
   extraReducers: builder => {
@@ -37,7 +38,8 @@ const noticesSlice = createSlice({
       .addCase(fetchByCategory.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.items = payload;
+        state.items = payload.notice;
+        state.totalPages = payload.total;
       })
       .addCase(fetchByCategory.rejected, (state, { payload }) => {
         state.isLoading = false;
