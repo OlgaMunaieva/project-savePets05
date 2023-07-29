@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ModalWindow = styled.div`
   position: fixed;
@@ -21,7 +21,10 @@ export const ExitButton = styled.button`
   background-color: transparent;
   cursor: pointer;
 
- 
+  @media (max-width: 768px) {
+    right: 12px;
+    top: 12px;
+  }
 `;
 
 export const ModalContent = styled.div`
@@ -38,4 +41,9 @@ export const ModalContent = styled.div`
   padding: 30px;
   background-color: white;
   border-radius: 40px;
+
+  @media (max-width: 768px) {
+    padding: 44px 20px 20px;
+    border-radius: 20px;
+  }
 `;

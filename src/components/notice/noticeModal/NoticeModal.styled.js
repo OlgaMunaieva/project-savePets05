@@ -33,7 +33,7 @@ export const ImageWrapper = styled.div`
   @media (max-width: 768px) {
     width: 240px;
     height: 200px;
-    margin-top:30px;
+  
   }
 `;
 
