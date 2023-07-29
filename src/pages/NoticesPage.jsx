@@ -1,11 +1,12 @@
 import NoticesCategoriesList from 'components/notice/noticesCategoriesList/NoticesCategoriesList';
 import { NoticesCategoriesNav } from 'components/notice/noticesCategoriesNav/NoticesCategoriesNav';
 import TitlePage from 'components/title/TitlePage';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchByCategory, fetchFavorite } from 'redux/notices/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNotices } from 'redux/notices/selectors';
 import { useParams } from 'react-router-dom';
+import Pagination from 'components/pagination/Pagination';
 // import { useResize } from 'hooks/useResize';
 
 const NoticesPage = () => {
@@ -14,6 +15,7 @@ const NoticesPage = () => {
   const params = useParams();
   // const [limit, setLimit] = useState(12);
   const limit = 12;
+  const [page, setPage] = useState(0);
 
   // const { width } = useResize();
 
@@ -36,14 +38,19 @@ const NoticesPage = () => {
         fetchByCategory({
           category: locationCategory,
           limit: limit,
+          page: page + 1,
         })
       );
     }
     if (locationCategory === 'favorite') {
       dispatch(fetchFavorite({ limit: limit }));
     }
-  }, [dispatch, locationCategory, limit]);
+  }, [dispatch, locationCategory, limit, page]);
 
+  const handlePageClick = ({ selected }) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setPage(selected);
+  };
   return (
     <>
       <TitlePage children={'Find your favorite pet'} />
@@ -52,6 +59,7 @@ const NoticesPage = () => {
         pets={notices}
         locationCategory={locationCategory}
       />
+      <Pagination click={handlePageClick} limit={limit} page={page} />
     </>
   );
 };
