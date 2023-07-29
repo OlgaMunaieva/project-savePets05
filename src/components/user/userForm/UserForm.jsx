@@ -12,8 +12,6 @@ import {
   ButtonEditPhoto,
   ButtonUpload,
   ButtonCancelUpload,
-  ButtonClose,
-  ButtonEditUserInfo,
   InputContainer,
   StyledForm,
   StyledInput,
@@ -25,16 +23,27 @@ import {
 // const yearNow = new Date().getFullYear();
 // console.log(yearNow);
 
-export default function UserForm({ userInfo }) {
+export default function UserForm({ userInfo, isFormDisabled }) {
   const imgRef = useRef(null);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [imgUrl, setImgUrl] = useState(null);
   const [isAvatarUpdated, setIsAvatarUpdated] = useState(false);
 
-  const [isFormDisabled, setIsFormDisabled] = useState(true);
-
   const { name, email, birthday, phone, city, avatarURL } = userInfo;
-  // console.log('🚀 ~ userInfo:', userInfo.name);
+  // console.log('🚀 ~ birthday:', birthday);
+
+  const isBirthdayValid = value => {
+    if (value === 'Invalid date') {
+      value = null;
+      return value;
+    }
+    return value;
+  };
+
+  // console.log('🚀 ~ birthday:', isBirthdayValid(birthday));
+  // console.log('🚀 ~ userInfo:', userInfo);
+  // console.log('🚀 ~ isFormDisabled :', isFormDisabled);
+
   // console.log('🚀 ~ disabled :', isFormDisabled);
   // console.log('🚀 ~ isAvatarUpdated:', isAvatarUpdated);
 
@@ -43,7 +52,7 @@ export default function UserForm({ userInfo }) {
   const initialValues = {
     name: name ?? '',
     email: email ?? '',
-    birthday: birthday ?? '',
+    // birthday: isBirthdayValid(birthday) ?? '',
     phone: phone ?? '',
     city: city ?? '',
     file: '',
@@ -51,13 +60,9 @@ export default function UserForm({ userInfo }) {
 
   // console.log('initialValues', initialValues);
 
-  const handleFormDisabled = () => {
-    setIsFormDisabled(false);
-  };
-
-  const closeModal = () => {
-    setIsFormDisabled(true);
-  };
+  // const closeModal = () => {
+  //   setIsFormDisabled(true);
+  // };
 
   const handleAvatarPreview = event => {
     setSelectedAvatar(event.target.files[0]);
@@ -103,19 +108,7 @@ export default function UserForm({ userInfo }) {
     >
       <StyledForm autoComplete="off">
         <p>{avatarURL}</p>
-        {isFormDisabled ? (
-          <ButtonEditUserInfo type="button" onClick={handleFormDisabled}>
-            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-              <use href={spriteImage + '#icon-edit-2'} />
-            </svg>
-          </ButtonEditUserInfo>
-        ) : (
-          <ButtonClose type="button" onClick={closeModal}>
-            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-              <use href={spriteImage + '#icon-cross-small'} />
-            </svg>
-          </ButtonClose>
-        )}
+
         <UserAvatar
           src={!imgUrl ? UserDefaultAvatar : imgUrl}
           width="182"
@@ -175,36 +168,50 @@ export default function UserForm({ userInfo }) {
           <ErrorMessage component="div" name="name" />
         </InputContainer>
         <InputContainer>
-          s<StyledLabel htmlFor="email">Email:</StyledLabel>
+          <StyledLabel htmlFor="email">Email:</StyledLabel>
           <StyledInput name="email" type="email" disabled={isFormDisabled} />
           <ErrorMessage component="div" name="email" />
         </InputContainer>
-        <InputContainer>
-          <StyledLabel htmlFor="birthday">Birthday:</StyledLabel>
-          <StyledInput
-            name="birthday"
-            type="text"
-            disabled={isFormDisabled}
-            placeholder="00-00-0000"
-          />
-          {/* <Field name="birthday" type="date" /> */}
-          <ErrorMessage component="div" name="birthday" />
-        </InputContainer>
-        <InputContainer>
-          <StyledLabel htmlFor="phone">Phone:</StyledLabel>
-          <StyledInput
-            name="phone"
-            type="tel"
-            disabled={isFormDisabled}
-            placeholder="+380000000000"
-          />
-          <ErrorMessage component="div" name="phone" />
-        </InputContainer>
-        <InputContainer>
-          <StyledLabel htmlFor="city">City:</StyledLabel>
-          <StyledInput name="city" type="text" disabled={isFormDisabled} />
-          <ErrorMessage component="div" name="city" />
-        </InputContainer>
+
+        {!isFormDisabled && !isBirthdayValid(birthday) && (
+          <InputContainer>
+            <StyledLabel htmlFor="birthday">Birthday:</StyledLabel>
+            <StyledInput
+              name="birthday"
+              type="text"
+              disabled={isFormDisabled}
+              placeholder="00-00-0000"
+            />
+            <ErrorMessage component="div" name="birthday" />
+          </InputContainer>
+        )}
+
+        {!isFormDisabled && !phone && (
+          <InputContainer>
+            <StyledLabel htmlFor="phone">Phone:</StyledLabel>
+            <StyledInput
+              name="phone"
+              type="tel"
+              disabled={isFormDisabled}
+              placeholder="+380000000000"
+            />
+            <ErrorMessage component="div" name="phone" />
+          </InputContainer>
+        )}
+
+        {!isFormDisabled && !city && (
+          <InputContainer>
+            <StyledLabel htmlFor="city">City:</StyledLabel>
+            <StyledInput
+              name="city"
+              type="text"
+              disabled={isFormDisabled}
+              placeholder="City"
+            />
+            <ErrorMessage component="div" name="city" />
+          </InputContainer>
+        )}
+
         <Button
           style={{
             marginLeft: 'auto',

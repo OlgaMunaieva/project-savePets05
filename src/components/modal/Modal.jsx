@@ -7,7 +7,7 @@ import CrossIcon from '../../images/icons/CrossIcon.svg';
 
 const modalRoot = document.body;
 
-const Modal = ({ closeModal, isOpenedModal, children, width }) => {
+const Modal = ({ closeModal, isOpenedModal, children, width, padding }) => {
   const toggleModal = useCallback(
     e => {
       if (e.code !== 'Escape') return;
@@ -40,7 +40,7 @@ const Modal = ({ closeModal, isOpenedModal, children, width }) => {
 
   return createPortal(
     <ModalWindow onClick={onClickOverlay}>
-      <ModalContent style={{ width: width }}>
+      <ModalContent style={{ width: width, padding: padding }}>
         <ExitButton onClick={() => closeModal()}>
           <img src={CrossIcon} alt="Cross" width={24} height={24} />
         </ExitButton>

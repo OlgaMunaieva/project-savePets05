@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Modal from '../../components/modal/Modal';
+import spriteImage from '../../images/sprite.svg';
 import {
   StyledContainer,
   StyledTitle,
@@ -27,8 +28,15 @@ const ModalCongrats = ({ closeModal, openModal }) => {
       <StyledContainer>
         <StyledTitle>Congrats</StyledTitle>
         <StyledText>You're registration is success</StyledText>
-        <StyledButton onClick={() => navigate('/user')}>
+        <StyledButton
+          onClick={() => {
+            navigate('/user');
+          }}
+        >
           Go to profile
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <use href={spriteImage + '#icon-pawprint-1'} />
+          </svg>
         </StyledButton>
       </StyledContainer>
     </Modal>

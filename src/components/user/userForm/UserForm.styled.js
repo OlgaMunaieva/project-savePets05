@@ -13,6 +13,9 @@ export const StyledForm = styled(Form)`
   position: relative;
   display: flex;
   flex-direction: column;
+  /* position: relative;
+  display: flex;
+  flex-direction: column;
   padding-top: 20px;
   padding-right: 24px;
   padding-bottom: 20px;
@@ -20,7 +23,7 @@ export const StyledForm = styled(Form)`
   width: 395px;
   border-radius: 40px;
   background-color: ${cardBgColor};
-  box-shadow: ${shadowDefault};
+  box-shadow: ${shadowDefault}; */
 `;
 
 export const InputContainer = styled.div`
@@ -125,42 +128,4 @@ export const ContainerButtonsUpload = styled.div`
   line-height: 1.83;
   letter-spacing: 0.04em;
   color: ${simpleWhite};
-`;
-
-export const ButtonClose = styled.button`
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background-color: inherit;
-  border: none;
-  cursor: pointer;
-  transition: ${transitionShadow};
-  &:hover,
-  &:focus {
-    box-shadow: ${shadowHover};
-    border-radius: 50%;
-  }
-`;
-
-export const ButtonEditUserInfo = styled.button`
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background-color: inherit;
-  border: none;
-  cursor: pointer;
-  transition: ${transitionShadow};
-  &:hover,
-  &:focus {
-    box-shadow: ${shadowHover};
-    border-radius: 50%;
-  }
 `;

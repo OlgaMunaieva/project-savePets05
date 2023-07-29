@@ -10,6 +10,7 @@ import ModalCongrats from 'components/modalCongrats/ModalCongrats';
 
 export default function UserPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const isLoggedIn = useSelector(selectIsLoggedIn);
   // congrat Modal
   useEffect(() => {
@@ -39,6 +40,7 @@ export default function UserPage() {
         </div>
         <PetsData />
       </div>
+
       {isLoggedIn && isModalOpen && (
         <ModalCongrats closeModal={closeModal} isOpenedModal={isModalOpen} />
       )}
