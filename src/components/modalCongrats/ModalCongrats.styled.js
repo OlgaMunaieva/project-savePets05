@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import variables from '../../settings/variables';
 
 const {
-  colors: { simpleWhite, buttonsHoverBg },
+  colors: { simpleWhite, buttonsHoverBg, accentHeaderButton },
 } = variables;
 
 export const StyledTitle = styled.h2`
@@ -42,4 +42,11 @@ export const StyledButton = styled.button`
   border-radius: 40px;
   border: transparent;
   cursor: pointer;
+
+  transition: all 0.5s ease;
+
+  &:hover {
+    background-color: ${accentHeaderButton};
+    box-shadow: 5px 10px 20px 0px rgba(0, 0, 0, 0.2);
+  }
 `;

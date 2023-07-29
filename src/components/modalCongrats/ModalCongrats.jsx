@@ -30,7 +30,7 @@ const ModalCongrats = ({ closeModal, openModal }) => {
         <StyledText>You're registration is success</StyledText>
         <StyledButton
           onClick={() => {
-            navigate('/user');
+            closeModal();
           }}
         >
           Go to profile
