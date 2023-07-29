@@ -264,25 +264,3 @@ export const BtnLearn = styled.button`
     }
   }
 `;
-
-// @media screen and (min-width: 768px) {
-//     .item {
-//         width: 336px;
-//     }
-
-//     .lowerBlock {
-//         left: 24px;
-//         right: 24px;
-//     }
-// }
-
-// @media screen and (min-width: 1280px) {
-//     .item {
-//         width: 288px;
-//     }
-
-//     .lowerBlock {
-//         left: 12px;
-//         right: 12px;
-//     }
-// }

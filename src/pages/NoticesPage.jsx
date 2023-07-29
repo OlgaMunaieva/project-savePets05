@@ -6,7 +6,7 @@ import { fetchByCategory, fetchFavorite } from 'redux/notices/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNotices } from 'redux/notices/selectors';
 import { useParams } from 'react-router-dom';
-import { useResize } from 'hooks/useResize';
+// import { useResize } from 'hooks/useResize';
 
 const NoticesPage = () => {
   const notices = useSelector(selectNotices);
@@ -15,7 +15,7 @@ const NoticesPage = () => {
   // const [limit, setLimit] = useState(12);
   const limit = 12;
 
-  const { width } = useResize();
+  // const { width } = useResize();
 
   // const resizeHandler = width => {
   //   if (width <= 766) {
@@ -40,9 +40,9 @@ const NoticesPage = () => {
       );
     }
     if (locationCategory === 'favorite') {
-      dispatch(fetchFavorite());
+      dispatch(fetchFavorite({ limit: limit }));
     }
-  }, [dispatch, locationCategory, limit, width]);
+  }, [dispatch, locationCategory, limit]);
 
   return (
     <>

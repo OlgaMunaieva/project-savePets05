@@ -1,4 +1,5 @@
 import { toast } from 'react-hot-toast';
+import { debounce } from 'lodash';
 import icons from '../../../images/icons/icons-card.svg';
 import variables from 'settings/variables';
 import {
@@ -41,13 +42,17 @@ const NoticesCategoryItem = ({
   const dispatch = useDispatch(cardId);
 
   const favoriteClickHandle = () => {
+    const debouncedFetchFavorite = debounce(() => {
+      dispatch(fetchFavorite());
+    }, 200);
+
     if (!isLoggedIn) {
       toast.error('You need to sign in');
     }
     dispatch(putFavorite(cardId));
+
     if (categoryParam === 'favorite' && favorite) {
-      console.log(categoryParam);
-      dispatch(fetchFavorite());
+      debouncedFetchFavorite();
     }
   };
 
