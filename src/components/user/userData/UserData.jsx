@@ -1,5 +1,3 @@
-import UserForm from '../userForm/UserForm';
-
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -7,6 +5,7 @@ import { selectUser } from 'redux/user/selectors';
 // import { selectIsLoading } from 'redux/user/selectors';
 import { fetchUserInformation } from 'redux/user/operations';
 
+import UserForm from '../userForm/UserForm';
 import Modal from 'components/modal/Modal';
 import spriteImage from '../../../images/sprite.svg';
 
@@ -39,9 +38,6 @@ export default function UserData() {
     <>
       {showUserProfileModal && (
         <Modal
-          style={{
-            color: 'green',
-          }}
           closeModal={closeUserProfileModal}
           isOpenedModal={showUserProfileModal}
           width={'395px'}

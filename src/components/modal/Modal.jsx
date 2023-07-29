@@ -17,10 +17,18 @@ const Modal = ({ closeModal, isOpenedModal, children, width, padding }) => {
   );
 
   useEffect(() => {
-    window.addEventListener('keydown', toggleModal);
+    if (isOpenedModal) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+    }
 
     return () => {
       window.removeEventListener('keydown', toggleModal);
+      const scrollY = parseInt(document.body.style.top || '0', 10);
+      document.body.style.position = '';
+      document.body.style.top = '';
+      window.scrollTo(0, -scrollY);
     };
   }, [isOpenedModal, toggleModal]);
 
