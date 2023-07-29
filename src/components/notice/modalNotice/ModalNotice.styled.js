@@ -114,7 +114,7 @@ export const Data = styled.div`
   line-height: 1.35;
   letter-spacing: 0px;
 `;
-export const Ditails = styled.div`
+export const Details = styled.div`
   font-size: 12px;
   font-weight: 500;
   line-height: 1.33;
