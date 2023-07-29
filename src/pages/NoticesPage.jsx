@@ -1,7 +1,7 @@
 import NoticesCategoriesList from 'components/notice/noticesCategoriesList/NoticesCategoriesList';
 import { NoticesCategoriesNav } from 'components/notice/noticesCategoriesNav/NoticesCategoriesNav';
 import TitlePage from 'components/title/TitlePage';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { fetchByCategory, fetchFavorite } from 'redux/notices/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNotices } from 'redux/notices/selectors';

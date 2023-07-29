@@ -134,7 +134,12 @@ const NoticesCategoryItem = ({
               <use href={icons + '#pawprint'}></use>
             </BtnLearnIcon>
           </BtnLearn>
-          {isModalOpen && <ModalNotice onClose={handleCloseModal} />}
+          {isModalOpen && (
+            <ModalNotice
+              onClose={handleCloseModal}
+              data={{ photoUrl, category, title, sex, cardId }}
+            />
+          )}
         </TitleWrapper>
       </Item>
     </>
