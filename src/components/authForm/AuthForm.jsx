@@ -153,18 +153,18 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                   value={values.password}
                   placeholder="Password"
                 />
-                <StyledIconEye
-                  data-showfields={showFields.password}
-                  touched={touched.password?.toString()}
-                  errors={errors.password}
-                  onClick={() => handleToggleField('password')}
-                />
                 {touched.password && !errors.password && <StyledIconCheck />}
                 {touched.password && errors.password && (
                   <StyledIconClear
                     onClick={() => clearInputValue(setFieldValue, 'password')}
                   />
                 )}
+                <StyledIconEye
+                  data-showfields={showFields.password}
+                  errors={errors.password}
+                  onClick={() => handleToggleField('password')}
+                />
+
                 <StyledError component="label" name="password" />
               </InputContainer>
 
@@ -187,15 +187,6 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                       value={values.confirmPassword}
                       placeholder="Confirm password"
                     />
-                    <StyledIconEye
-                      data-showfields={showFields.confirmPassword}
-                      touched={touched.confirmPassword?.toString()}
-                      errors={errors.confirmPassword}
-                      onClick={() => handleToggleField('confirmPassword')}
-                    />
-                    {touched.confirmPassword && !errors.confirmPassword && (
-                      <StyledIconCheck />
-                    )}
                     {touched.confirmPassword && errors.confirmPassword && (
                       <StyledIconClear
                         onClick={() =>
@@ -203,6 +194,16 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                         }
                       />
                     )}
+                    <StyledIconEye
+                      data-showfields={showFields.confirmPassword}
+                      errors={errors.confirmPassword}
+                      onClick={() => handleToggleField('confirmPassword')}
+                      showfields={showFields}
+                    />
+                    {touched.confirmPassword && !errors.confirmPassword && (
+                      <StyledIconCheck />
+                    )}
+
                     <StyledError component="label" name="confirmPassword" />
                   </InputContainer>
                 </>
