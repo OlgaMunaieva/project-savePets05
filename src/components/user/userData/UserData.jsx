@@ -1,14 +1,20 @@
 import UserForm from '../userForm/UserForm';
 
-// redux
-// import { useState, useEffect } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { selectUser } from 'redux/user/selectors';
 // import { selectIsLoading } from 'redux/user/selectors';
 import { fetchUserInformation } from 'redux/user/operations';
 
+import Modal from 'components/modal/Modal';
+import spriteImage from '../../../images/sprite.svg';
+
+import { StyledFormContainer, ButtonEditUserInfo } from './UserData.styled';
+
 export default function UserData() {
+  const [showUserProfileModal, setShowUserProfileModal] = useState(false);
+  const [isFormDisabled, setIsFormDisabled] = useState(true);
   // const [isModalOpen, setIsModalOpen] = useState(false);
   // const [isFormDisabled, setIsFormDisabled] = useState(false);
   const dispatch = useDispatch();
@@ -19,13 +25,43 @@ export default function UserData() {
     dispatch(fetchUserInformation());
   }, [dispatch]);
 
-  // const closeModal = () => {
-  //   setIsModalOpen(false);
-  // };
+  const closeUserProfileModal = () => {
+    setShowUserProfileModal(false);
+    setIsFormDisabled(true);
+  };
 
-  // const openModal = () => {
-  //   setIsModalOpen(true);
-  // };
+  const handleFormDisabled = () => {
+    setIsFormDisabled(false);
+    setShowUserProfileModal(true);
+  };
 
-  return <>{Object.keys(user).length > 0 && <UserForm userInfo={user} />}</>;
+  return (
+    <>
+      {showUserProfileModal && (
+        <Modal
+          style={{
+            color: 'green',
+          }}
+          closeModal={closeUserProfileModal}
+          isOpenedModal={showUserProfileModal}
+          width={'395px'}
+          padding={'20px 24px 20px 16px'}
+        >
+          <UserForm userInfo={user} isFormDisabled={isFormDisabled} />
+        </Modal>
+      )}
+
+      {Object.keys(user).length > 0 && (
+        <StyledFormContainer>
+          <UserForm userInfo={user} isFormDisabled={isFormDisabled} />
+
+          <ButtonEditUserInfo type="button" onClick={handleFormDisabled}>
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+              <use href={spriteImage + '#icon-edit-2'} />
+            </svg>
+          </ButtonEditUserInfo>
+        </StyledFormContainer>
+      )}
+    </>
+  );
 }

@@ -39,6 +39,12 @@
 // `;
 
 import styled from 'styled-components';
+import variables from '../../settings/variables';
+
+const {
+  shadow: { shadowHover },
+  transition: { transitionShadow },
+} = variables;
 
 // ModalWindow styles remain unchanged for mobile and tablet
 
@@ -65,6 +71,13 @@ export const ExitButton = styled.button`
   padding: 0;
   background-color: transparent;
   cursor: pointer;
+  z-index: 100;
+  transition: ${transitionShadow};
+  &:hover,
+  &:focus {
+    box-shadow: ${shadowHover};
+    border-radius: 50%;
+  }
 
   @media (max-width: 768px) {
     /* Adjust styles for tablet */
