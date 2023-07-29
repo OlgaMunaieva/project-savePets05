@@ -116,6 +116,11 @@ export const ModalContent = styled.div`
   min-height: 350px;
   min-width: 280px;
   max-height: 540px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   width: fit-content;
   padding: 30px;
   background-color: white;
