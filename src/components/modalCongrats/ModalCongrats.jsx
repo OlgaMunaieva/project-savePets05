@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import Modal from '../../components/modal/Modal';
 import spriteImage from '../../images/sprite.svg';
 import {
@@ -22,7 +22,7 @@ import {
 //   };
 
 const ModalCongrats = ({ closeModal, openModal }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   return (
     <Modal closeModal={closeModal} isOpenedModal={openModal} width="610px">
       <StyledContainer>
