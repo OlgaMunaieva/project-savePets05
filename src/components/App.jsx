@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/auth/authSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
 
-// import NoticeModal from './notice/noticeModal/NoticeModal';
+import NoticeModal from './notice/noticeModal/NoticeModal';
 // import AddPetPage from 'pages/AddPetPage';
 // import ModalApproveAction from 'pages/ModalApproveAction';
 // import NewsPage from 'pages/NewsPage';
@@ -33,40 +33,40 @@ const App = () => {
 
   return (
     !isRefreshing && (
-      // <NoticeModal/>
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<MainPage />} />
-          <Route
-            path="/register"
-            element={
-              <RestrictedRoute
-                redirectTo="/user"
-                component={<RegisterPage />}
-              />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
-            }
-          />
-          <Route
-            path="/user"
-            element={
-              <PrivateRoute redirectTo="/login" component={<UserPage />} />
-            }
-          />
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/notices">
-            <Route index element={<Navigate to="/notices/sell" />} />
-            <Route path=":categoryName" element={<NoticesPage />} />
-          </Route>
-          <Route path="/friends" element={<OurFriendsPage />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Route>
-      </Routes>
+      <NoticeModal/>
+      // <Routes>
+      //   <Route path="/" element={<SharedLayout />}>
+      //     <Route index element={<MainPage />} />
+      //     <Route
+      //       path="/register"
+      //       element={
+      //         <RestrictedRoute
+      //           redirectTo="/user"
+      //           component={<RegisterPage />}
+      //         />
+      //       }
+      //     />
+      //     <Route
+      //       path="/login"
+      //       element={
+      //         <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
+      //       }
+      //     />
+      //     <Route
+      //       path="/user"
+      //       element={
+      //         <PrivateRoute redirectTo="/login" component={<UserPage />} />
+      //       }
+      //     />
+      //     <Route path="/main" element={<MainPage />} />
+      //     <Route path="/notices">
+      //       <Route index element={<Navigate to="/notices/sell" />} />
+      //       <Route path=":categoryName" element={<NoticesPage />} />
+      //     </Route>
+      //     <Route path="/friends" element={<OurFriendsPage />} />
+      //     <Route path="*" element={<ErrorPage />} />
+      //   </Route>
+      // </Routes>
       // <div>
       //   {/* <AddPetPage /> */}
       //   {/* <ModalApproveAction /> */}
