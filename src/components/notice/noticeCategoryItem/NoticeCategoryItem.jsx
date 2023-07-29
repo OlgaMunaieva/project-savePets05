@@ -1,3 +1,4 @@
+import { toast } from 'react-hot-toast';
 import icons from '../../../images/icons/icons-card.svg';
 import {
   BtnFavorite,
@@ -15,36 +16,39 @@ import {
   Title,
   TitleWrapper,
 } from './NoticeCategoryItem.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/auth/authSelectors';
+import { putFavorite } from 'redux/notices/operations';
 
 const BaseUrlImg = 'https://res.cloudinary.com/dfvviqdic/image/upload/';
 
 const NoticesCategoryItem = ({
+  id: cardId,
   category,
   sex,
   age,
   location,
   title,
+  favorite,
   photoUrl,
 }) => {
-  // const isLogin = useSelector(selectIsLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const dispatch = useDispatch(cardId);
 
-  // const favoriteClickHandle = () => {
-  //   if (!isLogin) {
-  //     alert('You need to sign in');
-  //   }
-  //   dispatch(
-  //     favoriteNotice({
-  //       id: _id,
-  //     })
-  //   );
-  // };
+  const favoriteClickHandle = () => {
+    if (!isLoggedIn) {
+      toast.error('You need to sign in');
+    }
+    dispatch(putFavorite(cardId));
+    console.log(favorite);
+  };
 
   const getAge = age => {
     const year = Math.floor(age / 12);
     if (age < 12) {
       return `${age} month`;
     }
-    return Math.floor(year) === 12 ? `1 year` : `${Math.floor(year)} years`;
+    return Math.floor(age) === 12 ? `1 year` : `${Math.floor(year)} years`;
   };
 
   return (
@@ -55,7 +59,7 @@ const NoticesCategoryItem = ({
           <Status>
             <StatusText>{category}</StatusText>
             <div>
-              <BtnFavorite>
+              <BtnFavorite type="button" onClick={favoriteClickHandle}>
                 <Icon width={24} height={24}>
                   <use href={icons + '#heart'}></use>
                 </Icon>
