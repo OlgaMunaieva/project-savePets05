@@ -16,6 +16,7 @@ import {
   ModalContent,
   TitleWrapper,
   Title,
+  DescriptionWrapper,
 } from './ModalNotice.styled';
 import {
   BtnFavorite,
@@ -30,7 +31,7 @@ const BaseUrlImg = 'https://res.cloudinary.com/dfvviqdic/image/upload/';
 const modalRoot = document.body;
 
 const ModalNotice = ({ onClose, isOpenedModal, data, children }) => {
-  const { photoUrl, category, title, sex } = data;
+  const { photoUrl, category, title, sex, location } = data;
 
   const toggleModal = useCallback(
     e => {
@@ -91,7 +92,7 @@ const ModalNotice = ({ onClose, isOpenedModal, data, children }) => {
             </DataWrapper>
             <DataWrapper>
               <Data>Place:</Data>
-              <Ditails></Ditails>
+              <Ditails>{location}</Ditails>
             </DataWrapper>
             <DataWrapper>
               <Data>The sex:</Data>
@@ -105,6 +106,9 @@ const ModalNotice = ({ onClose, isOpenedModal, data, children }) => {
               <Data>Phone:</Data>
               <Ditails></Ditails>
             </DataWrapper>
+            <DescriptionWrapper>
+              <span>Comments:</span>
+            </DescriptionWrapper>
           </InformationWrapper>
           <BtnLearn>Contact</BtnLearn>
           <div>

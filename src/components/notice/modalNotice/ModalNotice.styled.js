@@ -45,6 +45,7 @@ export const ModalContent = styled.div`
 `;
 
 export const ImgWrapper = styled.div`
+  margin: 0 auto;
   height: 240px;
   width: 240px;
   border-radius: 0px 0px 40px 40px;
@@ -122,5 +123,16 @@ export const Ditails = styled.div`
   align-content: center;
   align-items: center;
   justify-content: center;
+  text-align: left;
+`;
+
+export const DescriptionWrapper = styled.div`
+  margin-top: 5px;
+  margin-bottom: 12px;
+  min-height: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
   text-align: left;
 `;
