@@ -66,7 +66,9 @@ const MobMenu = ({ isLogin, size, userName }) => {
                 duration: 0.5,
               }}
             >
-              <LogoComponent toggle={toggleMenu} itsMobile={size} />
+              <div onClick={() => toggleMenu()}>
+                <LogoComponent itsMobile={size} />
+              </div>
 
               {size && !isLogin ? (
                 <DivLogin>
@@ -152,7 +154,12 @@ const MobMenu = ({ isLogin, size, userName }) => {
               delay: 0.1,
             }}
           >
-            <LinksLogoutTab onClick={() => dispatch(logOut())}>
+            <LinksLogoutTab
+              onClick={() => {
+                dispatch(logOut());
+                toggleMenu();
+              }}
+            >
               Log out
               <LogOutIcon />
             </LinksLogoutTab>
