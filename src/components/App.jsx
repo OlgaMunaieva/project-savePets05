@@ -6,6 +6,7 @@ import PrivateRoute from './PrivateRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/auth/authSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
+import NewsPage from 'pages/NewsPage';
 
 // import PetModal from './petModal/PetModal';
 // import AddPetPage from 'pages/AddPetPage';
@@ -65,11 +66,11 @@ const App = () => {
           <Route path="/friends" element={<OurFriendsPage />} />
         </Route>
         <Route path="*" element={<NotFound />} />
+        <Route path='/news' element={<NewsPage/>} />
       </Routes>
       // <div>
       //   {/* <AddPetPage /> */}
       //   {/* <ModalApproveAction /> */}
-      //   {/* <NewsPage /> */}
       // </div>
     )
   );
