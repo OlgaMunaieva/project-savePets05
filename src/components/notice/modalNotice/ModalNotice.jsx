@@ -17,10 +17,13 @@ import {
   Title,
   DescriptionWrapper,
   Details,
+  ContactBtn,
+  FavoriteBtn,
+  MainDataWrapper,
+  Wrapper,
+  ButtonsWrapper,
 } from './ModalNotice.styled';
 import {
-  BtnFavorite,
-  BtnLearn,
   Icon,
   Status,
   StatusText,
@@ -69,56 +72,61 @@ const ModalNotice = ({ onClose, isOpenedModal, data, children }) => {
         <ExitButton onClick={() => onClose()}>
           <img src={CrossIcon} alt="Cross" width={24} height={24} />
         </ExitButton>
-        <TitleWrapper>
-          <ImgWrapper>
-            <Img src={BaseUrlImg + photoUrl} alt="pet" loading="lazy" />
-            <Status>
-              <StatusText>{category}</StatusText>
-            </Status>
-          </ImgWrapper>
-          <Title>{title}</Title>
-          <InformationWrapper>
-            <DataWrapper>
-              <Data>Name:</Data>
-              <Details></Details>
-            </DataWrapper>
-            <DataWrapper>
-              <Data>Birthday:</Data>
-              <Details></Details>
-            </DataWrapper>
-            <DataWrapper>
-              <Data>Type:</Data>
-              <Details></Details>
-            </DataWrapper>
-            <DataWrapper>
-              <Data>Place:</Data>
-              <Details>{location}</Details>
-            </DataWrapper>
-            <DataWrapper>
-              <Data>The sex:</Data>
-              <Details>{sex}</Details>
-            </DataWrapper>
-            <DataWrapper>
-              <Data>Email:</Data>
-              <Details></Details>
-            </DataWrapper>
-            <DataWrapper>
-              <Data>Phone:</Data>
-              <Details></Details>
-            </DataWrapper>
-          </InformationWrapper>
-        </TitleWrapper>
-        <DescriptionWrapper>
-          <span>Comments:</span>
-        </DescriptionWrapper>
-        <BtnLearn>Contact</BtnLearn>
-        <div>
-          <BtnFavorite type="button">
+        <MainDataWrapper>
+          <Wrapper>
+            <ImgWrapper>
+              <Img src={BaseUrlImg + photoUrl} alt="pet" loading="lazy" />
+              <Status>
+                <StatusText>{category}</StatusText>
+              </Status>
+            </ImgWrapper>
+            <TitleWrapper>
+              <Title>{title}</Title>
+              <InformationWrapper>
+                <DataWrapper>
+                  <Data>Name:</Data>
+                  <Details></Details>
+                </DataWrapper>
+                <DataWrapper>
+                  <Data>Birthday:</Data>
+                  <Details></Details>
+                </DataWrapper>
+                <DataWrapper>
+                  <Data>Type:</Data>
+                  <Details></Details>
+                </DataWrapper>
+                <DataWrapper>
+                  <Data>Place:</Data>
+                  <Details>{location}</Details>
+                </DataWrapper>
+                <DataWrapper>
+                  <Data>The sex:</Data>
+                  <Details>{sex}</Details>
+                </DataWrapper>
+                <DataWrapper>
+                  <Data>Email:</Data>
+                  <Details></Details>
+                </DataWrapper>
+                <DataWrapper>
+                  <Data>Phone:</Data>
+                  <Details></Details>
+                </DataWrapper>
+              </InformationWrapper>
+            </TitleWrapper>
+          </Wrapper>
+          <DescriptionWrapper>
+            <span>Comments:</span>
+          </DescriptionWrapper>
+        </MainDataWrapper>
+        <ButtonsWrapper>
+          <ContactBtn>Contact</ContactBtn>
+          <FavoriteBtn type="button">
+            <span>Add to</span>
             <Icon width={24} height={24}>
               <use href={spriteImage + '#icon-heart'}></use>
             </Icon>
-          </BtnFavorite>
-        </div>
+          </FavoriteBtn>
+        </ButtonsWrapper>
       </ModalContent>
     </ModalWindow>,
     modalRoot
