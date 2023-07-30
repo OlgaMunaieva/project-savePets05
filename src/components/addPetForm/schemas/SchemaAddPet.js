@@ -4,7 +4,7 @@ const yourPetSchema = Yup.object().shape({
   petName: Yup.string()
     .trim()
     .required('Required')
-    .matches(/^[a-zA-Z ]*$/, 'Only letters and spaces are allowed')
+    .matches(/^[a-zA-Z ]*$/, 'Only letters in English are allowed')
     .min(2, `Pet's Name must be at least 2 characters`)
     .max(16, `Pet's Name must be at most 16 characters`),
   petBirthDate: Yup.string()
@@ -17,7 +17,7 @@ const yourPetSchema = Yup.object().shape({
   petType: Yup.string()
     .trim()
     .required('Required')
-    .matches(/^[a-zA-Z ]*$/, 'Only letters and spaces are allowed')
+    .matches(/^[a-zA-Z ]*$/, 'Only letters in English are allowed')
     .min(2, `Pet's Name must be at least 2 characters`)
     .max(16, `Pet's Name must be at most 16 characters`),
   petImage: Yup.mixed()
@@ -35,7 +35,7 @@ const sellSchema = Yup.object().shape({
   petName: Yup.string()
     .trim()
     .required('Required')
-    .matches(/^[a-zA-Z ]*$/, 'Only letters and spaces are allowed')
+    .matches(/^[a-zA-Z ]*$/, 'Only letters in English are allowed')
     .min(2, `Pet's Name must be at least 2 characters`)
     .max(16, `Pet's Name must be at most 16 characters`),
   petBirthDate: Yup.string()
@@ -48,10 +48,13 @@ const sellSchema = Yup.object().shape({
   petType: Yup.string()
     .trim()
     .required('Required')
-    .matches(/^[a-zA-Z ]*$/, 'Only letters and spaces are allowed')
+    .matches(/^[a-zA-Z ]*$/, 'Only letters in English are allowed')
     .min(2, `Pet's Name must be at least 2 characters`)
     .max(16, `Pet's Name must be at most 16 characters`),
-  addTitle: Yup.string().required('Required').trim(),
+  addTitle: Yup.string()
+    .required('Required')
+    .matches(/^[a-zA-Z ]*$/, 'Only letters in English are allowed')
+    .trim(),
   location: Yup.string()
     .trim()
     .required('Required')
@@ -75,7 +78,7 @@ const lostFoundSchema = Yup.object().shape({
   petName: Yup.string()
     .trim()
     .required('Required')
-    .matches(/^[a-zA-Z ]*$/, 'Only letters and spaces are allowed')
+    .matches(/^[a-zA-Z ]*$/, 'Only letters in English are allowed')
     .min(2, `Pet's Name must be at least 2 characters`)
     .max(16, `Pet's Name must be at most 16 characters`),
   petBirthDate: Yup.string()
@@ -88,10 +91,13 @@ const lostFoundSchema = Yup.object().shape({
   petType: Yup.string()
     .trim()
     .required('Required')
-    .matches(/^[a-zA-Z ]*$/, 'Only letters and spaces are allowed')
+    .matches(/^[a-zA-Z ]*$/, 'Only letters in English are allowed')
     .min(2, `Pet's Name must be at least 2 characters`)
     .max(16, `Pet's Name must be at most 16 characters`),
-  addTitle: Yup.string().required('Required').trim(),
+  addTitle: Yup.string()
+    .required('Required')
+    .matches(/^[a-zA-Z ]*$/, 'Only letters in English are allowed')
+    .trim(),
   location: Yup.string()
     .trim()
     .required('Required')
