@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+
 import { Formik, Form, Field } from 'formik';
 import { Step1, Step2, Step3 } from './Steps';
 import sendData from './helpers/sendData';
+import AddStepTitle from './helpers/addStepTitle';
+import pawprint from 'images/icons/pawprint.svg';
+import arrowLeft from 'images/icons/arrowLeft.svg';
+import male from 'images/icons/male.svg';
+import female from 'images/icons/female.svg';
 import * as Yup from 'yup';
 import {
   yourPetSchema,
@@ -10,22 +16,31 @@ import {
 } from './schemas/SchemaAddPet';
 
 import {
+  StepTitle,
   Container,
   ButtonContainer,
   BackButton,
   NextButton,
-  SubmitButton,
   StepIndicatorContainer,
   StepIndicator,
   StepText,
   ErrorMessageText,
   ErrorText,
+  Input,
+  Step2Label,
+  InputBlock,
+  RadioLabelSex,
+  FlexContainer,
+  SexBlock,
+  Step2Container,
+  BigInput,
 } from './AddPetForm.styled';
+import { InputContainer } from 'components/authForm/AuthForm.styled';
 
 const AddPet = () => {
   const [step, setStep] = useState(1);
   const [adType, setAdType] = useState('');
-  const [touched, setTouched] = useState(false);
+  const [isTouched, setTouched] = useState(false);
 
   const initialValues = {
     adType: '',
@@ -57,18 +72,27 @@ const AddPet = () => {
   const handleSubmit = async values => {
     try {
       const formData = new FormData();
-      const validationSchema = getValidationSchema(values.adType);
-      const schemaKeys = Object.keys(validationSchema.fields);
-      // Додаємо до formData тільки ті поля, які є в schemaKeys
-      schemaKeys.forEach(key => {
-        formData.append(key, values[key]);
-      });
+      // const validationSchema = getValidationSchema(values.adType);
+      // const schemaKeys = Object.keys(validationSchema.fields);
+      // // Додаємо до formData тільки ті поля, які є в schemaKeys
+      // schemaKeys.forEach(key => {
+      //   formData.append(key, values[key]);
+      // });
+      formData.append('category', values.adType);
+      formData.append('name', values.petName);
+      formData.append('birthday', values.petBirthDate);
+      formData.append('type', values.petType);
+      formData.append('sex', values.petSex);
+      formData.append('location', values.location);
+      formData.append('price', values.price);
+      formData.append('comments', values.comments);
+      formData.append('notice', values.petImage);
+
       console.log([...formData.entries()]);
-      // Викликаємо функцію для надсилання даних на бекенд
+
       await sendData(formData);
       console.log('Form submitted successfully');
     } catch (error) {
-      // В разі помилки при надсиланні даних на сервер, можна перехопити помилку тут і обробити її
       console.error('Error submitting form:', error.message);
     }
   };
@@ -80,7 +104,6 @@ const AddPet = () => {
         return;
       }
     } else if (step === 2) {
-      // Перевіряємо наявність обов'язкових полів на другому кроці
       if (values.adType === 'yourPet') {
         if (
           !values.petName.trim() ||
@@ -100,30 +123,6 @@ const AddPet = () => {
           !values.petBirthDate.trim() ||
           !values.petType.trim()
         ) {
-          return;
-        }
-      }
-    } else if (step === 3) {
-      // Перевіряємо наявність обов'язкових полів на третьому кроці
-      if (values.adType === 'yourPet') {
-        if (!values.petImage) {
-          return;
-        }
-      } else if (values.adType === 'sell') {
-        if (
-          !values.location.trim() ||
-          !values.price.trim() ||
-          !values.petImage ||
-          !values.petSex
-        ) {
-          return;
-        }
-      } else if (
-        values.adType === 'lostFound' ||
-        values.adType === 'inGoodHands'
-      ) {
-        // Додаємо перевірку для опції "lost/found та in good hands"
-        if (!values.location.trim() || !values.petImage || !values.petSex) {
           return;
         }
       }
@@ -148,6 +147,23 @@ const AddPet = () => {
       >
         {({ values, handleChange }) => (
           <Form>
+            <>
+              {step === 1 && (
+                <>
+                  <StepTitle>Add pet</StepTitle>
+                </>
+              )}
+              {step === 2 && (
+                <>
+                  <AddStepTitle adType={adType} />
+                </>
+              )}
+              {step === 3 && (
+                <>
+                  <AddStepTitle adType={adType} />
+                </>
+              )}
+            </>
             <StepIndicatorContainer>
               <StepIndicator
                 active={step === 1 ? 'true' : 'false'}
@@ -184,121 +200,182 @@ const AddPet = () => {
               </StepIndicator>
             </StepIndicatorContainer>
             {step === 1 && (
-              <Step1 handleChange={handleChange} setAdType={setAdType} />
+              <InputBlock>
+                <Step1
+                  handleChange={handleChange}
+                  setAdType={setAdType}
+                  values={values}
+                />
+                {isTouched && !values.adType && (
+                  <ErrorText>Please select one of the options</ErrorText>
+                )}
+              </InputBlock>
             )}
             {step === 2 && (
               <>
-                <Step2
-                  handleChange={handleChange}
-                  petName={values.petName}
-                  petBirthDate={values.petBirthDate}
-                  petType={values.petType}
-                />
                 {(values.adType === 'sell' ||
                   values.adType === 'lostFound' ||
                   values.adType === 'inGoodHands') && (
-                  <div>
-                    {/* Додати поле для типу оголошення на другому кроці при обраній опції "sell" */}
-                    <label>Title of add:</label>
-                    <Field
+                  <InputBlock>
+                    <Step2Label>Title of add:</Step2Label>
+                    <Input
+                      placeholder="Type of pet"
                       type="text"
                       name="addTitle"
                       value={values.addTitle}
                       onChange={handleChange}
                     />
                     <ErrorMessageText component="label" name="addTitle" />
-                  </div>
+                  </InputBlock>
                 )}
+                <Step2
+                  handleChange={handleChange}
+                  petName={values.petName}
+                  petBirthDate={values.petBirthDate}
+                  petType={values.petType}
+                  values={values}
+                />
               </>
             )}
             {step === 3 && (
               <>
                 {values.adType === 'yourPet' ? (
-                  <Step3
-                    handleChange={handleChange}
-                    comments={values.comments}
-                    petImage={values.petImage}
-                  />
+                  <InputContainer style={{ marginBottom: '24px' }}>
+                    <Step3
+                      handleChange={handleChange}
+                      comments={values.comments}
+                      petImage={values.petImage}
+                    />
+                    <InputBlock>
+                      <Step2Label htmlFor="comments">Comments:</Step2Label>
+                      <BigInput
+                        placeholder="Type of pet"
+                        type="text"
+                        id="comments"
+                        name="comments"
+                        onChange={handleChange}
+                        value={values.comments}
+                      />
+                      <ErrorMessageText component="label" name="comments" />
+                    </InputBlock>
+                  </InputContainer>
                 ) : null}
                 {(values.adType === 'sell' ||
                   values.adType === 'lostFound' ||
                   values.adType === 'inGoodHands') && (
                   <div>
                     {/* Додати радіокнопки "Male" та "Female" на третьому кроці при обраній опції "sell" */}
-                    <h2>The Sex</h2>
-                    <label>
-                      <Field
-                        type="radio"
-                        name="petSex"
-                        value="male"
-                        checked={values.petSex === 'male'}
-                        onChange={handleChange}
-                      />{' '}
-                      Male
-                    </label>
-                    <ErrorMessageText component="label" name="petSex" />
-                    <label>
-                      <Field
-                        type="radio"
-                        name="petSex"
-                        value="female"
-                        checked={values.petSex === 'female'}
-                        onChange={handleChange}
-                      />{' '}
-                      Female
-                    </label>
-
-                    <label>Location:</label>
-                    <Field
-                      type="text"
-                      name="location"
-                      value={values.location}
-                      onChange={handleChange}
-                    />
-                    <ErrorMessageText component="label" name="location" />
-                    {values.adType === 'sell' && (
-                      <div>
-                        <label>Price:</label>
-                        <Field
-                          type="text"
-                          name="price"
-                          value={values.price}
-                          onChange={handleChange}
-                        />
-                        <ErrorMessageText component="label" name="price" />
-                      </div>
-                    )}
+                    <SexBlock>
+                      <Step2Label>The Sex</Step2Label>
+                      <FlexContainer>
+                        <RadioLabelSex>
+                          <FlexContainer>
+                            <Field
+                              type="radio"
+                              name="petSex"
+                              value="female"
+                              checked={values.petSex === 'female'}
+                              onChange={handleChange}
+                            />{' '}
+                            <img
+                              src={female}
+                              alt="female"
+                              width={24}
+                              height={24}
+                            />
+                            <span>Female</span>
+                          </FlexContainer>
+                        </RadioLabelSex>
+                        <ErrorMessageText component="label" name="petSex" />
+                        <RadioLabelSex>
+                          <FlexContainer>
+                            <Field
+                              type="radio"
+                              name="petSex"
+                              value="male"
+                              checked={values.petSex === 'male'}
+                              onChange={handleChange}
+                            />{' '}
+                            <img src={male} alt="male" width={24} height={24} />
+                            <span>Male</span>
+                          </FlexContainer>
+                        </RadioLabelSex>
+                      </FlexContainer>
+                    </SexBlock>
                     <Step3
                       handleChange={handleChange}
                       petSex={values.petSex}
                       comments={values.comments}
                       petImage={values.petImage}
+                      values={values}
                     />
+                    <Step2Container>
+                      <InputBlock>
+                        <Step2Label>Location:</Step2Label>
+                        <Input
+                          placeholder="Type location"
+                          type="text"
+                          name="location"
+                          value={values.location}
+                          onChange={handleChange}
+                        />
+                        <ErrorMessageText component="label" name="location" />
+                      </InputBlock>
+                      {values.adType === 'sell' && (
+                        <InputBlock>
+                          <Step2Label>Price:</Step2Label>
+                          <Input
+                            placeholder="Type price"
+                            type="text"
+                            name="price"
+                            value={values.price}
+                            onChange={handleChange}
+                          />
+                          <ErrorMessageText component="label" name="price" />
+                        </InputBlock>
+                      )}
+                      <InputBlock>
+                        <Step2Label htmlFor="comments">Comments:</Step2Label>
+                        <BigInput
+                          placeholder="Type of pet"
+                          type="text"
+                          id="comments"
+                          name="comments"
+                          onChange={handleChange}
+                          value={values.comments}
+                        />
+                        <ErrorMessageText component="label" name="comments" />
+                      </InputBlock>
+                    </Step2Container>
                   </div>
                 )}
               </>
             )}
 
             <ButtonContainer>
+              {step === 1 || step === 2 ? (
+                <NextButton type="button" onClick={() => handleNext(values)}>
+                  Next <img src={pawprint} alt="paw" width={24} height={24} />
+                </NextButton>
+              ) : null}
+              {step === 3 && (
+                <NextButton type="submit">
+                  Done
+                  <img src={pawprint} alt="paw" width={24} height={24} />
+                </NextButton>
+              )}
               {step === 1 ? (
                 <BackButton type="button" onClick={handleCancel}>
+                  <img src={arrowLeft} alt="paw" width={24} height={24} />
                   Cancel
                 </BackButton>
               ) : (
                 <BackButton type="button" onClick={handleBack}>
+                  <img src={arrowLeft} alt="arrow" width={24} height={24} />
                   Back
                 </BackButton>
               )}
-              {step === 1 || step === 2 ? (
-                <NextButton type="button" onClick={() => handleNext(values)}>
-                  Next
-                </NextButton>
-              ) : null}
-              {step === 3 && <SubmitButton type="submit">Done</SubmitButton>}
             </ButtonContainer>
-            {touched && !values.adType && (
-              <ErrorText>Please select one of the options</ErrorText>
-            )}
           </Form>
         )}
       </Formik>

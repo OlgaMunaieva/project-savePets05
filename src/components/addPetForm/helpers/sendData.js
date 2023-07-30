@@ -1,18 +1,17 @@
+import axios from 'axios';
 const sendData = async formData => {
   try {
-    const response = await fetch('https://project-savepets05-be.onrender.com', {
-      method: 'POST',
-      body: formData,
-    });
+    const response = await axios.post(
+      'https://project-savepets05-be.onrender.com/api/notices',
+      formData,
+      {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      }
+    );
 
-    if (!response.ok) {
-      throw new Error('Failed to send data to the backend');
-    }
-
-    const data = await response.json();
-    return data;
+    return response.data;
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error('Failed to send data to the backend');
   }
 };
 
