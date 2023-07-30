@@ -84,6 +84,36 @@ const HomeImages = () => {
       </picture>
       <picture>
         <source
+          srcSet={`${SmallDogTablet} 1x, ${SmallDogTablet2x} 2x`}
+          media="(min-width: 1280px)"
+          type="image/jpeg"
+          width="426"
+          height="417"
+        />
+        <source
+          srcSet={`${SmallDogTablet} 1x, ${SmallDogTablet2x} 2x`}
+          media="(min-width: 768px)"
+          type="image/jpeg"
+          width="426"
+          height="417"
+        />
+        <source
+          srcSet={`${SmallDog} 1x, ${SmallDog2x} 2x`}
+          media="(max-width: 767px)"
+          type="image/jpeg"
+          width="205"
+          height="201"
+        />
+        <Pictures.SmallDogImgBg
+          src={SmallDogDesktop}
+          srcSet={`${SmallDogDesktop2x} 2x`}
+          alt="Small dog"
+          width="426"
+          height="417"
+        />
+      </picture>
+      <picture>
+        <source
           srcSet={`${CatDesktop} 1x, ${CatDesktop2x} 2x`}
           media="(min-width: 1280px)"
           type="image/jpeg"

@@ -53,6 +53,27 @@ const SmallDogImg = styled.img`
   }
 `;
 
+const SmallDogImgBg = styled.img`
+  position: absolute;
+  top: 300px;
+  left: -20px;
+  width: 220px;
+  ${variables.breakPoints.tablet} {
+    width: 518px;
+    top: 680px;
+    left: -32px;
+  }
+  ${variables.breakPoints.desktop} {
+    width: 464px;
+    top: 344px;
+    left: -76px;
+
+    /* width: 540px;
+    top: 346px;
+    left: -160px; */
+  }
+`;
+
 const CatImg = styled.img`
   position: absolute;
   width: 210px;
@@ -75,6 +96,7 @@ const Pictures = {
   BigDogImg,
   SmallDogImg,
   CatImg,
+  SmallDogImgBg,
 };
 
 export default Pictures;
