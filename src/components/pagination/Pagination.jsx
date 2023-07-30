@@ -28,7 +28,6 @@ const Pagination = ({ click, page, limit }) => {
       containerClassName="pagination"
       activeClassName="active-btn"
       renderOnZeroPageCount={null}
-      initialPage={page}
     />
   );
 };
