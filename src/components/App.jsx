@@ -28,7 +28,6 @@ const AddPetPage = lazy(() => import('../pages/AddPetPage'));
 const ErrorPage = lazy(() => import('../pages/ErrorPage'));
 
 const App = () => {
-  console.log('object');
   const dispatch = useDispatch();
 
   const isRefreshing = useSelector(selectIsRefreshing);

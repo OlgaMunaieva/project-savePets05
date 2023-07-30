@@ -34,7 +34,8 @@ const BaseUrlImg = 'https://res.cloudinary.com/dfvviqdic/image/upload/';
 const modalRoot = document.body;
 
 const ModalNotice = ({ onClose, isOpenedModal, data, children }) => {
-  const { photoUrl, category, title, sex, location } = data;
+  const { photoUrl, category, title, sex, location, cardId } = data;
+  console.log(cardId);
 
   const toggleModal = useCallback(
     e => {
