@@ -1,16 +1,19 @@
 // import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Form, Field } from 'formik';
+import { Form, Field, ErrorMessage } from 'formik';
 import styled from 'styled-components';
 import variables from '../../../settings/variables';
 
 const {
-  colors: { cardBgColor, buttonsHoverBg, simpleWhite },
+  colors: { cardBgColor, buttonsHoverBg, simpleWhite, accentInputInvalidValue },
   shadow: { shadowDefault, shadowHover },
   transition: { transitionShadow },
 } = variables;
 
 export const StyledForm = styled(Form)`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  /* position: relative;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
@@ -20,14 +23,14 @@ export const StyledForm = styled(Form)`
   width: 395px;
   border-radius: 40px;
   background-color: ${cardBgColor};
-  box-shadow: ${shadowDefault};
+  box-shadow: ${shadowDefault}; */
 `;
 
 export const InputContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  align-items: center;
+  /* align-items: center; */
 `;
 
 export const StyledInput = styled(Field)`
@@ -37,15 +40,21 @@ export const StyledInput = styled(Field)`
   border-radius: 20px;
   font-family: inherit;
   font-size: 16px;
+  line-height: 1.36;
+  letter-spacing: 0.04em;
   color: ${simpleWhite};
+  &:disabled {
+    background-color: inherit;
+  }
 `;
 
 export const StyledLabel = styled.label`
   font-family: inherit;
   font-size: 18px;
   font-weight: 600;
-  line-height: 1.39;
+  line-height: 1.36;
   letter-spacing: 0.04em;
+  padding: 4px 0px;
   color: ${simpleWhite};
 `;
 export const UserAvatar = styled.img`
@@ -122,21 +131,27 @@ export const ContainerButtonsUpload = styled.div`
   color: ${simpleWhite};
 `;
 
-export const ButtonClose = styled.button`
-  position: absolute;
-  top: 18px;
-  right: 18px;
+export const StyledErrorMessage = styled(ErrorMessage)`
+  color: ${accentInputInvalidValue};
+  font-size: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+
+  /* max-width: 255px; */
+  /* margin-left: 16px;
+  font-size: 12px;
+  display: block;
+  margin-top: 5px;  */
+`;
+
+export const ErrorMessageContainer = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background-color: inherit;
-  border: none;
-  cursor: pointer;
-  transition: ${transitionShadow};
-  &:hover,
-  &:focus {
-    box-shadow: ${shadowHover};
-    border-radius: 50%;
-  }
+  gap: 5px;
+  flex-direction: column;
+  max-width: 255px;
+
+  /* margin-left: 16px;
+  font-size: 12px;
+  display: block;
+  margin-top: 5px;  */
 `;

@@ -1,8 +1,19 @@
 import { StyledButton } from './Button.styled';
 
-export default function Button({ type, $content, $darkType, style = {} }) {
+export default function Button({
+  type,
+  $content,
+  $darkType,
+  style = {},
+  onClick,
+}) {
   return (
-    <StyledButton type={type} $darkType={$darkType} style={style}>
+    <StyledButton
+      type={type}
+      $darkType={$darkType}
+      style={style}
+      onClick={onClick}
+    >
       {$content}
     </StyledButton>
   );

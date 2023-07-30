@@ -3,7 +3,7 @@ import NoticesCategoryItem from '../noticeCategoryItem/NoticeCategoryItem';
 import React from 'react';
 import { Container, List, Notification } from './NoticesCategoriesList.styled';
 
-const NoticesCategoriesList = ({ pets }) => {
+const NoticesCategoriesList = ({ pets, locationCategory }) => {
   return (
     <Container>
       {pets.length === 0 ? (
@@ -12,19 +12,32 @@ const NoticesCategoriesList = ({ pets }) => {
         </Notification>
       ) : (
         <List>
-          {pets.map(({ id, category, sex, age, location, title, photoUrl }) => {
-            return (
-              <NoticesCategoryItem
-                key={id}
-                category={category}
-                sex={sex}
-                age={age}
-                location={location}
-                title={title}
-                photoUrl={photoUrl}
-              />
-            );
-          })}
+          {pets.map(
+            ({
+              id,
+              category,
+              sex,
+              age,
+              location,
+              title,
+              favorite,
+              photoUrl,
+            }) => {
+              return (
+                <NoticesCategoryItem
+                  key={id}
+                  id={id}
+                  category={category}
+                  sex={sex}
+                  age={age}
+                  location={location}
+                  title={title}
+                  favorite={favorite}
+                  photoUrl={photoUrl}
+                />
+              );
+            }
+          )}
         </List>
       )}
     </Container>

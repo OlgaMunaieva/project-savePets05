@@ -1,109 +1,71 @@
 // import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Formik, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
+import { getValidationSchema } from './utils/SchemaValidateUserForm';
 import { useState, useRef } from 'react';
-import * as yup from 'yup';
-
-import {
-  ButtonEditPhoto,
-  ButtonUpload,
-  ButtonCancelUpload,
-  ButtonClose,
-  InputContainer,
-  StyledForm,
-  StyledInput,
-  StyledLabel,
-  UserAvatar,
-  ContainerButtonsUpload,
-} from './UserForm.styled';
 
 import Button from '../Button/Button';
 import variables from 'settings/variables';
 import spriteImage from '../../../images/sprite.svg';
 import UserDefaultAvatar from '../../../images/icons/user-default-avatar.svg';
 
-// redux
-// import { useAuth } from 'hooks/useAuth';
+import {
+  ButtonEditPhoto,
+  ButtonUpload,
+  ButtonCancelUpload,
+  InputContainer,
+  StyledForm,
+  StyledInput,
+  StyledLabel,
+  UserAvatar,
+  ContainerButtonsUpload,
+  StyledErrorMessage,
+  ErrorMessageContainer,
+} from './UserForm.styled';
 
 // const yearNow = new Date().getFullYear();
+// console.log(yearNow);
 
-const phoneRegExp = /^\+380\d{9}$/;
-
-const birthdayRegExp =
-  /^(0[1-9]|1\d|2\d|3[01])-(0[1-9]|1[0-2])-(19[0-9]\d|20[0-6]\d)$/;
-const nameRegExp = /^[\p{Lu}]{1}[\p{Ll}'`]{1,16}$/u;
-const cityRegExp = /^[\p{Lu}]{1}[\p{Ll}'`]{1,31}$/u;
-
-export default function UserForm() {
-  // const { user } = useAuth();
+export default function UserForm({ userInfo, isFormDisabled }) {
   const imgRef = useRef(null);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [imgUrl, setImgUrl] = useState(null);
   const [isAvatarUpdated, setIsAvatarUpdated] = useState(false);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const validationSchema = yup.object().shape({
-    name: yup
-      .string()
-      .min(2, 'Name must be at least 2 characters')
-      .max(16, 'Name must be at most 16 characters')
-      .matches(
-        nameRegExp,
-        'Field Name must contain only unicode letter and begin with a capital letter.'
-      ),
-    email: yup.string().email().required('Email is a required field'),
-    birthday: yup
-      // .date()
-      // .transform(currentValue => {
-      //   // check to see if the previous transform already parsed the date
-      //   // if (context.isType(value)) return value;
+  const { name, email, birthday, phone, city, avatarURL } = userInfo;
+  // console.log('🚀 ~ birthday:', birthday);
 
-      //   const formats = 'DD-MM-YYYY';
-      //   // // the default coercion failed so let's try it with Moment.js instead
-      //   // value = moment(currentValue).format(formats);
-      //   // console.log('value', value);
-      //   console.log('org', currentValue);
+  const isBirthdayValid = value => {
+    if (value === 'Invalid date') {
+      value = null;
+      return value;
+    }
+    return value;
+  };
 
-      //   // if it's valid return the date object, otherwise return an `InvalidDate`
-      //   // return value.isValid() ? value.toDate() : new Date('');
-      // })
+  // console.log('🚀 ~ birthday:', isBirthdayValid(birthday));
+  // console.log('🚀 ~ userInfo:', userInfo);
+  // console.log('🚀 ~ isFormDisabled :', isFormDisabled);
 
-      // .typeError('please enter a valid date')
-      // .max(new Date(), "Your birthday can't be in the future!")
-      .string()
-      .matches(
-        birthdayRegExp,
-        'Birthday has invalid date format. The format should be DD-MM-YYYY.'
-      )
-      .required('Birthday is a required field'),
-    phone: yup
-      .string()
-      .matches(
-        phoneRegExp,
-        'Phone has invalid phone number format. The format should be +380XXXYYZZ.'
-      ),
-    city: yup
-      .string()
-      .min(2, 'City must be at least 2 characters')
-      .max(32, 'City must be at most 32 characters')
-      .matches(
-        cityRegExp,
-        'City must contain only unicode letter and begin with a capital letter.'
-      ),
-  });
+  // console.log('🚀 ~ disabled :', isFormDisabled);
+  // console.log('🚀 ~ isAvatarUpdated:', isAvatarUpdated);
 
-  // const { name, email, birthday, phone, city, avatarURL } = user;
-  // console.log('useeerkom', user);
+  const validationSchema = getValidationSchema();
 
   const initialValues = {
-    name: '',
-    email: '',
-    birthday: '',
-    phone: '',
-    city: '',
+    name: name ?? '',
+    email: email ?? '',
+    // birthday: isBirthdayValid(birthday) ?? '',
+    phone: phone ?? '',
+    city: city ?? '',
     file: '',
   };
 
-  // console.log(yearNow);
+  // console.log('initialValues', initialValues);
+
+  // const closeModal = () => {
+  //   setIsFormDisabled(true);
+  // };
+
   const handleAvatarPreview = event => {
     setSelectedAvatar(event.target.files[0]);
     setImgUrl(URL.createObjectURL(event.target.files[0]));
@@ -135,14 +97,6 @@ export default function UserForm() {
     setImgUrl('');
   };
 
-  // const closeModal = () => {
-  //   setIsModalOpen(false);
-  // };
-
-  // const openModal = () => {
-  //   setIsModalOpen(true);
-  // };
-
   const handleSubmit = (values, { resetForm }) => {
     console.log('values', values);
     resetForm();
@@ -155,20 +109,7 @@ export default function UserForm() {
       onSubmit={handleSubmit}
     >
       <StyledForm autoComplete="off">
-        {/* <p>{name}</p>
-        <p>{email}</p>
-        <p>{birthday}</p>
-        <p>{phone}</p>
-        <p>{city}</p>
-        <p>{avatarURL}</p> */}
-
-        {/* onClick={closeModal} */}
-
-        <ButtonClose type="button">
-          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-            <use href={spriteImage + '#icon-cross-small'} />
-          </svg>
-        </ButtonClose>
+        <p>{avatarURL}</p>
 
         <UserAvatar
           src={!imgUrl ? UserDefaultAvatar : imgUrl}
@@ -179,7 +120,9 @@ export default function UserForm() {
           loading="lazy"
         />
 
-        {!isAvatarUpdated ? (
+        {isFormDisabled ? (
+          <div style={{ height: '54px' }}></div>
+        ) : !isAvatarUpdated ? (
           <ButtonEditPhoto type="button" onClick={handleAvatarPick}>
             <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
               <use href={spriteImage + '#icon-camera'} />
@@ -221,33 +164,66 @@ export default function UserForm() {
           accept="image/jpeg, image/jpg, image/png"
           onChange={handleAvatarPreview}
         />
-
         <InputContainer>
           <StyledLabel htmlFor="name">Name:</StyledLabel>
-          <StyledInput name="name" type="text" />
-          <ErrorMessage component="div" name="name" />
+          <ErrorMessageContainer>
+            <StyledInput name="name" type="text" disabled={isFormDisabled} />
+            <StyledErrorMessage component="div" name="name" />
+          </ErrorMessageContainer>
         </InputContainer>
+
         <InputContainer>
           <StyledLabel htmlFor="email">Email:</StyledLabel>
-          <StyledInput name="email" type="email" />
-          <ErrorMessage component="div" name="email" />
+          <ErrorMessageContainer>
+            <StyledInput name="email" type="email" disabled={isFormDisabled} />
+            <StyledErrorMessage component="div" name="email" />
+          </ErrorMessageContainer>
         </InputContainer>
-        <InputContainer>
-          <StyledLabel htmlFor="birthday">Birthday:</StyledLabel>
-          <StyledInput name="birthday" type="text" placeholder="00-00-0000" />
-          {/* <Field name="birthday" type="date" /> */}
-          <ErrorMessage component="div" name="birthday" />
-        </InputContainer>
-        <InputContainer>
-          <StyledLabel htmlFor="phone">Phone:</StyledLabel>
-          <StyledInput name="phone" type="tel" placeholder="+380000000000" />
-          <ErrorMessage component="div" name="phone" />
-        </InputContainer>
-        <InputContainer>
-          <StyledLabel htmlFor="city">City:</StyledLabel>
-          <StyledInput name="city" type="text" />
-          <ErrorMessage component="div" name="city" />
-        </InputContainer>
+
+        {!isFormDisabled && !isBirthdayValid(birthday) && (
+          <InputContainer>
+            <StyledLabel htmlFor="birthday">Birthday:</StyledLabel>
+            <ErrorMessageContainer>
+              <StyledInput
+                name="birthday"
+                type="text"
+                disabled={isFormDisabled}
+                placeholder="00-00-0000"
+              />
+              <StyledErrorMessage component="div" name="birthday" />
+            </ErrorMessageContainer>
+          </InputContainer>
+        )}
+
+        {!isFormDisabled && !phone && (
+          <InputContainer>
+            <StyledLabel htmlFor="phone">Phone:</StyledLabel>
+            <ErrorMessageContainer>
+              <StyledInput
+                name="phone"
+                type="tel"
+                disabled={isFormDisabled}
+                placeholder="+380000000000"
+              />
+              <StyledErrorMessage component="div" name="phone" />
+            </ErrorMessageContainer>
+          </InputContainer>
+        )}
+
+        {!isFormDisabled && !city && (
+          <InputContainer>
+            <StyledLabel htmlFor="city">City:</StyledLabel>
+            <ErrorMessageContainer>
+              <StyledInput
+                name="city"
+                type="text"
+                disabled={isFormDisabled}
+                placeholder="City"
+              />
+              <StyledErrorMessage component="p" name="city" />
+            </ErrorMessageContainer>
+          </InputContainer>
+        )}
 
         <Button
           style={{

@@ -40,6 +40,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<MainPage />} />
+
           <Route
             path="/register"
             element={
@@ -59,6 +60,18 @@ const App = () => {
             path="/user"
             element={
               <PrivateRoute redirectTo="/login" component={<UserPage />} />
+            }
+          />
+          <Route
+            path="favorite"
+            element={
+              <PrivateRoute redirectTo="/login" component={<NoticesPage />} />
+            }
+          />
+          <Route
+            path="own"
+            element={
+              <PrivateRoute redirectTo="/login" component={<NoticesPage />} />
             }
           />
           <Route path="/main" element={<MainPage />} />

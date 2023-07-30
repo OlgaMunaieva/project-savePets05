@@ -1,41 +1,77 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchNotices, fetchByCategory } from './operations';
+import {
+  fetchNotices,
+  fetchByCategory,
+  putFavorite,
+  fetchFavorite,
+} from './operations';
 
-export const noticesSlice = createSlice({
+const noticesSlice = createSlice({
   name: 'notices',
   initialState: {
     items: [],
     isLoading: false,
     error: null,
     status: 0,
+    totalPages: null,
   },
 
-  extraReducers: {
-    // fetch all
-    [fetchNotices.pending](state, action) {
-      state.isLoading = true;
-    },
-    [fetchNotices.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.items = action.payload;
-    },
-    [fetchNotices.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-    // fetch category
-    [fetchByCategory.pending](state, action) {
-      state.isLoading = true;
-    },
-    [fetchByCategory.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.items = action.payload;
-    },
-    [fetchByCategory.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+  extraReducers: builder => {
+    builder
+      // fetch all
+      .addCase(fetchNotices.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchNotices.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        // state.items = payload;
+      })
+      .addCase(fetchNotices.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      // fetch category
+      .addCase(fetchByCategory.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchByCategory.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = payload.notice;
+        state.totalPages = payload.total;
+      })
+      .addCase(fetchByCategory.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      // fetch favorite
+      .addCase(fetchFavorite.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchFavorite.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.items = payload;
+      })
+      .addCase(fetchFavorite.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      // put favorite
+      .addCase(putFavorite.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(putFavorite.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.items.findIndex(notice => notice.id === payload.id);
+        state.items[index].favorite = payload.favorite;
+      })
+      .addCase(putFavorite.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      });
   },
 });
+
+export const noticesSliceReducer = noticesSlice.reducer;

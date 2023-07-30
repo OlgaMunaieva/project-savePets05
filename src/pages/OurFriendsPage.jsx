@@ -1,31 +1,31 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import TitlePage from '../components/title/TitlePage';
 import {
   OurFriendsList,
-  getOurFriends,
+  // getOurFriends,
 } from '../components/OurFriends/OurFriendsList/OurFriendsList';
-// import friends from '../components/OurFriends/data/friends.json'
+import friends from '../components/OurFriends/data/friends.json'
 
 const OurFriendsPage = () => {
-  const [friends, setFriends] = useState([]);
+  // const [friends, setFriends] = useState([]);
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const friends = await getOurFriends();
-        setFriends(friends);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getData();
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const friends = await getOurFriends();
+  //       setFriends(friends);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getData();
    
-  }, []);
+  // }, []);
 
   return (
     <div>
       <TitlePage>Our friends</TitlePage>
-      <OurFriendsList friends={friends} />
+      <OurFriendsList items={friends} />
     </div>
   );
 };
