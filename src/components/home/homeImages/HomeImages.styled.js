@@ -65,7 +65,7 @@ const CatImg = styled.img`
   }
   ${variables.breakPoints.desktop} {
     width: 420px;
-    top: 550px;
+    top: 530px;
     left: 266px;
   }
 `;

@@ -15,8 +15,8 @@ import BigDogDesktop from '../../../images/homeImages/desktop/big-dog-desktop.pn
 import BigDogDesktop2x from '../../../images/homeImages/desktop/big-dog-desktop@2x.png';
 import SmallDogDesktop from '../../../images/homeImages/desktop/small-dog-desktop.png';
 import SmallDogDesktop2x from '../../../images/homeImages/desktop/small-dog-desktop@2x.png';
-import CatDesktop from '../../../images/homeImages/desktop/cat-desktop.png';
-import CatDesktop2x from '../../../images/homeImages/desktop/cat-desktop@2x.png';
+import CatDesktop from '../../../images/homeImages/desktop/cat-desktop-whole.png';
+import CatDesktop2x from '../../../images/homeImages/desktop/cat-desktop-whole@2x.png';
 import Pictures from './HomeImages.styled';
 
 const HomeImages = () => {
