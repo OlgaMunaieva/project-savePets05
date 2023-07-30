@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
-import MainContainer from './mainContainer/MainContainer.styled';
+import Container from './mainContainer/MainContainer.styled';
 import Header from './header/Header';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import PictureContainer from './pictureContainer/PictureContainer.styled';
+// import PictureContainer from './pictureContainer/PictureContainer.styled';
 
 const SharedLayout = () => {
   const location = useLocation();
@@ -17,8 +17,8 @@ const SharedLayout = () => {
     location.pathname === '/notices/favorite' ||
     location.pathname === '/notices/own' ||
     location.pathname === '/notices/for-free'
-      ? MainContainer
-      : PictureContainer.PawContainer;
+      ? Container.MainContainer
+      : Container.PawContainer;
 
   return (
     <ContainerToRender>
