@@ -22,7 +22,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { fetchFavorite, putFavorite } from 'redux/notices/operations';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ModalNotice from '../modalNotice/ModalNotice';
 const BaseUrlImg = 'https://res.cloudinary.com/dfvviqdic/image/upload/';
 
@@ -67,21 +67,21 @@ const NoticesCategoryItem = ({
   };
 
   // MODAL
-  useEffect(() => {
-    // При открытии модального окна
-    if (isModalOpen) {
-      // Сохраняем текущую позицию прокрутки
-      const scrollY = window.scrollY;
-      document.body.style.position = 'fixed'; // Запрещаем прокрутку body
-      document.body.style.top = -`${scrollY}px`; // Запоминаем текущую позицию
-    } else {
-      // При закрытии модального окна
-      const scrollY = parseInt(document.body.style.top || '0', 10);
-      document.body.style.position = '';
-      document.body.style.top = '';
-      window.scrollTo(0, -scrollY); // Восстанавливаем прокрутку
-    }
-  }, [isModalOpen]);
+  // useEffect(() => {
+  //   // При открытии модального окна
+  //   if (isModalOpen) {
+  //     // Сохраняем текущую позицию прокрутки
+  //     const scrollY = window.scrollY;
+  //     document.body.style.position = 'fixed'; // Запрещаем прокрутку body
+  //     document.body.style.top = -`${scrollY}px`; // Запоминаем текущую позицию
+  //   } else {
+  //     // При закрытии модального окна
+  //     const scrollY = parseInt(document.body.style.top || '0', 10);
+  //     document.body.style.position = '';
+  //     document.body.style.top = '';
+  //     window.scrollTo(0, -scrollY); // Восстанавливаем прокрутку
+  //   }
+  // }, [isModalOpen]);
 
   return (
     <>
