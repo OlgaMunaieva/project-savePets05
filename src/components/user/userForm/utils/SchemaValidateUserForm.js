@@ -16,7 +16,8 @@ export const getValidationSchema = () => {
       .matches(
         nameRegExp,
         'Field Name must contain only unicode letter and begin with a capital letter.'
-      ),
+      )
+      .required('Name is a required field'),
     email: yup.string().email().required('Email is a required field'),
     birthday: yup
       // .date()

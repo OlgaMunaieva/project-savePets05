@@ -54,6 +54,10 @@ input {
 textarea {
   resize: none;
 }
+
+.body-fixed {
+  overflow: hidden;
+}
 `;
 
 export default GlobalStyles;

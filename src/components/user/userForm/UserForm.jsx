@@ -1,5 +1,5 @@
 // import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Formik, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import { getValidationSchema } from './utils/SchemaValidateUserForm';
 import { useState, useRef } from 'react';
 
@@ -18,6 +18,8 @@ import {
   StyledLabel,
   UserAvatar,
   ContainerButtonsUpload,
+  StyledErrorMessage,
+  ErrorMessageContainer,
 } from './UserForm.styled';
 
 // const yearNow = new Date().getFullYear();
@@ -164,51 +166,62 @@ export default function UserForm({ userInfo, isFormDisabled }) {
         />
         <InputContainer>
           <StyledLabel htmlFor="name">Name:</StyledLabel>
-          <StyledInput name="name" type="text" disabled={isFormDisabled} />
-          <ErrorMessage component="div" name="name" />
+          <ErrorMessageContainer>
+            <StyledInput name="name" type="text" disabled={isFormDisabled} />
+            <StyledErrorMessage component="div" name="name" />
+          </ErrorMessageContainer>
         </InputContainer>
+
         <InputContainer>
           <StyledLabel htmlFor="email">Email:</StyledLabel>
-          <StyledInput name="email" type="email" disabled={isFormDisabled} />
-          <ErrorMessage component="div" name="email" />
+          <ErrorMessageContainer>
+            <StyledInput name="email" type="email" disabled={isFormDisabled} />
+            <StyledErrorMessage component="div" name="email" />
+          </ErrorMessageContainer>
         </InputContainer>
 
         {!isFormDisabled && !isBirthdayValid(birthday) && (
           <InputContainer>
             <StyledLabel htmlFor="birthday">Birthday:</StyledLabel>
-            <StyledInput
-              name="birthday"
-              type="text"
-              disabled={isFormDisabled}
-              placeholder="00-00-0000"
-            />
-            <ErrorMessage component="div" name="birthday" />
+            <ErrorMessageContainer>
+              <StyledInput
+                name="birthday"
+                type="text"
+                disabled={isFormDisabled}
+                placeholder="00-00-0000"
+              />
+              <StyledErrorMessage component="div" name="birthday" />
+            </ErrorMessageContainer>
           </InputContainer>
         )}
 
         {!isFormDisabled && !phone && (
           <InputContainer>
             <StyledLabel htmlFor="phone">Phone:</StyledLabel>
-            <StyledInput
-              name="phone"
-              type="tel"
-              disabled={isFormDisabled}
-              placeholder="+380000000000"
-            />
-            <ErrorMessage component="div" name="phone" />
+            <ErrorMessageContainer>
+              <StyledInput
+                name="phone"
+                type="tel"
+                disabled={isFormDisabled}
+                placeholder="+380000000000"
+              />
+              <StyledErrorMessage component="div" name="phone" />
+            </ErrorMessageContainer>
           </InputContainer>
         )}
 
         {!isFormDisabled && !city && (
           <InputContainer>
             <StyledLabel htmlFor="city">City:</StyledLabel>
-            <StyledInput
-              name="city"
-              type="text"
-              disabled={isFormDisabled}
-              placeholder="City"
-            />
-            <ErrorMessage component="div" name="city" />
+            <ErrorMessageContainer>
+              <StyledInput
+                name="city"
+                type="text"
+                disabled={isFormDisabled}
+                placeholder="City"
+              />
+              <StyledErrorMessage component="p" name="city" />
+            </ErrorMessageContainer>
           </InputContainer>
         )}
 
