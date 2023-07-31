@@ -66,7 +66,6 @@ export const ModalWindow = styled.div`
 
   /* Запрещаем прокрутку фона */
   overflow: hidden;
-  //!-----------------------------------
 `;
 
 // Update ExitButton styles for mobile and tablet

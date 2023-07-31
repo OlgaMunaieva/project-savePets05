@@ -4,6 +4,7 @@ import { IoClose } from 'react-icons/io5';
 import { BsCheckLg } from 'react-icons/bs';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { AiOutlineEye } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import variables from 'settings/variables';
 
@@ -169,6 +170,7 @@ export const StyledIconClear = styled(IoClose)`
   top: 8px;
   color: ${accentInputInvalidValue};
   cursor: pointer;
+  margin-right: 30px;
 
   transform: scale(1);
   transition: transform 0.5s ease;
@@ -189,6 +191,7 @@ export const StyledIconCheck = styled(BsCheckLg)`
   right: 16px;
   top: 8px;
   color: ${accentAddPetCard};
+  margin-right: 30px;
 
   ${StyledInput}.initial + & {
     display: none;
@@ -219,12 +222,24 @@ export const StyledIconEye = styled(AiOutlineEyeInvisible)`
     transform: scale(1.1);
   }
 
-  color: ${props =>
-    props['data-showfields'] ? `${placeHolderColor}` : `${buttonsHoverBg}`};
-  margin-right: ${props =>
-    (props.touched && !props.errors) || (props.touched && props.errors)
-      ? '30px'
-      : '0'};
+  color: ${placeHolderColor};
+`;
+
+export const StyledIconEyeOpen = styled(AiOutlineEye)`
+  position: absolute;
+  right: 16px;
+  top: 8px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  color: ${buttonsHoverBg};
+
+  transform: scale(1);
+  transition: transform 0.5s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const StyledButton = styled.button`

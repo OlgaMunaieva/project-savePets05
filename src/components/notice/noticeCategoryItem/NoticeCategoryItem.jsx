@@ -1,5 +1,7 @@
 import { toast } from 'react-hot-toast';
+import { debounce } from 'lodash';
 import icons from '../../../images/icons/icons-card.svg';
+import variables from 'settings/variables';
 import {
   BtnFavorite,
   BtnLearn,
@@ -18,8 +20,10 @@ import {
 } from './NoticeCategoryItem.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
-import { putFavorite } from 'redux/notices/operations';
-
+import { fetchFavorite, putFavorite } from 'redux/notices/operations';
+import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import ModalNotice from '../modalNotice/ModalNotice';
 const BaseUrlImg = 'https://res.cloudinary.com/dfvviqdic/image/upload/';
 
 const NoticesCategoryItem = ({
@@ -32,24 +36,52 @@ const NoticesCategoryItem = ({
   favorite,
   photoUrl,
 }) => {
+  const params = useParams();
+  const categoryParam = params.categoryName;
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch(cardId);
 
   const favoriteClickHandle = () => {
+    const debouncedFetchFavorite = debounce(() => {
+      dispatch(fetchFavorite());
+    }, 200);
+
     if (!isLoggedIn) {
       toast.error('You need to sign in');
     }
     dispatch(putFavorite(cardId));
-    console.log(favorite);
+
+    if (categoryParam === 'favorite' && favorite) {
+      debouncedFetchFavorite();
+    }
   };
 
-  const getAge = age => {
-    const year = Math.floor(age / 12);
-    if (age < 12) {
-      return `${age} month`;
-    }
-    return Math.floor(age) === 12 ? `1 year` : `${Math.floor(year)} years`;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
   };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  // MODAL
+  // useEffect(() => {
+  //   // При открытии модального окна
+  //   if (isModalOpen) {
+  //     // Сохраняем текущую позицию прокрутки
+  //     const scrollY = window.scrollY;
+  //     document.body.style.position = 'fixed'; // Запрещаем прокрутку body
+  //     document.body.style.top = -`${scrollY}px`; // Запоминаем текущую позицию
+  //   } else {
+  //     // При закрытии модального окна
+  //     const scrollY = parseInt(document.body.style.top || '0', 10);
+  //     document.body.style.position = '';
+  //     document.body.style.top = '';
+  //     window.scrollTo(0, -scrollY); // Восстанавливаем прокрутку
+  //   }
+  // }, [isModalOpen]);
 
   return (
     <>
@@ -60,7 +92,13 @@ const NoticesCategoryItem = ({
             <StatusText>{category}</StatusText>
             <div>
               <BtnFavorite type="button" onClick={favoriteClickHandle}>
-                <Icon width={24} height={24}>
+                <Icon
+                  width={24}
+                  height={24}
+                  color={
+                    favorite ? `${variables.colors.buttonsHoverBg}` : 'current'
+                  }
+                >
                   <use href={icons + '#heart'}></use>
                 </Icon>
               </BtnFavorite>
@@ -77,7 +115,7 @@ const NoticesCategoryItem = ({
               <Icon width={24} height={24}>
                 <use href={icons + '#clock'}></use>
               </Icon>
-              <DescriptionItemText>{getAge(age)}</DescriptionItemText>
+              <DescriptionItemText>{age}</DescriptionItemText>
             </DescriptionItem>
             <DescriptionItem>
               {sex === 'male' ? (
@@ -95,12 +133,18 @@ const NoticesCategoryItem = ({
         </ImgWrapper>
         <TitleWrapper>
           <Title>{title}</Title>
-          <BtnLearn>
+          <BtnLearn onClick={handleOpenModal}>
             Learn More
             <BtnLearnIcon width={24} height={24}>
               <use href={icons + '#pawprint'}></use>
             </BtnLearnIcon>
           </BtnLearn>
+          {isModalOpen && (
+            <ModalNotice
+              onClose={handleCloseModal}
+              data={{ photoUrl, category, title, sex, cardId }}
+            />
+          )}
         </TitleWrapper>
       </Item>
     </>
