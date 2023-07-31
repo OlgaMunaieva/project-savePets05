@@ -33,7 +33,7 @@ export const List = styled.ul`
     gap: 32px;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 704px;
+    // width: 704px;
   }
 
   ${variables.breakPoints.desktop} {

@@ -6,6 +6,7 @@ import {
   BtnFavorite,
   BtnLearn,
   BtnLearnIcon,
+  BtnRemoveMyPet,
   Description,
   DescriptionItem,
   DescriptionItemText,
@@ -20,10 +21,15 @@ import {
 } from './NoticeCategoryItem.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
-import { fetchFavorite, putFavorite } from 'redux/notices/operations';
+import {
+  delMyPetsById,
+  fetchFavorite,
+  putFavorite,
+} from 'redux/notices/operations';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import ModalNotice from '../modalNotice/ModalNotice';
+// import { ModalConfirmDelete } from '../ModalDelMyPet/ModalDelMyPet';
 const BaseUrlImg = 'https://res.cloudinary.com/dfvviqdic/image/upload/';
 
 const NoticesCategoryItem = ({
@@ -34,6 +40,7 @@ const NoticesCategoryItem = ({
   location,
   title,
   favorite,
+  owner,
   photoUrl,
 }) => {
   const params = useParams();
@@ -44,7 +51,7 @@ const NoticesCategoryItem = ({
   const favoriteClickHandle = () => {
     const debouncedFetchFavorite = debounce(() => {
       dispatch(fetchFavorite());
-    }, 200);
+    }, 150);
 
     if (!isLoggedIn) {
       toast.error('You need to sign in');
@@ -53,6 +60,22 @@ const NoticesCategoryItem = ({
 
     if (categoryParam === 'favorite' && favorite) {
       debouncedFetchFavorite();
+    }
+  };
+
+  const handleDelete = () => {
+    // const debouncedfetchMyPets = debounce(() => {
+    //   dispatch(fetchMyPets());
+    // }, 150);
+
+    if (!isLoggedIn) {
+      toast.error('You need to sign in');
+    }
+    console.log('item', cardId);
+    dispatch(delMyPetsById(cardId));
+
+    if (categoryParam === 'own') {
+      // debouncedfetchMyPets();
     }
   };
 
@@ -65,23 +88,6 @@ const NoticesCategoryItem = ({
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-
-  // MODAL
-  // useEffect(() => {
-  //   // При открытии модального окна
-  //   if (isModalOpen) {
-  //     // Сохраняем текущую позицию прокрутки
-  //     const scrollY = window.scrollY;
-  //     document.body.style.position = 'fixed'; // Запрещаем прокрутку body
-  //     document.body.style.top = -`${scrollY}px`; // Запоминаем текущую позицию
-  //   } else {
-  //     // При закрытии модального окна
-  //     const scrollY = parseInt(document.body.style.top || '0', 10);
-  //     document.body.style.position = '';
-  //     document.body.style.top = '';
-  //     window.scrollTo(0, -scrollY); // Восстанавливаем прокрутку
-  //   }
-  // }, [isModalOpen]);
 
   return (
     <>
@@ -102,6 +108,13 @@ const NoticesCategoryItem = ({
                   <use href={icons + '#heart'}></use>
                 </Icon>
               </BtnFavorite>
+              {owner && categoryParam === 'own' ? (
+                <BtnRemoveMyPet onClick={handleOpenModal}>
+                  <Icon width={24} height={24}>
+                    <use href={icons + '#trash'}></use>
+                  </Icon>
+                </BtnRemoveMyPet>
+              ) : null}
             </div>
           </Status>
           <Description>
@@ -144,6 +157,11 @@ const NoticesCategoryItem = ({
               onClose={handleCloseModal}
               data={{ photoUrl, category, title, sex, cardId }}
             />
+            // <ModalConfirmDelete
+            //   closeModal={handleCloseModal}
+            //   name={title}
+            //   handleDelete={handleDelete}
+            // />
           )}
         </TitleWrapper>
       </Item>
