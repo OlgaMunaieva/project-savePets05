@@ -9,6 +9,7 @@ import {
 } from './NoticesCategoriesNav.styled';
 import AddPetBtn from 'components/buttons/addPetBtn/addPetBtn';
 import { useNavigate } from 'react-router-dom';
+import { useResize } from 'hooks/useResize';
 
 export const filters = [
   { filter: 'sell', path: 'sell' },
@@ -19,6 +20,7 @@ export const filters = [
 ];
 
 export const NoticesCategoriesNav = () => {
+  const { width } = useResize();
   const navigate = useNavigate(); // для кнопки AddPet
 
   // для кнопки AddPet
@@ -45,7 +47,7 @@ export const NoticesCategoriesNav = () => {
     <Wrapper>
       <List>{items}</List>
       <WrapperLinks>
-        <AddPetBtn onClick={handleNavigate} />
+        {width >= 768 && <AddPetBtn onClick={handleNavigate} />}
       </WrapperLinks>
     </Wrapper>
   );
