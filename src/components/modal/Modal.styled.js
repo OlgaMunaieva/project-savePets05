@@ -66,9 +66,6 @@ export const ModalWindow = styled.div`
 
   /* Запрещаем прокрутку фона */
   overflow: hidden;
-
-//!-----------------------------------
-
 `;
 
 // Update ExitButton styles for mobile and tablet
@@ -117,7 +114,7 @@ export const ModalContent = styled.div`
   max-width: 680px;
   min-height: 350px;
   min-width: 280px;
-  max-height: 540px;
+  /* max-height: 540px; */
   overflow: auto;
   &::-webkit-scrollbar {
     display: none;
