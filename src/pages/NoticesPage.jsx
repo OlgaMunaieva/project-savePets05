@@ -9,11 +9,16 @@ import {
 } from 'redux/notices/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNotices } from 'redux/notices/selectors';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Pagination from 'components/pagination/Pagination';
-// import { useResize } from 'hooks/useResize';
+import { FixedButtonWrapper } from 'components/buttons/addPetBtn/addPetBtn.styled';
+import AddPetBtnCircle from 'components/buttons/addPetBtn/addPetBtnCircle';
+import { useResize } from 'hooks/useResize';
 
 const NoticesPage = () => {
+  // для кнопки add pet
+  const { width } = useResize();
+
   const notices = useSelector(selectNotices);
   const dispatch = useDispatch();
   const params = useParams();
@@ -21,7 +26,12 @@ const NoticesPage = () => {
   const limit = 12;
   const [page, setPage] = useState(0);
 
-  // const { width } = useResize();
+  const navigate = useNavigate(); // для кнопки add pet
+
+  // для кнопки add pet
+  const handleNavigate = () => {
+    navigate('/add-pet');
+  };
 
   // const resizeHandler = width => {
   //   if (width <= 766) {
@@ -66,6 +76,11 @@ const NoticesPage = () => {
         locationCategory={locationCategory}
       />
       <Pagination click={handlePageClick} limit={limit} page={page} />
+      {width < 768 && (
+        <FixedButtonWrapper>
+          <AddPetBtnCircle onClick={handleNavigate} />
+        </FixedButtonWrapper>
+      )}
     </>
   );
 };
