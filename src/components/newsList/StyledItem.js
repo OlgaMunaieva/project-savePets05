@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
-
+import variables from 'settings/variables';
 export const StyledItem = styled.li`
-  width: 395px;
+  width: 280px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,7 +10,15 @@ export const StyledItem = styled.li`
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
   position: relative;
   padding-bottom: 12px;
- 
+
+  ${variables.breakPoints.tablet} {
+    width: 336px;
+  }
+
+  ${variables.breakPoints.desktop} {
+    width: 395px;
+  }
+
   &::before{
     content:'',
     width: 395px;
