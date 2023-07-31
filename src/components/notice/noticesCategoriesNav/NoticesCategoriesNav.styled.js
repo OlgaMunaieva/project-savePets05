@@ -2,6 +2,15 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import variables from 'settings/variables';
 
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+export const WrapperLinks = styled.div`
+  display: flex;
+  margin-top: 43px;
+`;
+
 export const List = styled.ul`
   margin-top: 20px;
   display: flex;
