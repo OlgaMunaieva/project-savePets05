@@ -9,7 +9,7 @@ export const FixedButtonWrapper = styled.div`
   transform: translateY(
     -70%
   ); /* Центрирование вертикально относительно элемента */
-  z-index: 999; /* При необходимости установите нужный z-index */
+  z-index: 5; /* При необходимости установите нужный z-index */
 `;
 
 export const Button = styled.button`
