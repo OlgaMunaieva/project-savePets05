@@ -14,6 +14,7 @@ import Pagination from 'components/pagination/Pagination';
 import { FixedButtonWrapper } from 'components/buttons/addPetBtn/addPetBtn.styled';
 import AddPetBtnCircle from 'components/buttons/addPetBtn/addPetBtnCircle';
 import { useResize } from 'hooks/useResize';
+import NoticesSearch from 'components/notice/noticesSearch/NoticesSearch';
 
 const NoticesPage = () => {
   // для кнопки add pet
@@ -70,6 +71,7 @@ const NoticesPage = () => {
   return (
     <>
       <TitlePage children={'Find your favorite pet'} />
+      <NoticesSearch />
       <NoticesCategoriesNav />
       <NoticesCategoriesList
         pets={notices}

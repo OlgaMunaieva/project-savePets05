@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import colors from 'settings/variables';
 import variables from 'settings/variables';
+// import { NavLink } from 'react-router-dom';
 
 export const FixedButtonWrapper = styled.div`
   position: fixed;
@@ -9,7 +10,7 @@ export const FixedButtonWrapper = styled.div`
   transform: translateY(
     -70%
   ); /* Центрирование вертикально относительно элемента */
-  z-index: 999; /* При необходимости установите нужный z-index */
+  z-index: 5; /* При необходимости установите нужный z-index */
 `;
 
 export const Button = styled.button`
@@ -18,7 +19,7 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin: 0 auto;
+  margin: 0;
 
   min-width: 129px;
   height: 40px;

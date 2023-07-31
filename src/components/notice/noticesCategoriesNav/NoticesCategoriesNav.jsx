@@ -1,6 +1,15 @@
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
-import { List, Button, Item } from './NoticesCategoriesNav.styled';
+import {
+  List,
+  Button,
+  Item,
+  Wrapper,
+  WrapperLinks,
+} from './NoticesCategoriesNav.styled';
+import AddPetBtn from 'components/buttons/addPetBtn/addPetBtn';
+import { useNavigate } from 'react-router-dom';
+import { useResize } from 'hooks/useResize';
 
 export const filters = [
   { filter: 'sell', path: 'sell' },
@@ -11,6 +20,14 @@ export const filters = [
 ];
 
 export const NoticesCategoriesNav = () => {
+  const { width } = useResize();
+  const navigate = useNavigate(); // для кнопки AddPet
+
+  // для кнопки AddPet
+  const handleNavigate = () => {
+    navigate('/add-pet');
+  };
+
   const isUser = useSelector(selectIsLoggedIn);
   const items = filters.map(({ filter, path }, item) => {
     const isAuthPage = path === 'favorite' || path === 'own';
@@ -26,5 +43,12 @@ export const NoticesCategoriesNav = () => {
     );
   });
 
-  return <List>{items}</List>;
+  return (
+    <Wrapper>
+      <List>{items}</List>
+      <WrapperLinks>
+        {width >= 768 && <AddPetBtn onClick={handleNavigate} />}
+      </WrapperLinks>
+    </Wrapper>
+  );
 };

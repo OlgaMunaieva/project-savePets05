@@ -84,5 +84,5 @@
   pointer-events: none;
 }
 .page-item.disabled a > svg {
-  color: grey;
+  color: rgba(17, 17, 17, 0.5);
 }

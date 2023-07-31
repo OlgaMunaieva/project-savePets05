@@ -91,11 +91,6 @@ const noticesSlice = createSlice({
       })
       .addCase(delMyPetsById.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.error = null;
-        // const index = state.items.findIndex(notice => notice.id === payload.id);
-        // console.log(index.myads.notice.id);
-        // state.items[index].myads = payload.myads;
-        state.items = payload;
       })
       .addCase(delMyPetsById.rejected, (state, { payload }) => {
         state.isLoading = false;
