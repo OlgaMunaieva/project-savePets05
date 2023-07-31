@@ -11,19 +11,29 @@ import {
 } from './NoticesSearch.styled';
 import icons from '../../../images/sprite.svg';
 
-const NoticesSearch = () => {
+const NoticesSearch = ({ setQvery, clean }) => {
   const [search, setSearch] = useState('');
 
   const handelInputChange = event => {
+    console.log(event.currentTarget.value);
+    const qvery = event.currentTarget.value;
+    if (qvery === '') {
+      clean('');
+    }
     setSearch(event.currentTarget.value.toLowerCase().trim());
   };
 
+  const handelSubmit = event => {
+    event.preventDefault();
+    setQvery(search);
+  };
   const cleanInput = () => {
     setSearch('');
+    clean('');
   };
   return (
     <>
-      <Form>
+      <Form onSubmit={handelSubmit}>
         <FormContainer>
           <Input
             type="text"
