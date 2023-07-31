@@ -6,24 +6,32 @@ const {
 } = variables;
 
 export const StyledTitle = styled.h2`
-  font-size: 36px;
+  font-size: 24px;
   font-weight: 500;
   line-height: 1.36;
   color: ${simpleWhite};
   text-align: center;
-  margin-bottom: 52px;
+  margin-bottom: 24px;
+
+  @media (min-width: 767px) {
+    font-size: 36px;
+    margin-bottom: 52px;
+  }
 `;
 
 export const StyledContainer = styled.div`
-  padding: 30px 100px;
   text-align: center;
 `;
 
 export const StyledText = styled.p`
-  font-size: 24px;
   font-weight: 500;
   line-height: 1.36;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
+
+  @media (min-width: 767px) {
+    font-size: 24px;
+    margin-bottom: 60px;
+  }
 `;
 
 export const StyledButton = styled.button`
@@ -41,6 +49,7 @@ export const StyledButton = styled.button`
   background-color: ${buttonsHoverBg};
   border-radius: 40px;
   border: transparent;
+  width: 250px;
   cursor: pointer;
 
   transition: all 0.5s ease;

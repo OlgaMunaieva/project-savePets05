@@ -2,8 +2,7 @@ import { useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 import { ModalWindow, ModalContent, ExitButton } from './Modal.styled';
-
-import CrossIcon from '../../images/icons/CrossIcon.svg';
+import { motion } from 'framer-motion';
 
 const modalRoot = document.body;
 
@@ -16,21 +15,33 @@ const Modal = ({ closeModal, isOpenedModal, children, width, padding }) => {
     [closeModal]
   );
 
+  // useEffect(() => {
+  //   if (isOpenedModal) {
+  //     const scrollY = window.scrollY;
+  //     document.body.style.position = 'fixed';
+  //     document.body.style.top = `-${scrollY}px`;
+  //   }
+
+  //   return () => {
+  //     window.removeEventListener('keydown', toggleModal);
+  //     const scrollY = parseInt(document.body.style.top || '0', 10);
+  //     document.body.style.position = '';
+  //     document.body.style.top = '';
+  //     window.scrollTo(0, -scrollY);
+  //   };
+  // }, [isOpenedModal, toggleModal]);
+
   useEffect(() => {
-    if (isOpenedModal) {
-      const scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-    }
+    const handleBodyScroll = () => {
+      document.body.style.overflow = isOpenedModal ? 'hidden' : 'auto';
+    };
+
+    handleBodyScroll();
 
     return () => {
-      window.removeEventListener('keydown', toggleModal);
-      const scrollY = parseInt(document.body.style.top || '0', 10);
-      document.body.style.position = '';
-      document.body.style.top = '';
-      window.scrollTo(0, -scrollY);
+      document.body.style.overflow = 'auto';
     };
-  }, [isOpenedModal, toggleModal]);
+  }, [isOpenedModal]);
 
   useEffect(() => {
     const handleKeyDown = e => toggleModal(e);
@@ -47,14 +58,19 @@ const Modal = ({ closeModal, isOpenedModal, children, width, padding }) => {
   };
 
   return createPortal(
-    <ModalWindow onClick={onClickOverlay}>
-      <ModalContent style={{ width: width, padding: padding }}>
-        <ExitButton onClick={() => closeModal()}>
-          <img src={CrossIcon} alt="Cross" width={24} height={24} />
-        </ExitButton>
-        {children}
-      </ModalContent>
-    </ModalWindow>,
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <ModalWindow onClick={onClickOverlay}>
+        <ModalContent style={{ width: width, padding: padding }}>
+          <ExitButton onClick={() => closeModal()} />
+          {children}
+        </ModalContent>
+      </ModalWindow>
+    </motion.div>,
     modalRoot
   );
 };
