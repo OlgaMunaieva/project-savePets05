@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 const StyledList= styled.ul`
-    margin-top: 82px ;
+    padding: 80px 0 ;
     display:flex;
     gap:31px;
     flex-wrap:wrap;

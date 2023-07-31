@@ -1,6 +1,11 @@
 import { styled } from 'styled-components';
 
-const StyledInput = styled.input`
+export const Field = styled.div`
+  position: relative;
+  display:inline;
+`;
+
+export const StyledInput = styled.input`
   width: 608px;
   height: 44px;
   border-radius: 20px;
@@ -21,4 +26,4 @@ const StyledInput = styled.input`
   }
 `;
 
-export default StyledInput;
+
