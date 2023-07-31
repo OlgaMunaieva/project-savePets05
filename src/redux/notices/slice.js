@@ -4,6 +4,8 @@ import {
   fetchByCategory,
   putFavorite,
   fetchFavorite,
+  fetchMyPets,
+  delMyPetsById,
 } from './operations';
 
 const noticesSlice = createSlice({
@@ -68,6 +70,34 @@ const noticesSlice = createSlice({
         state.items[index].favorite = payload.favorite;
       })
       .addCase(putFavorite.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      // fetch fetchMyPets
+      .addCase(fetchMyPets.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchMyPets.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.items = payload;
+      })
+      .addCase(fetchMyPets.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      // put delMyPetsById
+      .addCase(delMyPetsById.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(delMyPetsById.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        // const index = state.items.findIndex(notice => notice.id === payload.id);
+        // console.log(index.myads.notice.id);
+        // state.items[index].myads = payload.myads;
+        state.items = payload;
+      })
+      .addCase(delMyPetsById.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });

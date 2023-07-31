@@ -3,7 +3,7 @@ import NoticesCategoryItem from '../noticeCategoryItem/NoticeCategoryItem';
 import React from 'react';
 import { Container, List, Notification } from './NoticesCategoriesList.styled';
 
-const NoticesCategoriesList = ({ pets, locationCategory }) => {
+const NoticesCategoriesList = ({ pets }) => {
   return (
     <Container>
       {pets.length === 0 ? (
@@ -21,6 +21,7 @@ const NoticesCategoriesList = ({ pets, locationCategory }) => {
               location,
               title,
               favorite,
+              owner,
               photoUrl,
             }) => {
               return (
@@ -33,6 +34,7 @@ const NoticesCategoriesList = ({ pets, locationCategory }) => {
                   location={location}
                   title={title}
                   favorite={favorite}
+                  owner={owner}
                   photoUrl={photoUrl}
                 />
               );

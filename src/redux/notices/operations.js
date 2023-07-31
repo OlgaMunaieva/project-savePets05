@@ -76,15 +76,25 @@ export const putFavorite = createAsyncThunk(
     }
   }
 );
-
-export const removeNoticeFavorite = createAsyncThunk(
-  'notices/removeNoticeFavorite',
-
+export const fetchMyPets = createAsyncThunk(
+  'notices/fetchMyPets',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get(`/api/notices/myads`);
+      return response.data.notice;
+    } catch (error) {
+      toast.error(error.message);
+      return thunkAPI.rejectWithValue('');
+    }
+  }
+);
+export const delMyPetsById = createAsyncThunk(
+  'notices/delMyPetsById',
   async (id, thunkAPI) => {
     try {
-      const { data } = await axios.delete(`api/notices/favorite/${id}`);
-
-      return data.result;
+      const response = await axios.delete(`/api/notices/myads/${id}`);
+      // console.log('myads', response);
+      return response.data.notice;
     } catch (error) {
       toast.error(error.message);
       return thunkAPI.rejectWithValue('');
