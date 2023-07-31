@@ -2,7 +2,6 @@ import { styled } from 'styled-components';
 
 export const Field = styled.div`
   position: relative;
-  display:inline;
 `;
 
 export const StyledInput = styled.input`
@@ -20,10 +19,19 @@ export const StyledInput = styled.input`
   letter-spacing: 0.04em;
   text-align: left;
 
+  line-height: 1.15;
+  padding: 11px 12px;
+  padding-left: 42px;
+
+  color: #888;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.8px;
   display: flex;
   &:focus {
     border: 0;
   }
 `;
-
-
