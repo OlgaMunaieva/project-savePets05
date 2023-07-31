@@ -3,9 +3,11 @@ import variables from 'settings/variables';
 
 export const TitleContainer = styled.div`
   margin-top: 40px;
+  margin-bottom: 24px;
 
   ${variables.breakPoints.tablet} {
     margin-top: 80px;
+    margin-bottom: 40px;
   }
 `;
 
