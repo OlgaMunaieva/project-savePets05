@@ -26,7 +26,7 @@ const NoticesPage = () => {
   // const [limit, setLimit] = useState(12);
   const limit = 12;
   const [page, setPage] = useState(0);
-
+  const [title, setTitle] = useState('');
   const navigate = useNavigate(); // для кнопки add pet
 
   // для кнопки add pet
@@ -44,6 +44,12 @@ const NoticesPage = () => {
   //   }
   // };
 
+  const handlerQvery = qvery => {
+    setTitle(qvery);
+  };
+  const handlerCleanQvery = () => {
+    setTitle('');
+  };
   const locationCategory = params.categoryName;
   useEffect(() => {
     // resizeHandler(width);
@@ -53,6 +59,7 @@ const NoticesPage = () => {
           category: locationCategory,
           limit: limit,
           page: page + 1,
+          title: title,
         })
       );
     }
@@ -62,7 +69,7 @@ const NoticesPage = () => {
     if (locationCategory === 'own') {
       dispatch(fetchMyPets({ limit: limit }));
     }
-  }, [dispatch, locationCategory, limit, page]);
+  }, [dispatch, locationCategory, limit, page, title]);
 
   const handlePageClick = ({ selected }) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -71,7 +78,7 @@ const NoticesPage = () => {
   return (
     <>
       <TitlePage children={'Find your favorite pet'} />
-      <NoticesSearch />
+      <NoticesSearch clean={handlerCleanQvery} setQvery={handlerQvery} />
       <NoticesCategoriesNav />
       <NoticesCategoriesList
         pets={notices}
