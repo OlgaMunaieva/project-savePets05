@@ -92,8 +92,8 @@ export const delMyPetsById = createAsyncThunk(
   'notices/delMyPetsById',
   async (id, thunkAPI) => {
     try {
-      const response = await axios.delete(`/api/notices/myads/${id}`);
-      // console.log('myads', response);
+      const response = await axios.delete(`/api/notices/${id}`);
+      console.log('myads', response);
       return response.data.notice;
     } catch (error) {
       toast.error(error.message);
