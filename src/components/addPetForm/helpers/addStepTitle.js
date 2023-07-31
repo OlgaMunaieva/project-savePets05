@@ -1,6 +1,6 @@
 import { StepTitle } from '../AddPetForm.styled';
 
-const AddStepTitle = ({ adType }) => {
+const AddStepTitle = ({ adType, step }) => {
   let title = 'Add pet';
 
   if (adType === 'sell') {
@@ -11,7 +11,11 @@ const AddStepTitle = ({ adType }) => {
     title = 'Add pet for good hands';
   }
 
-  return <StepTitle>{title}</StepTitle>;
+  return (
+    <StepTitle adType={adType} step={step}>
+      {title}
+    </StepTitle>
+  );
 };
 
 export default AddStepTitle;

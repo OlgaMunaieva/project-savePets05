@@ -1,6 +1,7 @@
 import axios from 'axios';
 const sendData = async formData => {
   try {
+    // /api/pet
     const response = await axios.post(
       'https://project-savepets05-be.onrender.com/api/notices',
       formData,

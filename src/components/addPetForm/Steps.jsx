@@ -9,7 +9,9 @@ import {
   Step2Container,
   Step2Label,
   InputBlock,
-  FlexContainer,
+  Flex3Container,
+  Step3Label,
+  UploadImg,
 } from './AddPetForm.styled';
 
 const Step1 = ({ handleChange, setAdType, values }) => (
@@ -132,7 +134,7 @@ const Step2 = ({
   </Step2Container>
 );
 
-const Step3 = ({ handleChange, petImage, comments }) => {
+const Step3 = ({ handleChange, petImage, adType, step }) => {
   const [selectedImage, setSelectedImage] = useState(petImage || null);
   const fileInputRef = useRef(null);
   const handleIconClick = () => {
@@ -154,13 +156,15 @@ const Step3 = ({ handleChange, petImage, comments }) => {
   };
   return (
     <InputBlock style={{ marginBottom: '16px' }}>
-      <FlexContainer style={{ gap: '14px' }}>
-        <Step2Label
-          style={{ cursor: 'pointer', width: '81px' }}
+      <Flex3Container adType={adType} step={step}>
+        <Step3Label
+          adType={adType}
+          step={step}
+          style={{ cursor: 'pointer' }}
           htmlFor="petImage"
         >
           Load the pet's image:
-        </Step2Label>
+        </Step3Label>
         <input
           type="file"
           id="petImage"
@@ -171,17 +175,15 @@ const Step3 = ({ handleChange, petImage, comments }) => {
           style={{ display: 'none' }}
         />
         <div style={{ position: 'relative' }}>
-          <img
+          <UploadImg
             style={{ borderRadius: '20px', cursor: 'pointer' }}
             src={uploadImg}
             alt="upload"
-            width={112}
-            height={112}
             onClick={handleIconClick}
           />
 
           {selectedImage && (
-            <img
+            <UploadImg
               src={URL.createObjectURL(selectedImage)}
               onClick={handleIconClick}
               alt="Selected Pet"
@@ -190,15 +192,13 @@ const Step3 = ({ handleChange, petImage, comments }) => {
                 position: 'absolute',
                 top: 0,
                 left: 0,
-                width: 112,
-                height: 112,
                 objectFit: 'cover',
                 cursor: 'pointer',
               }}
             />
           )}
         </div>
-      </FlexContainer>
+      </Flex3Container>
       <ErrorMessageText component="label" name="petImage" />
     </InputBlock>
   );
