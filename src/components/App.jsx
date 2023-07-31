@@ -7,20 +7,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/auth/authSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
 
-import NewsPage from 'pages/NewsPage';
+// import NewsPage from 'pages/NewsPage';
 
 // import AddPet from './addPetForm/AddPetForm';
 
 // AddPetForm-bugfix
 //import PetModal from './petModal/PetModal';
-//import AddPetPage from 'pages/AddPetPage';
 //import ModalApproveAction from 'pages/ModalApproveAction';
-//import NewsPage from 'pages/NewsPage';
 
-
-// import NoticeModal from './notice/noticeModal/NoticeModal';
 // import ModalApproveAction from 'pages/ModalApproveAction';
-// import NewsPage from 'pages/NewsPage';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
@@ -87,13 +82,9 @@ const App = () => {
           </Route>
           <Route path="/friends" element={<OurFriendsPage />} />
           <Route path="/add-pet" element={<AddPetPage />} />
+          {/* <Route path="/news" element={<NewsPage />} /> */}
           <Route path="*" element={<ErrorPage />} />
         </Route>
-
-//         <Route path="*" element={<NotFound />} />
-        <Route path='/news' element={<NewsPage/>} />
-
-
       </Routes>
       // <div>
       //   {/* <ModalApproveAction /> */}
