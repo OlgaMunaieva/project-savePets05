@@ -7,7 +7,7 @@ import { Toaster } from 'react-hot-toast';
 
 const SharedLayout = () => {
   const location = useLocation();
-  console.log(location.pathname);
+  // console.log(location.pathname);
   const ContainerToRender =
     location.pathname === '/notices/sell' ||
     location.pathname === '/notices' ||
