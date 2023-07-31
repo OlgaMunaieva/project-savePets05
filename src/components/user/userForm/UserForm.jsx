@@ -1,8 +1,9 @@
-// import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Formik } from 'formik';
 import { getValidationSchema } from './utils/SchemaValidateUserForm';
-import { useState, useRef } from 'react';
 
+import { useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { addUserAvatar, addUserInformation } from 'redux/user/operations';
 import Button from '../Button/Button';
 import variables from 'settings/variables';
 import spriteImage from '../../../images/sprite.svg';
@@ -20,19 +21,31 @@ import {
   ContainerButtonsUpload,
   StyledErrorMessage,
   ErrorMessageContainer,
+  UserAvatarThumb,
+  StyledErrorImg,
 } from './UserForm.styled';
 
 // const yearNow = new Date().getFullYear();
 // console.log(yearNow);
 
-export default function UserForm({ userInfo, isFormDisabled }) {
+export default function UserForm({ user, isFormDisabled, closeModal }) {
+  const {
+    userInfo: { name, email, birthday, phone, city },
+    avatar: avatarURL,
+  } = user;
   const imgRef = useRef(null);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
-  const [imgUrl, setImgUrl] = useState(null);
+  const [imgUrl, setImgUrl] = useState(avatarURL);
   const [isAvatarUpdated, setIsAvatarUpdated] = useState(false);
+  const [errorImg, setErrorImg] = useState('');
 
-  const { name, email, birthday, phone, city, avatarURL } = userInfo;
+  // console.log('useeer', user.userInfo);
+  // console.log('avatar', user.avatar);
+
+  // console.log('🚀 ~ name:', name);
+  // console.log('🚀 ~   avatarURL:', avatarURL);
   // console.log('🚀 ~ birthday:', birthday);
+  const dispatch = useDispatch();
 
   const isBirthdayValid = value => {
     if (value === 'Invalid date') {
@@ -42,64 +55,80 @@ export default function UserForm({ userInfo, isFormDisabled }) {
     return value;
   };
 
+  // useEffect(() => {
+  //   console.log('effect');
+  //   setNameForm(name);
+  // }, [imgUrl, name, email, birthday, phone, city]);
+
   // console.log('🚀 ~ birthday:', isBirthdayValid(birthday));
   // console.log('🚀 ~ userInfo:', userInfo);
   // console.log('🚀 ~ isFormDisabled :', isFormDisabled);
 
   // console.log('🚀 ~ disabled :', isFormDisabled);
   // console.log('🚀 ~ isAvatarUpdated:', isAvatarUpdated);
+  // console.log('🚀 ~ isOpenedModal:', closeModal);
 
   const validationSchema = getValidationSchema();
 
   const initialValues = {
     name: name ?? '',
     email: email ?? '',
-    // birthday: isBirthdayValid(birthday) ?? '',
+    birthday: isBirthdayValid(birthday) ?? '',
     phone: phone ?? '',
     city: city ?? '',
     file: '',
-  };
-
-  // console.log('initialValues', initialValues);
-
-  // const closeModal = () => {
-  //   setIsFormDisabled(true);
-  // };
-
-  const handleAvatarPreview = event => {
-    setSelectedAvatar(event.target.files[0]);
-    setImgUrl(URL.createObjectURL(event.target.files[0]));
-    setIsAvatarUpdated(true);
   };
 
   const handleAvatarPick = event => {
     imgRef.current.click();
   };
 
-  const handleAvatarUpload = async () => {
+  const handleAvatarPreview = event => {
+    setErrorImg('');
+    console.log('handleavatar');
+    console.log('aaa', event.target.files[0]);
+    setSelectedAvatar(event.target.files[0]);
+    setImgUrl(URL.createObjectURL(event.target.files[0]));
+    setIsAvatarUpdated(true);
+  };
+
+  const handleAvatarUpload = () => {
     // zagruzka na server
     if (!selectedAvatar) {
       alert('Please select a file!');
       return;
     }
-    const formData = new FormData();
-    formData.append('file', selectedAvatar);
-    // 'file' nazvanie na backend
-    // const response = await fetch(hostUrl, { method:'POST', body:formData});
-    // const data = await response.json();
-    for (const entry of formData.entries()) {
-      console.log(entry);
+
+    if (selectedAvatar.size > 3145728) {
+      setErrorImg('Image is too big please select image below 3 MB');
+    } else {
+      dispatch(addUserAvatar(selectedAvatar));
     }
     setIsAvatarUpdated(false);
   };
 
   const cancelAvatarUpload = () => {
+    // setImgUrl(UserDefaultAvatar);
     setImgUrl('');
+
+    // const file = new File([img_11], 'defaultImg', {
+    //   type: 'image/jpeg',
+    // });
+
+    // dispatch(file);
+
+    // console.log('blob', file);
+    // dispatch(addUserAvatar(file));
+    setIsAvatarUpdated(false);
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log('values', values);
-    resetForm();
+    const { name, email, birthday, phone, city } = values;
+    dispatch(addUserInformation({ name, email, birthday, phone, city }));
+    // updateProps();
+    closeModal();
+
+    // resetForm();
   };
 
   return (
@@ -109,16 +138,17 @@ export default function UserForm({ userInfo, isFormDisabled }) {
       onSubmit={handleSubmit}
     >
       <StyledForm autoComplete="off">
-        <p>{avatarURL}</p>
+        <UserAvatarThumb>
+          <UserAvatar
+            src={!imgUrl ? UserDefaultAvatar : imgUrl}
+            width="182"
+            height="182"
+            alt="User avatar"
+            loading="lazy"
+          />
+        </UserAvatarThumb>
 
-        <UserAvatar
-          src={!imgUrl ? UserDefaultAvatar : imgUrl}
-          width="182"
-          height="182"
-          alt="User avatar"
-          // onClick={handleAvatarPick}
-          loading="lazy"
-        />
+        {errorImg && <StyledErrorImg> {errorImg}</StyledErrorImg>}
 
         {isFormDisabled ? (
           <div style={{ height: '54px' }}></div>
@@ -164,6 +194,7 @@ export default function UserForm({ userInfo, isFormDisabled }) {
           accept="image/jpeg, image/jpg, image/png"
           onChange={handleAvatarPreview}
         />
+
         <InputContainer>
           <StyledLabel htmlFor="name">Name:</StyledLabel>
           <ErrorMessageContainer>
@@ -180,7 +211,7 @@ export default function UserForm({ userInfo, isFormDisabled }) {
           </ErrorMessageContainer>
         </InputContainer>
 
-        {!isFormDisabled && !isBirthdayValid(birthday) && (
+        {!isBirthdayValid(birthday) && isFormDisabled ? null : (
           <InputContainer>
             <StyledLabel htmlFor="birthday">Birthday:</StyledLabel>
             <ErrorMessageContainer>
@@ -195,7 +226,7 @@ export default function UserForm({ userInfo, isFormDisabled }) {
           </InputContainer>
         )}
 
-        {!isFormDisabled && !phone && (
+        {!phone && isFormDisabled ? null : (
           <InputContainer>
             <StyledLabel htmlFor="phone">Phone:</StyledLabel>
             <ErrorMessageContainer>
@@ -210,7 +241,7 @@ export default function UserForm({ userInfo, isFormDisabled }) {
           </InputContainer>
         )}
 
-        {!isFormDisabled && !city && (
+        {!city && isFormDisabled ? null : (
           <InputContainer>
             <StyledLabel htmlFor="city">City:</StyledLabel>
             <ErrorMessageContainer>
@@ -225,15 +256,17 @@ export default function UserForm({ userInfo, isFormDisabled }) {
           </InputContainer>
         )}
 
-        <Button
-          style={{
-            marginLeft: 'auto',
-            width: '255px',
-          }}
-          type="submit"
-          $content="Save"
-          $darkType
-        />
+        {!isFormDisabled && (
+          <Button
+            style={{
+              marginLeft: 'auto',
+              width: '255px',
+            }}
+            type="submit"
+            $content="Save"
+            $darkType
+          />
+        )}
       </StyledForm>
     </Formik>
   );

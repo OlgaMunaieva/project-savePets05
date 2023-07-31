@@ -1,14 +1,27 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchUserInformation } from './operations';
+import {
+  fetchUserInformation,
+  addUserInformation,
+  addUserAvatar,
+  fetchUserPets,
+} from './operations';
+import { urlModify } from '../../components/user/userForm/utils/UrlModify';
+
+const AVATAR_CLOUDINARY_URL =
+  'https://res.cloudinary.com/dfvviqdic/image/upload/';
 
 const userInitialState = {
-  user: {},
+  user: {
+    userInfo: {},
+    avatar: null,
+    pets: [],
+  },
   isLoading: false,
   error: null,
 };
 
 // const extraActions = [fetchContacts, addContact, deleteContact];
-const extraActions = [fetchUserInformation];
+const extraActions = [fetchUserInformation, addUserInformation, addUserAvatar];
 
 const status = {
   PENDING: 'pending',
@@ -33,19 +46,31 @@ const rejectedReducer = (state, action) => {
 };
 
 const fetchUserSuccessReducer = (state, action) => {
-  state.user = action.payload;
+  // console.log('fetch');
+  const { name, email, birthday, phone, city, avatarURL } = action.payload;
+  state.user.userInfo = { name, email, birthday, phone, city };
+  if (avatarURL) {
+    state.user.avatar = urlModify(AVATAR_CLOUDINARY_URL, avatarURL);
+  } else {
+    state.user.avatar = avatarURL;
+  }
+  // state.user.pets = pets;
+  // state.user = action.payload;
 };
 
-// const addContactSuccessReducer = (state, action) => {
-//   state.items.push(action.payload);
-// };
+const addUserInfoSuccessReducer = (state, action) => {
+  // console.log('Addaction', action.payload);
+  state.user.userInfo = action.payload;
+};
 
-// const deleteContactSuccessReducer = (state, action) => {
-//   const index = state.items.findIndex(
-//     contact => contact.id === action.payload.id
-//   );
-//   state.items.splice(index, 1);
-// };
+const addUserAvatarSuccessReducer = (state, action) => {
+  // console.log('AddAvatar', action.payload);
+  state.user.avatar = action.payload;
+};
+
+const fetchUserPetsSuccessReducer = (state, action) => {
+  state.user.pets = action.payload;
+};
 
 const userSlice = createSlice({
   name: 'user',
@@ -54,8 +79,9 @@ const userSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchUserInformation.fulfilled, fetchUserSuccessReducer)
-      //   .addCase(addContact.fulfilled, addContactSuccessReducer)
-      //   .addCase(deleteContact.fulfilled, deleteContactSuccessReducer)
+      .addCase(addUserInformation.fulfilled, addUserInfoSuccessReducer)
+      .addCase(addUserAvatar.fulfilled, addUserAvatarSuccessReducer)
+      .addCase(fetchUserPets.fulfilled, fetchUserPetsSuccessReducer)
       .addMatcher(getActions(status.PENDING), pendingReducer)
       .addMatcher(getActions(status.REJECTED), rejectedReducer)
       .addMatcher(getActions(status.FULFILLED), fulfilledReducer);

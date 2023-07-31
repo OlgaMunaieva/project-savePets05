@@ -15,17 +15,49 @@ export const fetchUserInformation = createAsyncThunk(
   }
 );
 
-// export const addContact = createAsyncThunk(
-//   'contacts/addContact',
-//   async (data, thunkAPI) => {
-//     try {
-//       const response = await addContactsApi(data);
-//       return response;
-//     } catch (e) {
-//       return thunkAPI.rejectWithValue(e.message);
-//     }
-//   }
-// );
+export const addUserInformation = createAsyncThunk(
+  'user/addUserInfo',
+  async (data, thunkAPI) => {
+    try {
+      console.log('responsedata', data);
+      await axios.patch('/api/users/info', data);
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const addUserAvatar = createAsyncThunk(
+  'user/addUserAvatar',
+  async (data, thunkAPI) => {
+    try {
+      // console.log('aadduseravatar', data);
+      const formData = new FormData();
+      formData.append('avatar', data);
+      const response = await axios.patch('/api/users/avatars', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+
+      return response.data.avatarURL;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const fetchUserPets = createAsyncThunk(
+  'user/fetchPets',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get('/api/pet');
+      console.log('vf', response.data.pet);
+      return response.data.pet;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
 
 // export const deleteContact = createAsyncThunk(
 //   'contacts/deleteContact',

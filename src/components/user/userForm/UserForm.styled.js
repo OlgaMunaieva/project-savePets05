@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import variables from '../../../settings/variables';
 
 const {
-  colors: { cardBgColor, buttonsHoverBg, simpleWhite, accentInputInvalidValue },
-  shadow: { shadowDefault, shadowHover },
+  colors: { buttonsHoverBg, simpleWhite, accentInputInvalidValue },
+  shadow: { shadowHover },
   transition: { transitionShadow },
 } = variables;
 
@@ -13,17 +13,6 @@ export const StyledForm = styled(Form)`
   position: relative;
   display: flex;
   flex-direction: column;
-  /* position: relative;
-  display: flex;
-  flex-direction: column;
-  padding-top: 20px;
-  padding-right: 24px;
-  padding-bottom: 20px;
-  padding-left: 16px;
-  width: 395px;
-  border-radius: 40px;
-  background-color: ${cardBgColor};
-  box-shadow: ${shadowDefault}; */
 `;
 
 export const InputContainer = styled.div`
@@ -57,10 +46,18 @@ export const StyledLabel = styled.label`
   padding: 4px 0px;
   color: ${simpleWhite};
 `;
+
 export const UserAvatar = styled.img`
-  margin: 0 auto 9px auto;
-  max-height: 182px;
+  height: 182px;
+  width: 182px;
   object-fit: cover;
+`;
+
+export const UserAvatarThumb = styled.div`
+  border-radius: 40px;
+  width: 182px;
+  margin: 0 auto 9px auto;
+  overflow: hidden;
 `;
 
 export const ButtonEditPhoto = styled.button`
@@ -136,12 +133,6 @@ export const StyledErrorMessage = styled(ErrorMessage)`
   font-size: 12px;
   padding-left: 5px;
   padding-right: 5px;
-
-  /* max-width: 255px; */
-  /* margin-left: 16px;
-  font-size: 12px;
-  display: block;
-  margin-top: 5px;  */
 `;
 
 export const ErrorMessageContainer = styled.div`
@@ -149,9 +140,14 @@ export const ErrorMessageContainer = styled.div`
   gap: 5px;
   flex-direction: column;
   max-width: 255px;
+`;
 
-  /* margin-left: 16px;
+export const StyledErrorImg = styled.p`
+  color: ${accentInputInvalidValue};
+  font-family: inherit;
   font-size: 12px;
-  display: block;
-  margin-top: 5px;  */
+  line-height: 1.83;
+  letter-spacing: 0.04em;
+  margin-top: 5px;
+  margin: 5px auto;
 `;
