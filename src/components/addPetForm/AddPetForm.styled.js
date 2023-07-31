@@ -1,20 +1,25 @@
 // AddPet.styled.js
 import styled, { css } from 'styled-components';
 import { ErrorMessage, Field } from 'formik';
+
 export const containerStyles = css`
   display: flex;
   flex-direction: column;
   max-width: 280px;
-  margin: 0 auto;
+  margin-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 20px 8px;
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
   border-radius: 40px;
   background: var(--unnamed, #fff);
   @media (min-width: 767px) {
     max-width: 458px;
+    margin-top: 48px;
   }
   @media (min-width: 1279px) {
     max-width: 458px;
+    margin-top: 48px;
   }
 `;
 export const Container = styled.div`
@@ -68,6 +73,10 @@ export const BackButton = styled.button`
   font-weight: 700;
   line-height: normal;
   letter-spacing: 0.64px;
+  &:hover {
+    box-shadow: 7px 13px 14px 0px #74b1e83d;
+    transition: box-shadow 0.25s ease-in-out;
+  }
 `;
 
 export const NextButton = styled.button`
@@ -93,6 +102,10 @@ export const NextButton = styled.button`
   letter-spacing: 0.64px;
   img {
     filter: brightness(0) invert(1);
+  }
+  &:hover {
+    box-shadow: 7px 13px 14px 0px #74b1e83d;
+    transition: box-shadow 0.25s ease-in-out;
   }
 `;
 
@@ -247,10 +260,17 @@ export const RadioLabel = styled.label`
     padding: 8px 16px;
     border-radius: 40px;
     background-color: #cce4fb;
+    &:hover {
+      box-shadow: 7px 7px 8px 0px #74b1e83d;
+      transition: box-shadow 0.25s ease-in-out;
+    }
   }
   input[type='radio']:checked + span {
     color: #fef9f9;
     background-color: #54adff;
+    &: hover {
+      box-shadow: 0px 0px 0px 0px #74b1e83d;
+    }
   }
 `;
 
@@ -259,10 +279,17 @@ export const RadioLabelSex = styled.label`
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height:24px
+  line-height: 24px;
   letter-spacing: 0.64px;
   input[type='radio'] {
     display: none;
+    &:checked + span {
+      color: #fef9f9;
+      background-color: #54adff;
+    }
+    &:checked + span img {
+      filter: brightness(0) invert(1); /* Застосовуємо інверсію кольорів */
+    }
   }
   span {
     color: #888;
@@ -272,18 +299,14 @@ export const RadioLabelSex = styled.label`
     &:hover {
       color: #fef9f9;
       background-color: #54adff;
+      transition: background-color 0.25s ease-in-out;
     }
-    &:active {
-      color: #fef9f9;
-      background-color: #54adff;
+    &:hover img {
+      filter: brightness(0) invert(1);
+      transition: filter 0.25s ease-in-out;
     }
   }
   cursor: pointer;
-  input[type='radio']:checked + span {
-    color: #fef9f9;
-    background-color: #54adff;
-  }
-  
 `;
 
 export const Input = styled(Field)`
@@ -467,6 +490,7 @@ export const InputBlock = styled.div`
 
 export const InputBlockTitle = styled.div`
   position: relative;
+  margin-bottom: 20px;
   @media (min-width: 767px) {
     margin-left: 25px;
   }
@@ -478,6 +502,7 @@ export const InputBlockTitle = styled.div`
 export const flexContainerStyles = css`
   display: flex;
   align-items: center;
+  gap: 5px;
 `;
 
 export const FlexContainer = styled.div`
@@ -579,4 +604,8 @@ export const Flex2Container = styled.div`
     flex-direction: row;
     justify-content: center;
   }
+`;
+
+export const SexSpan = styled.span`
+  display: flex;
 `;
