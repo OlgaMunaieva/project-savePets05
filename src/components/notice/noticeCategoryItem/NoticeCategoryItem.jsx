@@ -29,6 +29,7 @@ import {
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import ModalNotice from '../modalNotice/ModalNotice';
+import { ModalConfirmDelete } from '../ModalDelMyPet/ModalDelMyPet';
 // import { ModalConfirmDelete } from '../ModalDelMyPet/ModalDelMyPet';
 const BaseUrlImg = 'https://res.cloudinary.com/dfvviqdic/image/upload/';
 
@@ -157,13 +158,15 @@ const NoticesCategoryItem = ({
               onClose={handleCloseModal}
               data={{ photoUrl, category, title, sex, cardId }}
             />
-            // <ModalConfirmDelete
-            //   closeModal={handleCloseModal}
-            //   name={title}
-            //   handleDelete={handleDelete}
-            // />
           )}
         </TitleWrapper>
+        {false && (
+          <ModalConfirmDelete
+            closeModal={handleCloseModal}
+            name={title}
+            handleDelete={handleDelete}
+          />
+        )}
       </Item>
     </>
   );
