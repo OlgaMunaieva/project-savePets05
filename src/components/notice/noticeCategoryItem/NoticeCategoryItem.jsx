@@ -24,13 +24,13 @@ import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import {
   delMyPetsById,
   fetchFavorite,
+  fetchMyPets,
   putFavorite,
 } from 'redux/notices/operations';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import ModalNotice from '../modalNotice/ModalNotice';
 import { ModalConfirmDelete } from '../ModalDelMyPet/ModalDelMyPet';
-// import { ModalConfirmDelete } from '../ModalDelMyPet/ModalDelMyPet';
 const BaseUrlImg = 'https://res.cloudinary.com/dfvviqdic/image/upload/';
 
 const NoticesCategoryItem = ({
@@ -65,9 +65,9 @@ const NoticesCategoryItem = ({
   };
 
   const handleDelete = () => {
-    // const debouncedfetchMyPets = debounce(() => {
-    //   dispatch(fetchMyPets());
-    // }, 150);
+    const debouncedFetchMyPets = debounce(() => {
+      dispatch(fetchMyPets());
+    }, 150);
 
     if (!isLoggedIn) {
       toast.error('You need to sign in');
@@ -76,18 +76,19 @@ const NoticesCategoryItem = ({
     dispatch(delMyPetsById(cardId));
 
     if (categoryParam === 'own') {
-      // debouncedfetchMyPets();
+      debouncedFetchMyPets();
     }
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpenDel, setIsModalOpenDel] = useState(false);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
+  const handleModal = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleModalDel = () => {
+    setIsModalOpenDel(!isModalOpenDel);
   };
 
   return (
@@ -110,7 +111,7 @@ const NoticesCategoryItem = ({
                 </Icon>
               </BtnFavorite>
               {owner && categoryParam === 'own' ? (
-                <BtnRemoveMyPet onClick={handleOpenModal}>
+                <BtnRemoveMyPet onClick={handleModalDel}>
                   <Icon width={24} height={24}>
                     <use href={icons + '#trash'}></use>
                   </Icon>
@@ -147,7 +148,7 @@ const NoticesCategoryItem = ({
         </ImgWrapper>
         <TitleWrapper>
           <Title>{title}</Title>
-          <BtnLearn onClick={handleOpenModal}>
+          <BtnLearn onClick={handleModal}>
             Learn More
             <BtnLearnIcon width={24} height={24}>
               <use href={icons + '#pawprint'}></use>
@@ -155,14 +156,14 @@ const NoticesCategoryItem = ({
           </BtnLearn>
           {isModalOpen && (
             <ModalNotice
-              onClose={handleCloseModal}
+              onClose={handleModal}
               data={{ photoUrl, category, title, sex, cardId }}
             />
           )}
         </TitleWrapper>
-        {false && (
+        {isModalOpenDel && (
           <ModalConfirmDelete
-            closeModal={handleCloseModal}
+            closeModal={handleModalDel}
             name={title}
             handleDelete={handleDelete}
           />

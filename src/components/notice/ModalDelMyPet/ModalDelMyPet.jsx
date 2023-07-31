@@ -31,7 +31,6 @@ export const ModalConfirmDelete = ({
               <span>Cancel</span>
             </CancelBtn>
             <DelBtn
-              // onClick={handleDelete}
               onClick={() => {
                 handleDelete();
                 closeModal();
