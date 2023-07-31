@@ -15,11 +15,10 @@ import {
 import { ReactComponent as Burger } from '../../../images/icons/menu-hamburger.svg';
 import { ReactComponent as BurgerCross } from '../../../images/icons/cross-small.svg';
 import LogoComponent from '../logo/Logo';
-import AuthBtn from '../buttons/AuthBtn';
-
 import { motion, AnimatePresence } from 'framer-motion';
 import BodyScroll from './BodyScroll';
 import { BackDrope } from './BackDrop.styled';
+import AuthNav from '../navigation/authNav/AuthNav';
 
 const MobMenu = ({ isLogin, size, userName, closeModal }) => {
   const [isOpen, setOpen] = useState(true);
@@ -73,7 +72,7 @@ const MobMenu = ({ isLogin, size, userName, closeModal }) => {
 
                 {size && !isLogin ? (
                   <DivLogin>
-                    <AuthBtn toggle={toggleMenu} />
+                    <AuthNav toggle={toggleMenu} />
                   </DivLogin>
                 ) : null}
                 {size && isLogin ? (
@@ -154,7 +153,6 @@ const MobMenu = ({ isLogin, size, userName, closeModal }) => {
                   <LinksLogoutTab
                     onClick={() => {
                       closeModal();
-                      toggleMenu();
                     }}
                   >
                     Log out
