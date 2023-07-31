@@ -1,14 +1,10 @@
 import axios from 'axios';
-const sendData = async formData => {
+const sendData = async (formData, endpoint) => {
   try {
     // /api/pet
-    const response = await axios.post(
-      'https://project-savepets05-be.onrender.com/api/notices',
-      formData,
-      {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      }
-    );
+    const response = await axios.post(endpoint, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
 
     return response.data;
   } catch (error) {

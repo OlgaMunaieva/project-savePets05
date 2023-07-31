@@ -16,8 +16,8 @@ export default function PetsData() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleNavigate = () => {
-    navigate('/add-pet');
+  const handleNavigate = source => {
+    navigate(`/add-pet?source=${source}`);
   };
 
   useEffect(() => {
@@ -34,6 +34,7 @@ export default function PetsData() {
           // $content="Add Pet"
           // $darkType
           onClick={handleNavigate}
+
         />
       </PetsHeaderContainer>
 

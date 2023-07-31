@@ -30,8 +30,8 @@ const NoticesPage = () => {
   const navigate = useNavigate(); // для кнопки add pet
 
   // для кнопки add pet
-  const handleNavigate = () => {
-    navigate('/add-pet');
+  const handleNavigate = source => {
+    navigate(`/add-pet?source=${source}`);
   };
 
   // const resizeHandler = width => {
@@ -80,7 +80,7 @@ const NoticesPage = () => {
       <Pagination click={handlePageClick} limit={limit} page={page} />
       {width < 768 && (
         <FixedButtonWrapper>
-          <AddPetBtnCircle onClick={handleNavigate} />
+          <AddPetBtnCircle onClick={() => handleNavigate('notices')} />
         </FixedButtonWrapper>
       )}
     </>

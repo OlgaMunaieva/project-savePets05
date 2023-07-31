@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useLocation } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import { Step1, Step2, Step3 } from './Steps';
 import sendData from './helpers/sendData';
@@ -38,6 +38,7 @@ import {
   InputBlockTitle,
   FlexBlock,
   Flex2Container,
+  SexSpan,
 } from './AddPetForm.styled';
 import { InputContainer } from 'components/authForm/AuthForm.styled';
 
@@ -45,6 +46,10 @@ const AddPet = () => {
   const [step, setStep] = useState(1);
   const [adType, setAdType] = useState('');
   const [isTouched, setTouched] = useState(false);
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const source = queryParams.get('source');
 
   const initialValues = {
     adType: '',
@@ -76,23 +81,41 @@ const AddPet = () => {
   const handleSubmit = async values => {
     try {
       const formData = new FormData();
-      formData.append('title', values.addTitle);
-      formData.append('category', values.adType);
-      formData.append('name', values.petName);
-      formData.append('birthday', values.petBirthDate);
-      formData.append('type', values.petType);
-      formData.append('sex', values.petSex);
-      formData.append('location', values.location);
-      formData.append('price', values.price);
-      formData.append('comments', values.comments);
-      formData.append('notice', values.petImage);
-
+      if (
+        adType === 'sell' ||
+        adType === 'inGoodHands' ||
+        adType === 'lostFound'
+      ) {
+        formData.append('title', values.addTitle);
+        formData.append('category', values.adType);
+        formData.append('name', values.petName);
+        formData.append('birthday', values.petBirthDate);
+        formData.append('type', values.petType);
+        formData.append('sex', values.petSex);
+        formData.append('location', values.location);
+        formData.append('price', values.price);
+        formData.append('comments', values.comments);
+        formData.append('notice', values.petImage);
+      } else if (adType === 'yourPet') {
+        formData.append('name', values.petName);
+        formData.append('birthday', values.petBirthDate);
+        formData.append('type', values.petType);
+        formData.append('comments', values.comments);
+        formData.append('pet', values.petImage);
+      }
       console.log([...formData.entries()]);
 
-      await sendData(formData);
+      let endpoint = 'https://project-savepets05-be.onrender.com/api/notices';
+      if (adType === 'yourPet') {
+        endpoint = 'https://project-savepets05-be.onrender.com/api/pet';
+      }
+
+      await sendData(formData, endpoint);
       console.log('Form submitted successfully');
+      console.log(source);
     } catch (error) {
       console.error('Error submitting form:', error.message);
+      console.log(source);
     }
   };
 
@@ -276,13 +299,15 @@ const AddPet = () => {
                                 checked={values.petSex === 'female'}
                                 onChange={handleChange}
                               />{' '}
-                              <img
-                                src={female}
-                                alt="female"
-                                width={24}
-                                height={24}
-                              />
-                              <span>Female</span>
+                              <SexSpan>
+                                <img
+                                  src={female}
+                                  alt="female"
+                                  width={24}
+                                  height={24}
+                                />
+                                Female
+                              </SexSpan>
                             </FlexContainer>
                           </RadioLabelSex>
                           <ErrorMessageText component="label" name="petSex" />
@@ -295,13 +320,15 @@ const AddPet = () => {
                                 checked={values.petSex === 'male'}
                                 onChange={handleChange}
                               />{' '}
-                              <img
-                                src={male}
-                                alt="male"
-                                width={24}
-                                height={24}
-                              />
-                              <span>Male</span>
+                              <SexSpan>
+                                <img
+                                  src={male}
+                                  alt="male"
+                                  width={24}
+                                  height={24}
+                                />
+                                Male
+                              </SexSpan>
                             </FlexContainer>
                           </RadioLabelSex>
                         </FlexContainer>
