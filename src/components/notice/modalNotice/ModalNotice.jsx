@@ -28,6 +28,10 @@ import {
   Status,
   StatusText,
 } from '../noticeCategoryItem/NoticeCategoryItem.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsNoticeLoading, selectNotices } from 'redux/notices/selectors';
+import { fetchById } from 'redux/notices/operations';
+import { CircleLoader } from 'react-spinners';
 
 const BaseUrlImg = 'https://res.cloudinary.com/dfvviqdic/image/upload/';
 
@@ -36,6 +40,15 @@ const modalRoot = document.body;
 const ModalNotice = ({ onClose, isOpenedModal, data, children }) => {
   const { photoUrl, category, title, sex, location, cardId } = data;
   console.log(cardId);
+
+  const dispatch = useDispatch();
+  const notice = useSelector(selectNotices);
+  const isLoading = useSelector(selectIsNoticeLoading);
+
+  useEffect(() => {
+    dispatch(fetchById(cardId));
+    console.log(notice);
+  }, [cardId, notice, dispatch]);
 
   const toggleModal = useCallback(
     e => {
@@ -70,6 +83,7 @@ const ModalNotice = ({ onClose, isOpenedModal, data, children }) => {
   return createPortal(
     <ModalWindow onClick={onClickOverlay}>
       <ModalContent>
+        {isLoading && <CircleLoader/>}
         <ExitButton onClick={() => onClose()}>
           <img src={CrossIcon} alt="Cross" width={24} height={24} />
         </ExitButton>
