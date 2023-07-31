@@ -8,27 +8,22 @@ import variables from 'settings/variables';
 export const MobMenus = styled.div`
   position: absolute;
   z-index: 20;
-  @media screen and (max-width: 766px) {
-    padding: 22px 20px;
-  }
-
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  padding: 24px 32px;
   background-color: #fdf7f2;
 `;
 
 export const BtnWrapper = styled.div`
   position: absolute;
   @media screen and (max-width: 766px) {
-    top: 25px;
-    right: 20px;
+    top: 4px;
+    right: 0;
   }
   z-index: 51;
-  top: 32px;
-  right: 32px;
+  top: 9px;
+  right: 0;
   transition: all 0.25s ease-in-out;
   &:hover,
   &:focus {
@@ -40,7 +35,7 @@ export const LinksLogoutTab = styled(Link)`
 
 position: absolute;
 @media screen and (min-width: 767px) {
-top:25px;
+top:2px;
 right:80px;
 
 
@@ -59,8 +54,10 @@ line-height: 22px;
 letter-spacing: 0.04em;
 transition: all 0.25s ease-in-out;
 @media screen and (max-width: 766px) {
-bottom: 20px;
-left: 20px;}
+  position: absolute;
+bottom: 40px;
+left: 0;
+}
   &:hover,
   &:focus {
     background-color: ${colors.colors.buttonsGr};
