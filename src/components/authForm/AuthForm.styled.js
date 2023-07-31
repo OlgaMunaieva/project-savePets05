@@ -167,7 +167,7 @@ export const StyledIconClear = styled(IoClose)`
   width: 24px;
   height: 24px;
   right: 16px;
-  top: 8px;
+  top: 12px;
   color: ${accentInputInvalidValue};
   cursor: pointer;
   margin-right: 30px;
@@ -189,7 +189,7 @@ export const StyledIconCheck = styled(BsCheckLg)`
   width: 24px;
   height: 24px;
   right: 16px;
-  top: 8px;
+  top: 12px;
   color: ${accentAddPetCard};
   margin-right: 30px;
 
@@ -210,7 +210,7 @@ export const StyledError = styled(ErrorMessage)`
 export const StyledIconEye = styled(AiOutlineEyeInvisible)`
   position: absolute;
   right: 16px;
-  top: 8px;
+  top: 12px;
   width: 24px;
   height: 24px;
   cursor: pointer;
@@ -228,7 +228,7 @@ export const StyledIconEye = styled(AiOutlineEyeInvisible)`
 export const StyledIconEyeOpen = styled(AiOutlineEye)`
   position: absolute;
   right: 16px;
-  top: 8px;
+  top: 12px;
   width: 24px;
   height: 24px;
   cursor: pointer;
