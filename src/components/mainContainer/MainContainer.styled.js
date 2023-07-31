@@ -25,22 +25,24 @@ import pawprintMobile8 from '../../images/pawprint/pawprint-mobile-8.png';
 import pawprintTablet8 from '../../images/pawprint/pawprint-tablet-8.png';
 
 const MainContainer = styled.div`
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
   margin: 0 auto;
-  max-width: 320px;
+  min-width: 320px;
+  padding: 20px 20px;
+
+  ${variables.breakPoints.mobile} {
+    width: 480px;
+  }
   ${variables.breakPoints.tablet} {
     padding-top: 24px;
     padding-left: 32px;
     padding-right: 32px;
-    max-width: 768px;
+    width: 768px;
   }
   ${variables.breakPoints.desktop} {
     padding-top: 20px;
     padding-left: 16px;
     padding-right: 16px;
-    max-width: 1280px;
+    width: 1280px;
   }
 `;
 
