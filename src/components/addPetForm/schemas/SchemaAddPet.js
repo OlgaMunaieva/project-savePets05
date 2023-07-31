@@ -20,7 +20,8 @@ const yourPetSchema = Yup.object().shape({
     .trim()
     .required('Required')
     .matches(
-      /^(0[1-9]|1\d|2\d|3[01])\-(0[1-9]|1[0-2])\-(19[0-9]\d|20[0-9]\d)$/,
+      // /^(0[1-9]|1\d|2\d|3[01])\-(0[1-9]|1[0-2])\-(19[0-9]\d|20[0-9]\d)$/,
+      /^(0[1-9]|1\d|2\d|3[01])-(0[1-9]|1[0-2])-(19[0-9]{2}|20[0-9]{2})$/,
       'Date of Birth must be in the format DD-MM-YYYY'
     ),
   petType: Yup.string()
@@ -62,7 +63,8 @@ const sellSchema = Yup.object().shape({
     .trim()
     .required('Required')
     .matches(
-      /^(0[1-9]|1\d|2\d|3[01])\-(0[1-9]|1[0-2])\-(19[0-9]\d|20[0-9]\d)$/,
+      // /^(0[1-9]|1\d|2\d|3[01])\-(0[1-9]|1[0-2])\-(19[0-9]\d|20[0-9]\d)$/,
+      /^(0[1-9]|1\d|2\d|3[01])-(0[1-9]|1[0-2])-(19[0-9]{2}|20[0-9]{2})$/,
       'Date of Birth must be in the format DD-MM-YYYY'
     ),
   petType: Yup.string()
@@ -119,7 +121,8 @@ const lostFoundSchema = Yup.object().shape({
     .trim()
     .required('Required')
     .matches(
-      /^(0[1-9]|1\d|2\d|3[01])\-(0[1-9]|1[0-2])\-(19[0-9]\d|20[0-9]\d)$/,
+      // /^(0[1-9]|1\d|2\d|3[01])\-(0[1-9]|1[0-2])\-(19[0-9]\d|20[0-9]\d)$/,
+      /^(0[1-9]|1\d|2\d|3[01])-(0[1-9]|1[0-2])-(19[0-9]{2}|20[0-9]{2})$/,
       'Date of Birth must be in the format DD-MM-YYYY'
     ),
   petType: Yup.string()
