@@ -6,11 +6,21 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 28px;
   font-family: Manrope, sans-serif;
+
+  @media (max-width: 768px) {
+    width: 240px;
+    max-height: 476px;
+    overflow: scroll;
+  }
 `;
 
 export const PetMainWrapper = styled.div`
   display: flex;
   gap: 24px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -18,12 +28,19 @@ export const ImageWrapper = styled.div`
   width: 262px;
   height: 298px;
   flex-shrink: 0;
+
+
+  @media (max-width: 768px) {
+    width: 240px;
+    height: 240px;
+  }
 `;
 
 export const PetImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top;
   border-radius: 0 0 40px 40px;
 `;
 
@@ -36,11 +53,16 @@ export const ImageCaption = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
+
   font-family: Manrope, sans-serif;
   font-weight: 500;
   font-size: 14px;
   background-color: #cce4fb;
   border-radius: 0 50px 50px 0;
+
+  @media (max-width: 768px) {
+    padding: 11px;
+  }
 `;
 
 export const PetDetailsWrapper = styled.div`
@@ -49,7 +71,11 @@ export const PetDetailsWrapper = styled.div`
   flex-direction: column;
   gap: 20px;
   height: 298px;
-  width: 239px;
+
+  @media (max-width: 768px) {
+    max-width: 225px;
+    height: 220px;
+  }
 `;
 
 export const PetTitle = styled.p`
@@ -59,9 +85,13 @@ export const PetTitle = styled.p`
   font-size: 28px;
   font-weight: 700;
   word-break: break-word;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
-export const PetСharacteristicsList = styled.ul`
+export const PetCharacteristicsList = styled.ul`
   padding: 0;
   width: 100%;
   display: flex;
@@ -75,28 +105,40 @@ export const CharacteristicItem = styled.li`
   grid-template-columns: 1fr 1fr;
 `;
 
-export const PetСharacteristicsProperty = styled.span`
+export const PetCharacteristicsProperty = styled.span`
   color: #000;
   font-family: inherit;
   font-size: 16px;
   font-weight: 600;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
-export const PetСharacteristicsValue = styled.p`
+export const PetCharacteristicsValue = styled.p`
   margin: 0;
   color: #000;
   font-family: inherit;
   font-size: 16px;
   font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
-export const PetСharacteristicsValueLink = styled.a`
+export const PetCharacteristicsValueLink = styled.a`
   color: #ffc107;
   font-family: inherit;
   font-size: 16px;
   font-weight: 500;
   text-decoration-line: underline;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export const BottomBlock = styled.div`
@@ -107,10 +149,17 @@ export const BottomBlock = styled.div`
   height: 100%;
   justify-content: space-between;
   align-items: flex-end;
+
+
+  @media (max-width: 768px) {
+    gap: 12px;
+  }
 `;
 
 export const CommentsParagraph = styled.p`
   margin: 0;
+  align-self: start;
+
   color: #000;
   font-family: inherit;
   font-size: 16px;
@@ -118,11 +167,21 @@ export const CommentsParagraph = styled.p`
   line-height: 24px;
   letter-spacing: 0.64px;
   word-break: break-word;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export const ButtonsWrapper = styled.div`
   display: flex;
   gap: 17px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    gap: 8px;
+    flex-direction: column-reverse;
+  }
 `;
 
 export const ModalButton = styled.button`
@@ -139,6 +198,11 @@ export const ModalButton = styled.button`
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.64px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    width: 100%;
+  }
 `;
 
 export const AddToButton = styled(ModalButton)`
@@ -150,6 +214,11 @@ export const StyledHeartIcon = styled.img`
   width: 24px;
   height: 24px;
   margin-left: 8px;
+
+  @media (max-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 export const ContactButton = styled(ModalButton)`

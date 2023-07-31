@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+
 import Modal from '../../modal/Modal';
+
 import HeartIcon from '../../../images/icons/HeartIcon.svg';
 import ImagePet from '../../../images/PetImage.jpg';
 
@@ -18,11 +20,11 @@ import {
   PetMainWrapper,
   PetTitle,
   StyledHeartIcon,
-  PetСharacteristicsList,
-  PetСharacteristicsProperty,
-  PetСharacteristicsValue,
-  PetСharacteristicsValueLink,
-} from './PetModal.styled';
+  PetCharacteristicsList,
+  PetCharacteristicsProperty,
+  PetCharacteristicsValue,
+  PetCharacteristicsValueLink,
+} from './NoticeModal.styled';
 
 const petСharacteristics = [
   'Name',
@@ -46,6 +48,7 @@ const PetModal = ({ closeModal }) => {
   });
   // const petDetailsList = Object.values(petDetails);
   const [petDetailsList, setPetDetailsList] = useState([]);
+
   useEffect(() => {
     setPetDetailsList(Object.values(petData));
   }, [petData]);
@@ -53,12 +56,15 @@ const PetModal = ({ closeModal }) => {
   const fetchPetData = async () => {
     ///
   };
+
   const onClickAddTo = async () => {
     ///
   };
+
   const onClickContact = async () => {
     ///
   };
+
   return (
     <Modal closeModal={() => closeModal()}>
       <Container>
@@ -69,18 +75,18 @@ const PetModal = ({ closeModal }) => {
           </ImageWrapper>
           <PetDetailsWrapper>
             <PetTitle>Сute dog looking for a home</PetTitle>
-            <PetСharacteristicsList>
+            <PetCharacteristicsList>
               {petСharacteristics.map((characteristic, index) => (
                 <CharacteristicItem key={index}>
-                  <PetСharacteristicsProperty>
+                  <PetCharacteristicsProperty>
                     {characteristic}:
-                  </PetСharacteristicsProperty>
+                  </PetCharacteristicsProperty>
                   {characteristic !== 'Email' && characteristic !== 'Phone' ? (
-                    <PetСharacteristicsValue>
+                    <PetCharacteristicsValue>
                       {petDetailsList[index]}
-                    </PetСharacteristicsValue>
+                    </PetCharacteristicsValue>
                   ) : (
-                    <PetСharacteristicsValueLink
+                    <PetCharacteristicsValueLink
                       href={
                         characteristic === 'Email'
                           ? `mailto:${petDetailsList[index]}`
@@ -88,16 +94,16 @@ const PetModal = ({ closeModal }) => {
                       }
                     >
                       {petDetailsList[index]}
-                    </PetСharacteristicsValueLink>
+                    </PetCharacteristicsValueLink>
                   )}
                 </CharacteristicItem>
               ))}
-            </PetСharacteristicsList>
+            </PetCharacteristicsList>
           </PetDetailsWrapper>
         </PetMainWrapper>
         <BottomBlock>
           <CommentsParagraph>
-            <PetСharacteristicsProperty>Comments:</PetСharacteristicsProperty>{' '}
+            <PetCharacteristicsProperty>Comments:</PetCharacteristicsProperty>{' '}
             Rich would be the perfect addition to an active family that loves to
             play and go on walks. I bet he would love having a doggy playmate
             too!

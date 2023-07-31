@@ -12,6 +12,7 @@ const colors = {
   placeHolderColor: '#888888',
   simpleWhite: '#111111',
   cardBgColor: '#ffffff',
+  overlyColor: 'rgba(97, 97, 97, 0.6)',
 };
 
 const shadow = {
@@ -25,9 +26,23 @@ const transition = {
 };
 
 const breakPoints = {
-  mobile: '@media screen and (min-width: 479px)',
+  mobile: '@media screen and (min-width: 480px)',
   tablet: '@media screen and (min-width: 767px)',
-  desktop: '@media screen and (min-width: 1279px)',
+  desktop: '@media screen and (min-width: 1280px)',
+};
+
+const visualHidden = {
+  position: 'absolute',
+  whiteSpace: 'nowrap',
+  width: 1,
+  height: 1,
+  overflow: 'hidden',
+  border: 0,
+  padding: 0,
+  clip: 'rect(0 0 0 0)',
+  WebkitClipPath: 'inset(50%)',
+  clipPath: 'inset(50%)',
+  margin: -1,
 };
 
 const variables = {
@@ -35,6 +50,7 @@ const variables = {
   shadow,
   transition,
   breakPoints,
+  visualHidden,
 };
 
 export default variables;

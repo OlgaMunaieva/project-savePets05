@@ -13,7 +13,10 @@ export const getValidationSchema = isRegisterForm => {
           .matches(/^[A-Z].*/, 'Name must start with an uppercase letter')
       : Yup.string().trim(),
 
-    email: Yup.string().email('Invalid email address').required('Required'),
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Required')
+      .trim(),
     password: Yup.string()
       .test(
         'password',

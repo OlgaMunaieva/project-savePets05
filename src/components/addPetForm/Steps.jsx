@@ -1,91 +1,206 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Field } from 'formik';
-import { ErrorMessageText, Input } from './AddPetForm.styled';
+import uploadImg from 'images/icons/uploadImg.svg';
+import {
+  ErrorMessageText,
+  Input,
+  RadioContainer,
+  RadioLabel,
+  Step2Container,
+  Step2Label,
+  InputBlock,
+  FlexContainer,
+} from './AddPetForm.styled';
 
-const Step1 = ({ handleChange }) => (
-  <div>
-    <label>
+const Step1 = ({ handleChange, setAdType, values }) => (
+  <RadioContainer>
+    <RadioLabel
+      className={values.adType === 'yourPet' ? 'checked' : ''}
+      onClick={() => setAdType('yourPet')}
+    >
       <Field
         type="radio"
         name="adType"
         value="yourPet"
-        onChange={handleChange}
+        checked={values.adType === 'yourPet'}
+        onChange={e => {
+          handleChange(e);
+          setAdType(e.target.value);
+        }}
       />
-      your pet
-    </label>
-    <br />
-    <label>
-      <Field type="radio" name="adType" value="sell" onChange={handleChange} />
-      sell
-    </label>
-    <br />
-    <label>
+      <span>your pet</span>
+    </RadioLabel>
+    <RadioLabel
+      className={values.adType === 'sell' ? 'checked' : ''}
+      onClick={() => setAdType('sell')}
+    >
+      <Field
+        type="radio"
+        name="adType"
+        value="sell"
+        checked={values.adType === 'sell'}
+        onChange={e => {
+          handleChange(e);
+          setAdType(e.target.value);
+        }}
+      />
+      <span>sell</span>
+    </RadioLabel>
+    <RadioLabel
+      className={values.adType === 'lostFound' ? 'checked' : ''}
+      onClick={() => setAdType('lostFound')}
+    >
       <Field
         type="radio"
         name="adType"
         value="lostFound"
-        onChange={handleChange}
+        checked={values.adType === 'lostFound'}
+        onChange={e => {
+          handleChange(e);
+          setAdType(e.target.value);
+        }}
       />
-      lost/found
-    </label>
-    <br />
-    <label>
+      <span>lost/found</span>
+    </RadioLabel>
+    <RadioLabel
+      className={values.adType === 'inGoodHands' ? 'checked' : ''}
+      onClick={() => setAdType('inGoodHands')}
+    >
       <Field
         type="radio"
         name="adType"
         value="inGoodHands"
-        onChange={handleChange}
+        checked={values.adType === 'inGoodHands'}
+        onChange={e => {
+          handleChange(e);
+          setAdType(e.target.value);
+        }}
       />
-      in good hands
-    </label>
-  </div>
+      <span>in good hands</span>
+    </RadioLabel>
+  </RadioContainer>
 );
 
-const Step2 = ({ handleChange, petName, petBirthDate, petType }) => (
-  <div>
-    <label>Pet's Name:</label>
-    <Input type="text" name="petName" value={petName} onChange={handleChange} />
-    <ErrorMessageText component="label" name="petName" />
-    <br />
-    <label>Date of Birth:</label>
-    <Input
-      type="text"
-      name="petBirthDate"
-      value={petBirthDate}
-      onChange={handleChange}
-    />
-    <ErrorMessageText component="label" name="petBirthDate" />
-    <br />
-    <label>Type of Pet:</label>
-    <Input type="text" name="petType" value={petType} onChange={handleChange} />
-    <ErrorMessageText component="label" name="petType" />
-  </div>
+const Step2 = ({
+  handleChange,
+  petName,
+  petBirthDate,
+  petType,
+  // errors,
+  // touched,
+}) => (
+  <Step2Container>
+    <InputBlock>
+      <Step2Label>Pet's Name:</Step2Label>
+      <Input
+        placeholder="Type name pet"
+        type="text"
+        name="petName"
+        value={petName}
+        onChange={handleChange}
+        // error={errors.petName && touched.petName ? 'true' : 'false'}
+        // data-touched={touched.petName}
+      />
+      <ErrorMessageText component="label" name="petName" />
+    </InputBlock>
+    <InputBlock>
+      <Step2Label>Date of Birth:</Step2Label>
+      <Input
+        placeholder="Type date of birth"
+        type="text"
+        name="petBirthDate"
+        value={petBirthDate}
+        onChange={handleChange}
+        // error={errors.petBirthDate && touched.petBirthDate ? 'true' : 'false'}
+        // data-touched={touched.petBirthDate}
+      />
+      <ErrorMessageText component="label" name="petBirthDate" />
+    </InputBlock>
+    <InputBlock>
+      <Step2Label>Type of Pet:</Step2Label>
+      <Input
+        placeholder="Type of pet"
+        type="text"
+        name="petType"
+        value={petType}
+        onChange={handleChange}
+        // error={errors.petType && touched.petType ? 'true' : 'false'}
+        // data-touched={touched.petType}
+      />
+      <ErrorMessageText component="label" name="petType" />
+    </InputBlock>
+  </Step2Container>
 );
 
 const Step3 = ({ handleChange, petImage, comments }) => {
+  const [selectedImage, setSelectedImage] = useState(petImage || null);
+  const fileInputRef = useRef(null);
+  const handleIconClick = () => {
+    // Викликаємо подію кліку на прихований input type="file"
+    fileInputRef.current.click();
+  };
+
+  const handleImageChange = event => {
+    const file = event.currentTarget.files[0];
+    setSelectedImage(file);
+    if (file) {
+      handleChange({
+        target: {
+          name: 'petImage',
+          value: file,
+        },
+      });
+    }
+  };
   return (
-    <div>
-      <label htmlFor="petImage">Load the pet's image:</label>
-      <Field
-        type="file"
-        id="petImage"
-        name="petImage"
-        accept="image/*"
-        onChange={handleChange}
-        value={petImage}
-      />
+    <InputBlock style={{ marginBottom: '16px' }}>
+      <FlexContainer style={{ gap: '14px' }}>
+        <Step2Label
+          style={{ cursor: 'pointer', width: '81px' }}
+          htmlFor="petImage"
+        >
+          Load the pet's image:
+        </Step2Label>
+        <input
+          type="file"
+          id="petImage"
+          name="petImage"
+          accept="image/*"
+          ref={fileInputRef}
+          onChange={handleImageChange}
+          style={{ display: 'none' }}
+        />
+        <div style={{ position: 'relative' }}>
+          <img
+            style={{ borderRadius: '20px', cursor: 'pointer' }}
+            src={uploadImg}
+            alt="upload"
+            width={112}
+            height={112}
+            onClick={handleIconClick}
+          />
+
+          {selectedImage && (
+            <img
+              src={URL.createObjectURL(selectedImage)}
+              onClick={handleIconClick}
+              alt="Selected Pet"
+              style={{
+                borderRadius: '20px',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: 112,
+                height: 112,
+                objectFit: 'cover',
+                cursor: 'pointer',
+              }}
+            />
+          )}
+        </div>
+      </FlexContainer>
       <ErrorMessageText component="label" name="petImage" />
-      <br />
-      <label htmlFor="comments">Comments:</label>
-      <Field
-        type="text"
-        id="comments"
-        name="comments"
-        onChange={handleChange}
-        value={comments}
-      />
-      <ErrorMessageText component="label" name="comments" />
-    </div>
+    </InputBlock>
   );
 };
 

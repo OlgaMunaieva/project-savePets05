@@ -12,22 +12,37 @@ const NoticesCategoriesList = ({ pets }) => {
         </Notification>
       ) : (
         <List>
-          {pets.map(({ _id, category, gender, birthday, city, title }) => {
-            return (
-              <NoticesCategoryItem
-                key={_id}
-                category={category}
-                gender={gender}
-                birthday={birthday}
-                city={city}
-                title={title}
-              />
-            );
-          })}
+          {pets.map(
+            ({
+              id,
+              category,
+              sex,
+              age,
+              location,
+              title,
+              favorite,
+              owner,
+              photoUrl,
+            }) => {
+              return (
+                <NoticesCategoryItem
+                  key={id}
+                  id={id}
+                  category={category}
+                  sex={sex}
+                  age={age}
+                  location={location}
+                  title={title}
+                  favorite={favorite}
+                  owner={owner}
+                  photoUrl={photoUrl}
+                />
+              );
+            }
+          )}
         </List>
       )}
     </Container>
   );
 };
-
 export default NoticesCategoriesList;

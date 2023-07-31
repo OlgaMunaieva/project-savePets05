@@ -4,13 +4,13 @@ import { useLocation } from 'react-router-dom';
 import UserLink from 'components/header/buttons/UserLink';
 import LogoutBtn from 'components/header/buttons/LogoutBtn';
 
-const UserNav = ({ size, userName }) => {
+const UserNav = ({ size, userName, modalOpen }) => {
   const [isHome, setHome] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const locationScaner = () => {
-      if (location.pathname === '/news') {
+      if (location.pathname === '/main') {
         setHome(false);
         return;
       }
@@ -21,7 +21,7 @@ const UserNav = ({ size, userName }) => {
 
   return (
     <List>
-      <ListItem>{isHome ? <LogoutBtn /> : null}</ListItem>
+      <ListItem>{isHome ? <LogoutBtn modalOpen={modalOpen} /> : null}</ListItem>
       <ListItem>
         <UserLink size={size} userName={userName} />
       </ListItem>

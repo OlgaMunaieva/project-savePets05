@@ -1,46 +1,46 @@
-import { selectIsLoggedIn } from 'redux/auth/authSelectors';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 import Modal from '../../components/modal/Modal';
+import spriteImage from '../../images/sprite.svg';
 import {
   StyledContainer,
   StyledTitle,
   StyledText,
   StyledButton,
-} from './RegisterPage.styled';
+} from './ModalCongrats.styled';
 
-const UserPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
-  const location = useLocation();
-  const pathname = location.state?.pathname || null;
+// const UserPage = () => {
+//   const [isModalOpen, setIsModalOpen] = useState(true);
+//   const location = useLocation();
+//   const pathname = location.state?.pathname || null;
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+//   const openModal = () => {
+//     setIsModalOpen(true);
+//   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+//   const closeModal = () => {
+//     setIsModalOpen(false);
+//   };
 
-  const navigate = useNavigate();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-
+const ModalCongrats = ({ closeModal, openModal }) => {
+  // const navigate = useNavigate();
   return (
-    <>
-      {isLoggedIn && isModalOpen && pathname === 'register' && (
-        <Modal closeModal={closeModal} isOpenedModal={openModal} width="610px">
-          <StyledContainer>
-            <StyledTitle>Congrats</StyledTitle>
-            <StyledText>You're registration is success</StyledText>
-            <StyledButton onClick={() => navigate('/userpage')}>
-              Go to profile
-            </StyledButton>
-          </StyledContainer>
-        </Modal>
-      )}
-    </>
+    <Modal closeModal={closeModal} isOpenedModal={openModal} width="610px">
+      <StyledContainer>
+        <StyledTitle>Congrats</StyledTitle>
+        <StyledText>You're registration is success</StyledText>
+        <StyledButton
+          onClick={() => {
+            closeModal();
+          }}
+        >
+          Go to profile
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <use href={spriteImage + '#icon-pawprint-1'} />
+          </svg>
+        </StyledButton>
+      </StyledContainer>
+    </Modal>
   );
 };
 
-export default UserPage;
+export default ModalCongrats;

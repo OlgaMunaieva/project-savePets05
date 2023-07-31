@@ -6,14 +6,21 @@ import PrivateRoute from './PrivateRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/auth/authSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
+
 import NewsPage from 'pages/NewsPage';
 
-// import PetModal from './petModal/PetModal';
-// import AddPetPage from 'pages/AddPetPage';
+// import AddPet from './addPetForm/AddPetForm';
+
+// AddPetForm-bugfix
+//import PetModal from './petModal/PetModal';
+//import AddPetPage from 'pages/AddPetPage';
+//import ModalApproveAction from 'pages/ModalApproveAction';
+//import NewsPage from 'pages/NewsPage';
+
+
+// import NoticeModal from './notice/noticeModal/NoticeModal';
 // import ModalApproveAction from 'pages/ModalApproveAction';
 // import NewsPage from 'pages/NewsPage';
-
-// import AddPet from './addPetForm/AddPetForm';
 
 const MainPage = lazy(() => import('../pages/MainPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
@@ -21,7 +28,8 @@ const LoginPage = lazy(() => import('../pages/LoginPage'));
 const NoticesPage = lazy(() => import('../pages/NoticesPage'));
 const UserPage = lazy(() => import('../pages/UserPage'));
 const OurFriendsPage = lazy(() => import('../pages/OurFriendsPage'));
-const NotFound = lazy(() => import('../pages/NotFound'));
+const AddPetPage = lazy(() => import('../pages/AddPetPage'));
+const ErrorPage = lazy(() => import('../pages/ErrorPage'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -34,9 +42,11 @@ const App = () => {
 
   return (
     !isRefreshing && (
+      // <NoticeModal/>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<MainPage />} />
+
           <Route
             path="/register"
             element={
@@ -58,18 +68,34 @@ const App = () => {
               <PrivateRoute redirectTo="/login" component={<UserPage />} />
             }
           />
+          <Route
+            path="favorite"
+            element={
+              <PrivateRoute redirectTo="/login" component={<NoticesPage />} />
+            }
+          />
+          <Route
+            path="own"
+            element={
+              <PrivateRoute redirectTo="/login" component={<NoticesPage />} />
+            }
+          />
           <Route path="/main" element={<MainPage />} />
-          <Route path="/notices/">
+          <Route path="/notices">
             <Route index element={<Navigate to="/notices/sell" />} />
             <Route path=":categoryName" element={<NoticesPage />} />
           </Route>
           <Route path="/friends" element={<OurFriendsPage />} />
+          <Route path="/add-pet" element={<AddPetPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
+
+//         <Route path="*" element={<NotFound />} />
         <Route path='/news' element={<NewsPage/>} />
+
+
       </Routes>
       // <div>
-      //   {/* <AddPetPage /> */}
       //   {/* <ModalApproveAction /> */}
       // </div>
     )

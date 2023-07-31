@@ -19,7 +19,10 @@ export const register = createAsyncThunk(
       setAuthHeader(data.token?.access);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      if (error.response && error.response.status === 409) {
+        return rejectWithValue('User with the same email already exists');
+      }
+      rejectWithValue(error.message);
     }
   }
 );
@@ -32,6 +35,9 @@ export const logIn = createAsyncThunk(
       setAuthHeader(data.token?.access);
       return data;
     } catch (error) {
+      if (error.response && error.response.status === 401) {
+        return rejectWithValue('User with such data is not registered');
+      }
       rejectWithValue(error.message);
     }
   }

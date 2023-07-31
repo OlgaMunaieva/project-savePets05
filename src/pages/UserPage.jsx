@@ -1,38 +1,52 @@
 import Logout from 'components/user/Logout/Logout';
 import PetsData from 'components/user/petsData/PetsData';
 import UserData from 'components/user/userData/UserData';
+import variables from '../settings/variables';
 
-const visualHidden = {
-  position: 'absolute',
-  whiteSpace: 'nowrap',
-  width: 1,
-  height: 1,
-  overflow: 'hidden',
-  border: 0,
-  padding: 0,
-  clip: 'rect(0 0 0 0)',
-  WebkitClipPath: 'inset(50%)',
-  clipPath: 'inset(50%)',
-  margin: -1,
-};
+import { selectIsLoggedIn } from '../redux/auth/authSelectors';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useState, useEffect } from 'react';
+import ModalCongrats from 'components/modalCongrats/ModalCongrats';
+import {
+  UserPageContainer,
+  UserTitle,
+} from 'components/user/userForm/utils/UserStyles.styled';
 
 export default function UserPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // congrat Modal
+  useEffect(() => {
+    const redirectPath = localStorage.getItem('redirectPath');
+    if (redirectPath === '/register') {
+      setIsModalOpen(true);
+    }
+  }, []);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  //
   return (
     <main>
-      <h1 style={visualHidden}>User Page</h1>
+      <h1 style={variables.visualHidden}>User Page</h1>
 
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
+      <UserPageContainer>
         <div>
+          <></>
+          <UserTitle>My information:</UserTitle>
           <UserData />
+
           <Logout />
         </div>
+
         <PetsData />
-      </div>
+      </UserPageContainer>
+
+      {isLoggedIn && isModalOpen && (
+        <ModalCongrats closeModal={closeModal} isOpenedModal={isModalOpen} />
+      )}
     </main>
   );
 }

@@ -81,6 +81,23 @@ export const BtnFavorite = styled.button`
   }
 `;
 
+export const BtnRemoveMyPet = styled.button`
+  margin-top: 16px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50px;
+  color: transparent;
+  cursor: pointer;
+  background-color: ${variables.colors.cardsButtonBg};
+  background-color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
+
+  &:hover,
+  &:focus {
+    background-color: ${variables.colors.buttonsHoverBg};
+  }
+`;
+
 export const Description = styled.ul`
   display: flex;
   justify-content: space-between;
@@ -144,7 +161,10 @@ export const Icon = styled.svg`
 
   transition: stroke 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
 
-  ${DescriptionItem}:hover & {
+  ${DescriptionItem}:hover &,
+   ${BtnRemoveMyPet}:hover &,
+     ${DescriptionItem}:focus &,
+   ${BtnRemoveMyPet}:focus & {
     stroke: ${variables.colors.secondaryText};
   }
 `;
@@ -264,25 +284,3 @@ export const BtnLearn = styled.button`
     }
   }
 `;
-
-// @media screen and (min-width: 768px) {
-//     .item {
-//         width: 336px;
-//     }
-
-//     .lowerBlock {
-//         left: 24px;
-//         right: 24px;
-//     }
-// }
-
-// @media screen and (min-width: 1280px) {
-//     .item {
-//         width: 288px;
-//     }
-
-//     .lowerBlock {
-//         left: 12px;
-//         right: 12px;
-//     }
-// }

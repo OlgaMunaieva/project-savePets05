@@ -1,15 +1,12 @@
-// import { useState } from 'react';
-// import { useSearchParams } from 'react-router-dom';
-// import PropTypes from 'prop-types';
-
-// import { number } from 'yup';
-// import { useSelector } from 'react-redux';
-// import { selectIsLoggedIn } from 'redux/auth/authSelectors';
+import { toast } from 'react-hot-toast';
+import { debounce } from 'lodash';
 import icons from '../../../images/icons/icons-card.svg';
+import variables from 'settings/variables';
 import {
   BtnFavorite,
   BtnLearn,
   BtnLearnIcon,
+  BtnRemoveMyPet,
   Description,
   DescriptionItem,
   DescriptionItemText,
@@ -22,50 +19,103 @@ import {
   Title,
   TitleWrapper,
 } from './NoticeCategoryItem.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/auth/authSelectors';
+import {
+  delMyPetsById,
+  fetchFavorite,
+  putFavorite,
+} from 'redux/notices/operations';
+import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import ModalNotice from '../modalNotice/ModalNotice';
+import { ModalConfirmDelete } from '../ModalDelMyPet/ModalDelMyPet';
+// import { ModalConfirmDelete } from '../ModalDelMyPet/ModalDelMyPet';
+const BaseUrlImg = 'https://res.cloudinary.com/dfvviqdic/image/upload/';
 
-const NoticesCategoryItem = ({ category, gender, birthday, city, title }) => {
-  // const isLogin = useSelector(selectIsLoggedIn);
+const NoticesCategoryItem = ({
+  id: cardId,
+  category,
+  sex,
+  age,
+  location,
+  title,
+  favorite,
+  owner,
+  photoUrl,
+}) => {
+  const params = useParams();
+  const categoryParam = params.categoryName;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const dispatch = useDispatch(cardId);
 
-  // const favoriteClickHandle = () => {
-  //   if (!isLogin) {
-  //     alert('You need to sign in');
-  //   }
-  //   dispatch(
-  //     favoriteNotice({
-  //       id: _id,
-  //     })
-  //   );
-  // };
+  const favoriteClickHandle = () => {
+    const debouncedFetchFavorite = debounce(() => {
+      dispatch(fetchFavorite());
+    }, 150);
 
-  const getAge = date => {
-    const dateArr = date.split('.');
-    const birthdayDate = `${dateArr[2]}.${dateArr[1]}.${dateArr[0]}`;
-    const age =
-      (new Date().getTime() - new Date(birthdayDate)) /
-      (24 * 3600 * 1000 * 365.25);
-    if (age < 1) {
-      return `${Math.floor((age * 365.25) / 30)} month`;
+    if (!isLoggedIn) {
+      toast.error('You need to sign in');
     }
-    return Math.floor(age) === 1 ? `1 year` : `${Math.floor(age)} years`;
+    dispatch(putFavorite(cardId));
+
+    if (categoryParam === 'favorite' && favorite) {
+      debouncedFetchFavorite();
+    }
+  };
+
+  const handleDelete = () => {
+    // const debouncedfetchMyPets = debounce(() => {
+    //   dispatch(fetchMyPets());
+    // }, 150);
+
+    if (!isLoggedIn) {
+      toast.error('You need to sign in');
+    }
+    console.log('item', cardId);
+    dispatch(delMyPetsById(cardId));
+
+    if (categoryParam === 'own') {
+      // debouncedfetchMyPets();
+    }
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
     <>
       <Item>
         <ImgWrapper>
-          <Img
-            src="https://ribalych.com/media/24019/conversions/40626-668.webp"
-            alt="pet"
-            loading="lazy"
-          />
+          <Img src={BaseUrlImg + photoUrl} alt="pet" loading="lazy" />
           <Status>
             <StatusText>{category}</StatusText>
             <div>
-              <BtnFavorite>
-                <Icon width={24} height={24}>
+              <BtnFavorite type="button" onClick={favoriteClickHandle}>
+                <Icon
+                  width={24}
+                  height={24}
+                  color={
+                    favorite ? `${variables.colors.buttonsHoverBg}` : 'current'
+                  }
+                >
                   <use href={icons + '#heart'}></use>
                 </Icon>
               </BtnFavorite>
+              {owner && categoryParam === 'own' ? (
+                <BtnRemoveMyPet onClick={handleOpenModal}>
+                  <Icon width={24} height={24}>
+                    <use href={icons + '#trash'}></use>
+                  </Icon>
+                </BtnRemoveMyPet>
+              ) : null}
             </div>
           </Status>
           <Description>
@@ -73,16 +123,16 @@ const NoticesCategoryItem = ({ category, gender, birthday, city, title }) => {
               <Icon width={24} height={24}>
                 <use href={icons + '#location'}></use>
               </Icon>
-              <DescriptionItemText>{city}</DescriptionItemText>
+              <DescriptionItemText>{location}</DescriptionItemText>
             </DescriptionItem>
             <DescriptionItem>
               <Icon width={24} height={24}>
                 <use href={icons + '#clock'}></use>
               </Icon>
-              <DescriptionItemText>{getAge(birthday)}</DescriptionItemText>
+              <DescriptionItemText>{age}</DescriptionItemText>
             </DescriptionItem>
             <DescriptionItem>
-              {gender === 'male' ? (
+              {sex === 'male' ? (
                 <Icon width={24} height={24}>
                   <use href={icons + '#male'} width={24} height={24}></use>
                 </Icon>
@@ -91,19 +141,32 @@ const NoticesCategoryItem = ({ category, gender, birthday, city, title }) => {
                   <use href={icons + '#female'} width={24} height={24}></use>
                 </Icon>
               )}
-              <DescriptionItemText>{gender}</DescriptionItemText>
+              <DescriptionItemText>{sex}</DescriptionItemText>
             </DescriptionItem>
           </Description>
         </ImgWrapper>
         <TitleWrapper>
           <Title>{title}</Title>
-          <BtnLearn>
+          <BtnLearn onClick={handleOpenModal}>
             Learn More
             <BtnLearnIcon width={24} height={24}>
               <use href={icons + '#pawprint'}></use>
             </BtnLearnIcon>
           </BtnLearn>
+          {isModalOpen && (
+            <ModalNotice
+              onClose={handleCloseModal}
+              data={{ photoUrl, category, title, sex, cardId }}
+            />
+          )}
         </TitleWrapper>
+        {false && (
+          <ModalConfirmDelete
+            closeModal={handleCloseModal}
+            name={title}
+            handleDelete={handleDelete}
+          />
+        )}
       </Item>
     </>
   );

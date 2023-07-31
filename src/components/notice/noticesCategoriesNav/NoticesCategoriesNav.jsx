@@ -7,13 +7,13 @@ export const filters = [
   { filter: 'lost/found', path: 'lost-found' },
   { filter: 'in good hands', path: 'for-free' },
   { filter: 'favorite ads', path: 'favorite' },
-  { filter: 'my ads', path: 'my-pets' },
+  { filter: 'my ads', path: 'own' },
 ];
 
 export const NoticesCategoriesNav = () => {
   const isUser = useSelector(selectIsLoggedIn);
   const items = filters.map(({ filter, path }, item) => {
-    const isAuthPage = path === 'favorite' || path === 'my-pets';
+    const isAuthPage = path === 'favorite' || path === 'own';
 
     if (!isUser && isAuthPage) {
       return null;
