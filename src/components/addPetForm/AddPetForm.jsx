@@ -34,6 +34,10 @@ import {
   SexBlock,
   Step2Container,
   BigInput,
+  BigInputBlock,
+  InputBlockTitle,
+  FlexBlock,
+  Flex2Container,
 } from './AddPetForm.styled';
 import { InputContainer } from 'components/authForm/AuthForm.styled';
 
@@ -72,12 +76,7 @@ const AddPet = () => {
   const handleSubmit = async values => {
     try {
       const formData = new FormData();
-      // const validationSchema = getValidationSchema(values.adType);
-      // const schemaKeys = Object.keys(validationSchema.fields);
-      // // Додаємо до formData тільки ті поля, які є в schemaKeys
-      // schemaKeys.forEach(key => {
-      //   formData.append(key, values[key]);
-      // });
+      formData.append('title', values.addTitle);
       formData.append('category', values.adType);
       formData.append('name', values.petName);
       formData.append('birthday', values.petBirthDate);
@@ -139,7 +138,7 @@ const AddPet = () => {
   };
 
   return (
-    <Container>
+    <Container step={step} adType={adType}>
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -160,7 +159,7 @@ const AddPet = () => {
               )}
               {step === 3 && (
                 <>
-                  <AddStepTitle adType={adType} />
+                  <AddStepTitle adType={adType} step={step} />
                 </>
               )}
             </>
@@ -216,7 +215,7 @@ const AddPet = () => {
                 {(values.adType === 'sell' ||
                   values.adType === 'lostFound' ||
                   values.adType === 'inGoodHands') && (
-                  <InputBlock>
+                  <InputBlockTitle>
                     <Step2Label>Title of add:</Step2Label>
                     <Input
                       placeholder="Type of pet"
@@ -226,7 +225,7 @@ const AddPet = () => {
                       onChange={handleChange}
                     />
                     <ErrorMessageText component="label" name="addTitle" />
-                  </InputBlock>
+                  </InputBlockTitle>
                 )}
                 <Step2
                   handleChange={handleChange}
@@ -246,7 +245,7 @@ const AddPet = () => {
                       comments={values.comments}
                       petImage={values.petImage}
                     />
-                    <InputBlock>
+                    <BigInputBlock>
                       <Step2Label htmlFor="comments">Comments:</Step2Label>
                       <BigInput
                         placeholder="Type of pet"
@@ -257,58 +256,66 @@ const AddPet = () => {
                         value={values.comments}
                       />
                       <ErrorMessageText component="label" name="comments" />
-                    </InputBlock>
+                    </BigInputBlock>
                   </InputContainer>
                 ) : null}
                 {(values.adType === 'sell' ||
                   values.adType === 'lostFound' ||
                   values.adType === 'inGoodHands') && (
-                  <div>
-                    {/* Додати радіокнопки "Male" та "Female" на третьому кроці при обраній опції "sell" */}
-                    <SexBlock>
-                      <Step2Label>The Sex</Step2Label>
-                      <FlexContainer>
-                        <RadioLabelSex>
-                          <FlexContainer>
-                            <Field
-                              type="radio"
-                              name="petSex"
-                              value="female"
-                              checked={values.petSex === 'female'}
-                              onChange={handleChange}
-                            />{' '}
-                            <img
-                              src={female}
-                              alt="female"
-                              width={24}
-                              height={24}
-                            />
-                            <span>Female</span>
-                          </FlexContainer>
-                        </RadioLabelSex>
-                        <ErrorMessageText component="label" name="petSex" />
-                        <RadioLabelSex>
-                          <FlexContainer>
-                            <Field
-                              type="radio"
-                              name="petSex"
-                              value="male"
-                              checked={values.petSex === 'male'}
-                              onChange={handleChange}
-                            />{' '}
-                            <img src={male} alt="male" width={24} height={24} />
-                            <span>Male</span>
-                          </FlexContainer>
-                        </RadioLabelSex>
-                      </FlexContainer>
-                    </SexBlock>
-                    <Step3
-                      handleChange={handleChange}
-                      petSex={values.petSex}
-                      comments={values.comments}
-                      petImage={values.petImage}
-                      values={values}
-                    />
+                  <Flex2Container>
+                    <FlexBlock>
+                      <SexBlock>
+                        <Step2Label>The Sex</Step2Label>
+                        <FlexContainer>
+                          <RadioLabelSex>
+                            <FlexContainer>
+                              <Field
+                                type="radio"
+                                name="petSex"
+                                value="female"
+                                checked={values.petSex === 'female'}
+                                onChange={handleChange}
+                              />{' '}
+                              <img
+                                src={female}
+                                alt="female"
+                                width={24}
+                                height={24}
+                              />
+                              <span>Female</span>
+                            </FlexContainer>
+                          </RadioLabelSex>
+                          <ErrorMessageText component="label" name="petSex" />
+                          <RadioLabelSex>
+                            <FlexContainer>
+                              <Field
+                                type="radio"
+                                name="petSex"
+                                value="male"
+                                checked={values.petSex === 'male'}
+                                onChange={handleChange}
+                              />{' '}
+                              <img
+                                src={male}
+                                alt="male"
+                                width={24}
+                                height={24}
+                              />
+                              <span>Male</span>
+                            </FlexContainer>
+                          </RadioLabelSex>
+                        </FlexContainer>
+                      </SexBlock>
+                      <Step3
+                        handleChange={handleChange}
+                        petSex={values.petSex}
+                        comments={values.comments}
+                        petImage={values.petImage}
+                        values={values}
+                        adType={adType}
+                        step={step}
+                      />
+                    </FlexBlock>
                     <Step2Container>
                       <InputBlock>
                         <Step2Label>Location:</Step2Label>
@@ -343,11 +350,13 @@ const AddPet = () => {
                           name="comments"
                           onChange={handleChange}
                           value={values.comments}
+                          adType={adType}
+                          step={step}
                         />
                         <ErrorMessageText component="label" name="comments" />
                       </InputBlock>
                     </Step2Container>
-                  </div>
+                  </Flex2Container>
                 )}
               </>
             )}

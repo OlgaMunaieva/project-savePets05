@@ -4,20 +4,29 @@ const yourPetSchema = Yup.object().shape({
   petName: Yup.string()
     .trim()
     .required('Required')
-    .matches(/^[a-zA-Z ]*$/, 'Only letters in English are allowed')
-    .min(2, `Pet's Name must be at least 2 characters`)
-    .max(16, `Pet's Name must be at most 16 characters`),
+    .matches(
+      /^[\p{Lu}]{1}[\p{Ll}'`\d]{1,15}$/u,
+      'Only letters are allowed and first leter uppercase'
+    )
+    .min(
+      2,
+      `Pet's Name must be at least 2 characters and first leter uppercase`
+    )
+    .max(
+      16,
+      `Pet's Name must be at most 16 characters and first leter uppercase`
+    ),
   petBirthDate: Yup.string()
     .trim()
     .required('Required')
     .matches(
-      /^(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-\d{4}$/,
+      /^(0[1-9]|1\d|2\d|3[01])\-(0[1-9]|1[0-2])\-(19[0-9]\d|20[0-9]\d)$/,
       'Date of Birth must be in the format DD-MM-YYYY'
     ),
   petType: Yup.string()
     .trim()
     .required('Required')
-    .matches(/^[a-zA-Z ]*$/, 'Only letters in English are allowed')
+    .matches(/^[\p{Ll}'`\d]{1,15}$/u, 'Only letters in English are allowed')
     .min(2, `Pet's Name must be at least 2 characters`)
     .max(16, `Pet's Name must be at most 16 characters`),
   petImage: Yup.mixed()
@@ -35,20 +44,31 @@ const sellSchema = Yup.object().shape({
   petName: Yup.string()
     .trim()
     .required('Required')
-    .matches(/^[a-zA-Z ]*$/, 'Only letters in English are allowed')
+    .matches(
+      /^[\p{Lu}]{1}[\p{Ll}'`\d]{1,15}$/u,
+      'Only letters are allowed and first leter uppercase'
+    )
+    .min(
+      2,
+      `Pet's Name must be at least 2 characters and first leter uppercase`
+    )
+    .max(
+      16,
+      `Pet's Name must be at most 16 characters and first leter uppercase`
+    )
     .min(2, `Pet's Name must be at least 2 characters`)
     .max(16, `Pet's Name must be at most 16 characters`),
   petBirthDate: Yup.string()
     .trim()
     .required('Required')
     .matches(
-      /^(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-\d{4}$/,
+      /^(0[1-9]|1\d|2\d|3[01])\-(0[1-9]|1[0-2])\-(19[0-9]\d|20[0-9]\d)$/,
       'Date of Birth must be in the format DD-MM-YYYY'
     ),
   petType: Yup.string()
     .trim()
     .required('Required')
-    .matches(/^[a-zA-Z ]*$/, 'Only letters in English are allowed')
+    .matches(/^[\p{Ll}'`\d]{1,15}$/u, 'Only letters in English are allowed')
     .min(2, `Pet's Name must be at least 2 characters`)
     .max(16, `Pet's Name must be at most 16 characters`),
   addTitle: Yup.string()
@@ -58,7 +78,10 @@ const sellSchema = Yup.object().shape({
   location: Yup.string()
     .trim()
     .required('Required')
-    .matches(/^[a-zA-Z\s]*$/, 'Location must contain only letters'),
+    .matches(
+      /^[\p{Lu}]{1}[\p{Ll}'`]{1,31}$/u,
+      'Location must contain only letters and first leter uppercase'
+    ),
   petImage: Yup.mixed()
     .required('Required')
     .test(
@@ -78,20 +101,31 @@ const lostFoundSchema = Yup.object().shape({
   petName: Yup.string()
     .trim()
     .required('Required')
-    .matches(/^[a-zA-Z ]*$/, 'Only letters in English are allowed')
+    .matches(
+      /^[\p{Lu}]{1}[\p{Ll}'`\d]{1,15}$/u,
+      'Only letters are allowed and first leter uppercase'
+    )
+    .min(
+      2,
+      `Pet's Name must be at least 2 characters and first leter uppercase`
+    )
+    .max(
+      16,
+      `Pet's Name must be at most 16 characters and first leter uppercase`
+    )
     .min(2, `Pet's Name must be at least 2 characters`)
     .max(16, `Pet's Name must be at most 16 characters`),
   petBirthDate: Yup.string()
     .trim()
     .required('Required')
     .matches(
-      /^(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-\d{4}$/,
+      /^(0[1-9]|1\d|2\d|3[01])\-(0[1-9]|1[0-2])\-(19[0-9]\d|20[0-9]\d)$/,
       'Date of Birth must be in the format DD-MM-YYYY'
     ),
   petType: Yup.string()
     .trim()
     .required('Required')
-    .matches(/^[a-zA-Z ]*$/, 'Only letters in English are allowed')
+    .matches(/^[\p{Ll}'`\d]{1,15}$/u, 'Only letters in English are allowed')
     .min(2, `Pet's Name must be at least 2 characters`)
     .max(16, `Pet's Name must be at most 16 characters`),
   addTitle: Yup.string()
