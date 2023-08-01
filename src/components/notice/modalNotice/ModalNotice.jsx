@@ -87,7 +87,10 @@ const ModalNotice = ({ onClose, isOpenedModal, id, children }) => {
   };
 
   if (!data) {
-    return <CircleLoader/>;
+    return <CircleLoader
+  color="#CCE4FB"
+  size={23}
+/>;
   }
 
   return createPortal(

@@ -53,6 +53,9 @@ export const ExitButton = styled(VscChromeClose)`
 // Update ModalContent styles for mobile and tablet
 export const ModalContent = styled.div`
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   top: 50%;
   left: 50%;
@@ -69,7 +72,7 @@ export const ModalContent = styled.div`
   }
   @media (min-width: 767px) {
     width: 610px;
-    padding: 60px 130px;
+    /* padding: 60px 130px; */
   }
   width: fit-content;
   background-color: white;
