@@ -47,14 +47,13 @@ const ModalNotice = ({ onClose, isOpenedModal, id, children }) => {
         const notice = response.data;
         console.log(notice);
         setData(notice);
-        // Здесь вы можете использовать данные, например, установить их в состояние компонента
       } catch (error) {
         console.error(error);
       }
     };
 
     fetchData();
-  }, [id]); //
+  }, [id]);
 
   const toggleModal = useCallback(
     e => {
@@ -93,14 +92,12 @@ const ModalNotice = ({ onClose, isOpenedModal, id, children }) => {
   return createPortal(
     <ModalWindow onClick={onClickOverlay}>
       <ModalContent>
-        {/* {isLoading && <CircleLoader/>} */}
         <ExitButton onClick={() => onClose()}>
           <img src={CrossIcon} alt="Cross" width={24} height={24} />
         </ExitButton>
         <MainDataWrapper>
           <Wrapper>
             <ImgWrapper>
-              {/* <Img src={BaseUrlImg + photoUrl} alt="pet" loading="lazy" /> */}
               <Img src={BaseUrlImg + data.photoUrl} alt="pet" loading="lazy" />
               <Status>
                 <StatusText>{data.category}</StatusText>
