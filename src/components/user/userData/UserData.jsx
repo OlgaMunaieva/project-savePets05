@@ -68,7 +68,9 @@ export default function UserData() {
         </Modal>
       )}
 
-      {!showUserProfileModal && Object.keys(user.userInfo).length > 0 && (
+      {/* !showUserProfileModal &&  */}
+
+      {Object.keys(user.userInfo).length > 0 && (
         <StyledFormContainer>
           <UserForm user={user} isFormDisabled={isFormDisabled} />
 
