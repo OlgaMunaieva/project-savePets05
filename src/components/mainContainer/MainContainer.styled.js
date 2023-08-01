@@ -30,6 +30,7 @@ const MainContainer = styled.div`
   padding-right: 20px;
   margin: 0 auto;
   max-width: 320px;
+  overflow: hidden;
   ${variables.breakPoints.tablet} {
     padding-top: 24px;
     padding-left: 32px;
@@ -52,6 +53,7 @@ const PawContainer = styled.div`
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
+  overflow: hidden;
   background-image: url(${pawprintMobile1}), url(${pawprintMobile2}),
     url(${pawprintMobile3}), url(${pawprintMobile4}), url(${pawprintMobile5}),
     url(${pawprintMobile6}), url(${pawprintMobile7}), url(${pawprintMobile8});

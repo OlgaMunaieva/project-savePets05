@@ -17,12 +17,14 @@ const { styled } = require('styled-components');
 // `;
 
 const BigDogImg = styled.img`
+z-index: 5;
   position: absolute;
   min-width: 310px;
   top: 145px;
   left: -10px;
   margin: -30px 20px;
   ${variables.breakPoints.tablet} {
+    z-index: 5;
     width: 680px;
     top: 250px;
     left: 56px;
@@ -36,7 +38,29 @@ const BigDogImg = styled.img`
   }
 `;
 
+const BigDogImgBg = styled.img`
+  position: absolute;
+  width: 246px;
+    top: 198px;
+    left: 100px;
+  margin: -30px 20px;
+  ${variables.breakPoints.tablet} {
+    width: 520px;
+    top: 372px;
+    left: 290px;
+    margin: -40px 32px;
+  }
+  ${variables.breakPoints.desktop} {
+    display: none;
+    width: 704px;
+    top: 0px;
+    left: 538px;
+    margin: 0 32px;
+  }
+`;
+
 const SmallDogImg = styled.img`
+z-index: 5;
   position: absolute;
   top: 255px;
   left: -20px;
@@ -47,26 +71,27 @@ const SmallDogImg = styled.img`
     left: -32px;
   }
   ${variables.breakPoints.desktop} {
-    width: 540px;
-    top: 318px;
-    left: 370px;
+    width: 637px;
+    top: 264px;
+    left: 303px;
   }
 `;
 
 const SmallDogImgBg = styled.img`
   position: absolute;
-  top: 255px;
-  left: -20px;
-  width: 220px;
+  top: 245px;
+    left: -120px;
+    min-width: 325px;
   ${variables.breakPoints.tablet} {
-    width: 518px;
-    top: 500px;
-    left: -32px;
+   min-width: 611px;
+    top: 499px;
+    left: -127px;
   }
   ${variables.breakPoints.desktop} {
-    width: 464px;
-    top: 316px;
-    left: 454px;
+    /* display: none; */
+    min-width: 541px;
+    top: 263px;
+    left: 402px;
 
     /* width: 540px;
     top: 346px;
@@ -97,6 +122,7 @@ const Pictures = {
   SmallDogImg,
   CatImg,
   SmallDogImgBg,
+  BigDogImgBg
 };
 
 export default Pictures;
