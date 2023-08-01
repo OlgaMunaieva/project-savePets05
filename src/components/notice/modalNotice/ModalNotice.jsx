@@ -2,13 +2,12 @@ import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import spriteImage from '../../../images/sprite.svg';
 
-import { ModalWindow } from '../../modal/Modal.styled';
+import { ExitButton, ModalWindow } from '../../modal/Modal.styled';
 
 import CrossIcon from '../../../images/icons/CrossIcon.svg';
 import {
   Data,
   DataWrapper,
-  ExitButton,
   Img,
   ImgWrapper,
   InformationWrapper,
@@ -149,7 +148,7 @@ const ModalNotice = ({ onClose, isOpenedModal, id, children }) => {
           </DescriptionWrapper>
         </MainDataWrapper>
         <ButtonsWrapper>
-          <ContactBtn>Contact</ContactBtn>
+          <ContactBtn href={`tel:${data.phone}`}>Contact</ContactBtn>
           <FavoriteBtn type="button">
             <span>Add to</span>
             <Icon width={24} height={24}>

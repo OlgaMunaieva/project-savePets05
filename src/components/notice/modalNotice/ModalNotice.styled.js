@@ -1,6 +1,7 @@
 import variables from 'settings/variables';
 import { styled } from 'styled-components';
-import { BtnLearn } from '../noticeCategoryItem/NoticeCategoryItem.styled';
+// import { BtnLearn, BtnLearnIcon } from '../noticeCategoryItem/NoticeCategoryItem.styled';
+import { BtnLearnIcon } from '../noticeCategoryItem/NoticeCategoryItem.styled';
 
 export const ExitButton = styled.button`
   position: absolute;
@@ -184,8 +185,71 @@ export const ButtonsWrapper = styled.div`
   }
 `;
 
-export const ContactBtn = styled(BtnLearn)`
+export const ContactBtn = styled.a`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 248px;
+  height: 38px;
+  padding: 6px 28px;
+  margin: 0 auto;
   margin-bottom: 8px;
+  border: 2px solid ${variables.colors.buttonsHoverBg};
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  background: transparent;
+  color: ${variables.colors.buttonsHoverBg};
+  transition: ${variables.transition.transitionColor},
+    background-color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
+
+  &.active {
+    color: ${variables.colors.secondaryText};
+    background-color: ${variables.colors.buttonsHoverBg};
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: ${variables.colors.buttonsGr};
+    border-radius: 40px;
+    opacity: 0;
+    transition: opacity 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
+  }
+
+  &:hover::before,
+  &:focus::before {
+    z-index: -1;
+    opacity: 1;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: ${variables.colors.buttonsHoverBg};
+  }
+
+  &:hover,
+  &:focus {
+    color: ${variables.colors.secondaryText};
+    background: ${variables.colors.buttonsGr};
+    border: none;
+
+    & > ${BtnLearnIcon} {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
   ${variables.breakPoints.tablet} {
     margin: 0;
     width: 129px;
