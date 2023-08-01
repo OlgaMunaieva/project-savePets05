@@ -1,15 +1,25 @@
+import { debounce } from 'lodash';
+
 const { useState, useEffect } = require('react');
 
 export const useResize = () => {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    const handleResize = event => {
-      setWidth(event.target.innerWidth);
+    let animationFrameId;
+
+    const handleResize = () => {
+      animationFrameId = requestAnimationFrame(() => {
+        setWidth(window.innerWidth);
+      });
     };
-    window.addEventListener('resize', handleResize);
+    // Используем debounce для задержки выполнения запроса на сервер
+    const debouncedHandleResize = debounce(handleResize, 500);
+
+    window.addEventListener('resize', debouncedHandleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', debouncedHandleResize);
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 

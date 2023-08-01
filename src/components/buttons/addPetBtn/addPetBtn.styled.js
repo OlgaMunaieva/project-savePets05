@@ -5,7 +5,7 @@ import variables from 'settings/variables';
 
 export const FixedButtonWrapper = styled.div`
   position: fixed;
-  top: 400px; /* Зафиксировать относительно вертикального центра экрана */
+  top: 520px; /* Зафиксировать относительно вертикального центра экрана */
   left: 70%; /* Зафиксировать сдвиг вправо относительно центра экрана (70vw - это 70% ширины экрана) */
   transform: translateY(
     -70%
