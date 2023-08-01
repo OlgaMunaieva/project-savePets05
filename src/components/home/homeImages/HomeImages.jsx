@@ -21,7 +21,7 @@ import Pictures from './HomeImages.styled';
 
 const HomeImages = () => {
   return (
-    <Pictures.MainPageContainer>
+    <>
       <picture>
         <source
           srcSet={`${BigDogDesktop} 1x, ${BigDogDesktop2x} 2x`}
@@ -142,7 +142,7 @@ const HomeImages = () => {
           height="361"
         />
       </picture>
-    </Pictures.MainPageContainer>
+    </>
   );
 };
 
