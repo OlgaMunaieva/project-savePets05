@@ -1,24 +1,56 @@
 import { useSelector } from 'react-redux';
-import PetsItem from '../petsItem/PetsItem';
-// import { selectPets, selectIsLoading, selectError } from 'redux/user/selectors';
 import { selectPets } from 'redux/user/selectors';
+
+import PetsItem from '../petsItem/PetsItem';
+import PetsItemDefault from '../petsItemDefault/PetsItemDefault';
+
 import { PetsCardContainer } from './PetsList.styled';
+import UserDefaultAvatar from '../../../../images/icons/user-default-avatar.svg';
 
 export default function PetsList() {
   const pets = useSelector(selectPets);
-  //   const isLoading = useSelector(selectIsLoading);
-  //   const rejectedWithError = useSelector(selectError);
+  const defaultPet = [
+    {
+      id: 1,
+      name: 'Your pet name',
+      birthday: 'DD-MM-YYYY',
+      photoUrl: UserDefaultAvatar,
+      type: 'Type of your pet',
+      comments: 'We like pets',
+    },
+  ];
 
   return (
-    <PetsCardContainer>
-      {pets.map(({ id, name, birthday, photoUrl }) => (
-        <PetsItem
-          key={id}
-          name={name}
-          birthday={birthday}
-          photoUrl={photoUrl}
-        />
-      ))}
-    </PetsCardContainer>
+    <>
+      {pets?.length === 0 ? (
+        <PetsCardContainer style={{ position: 'relative' }}>
+          {defaultPet.map(pet => (
+            <PetsItemDefault
+              key={pet.id}
+              name={pet.name}
+              birthday={pet.birthday}
+              photoUrl={pet.photoUrl}
+              type={pet.type}
+              comments={pet.comments}
+              id={pet.id}
+            />
+          ))}
+        </PetsCardContainer>
+      ) : (
+        <PetsCardContainer>
+          {pets.map(({ id, name, birthday, photoUrl, type, comments }) => (
+            <PetsItem
+              key={id}
+              name={name}
+              birthday={birthday}
+              photoUrl={photoUrl}
+              type={type}
+              comments={comments}
+              id={id}
+            />
+          ))}
+        </PetsCardContainer>
+      )}
+    </>
   );
 }

@@ -8,6 +8,13 @@ import Button from '../Button/Button';
 import variables from 'settings/variables';
 import spriteImage from '../../../images/sprite.svg';
 import UserDefaultAvatar from '../../../images/icons/user-default-avatar.svg';
+// import {
+//   selectUser,
+//   // selectIsLoading,
+//   // selectError,
+//   // getUserError,
+// } from 'redux/user/selectors';
+// import { fetchUserInformation } from 'redux/user/operations';
 
 import {
   ButtonEditPhoto,
@@ -29,6 +36,7 @@ import {
 // console.log(yearNow);
 
 export default function UserForm({ user, isFormDisabled, closeModal }) {
+  // const user = useSelector(selectUser);
   const {
     userInfo: { name, email, birthday, phone, city },
     avatar: avatarURL,
@@ -46,6 +54,10 @@ export default function UserForm({ user, isFormDisabled, closeModal }) {
   // console.log('🚀 ~   avatarURL:', avatarURL);
   // console.log('🚀 ~ birthday:', birthday);
   const dispatch = useDispatch();
+  // useEffect(() => {
+  //   console.log('fetchuseefffect');
+  //   dispatch(fetchUserInformation());
+  // }, [dispatch]);
 
   const isBirthdayValid = value => {
     if (value === 'Invalid date') {
@@ -85,8 +97,8 @@ export default function UserForm({ user, isFormDisabled, closeModal }) {
 
   const handleAvatarPreview = event => {
     setErrorImg('');
-    console.log('handleavatar');
-    console.log('aaa', event.target.files[0]);
+    // console.log('handleavatar');
+    // console.log('aaa', event.target.files[0]);
     setSelectedAvatar(event.target.files[0]);
     setImgUrl(URL.createObjectURL(event.target.files[0]));
     setIsAvatarUpdated(true);

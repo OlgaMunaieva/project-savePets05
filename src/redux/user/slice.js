@@ -4,6 +4,7 @@ import {
   addUserInformation,
   addUserAvatar,
   fetchUserPets,
+  deleteUserPet,
 } from './operations';
 import { urlModify } from '../../components/user/userForm/utils/UrlModify';
 
@@ -18,10 +19,18 @@ const userInitialState = {
   },
   isLoading: false,
   error: null,
+  // userError: null,
+  // petError: null,
 };
 
 // const extraActions = [fetchContacts, addContact, deleteContact];
-const extraActions = [fetchUserInformation, addUserInformation, addUserAvatar];
+const extraActions = [
+  fetchUserInformation,
+  addUserInformation,
+  addUserAvatar,
+  fetchUserPets,
+  deleteUserPet,
+];
 
 const status = {
   PENDING: 'pending',
@@ -45,6 +54,16 @@ const rejectedReducer = (state, action) => {
   state.error = action.payload;
 };
 
+// const rejectedUserReducer = (state, action) => {
+//   state.isLoading = false;
+//   state.userError = action.payload;
+// };
+
+// const rejectedPetReducer = (state, action) => {
+//   state.isLoading = false;
+//   state.petError = action.payload;
+// };
+
 const fetchUserSuccessReducer = (state, action) => {
   // console.log('fetch');
   const { name, email, birthday, phone, city, avatarURL } = action.payload;
@@ -54,6 +73,9 @@ const fetchUserSuccessReducer = (state, action) => {
   } else {
     state.user.avatar = avatarURL;
   }
+
+  // state.isLoading = false;
+  // state.userError = null;
   // state.user.pets = pets;
   // state.user = action.payload;
 };
@@ -70,6 +92,15 @@ const addUserAvatarSuccessReducer = (state, action) => {
 
 const fetchUserPetsSuccessReducer = (state, action) => {
   state.user.pets = action.payload;
+  // state.isLoading = false;
+  // state.petError = null;
+};
+
+const deleteUserPetSuccessReducer = (state, action) => {
+  const index = state.user.pets.findIndex(
+    contact => contact.id === action.payload
+  );
+  state.user.pets.splice(index, 1);
 };
 
 const userSlice = createSlice({
@@ -82,6 +113,9 @@ const userSlice = createSlice({
       .addCase(addUserInformation.fulfilled, addUserInfoSuccessReducer)
       .addCase(addUserAvatar.fulfilled, addUserAvatarSuccessReducer)
       .addCase(fetchUserPets.fulfilled, fetchUserPetsSuccessReducer)
+      .addCase(deleteUserPet.fulfilled, deleteUserPetSuccessReducer)
+      // .addCase(fetchUserInformation.rejected, rejectedUserReducer)
+      // .addCase(fetchUserPets.rejected, rejectedPetReducer)
       .addMatcher(getActions(status.PENDING), pendingReducer)
       .addMatcher(getActions(status.REJECTED), rejectedReducer)
       .addMatcher(getActions(status.FULFILLED), fulfilledReducer);
