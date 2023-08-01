@@ -88,46 +88,48 @@ const Step2 = ({
   petName,
   petBirthDate,
   petType,
-  // errors,
-  // touched,
+  errors,
+  touched,
 }) => (
   <Step2Container>
     <InputBlock>
       <Step2Label>Pet's Name:</Step2Label>
       <Input
+        className={`input ${touched.petName && errors.petName && 'error'}`}
+        touched={touched.petName?.toString()}
         placeholder="Type name pet"
         type="text"
         name="petName"
         value={petName}
         onChange={handleChange}
-        // error={errors.petName && touched.petName ? 'true' : 'false'}
-        // data-touched={touched.petName}
       />
       <ErrorMessageText component="label" name="petName" />
     </InputBlock>
     <InputBlock>
       <Step2Label>Date of Birth:</Step2Label>
       <Input
+        className={`input ${
+          touched.petBirthDate && errors.petBirthDate && 'error'
+        }`}
+        touched={touched.petBirthDate?.toString()}
         placeholder="Type date of birth"
         type="text"
         name="petBirthDate"
         value={petBirthDate}
         onChange={handleChange}
-        // error={errors.petBirthDate && touched.petBirthDate ? 'true' : 'false'}
-        // data-touched={touched.petBirthDate}
       />
       <ErrorMessageText component="label" name="petBirthDate" />
     </InputBlock>
     <InputBlock>
       <Step2Label>Type of Pet:</Step2Label>
       <Input
+        className={`input ${touched.petType && errors.petType && 'error'}`}
+        touched={touched.petType?.toString()}
         placeholder="Type of pet"
         type="text"
         name="petType"
         value={petType}
         onChange={handleChange}
-        // error={errors.petType && touched.petType ? 'true' : 'false'}
-        // data-touched={touched.petType}
       />
       <ErrorMessageText component="label" name="petType" />
     </InputBlock>

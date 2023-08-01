@@ -58,7 +58,7 @@ export const BackButton = styled.button`
   background-color: #fff;
   padding: 8px 28px;
   display: flex;
-  width: 94px;
+
   padding: 8px 28px;
   justify-content: center;
   align-items: center;
@@ -104,8 +104,20 @@ export const NextButton = styled.button`
     filter: brightness(0) invert(1);
   }
   &:hover {
-    box-shadow: 7px 13px 14px 0px #74b1e83d;
+    box-shadow: 7px -13px 14px #74b1e83d;
     transition: box-shadow 0.25s ease-in-out;
+  }
+  @media (min-width: 767px) {
+    &:hover {
+      box-shadow: 7px 13px 14px 0px #74b1e83d;
+      transition: box-shadow 0.25s ease-in-out;
+    }
+  }
+  @media (min-width: 1279px) {
+    &:hover {
+      box-shadow: 7px 13px 14px 0px #74b1e83d;
+      transition: box-shadow 0.25s ease-in-out;
+    }
   }
 `;
 
@@ -345,6 +357,13 @@ export const Input = styled(Field)`
   &:focus {
     outline: none;
   }
+  ${props =>
+    props.touched &&
+    css`
+      &.error {
+        border: 1px solid #f43f5e;
+      }
+    `}
 `;
 
 export const bigInputStyles = css`

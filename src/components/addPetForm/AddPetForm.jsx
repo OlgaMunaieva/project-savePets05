@@ -9,6 +9,7 @@ import arrowLeft from 'images/icons/arrowLeft.svg';
 import male from 'images/icons/male.svg';
 import female from 'images/icons/female.svg';
 import * as Yup from 'yup';
+import { CircleLoader } from 'react-spinners';
 import {
   yourPetSchema,
   sellSchema,
@@ -46,6 +47,7 @@ const AddPet = () => {
   const [step, setStep] = useState(1);
   const [adType, setAdType] = useState('');
   const [isTouched, setTouched] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -92,6 +94,7 @@ const AddPet = () => {
   };
 
   const handleSubmit = async (values, { resetForm }) => {
+    setIsLoading(true);
     try {
       const formData = new FormData();
       if (adType === 'sell') {
@@ -119,7 +122,6 @@ const AddPet = () => {
         formData.append('type', values.petType);
         formData.append('sex', values.petSex);
         formData.append('location', values.location);
-        // formData.append('price', values.price);
         formData.append('comments', values.comments);
         formData.append('notice', values.petImage);
       } else if (adType === 'inGoodHands') {
@@ -130,7 +132,6 @@ const AddPet = () => {
         formData.append('type', values.petType);
         formData.append('sex', values.petSex);
         formData.append('location', values.location);
-        // formData.append('price', values.price);
         formData.append('comments', values.comments);
         formData.append('notice', values.petImage);
       }
@@ -150,6 +151,7 @@ const AddPet = () => {
       console.error('Error submitting form:', error.message);
       console.log(source);
     }
+    setIsLoading(false);
   };
 
   const handleNext = values => {
@@ -200,12 +202,13 @@ const AddPet = () => {
 
   return (
     <Container step={step} adType={adType}>
+      {isLoading && <CircleLoader color="#CCE4FB" size={50} />}
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={getValidationSchema(adType)}
       >
-        {({ values, handleChange }) => (
+        {({ values, handleChange, errors, touched }) => (
           <Form>
             <>
               {step === 1 && (
@@ -279,6 +282,10 @@ const AddPet = () => {
                   <InputBlockTitle>
                     <Step2Label>Title of add:</Step2Label>
                     <Input
+                      className={`input ${
+                        touched.addTitle && errors.addTitle && 'error'
+                      }`}
+                      touched={touched.addTitle?.toString()}
                       placeholder="Type of pet"
                       type="text"
                       name="addTitle"
@@ -294,6 +301,8 @@ const AddPet = () => {
                   petBirthDate={values.petBirthDate}
                   petType={values.petType}
                   values={values}
+                  errors={errors}
+                  touched={touched}
                 />
               </>
             )}
@@ -385,6 +394,10 @@ const AddPet = () => {
                       <InputBlock>
                         <Step2Label>Location:</Step2Label>
                         <Input
+                          className={`input ${
+                            touched.location && errors.location && 'error'
+                          }`}
+                          touched={touched.location?.toString()}
                           placeholder="Type location"
                           type="text"
                           name="location"
@@ -397,6 +410,10 @@ const AddPet = () => {
                         <InputBlock>
                           <Step2Label>Price:</Step2Label>
                           <Input
+                            className={`input ${
+                              touched.price && errors.price && 'error'
+                            }`}
+                            touched={touched.price?.toString()}
                             placeholder="Type price"
                             type="text"
                             name="price"
@@ -428,7 +445,12 @@ const AddPet = () => {
 
             <ButtonContainer>
               {step === 1 || step === 2 ? (
-                <NextButton type="button" onClick={() => handleNext(values)}>
+                <NextButton
+                  type="button"
+                  onClick={() => {
+                    handleNext(values);
+                  }}
+                >
                   Next <img src={pawprint} alt="paw" width={24} height={24} />
                 </NextButton>
               ) : null}
