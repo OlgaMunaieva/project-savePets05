@@ -16,18 +16,23 @@ export default function UserPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const redirectPath = localStorage.getItem('redirectPath');
+
   // congrat Modal
+
   useEffect(() => {
-    const redirectPath = localStorage.getItem('redirectPath');
-    if (redirectPath === '/register') {
+    const modalShow = localStorage.getItem('modalShow') === 'true';
+    if (redirectPath === '/register' && !modalShow) {
       setIsModalOpen(true);
+      localStorage.setItem('modalShow', 'true');
     }
-  }, []);
+  }, [redirectPath]);
 
   const closeModal = () => {
     setIsModalOpen(false);
+    localStorage.removeItem('redirectPath');
   };
-  //
+
   return (
     <main>
       <h1 style={variables.visualHidden}>User Page</h1>
