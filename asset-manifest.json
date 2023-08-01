@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/project-savePets05/static/css/main.b7d0ba3d.css",
-    "main.js": "/project-savePets05/static/js/main.b50296e5.js",
-    "static/js/321.151ce7b4.chunk.js": "/project-savePets05/static/js/321.151ce7b4.chunk.js",
+    "main.js": "/project-savePets05/static/js/main.7a768fbb.js",
+    "static/js/410.56e0b545.chunk.js": "/project-savePets05/static/js/410.56e0b545.chunk.js",
     "static/js/432.f38b6338.chunk.js": "/project-savePets05/static/js/432.f38b6338.chunk.js",
     "static/js/637.287d1ea4.chunk.js": "/project-savePets05/static/js/637.287d1ea4.chunk.js",
     "static/css/616.6945a01e.chunk.css": "/project-savePets05/static/css/616.6945a01e.chunk.css",
@@ -30,16 +30,18 @@
     "static/media/big-dog-desktop.png": "/project-savePets05/static/media/big-dog-desktop.02352f4e4319158ee0b1.png",
     "static/media/big-dog-tablet.png": "/project-savePets05/static/media/big-dog-tablet.2b93271accaabc47f2bc.png",
     "static/media/big-dog-mobile@2x.png": "/project-savePets05/static/media/big-dog-mobile@2x.6a1804e1f4134c1b57e9.png",
+    "static/media/cat-mobile@2x.png": "/project-savePets05/static/media/cat-mobile@2x.efc91785aa03efae74ff.png",
     "static/media/cat-tablet.png": "/project-savePets05/static/media/cat-tablet.efc91785aa03efae74ff.png",
     "static/media/error-cat-desktop.png": "/project-savePets05/static/media/error-cat-desktop.bb1e12d4d86dab8cb18c.png",
-    "static/media/cat-mobile@2x.png": "/project-savePets05/static/media/cat-mobile@2x.818bdb31723475b68e2b.png",
     "static/media/small-dog-tablet.png": "/project-savePets05/static/media/small-dog-tablet.cabe68e3a30b1d5ab18b.png",
     "static/media/small-dog-desktop.png": "/project-savePets05/static/media/small-dog-desktop.128345eb72dec5fc5833.png",
+    "static/media/small-dog-whole-tablet@2x.png": "/project-savePets05/static/media/small-dog-whole-tablet@2x.128345eb72dec5fc5833.png",
     "static/media/small-dog-mobile@2x.png": "/project-savePets05/static/media/small-dog-mobile@2x.578caea989d8078f46a8.png",
     "static/media/error-cat-tablet.png": "/project-savePets05/static/media/error-cat-tablet.72cf74ded45bc9e79023.png",
     "static/media/big-dog-mobile.png": "/project-savePets05/static/media/big-dog-mobile.57f9047f3911f8592b52.png",
     "static/media/error-cat-mobile@2x.png": "/project-savePets05/static/media/error-cat-mobile@2x.e967be1ab6e5ee0c0054.png",
-    "static/media/cat-mobile.png": "/project-savePets05/static/media/cat-mobile.fd505d5fc084df126b36.png",
+    "static/media/cat-mobile.png": "/project-savePets05/static/media/cat-mobile.796019ad7d4c5b8c14c1.png",
+    "static/media/small-dog-whole-tablet.png": "/project-savePets05/static/media/small-dog-whole-tablet.2fde32e57d66383bbc4c.png",
     "static/media/small-dog-mobile.png": "/project-savePets05/static/media/small-dog-mobile.fdc66762649584c102dd.png",
     "static/media/logo-mob.svg": "/project-savePets05/static/media/logo-mob.baf94e4ce1e8af9e0a837c4eceef3908.svg",
     "static/media/logo.svg": "/project-savePets05/static/media/logo.6e2f51eeb062dc6472f5e4aa1de019f4.svg",
@@ -61,8 +63,8 @@
     "static/media/cross-small.svg": "/project-savePets05/static/media/cross-small.8da70af0e6f5ef55f05592dc1412e003.svg",
     "static/media/menu-hamburger.svg": "/project-savePets05/static/media/menu-hamburger.e5ce08a82de7546bfde31ea978aefa46.svg",
     "main.b7d0ba3d.css.map": "/project-savePets05/static/css/main.b7d0ba3d.css.map",
-    "main.b50296e5.js.map": "/project-savePets05/static/js/main.b50296e5.js.map",
-    "321.151ce7b4.chunk.js.map": "/project-savePets05/static/js/321.151ce7b4.chunk.js.map",
+    "main.7a768fbb.js.map": "/project-savePets05/static/js/main.7a768fbb.js.map",
+    "410.56e0b545.chunk.js.map": "/project-savePets05/static/js/410.56e0b545.chunk.js.map",
     "432.f38b6338.chunk.js.map": "/project-savePets05/static/js/432.f38b6338.chunk.js.map",
     "637.287d1ea4.chunk.js.map": "/project-savePets05/static/js/637.287d1ea4.chunk.js.map",
     "616.6945a01e.chunk.css.map": "/project-savePets05/static/css/616.6945a01e.chunk.css.map",
@@ -81,6 +83,6 @@
   },
   "entrypoints": [
     "static/css/main.b7d0ba3d.css",
-    "static/js/main.b50296e5.js"
+    "static/js/main.7a768fbb.js"
   ]
 }
