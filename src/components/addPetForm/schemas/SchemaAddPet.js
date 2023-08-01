@@ -101,7 +101,6 @@ const sellSchema = Yup.object().shape({
 const lostFoundSchema = Yup.object().shape({
   petSex: Yup.string().required('Required'),
   petName: Yup.string()
-    .trim()
     .required('Required')
     .matches(
       /^[\p{Lu}]{1}[\p{Ll}'`\d]{1,15}$/u,
@@ -116,7 +115,8 @@ const lostFoundSchema = Yup.object().shape({
       `Pet's Name must be at most 16 characters and first leter uppercase`
     )
     .min(2, `Pet's Name must be at least 2 characters`)
-    .max(16, `Pet's Name must be at most 16 characters`),
+    .max(16, `Pet's Name must be at most 16 characters`)
+    .trim(),
   petBirthDate: Yup.string()
     .trim()
     .required('Required')

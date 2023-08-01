@@ -628,3 +628,11 @@ export const Flex2Container = styled.div`
 export const SexSpan = styled.span`
   display: flex;
 `;
+
+export const SpinnerContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+`;

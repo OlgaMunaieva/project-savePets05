@@ -40,6 +40,7 @@ import {
   FlexBlock,
   Flex2Container,
   SexSpan,
+  SpinnerContainer,
 } from './AddPetForm.styled';
 import { InputContainer } from 'components/authForm/AuthForm.styled';
 
@@ -98,41 +99,41 @@ const AddPet = () => {
     try {
       const formData = new FormData();
       if (adType === 'sell') {
-        formData.append('title', values.addTitle);
-        formData.append('category', values.adType);
-        formData.append('name', values.petName);
-        formData.append('birthday', values.petBirthDate);
-        formData.append('type', values.petType);
+        formData.append('title', values.addTitle.trim());
+        formData.append('category', values.adType.trim());
+        formData.append('name', values.petName.trim());
+        formData.append('birthday', values.petBirthDate.trim());
+        formData.append('type', values.petType.trim());
         formData.append('sex', values.petSex);
-        formData.append('location', values.location);
-        formData.append('price', values.price);
-        formData.append('comments', values.comments);
+        formData.append('location', values.location.trim());
+        formData.append('price', values.price.trim());
+        formData.append('comments', values.comments.trim());
         formData.append('notice', values.petImage);
       } else if (adType === 'yourPet') {
-        formData.append('name', values.petName);
-        formData.append('birthday', values.petBirthDate);
-        formData.append('type', values.petType);
-        formData.append('comments', values.comments);
+        formData.append('name', values.petName.trim());
+        formData.append('birthday', values.petBirthDate.trim());
+        formData.append('type', values.petType.trim());
+        formData.append('comments', values.comments.trim());
         formData.append('pet', values.petImage);
       } else if (adType === 'lostFound') {
-        formData.append('title', values.addTitle);
+        formData.append('title', values.addTitle.trim());
         formData.append('category', 'lost-found');
-        formData.append('name', values.petName);
-        formData.append('birthday', values.petBirthDate);
-        formData.append('type', values.petType);
+        formData.append('name', values.petName.trim());
+        formData.append('birthday', values.petBirthDate.trim());
+        formData.append('type', values.petType.trim());
         formData.append('sex', values.petSex);
-        formData.append('location', values.location);
-        formData.append('comments', values.comments);
+        formData.append('location', values.location.trim());
+        formData.append('comments', values.comments.trim());
         formData.append('notice', values.petImage);
       } else if (adType === 'inGoodHands') {
-        formData.append('title', values.addTitle);
+        formData.append('title', values.addTitle.trim());
         formData.append('category', 'for-free');
-        formData.append('name', values.petName);
-        formData.append('birthday', values.petBirthDate);
-        formData.append('type', values.petType);
+        formData.append('name', values.petName.trim());
+        formData.append('birthday', values.petBirthDate.trim());
+        formData.append('type', values.petType.trim());
         formData.append('sex', values.petSex);
-        formData.append('location', values.location);
-        formData.append('comments', values.comments);
+        formData.append('location', values.location.trim());
+        formData.append('comments', values.comments.trim());
         formData.append('notice', values.petImage);
       }
       console.log([...formData.entries()]);
@@ -202,7 +203,11 @@ const AddPet = () => {
 
   return (
     <Container step={step} adType={adType}>
-      {isLoading && <CircleLoader color="#CCE4FB" size={50} />}
+      {isLoading && (
+        <SpinnerContainer>
+          <CircleLoader color="#CCE4FB" size={50} />
+        </SpinnerContainer>
+      )}
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
