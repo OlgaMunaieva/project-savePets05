@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import { Step1, Step2, Step3 } from './Steps';
 import sendData from './helpers/sendData';
@@ -47,6 +47,7 @@ const AddPet = () => {
   const [adType, setAdType] = useState('');
   const [isTouched, setTouched] = useState(false);
 
+  const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const source = queryParams.get('source');
@@ -78,14 +79,22 @@ const AddPet = () => {
     }
   };
 
-  const handleSubmit = async values => {
+  const handleNavigate = () => {
+    if (adType === 'yourPet') {
+      navigate('/user');
+    } else if (adType === 'sell') {
+      navigate('/notices/sell');
+    } else if (adType === 'lostFound') {
+      navigate('/notices/lost-found');
+    } else if (adType === 'inGoodHands') {
+      navigate('/notices/for-free');
+    }
+  };
+
+  const handleSubmit = async (values, { resetForm }) => {
     try {
       const formData = new FormData();
-      if (
-        adType === 'sell' ||
-        adType === 'inGoodHands' ||
-        adType === 'lostFound'
-      ) {
+      if (adType === 'sell') {
         formData.append('title', values.addTitle);
         formData.append('category', values.adType);
         formData.append('name', values.petName);
@@ -102,6 +111,28 @@ const AddPet = () => {
         formData.append('type', values.petType);
         formData.append('comments', values.comments);
         formData.append('pet', values.petImage);
+      } else if (adType === 'lostFound') {
+        formData.append('title', values.addTitle);
+        formData.append('category', 'lost-found');
+        formData.append('name', values.petName);
+        formData.append('birthday', values.petBirthDate);
+        formData.append('type', values.petType);
+        formData.append('sex', values.petSex);
+        formData.append('location', values.location);
+        // formData.append('price', values.price);
+        formData.append('comments', values.comments);
+        formData.append('notice', values.petImage);
+      } else if (adType === 'inGoodHands') {
+        formData.append('title', values.addTitle);
+        formData.append('category', 'for-free');
+        formData.append('name', values.petName);
+        formData.append('birthday', values.petBirthDate);
+        formData.append('type', values.petType);
+        formData.append('sex', values.petSex);
+        formData.append('location', values.location);
+        // formData.append('price', values.price);
+        formData.append('comments', values.comments);
+        formData.append('notice', values.petImage);
       }
       console.log([...formData.entries()]);
 
@@ -113,6 +144,8 @@ const AddPet = () => {
       await sendData(formData, endpoint);
       console.log('Form submitted successfully');
       console.log(source);
+      resetForm();
+      handleNavigate();
     } catch (error) {
       console.error('Error submitting form:', error.message);
       console.log(source);
@@ -157,7 +190,12 @@ const AddPet = () => {
   };
 
   const handleCancel = () => {
-    window.history.back(); // Переходимо на попередню сторінку
+    // window.history.back();
+    if (source === 'notices') {
+      navigate('/notices');
+    } else if (source === 'user') {
+      navigate('/user');
+    }
   };
 
   return (

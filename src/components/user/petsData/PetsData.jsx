@@ -33,8 +33,7 @@ export default function PetsData() {
           // to={`/add-pet`}
           // $content="Add Pet"
           // $darkType
-          onClick={handleNavigate}
-
+          onClick={() => handleNavigate('user')}
         />
       </PetsHeaderContainer>
 
