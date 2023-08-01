@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/project-savePets05/static/css/main.b7d0ba3d.css",
-    "main.js": "/project-savePets05/static/js/main.68e0cf6b.js",
+    "main.js": "/project-savePets05/static/js/main.080d6e2e.js",
     "static/js/813.6eef4027.chunk.js": "/project-savePets05/static/js/813.6eef4027.chunk.js",
     "static/js/432.f38b6338.chunk.js": "/project-savePets05/static/js/432.f38b6338.chunk.js",
     "static/js/637.287d1ea4.chunk.js": "/project-savePets05/static/js/637.287d1ea4.chunk.js",
     "static/css/104.050fc28e.chunk.css": "/project-savePets05/static/css/104.050fc28e.chunk.css",
-    "static/js/104.8301d5de.chunk.js": "/project-savePets05/static/js/104.8301d5de.chunk.js",
+    "static/js/104.ffac5280.chunk.js": "/project-savePets05/static/js/104.ffac5280.chunk.js",
     "static/js/770.a73b2a5a.chunk.js": "/project-savePets05/static/js/770.a73b2a5a.chunk.js",
     "static/js/498.d12ec71b.chunk.js": "/project-savePets05/static/js/498.d12ec71b.chunk.js",
     "static/js/148.a6398896.chunk.js": "/project-savePets05/static/js/148.a6398896.chunk.js",
@@ -59,12 +59,12 @@
     "static/media/cross-small.svg": "/project-savePets05/static/media/cross-small.8da70af0e6f5ef55f05592dc1412e003.svg",
     "static/media/menu-hamburger.svg": "/project-savePets05/static/media/menu-hamburger.e5ce08a82de7546bfde31ea978aefa46.svg",
     "main.b7d0ba3d.css.map": "/project-savePets05/static/css/main.b7d0ba3d.css.map",
-    "main.68e0cf6b.js.map": "/project-savePets05/static/js/main.68e0cf6b.js.map",
+    "main.080d6e2e.js.map": "/project-savePets05/static/js/main.080d6e2e.js.map",
     "813.6eef4027.chunk.js.map": "/project-savePets05/static/js/813.6eef4027.chunk.js.map",
     "432.f38b6338.chunk.js.map": "/project-savePets05/static/js/432.f38b6338.chunk.js.map",
     "637.287d1ea4.chunk.js.map": "/project-savePets05/static/js/637.287d1ea4.chunk.js.map",
     "104.050fc28e.chunk.css.map": "/project-savePets05/static/css/104.050fc28e.chunk.css.map",
-    "104.8301d5de.chunk.js.map": "/project-savePets05/static/js/104.8301d5de.chunk.js.map",
+    "104.ffac5280.chunk.js.map": "/project-savePets05/static/js/104.ffac5280.chunk.js.map",
     "770.a73b2a5a.chunk.js.map": "/project-savePets05/static/js/770.a73b2a5a.chunk.js.map",
     "498.d12ec71b.chunk.js.map": "/project-savePets05/static/js/498.d12ec71b.chunk.js.map",
     "148.a6398896.chunk.js.map": "/project-savePets05/static/js/148.a6398896.chunk.js.map",
@@ -77,6 +77,6 @@
   },
   "entrypoints": [
     "static/css/main.b7d0ba3d.css",
-    "static/js/main.68e0cf6b.js"
+    "static/js/main.080d6e2e.js"
   ]
 }
