@@ -24,8 +24,8 @@ export const NoticesCategoriesNav = () => {
   const navigate = useNavigate(); // для кнопки AddPet
 
   // для кнопки AddPet
-  const handleNavigate = () => {
-    navigate('/add-pet');
+  const handleNavigate = source => {
+    navigate(`/add-pet?source=${source}`);
   };
 
   const isUser = useSelector(selectIsLoggedIn);
@@ -47,7 +47,9 @@ export const NoticesCategoriesNav = () => {
     <Wrapper>
       <List>{items}</List>
       <WrapperLinks>
-        {width >= 768 && <AddPetBtn onClick={handleNavigate} />}
+        {width >= 768 && (
+          <AddPetBtn onClick={() => handleNavigate('notices')} />
+        )}
       </WrapperLinks>
     </Wrapper>
   );
