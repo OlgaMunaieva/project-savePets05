@@ -3,7 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { CircleLoader } from 'react-spinners';
 import { toast } from 'react-hot-toast';
 
-import { selectUser, selectIsLoading, selectError } from 'redux/user/selectors';
+import {
+  selectUser,
+  selectIsLoading,
+  selectError,
+  // getUserError,
+} from 'redux/user/selectors';
 import { fetchUserInformation } from 'redux/user/operations';
 
 import UserForm from '../userForm/UserForm';
@@ -74,6 +79,7 @@ export default function UserData() {
           </ButtonEditUserInfo>
         </StyledFormContainer>
       )}
+
       <CircleLoader
         loading={isLoading}
         color="#CCE4FB"
