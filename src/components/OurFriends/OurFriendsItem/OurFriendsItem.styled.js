@@ -5,10 +5,10 @@ export const FriendCard = styled.li`
   display: flex;
   flex-direction: column;
   border-radius: 40px;
-  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
-  background-color: #ffffff;
+  box-shadow: ${variables.shadow.shadowDefault};
+  background-color: ${variables.colors.cardBgColor};
   max-width: 280px;
-  padding: 16px 31px;
+  padding: 16px 12px;
   transition: 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
 
   ${variables.breakPoints.tablet} {
@@ -22,7 +22,7 @@ export const FriendCard = styled.li`
   &:hover,
   &:focus {
     transform: scale(1.02);
-    box-shadow: 3px 8px 14px rgba(116, 177, 232, 0.55);
+    box-shadow: ${variables.shadow.shadowHover};
   }
 
   cursor: pointer;
@@ -35,7 +35,10 @@ export const FriendTitle = styled.a`
   margin-bottom: 16px;
   font-size: 20px;
   min-height: 54px;
+  /* min-height: 64px; */
 `;
+
+export const FriendImageThumb = styled.div``;
 
 export const FriendImg = styled.img`
   width: 100px;
@@ -65,7 +68,6 @@ export const FriendThumb = styled.div`
 `;
 
 export const FriendInfoThumb = styled.div`
-  position: relative; 
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -124,8 +126,8 @@ export const FriendAdress = styled.a`
 
 export const WorkDaysList = styled.ul`
   position: absolute;
-  top: 128px;
-  right: 76px;
+  top: 130px;
+  right: 25px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -134,13 +136,21 @@ export const WorkDaysList = styled.ul`
   padding: 12px;
 
   border-radius: 8px;
-  border: 1px solid #54adff;
+  border: 1px solid ${variables.colors.buttonsHoverBg};
 
-  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  box-shadow: ${variables.shadow.shadowDefault};
 
-  background-color: #fef9f9;
+  background-color: ${variables.colors.secondaryText};
 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  ${variables.breakPoints.tablet} {
+    right: 60px;
+  }
+
+  ${variables.breakPoints.desktop} {
+    right: 95px;
+  }
 `;
 
 export const WorkDayItem = styled.li`
@@ -153,9 +163,9 @@ export const WorkDayItem = styled.li`
 `;
 
 export const WorkDays = styled.p`
-  color: #000000;
+  color: ${variables.colors.text};
 `;
 
 export const WorkTime = styled.p`
-  color: #000000;
+  color: ${variables.colors.text};
 `;
