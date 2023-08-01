@@ -1,5 +1,5 @@
 import NewsItem from './newsItem.jsx' ;
-const { default: StyledList } = require("./StyledNewsList")
+const { default: StyledList } = require("./StyledNewsList.styled.js")
 
 
 

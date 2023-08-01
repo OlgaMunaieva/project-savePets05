@@ -1,12 +1,14 @@
-import {Datebox, NewsMedia, NewsText, NewsTitle, StyledItem} from './StyledItem';
+import {Datebox, NewsMedia, NewsText, NewsTitle, StyledItem} from './StyledItem.styled.js';
 
 const NewsItem = ({ item }) => {
-
+  const mediaUrl = item && item.multimedia && item.multimedia.length > 0
+  ? `https://www.nytimes.com/${item.multimedia[0].url}`
+  : `https://source.unsplash.com/featured/?nature`;
   return (
     <StyledItem>
       <NewsMedia
         src={
-          `https://www.nytimes.com/${item.multimedia[0].url}` ||
+          `${mediaUrl}` ||
           `https://source.unsplash.com/featured/?nature`
         }
         alt=""
