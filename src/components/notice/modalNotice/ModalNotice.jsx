@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import spriteImage from '../../../images/sprite.svg';
 
@@ -28,27 +28,33 @@ import {
   Status,
   StatusText,
 } from '../noticeCategoryItem/NoticeCategoryItem.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectIsNoticeLoading, selectNotices } from 'redux/notices/selectors';
-import { fetchById } from 'redux/notices/operations';
+import axios from 'axios';
 import { CircleLoader } from 'react-spinners';
 
 const BaseUrlImg = 'https://res.cloudinary.com/dfvviqdic/image/upload/';
 
 const modalRoot = document.body;
 
-const ModalNotice = ({ onClose, isOpenedModal, data, children }) => {
-  const { photoUrl, category, title, sex, location, cardId } = data;
-  console.log(cardId);
-
-  const dispatch = useDispatch();
-  const notice = useSelector(selectNotices);
-  const isLoading = useSelector(selectIsNoticeLoading);
+const ModalNotice = ({ onClose, isOpenedModal, id, children }) => {
+  // const { photoUrl, category, title, sex, location, cardId } = inf;
+  const [data, setData] = useState(null)
+  console.log(id);
 
   useEffect(() => {
-    dispatch(fetchById(cardId));
-    console.log(notice);
-  }, [cardId, notice, dispatch]);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`https://project-savepets05-be.onrender.com/api/notices/${id}`);
+        const notice = response.data;
+        console.log(notice);
+        setData(notice);
+        // Здесь вы можете использовать данные, например, установить их в состояние компонента
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [id]); //
 
   const toggleModal = useCallback(
     e => {
@@ -80,57 +86,63 @@ const ModalNotice = ({ onClose, isOpenedModal, data, children }) => {
     if (e.target === e.currentTarget) onClose();
   };
 
+  if (!data) {
+    return <CircleLoader/>;
+  }
+
   return createPortal(
     <ModalWindow onClick={onClickOverlay}>
       <ModalContent>
-        {isLoading && <CircleLoader/>}
+        {/* {isLoading && <CircleLoader/>} */}
         <ExitButton onClick={() => onClose()}>
           <img src={CrossIcon} alt="Cross" width={24} height={24} />
         </ExitButton>
         <MainDataWrapper>
           <Wrapper>
             <ImgWrapper>
-              <Img src={BaseUrlImg + photoUrl} alt="pet" loading="lazy" />
+              {/* <Img src={BaseUrlImg + photoUrl} alt="pet" loading="lazy" /> */}
+              <Img src={BaseUrlImg + data.photoUrl} alt="pet" loading="lazy" />
               <Status>
-                <StatusText>{category}</StatusText>
+                <StatusText>{data.category}</StatusText>
               </Status>
             </ImgWrapper>
             <TitleWrapper>
-              <Title>{title}</Title>
+              <Title>{data.title}</Title>
               <InformationWrapper>
                 <DataWrapper>
                   <Data>Name:</Data>
-                  <Details></Details>
+                  <Details>{data.name}</Details>
                 </DataWrapper>
                 <DataWrapper>
                   <Data>Birthday:</Data>
-                  <Details></Details>
+                  <Details>{data.birthday}</Details>
                 </DataWrapper>
                 <DataWrapper>
                   <Data>Type:</Data>
-                  <Details></Details>
+                  <Details>{data.type}</Details>
                 </DataWrapper>
                 <DataWrapper>
                   <Data>Place:</Data>
-                  <Details>{location}</Details>
+                  <Details>{data.location}</Details>
                 </DataWrapper>
                 <DataWrapper>
                   <Data>The sex:</Data>
-                  <Details>{sex}</Details>
+                  <Details>{data.sex}</Details>
                 </DataWrapper>
                 <DataWrapper>
                   <Data>Email:</Data>
-                  <Details></Details>
+                  <Details>{data.email}</Details>
                 </DataWrapper>
                 <DataWrapper>
                   <Data>Phone:</Data>
-                  <Details></Details>
+                  <Details>{data.phone}</Details>
                 </DataWrapper>
               </InformationWrapper>
             </TitleWrapper>
           </Wrapper>
           <DescriptionWrapper>
             <span>Comments:</span>
+            {data.comments}
           </DescriptionWrapper>
         </MainDataWrapper>
         <ButtonsWrapper>

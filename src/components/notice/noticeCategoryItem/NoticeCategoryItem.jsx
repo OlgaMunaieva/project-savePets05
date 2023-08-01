@@ -157,7 +157,7 @@ const NoticesCategoryItem = ({
           {isModalOpen && (
             <ModalNotice
               onClose={handleModal}
-              data={{ photoUrl, category, title, sex, cardId }}
+              id={cardId}
             />
           )}
         </TitleWrapper>
