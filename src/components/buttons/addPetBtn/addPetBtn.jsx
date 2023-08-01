@@ -1,14 +1,8 @@
 import React from 'react';
-// import { useLocation } from 'react-router-dom';
 import { Button, Icon } from './addPetBtn.styled';
 import spriteImage from '../../../images/sprite.svg';
-// import variables from 'settings/variables';
 
 const AddPetBtn = ({ onClick }) => {
-  // const location = useLocation();
-  // console.log(location.pathname);
-
-  // const user = location.pathname === '/user' ? null : 'user';
 
   return (
     <Button onClick={onClick}>

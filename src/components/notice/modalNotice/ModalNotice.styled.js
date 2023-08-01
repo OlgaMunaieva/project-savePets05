@@ -202,3 +202,21 @@ export const FavoriteBtn = styled(ContactBtn)`
     padding: 0;
   }
 `;
+
+export const NoticeLink = styled.a`
+display: block;
+font-weight: 500;
+font-size: 12px;
+line-height: 1.33;
+letter-spacing: 0px;
+text-align: left;
+  color: ${variables.colors.accentHeaderButton};
+
+  ${variables.breakPoints.tablet} {
+    font-size: 16px;
+  }
+
+  /* ${variables.breakPoints.desktop} {
+    font-size: 16px;
+  } */
+`;

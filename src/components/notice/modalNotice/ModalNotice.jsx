@@ -22,6 +22,7 @@ import {
   MainDataWrapper,
   Wrapper,
   ButtonsWrapper,
+  NoticeLink,
 } from './ModalNotice.styled';
 import {
   Icon,
@@ -128,17 +129,19 @@ const ModalNotice = ({ onClose, isOpenedModal, id, children }) => {
                 </DataWrapper>
                 <DataWrapper>
                   <Data>Email:</Data>
-                  <Details>{data.email}</Details>
+                  <NoticeLink href={`mailto:${data.email}`}>{data.email}</NoticeLink>
                 </DataWrapper>
                 <DataWrapper>
                   <Data>Phone:</Data>
-                  <Details>{data.phone}</Details>
+                  <NoticeLink href={`tel:${data.phone}`}>
+              {data.phone}
+            </NoticeLink>
                 </DataWrapper>
               </InformationWrapper>
             </TitleWrapper>
           </Wrapper>
           <DescriptionWrapper>
-            <span>Comments:</span>
+            <span style={{marginRight: 5}}>Comments:</span>
             {data.comments}
           </DescriptionWrapper>
         </MainDataWrapper>
