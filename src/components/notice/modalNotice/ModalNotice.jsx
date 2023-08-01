@@ -30,15 +30,23 @@ import {
 } from '../noticeCategoryItem/NoticeCategoryItem.styled';
 import axios from 'axios';
 import { CircleLoader } from 'react-spinners';
+import debounce from 'lodash.debounce';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchFavorite, putFavorite } from 'redux/notices/operations';
+import { selectIsLoggedIn } from 'redux/auth/authSelectors';
+import { toast } from 'react-hot-toast';
+import { useParams } from 'react-router-dom';
 
 const BaseUrlImg = 'https://res.cloudinary.com/dfvviqdic/image/upload/';
 
 const modalRoot = document.body;
 
-const ModalNotice = ({ onClose, isOpenedModal, id, children }) => {
-  // const { photoUrl, category, title, sex, location, cardId } = inf;
+const ModalNotice = ({ onClose, isOpenedModal, id, favorite, children }) => {
+  const params = useParams();
+  const categoryParam = params.categoryName;
   const [data, setData] = useState(null)
-  console.log(id);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+    const dispatch = useDispatch(id);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -83,6 +91,21 @@ const ModalNotice = ({ onClose, isOpenedModal, id, children }) => {
 
   const onClickOverlay = e => {
     if (e.target === e.currentTarget) onClose();
+  };
+
+  const favoriteClickHandle = () => {
+    const debouncedFetchFavorite = debounce(() => {
+      dispatch(fetchFavorite());
+    }, 150);
+
+    if (!isLoggedIn) {
+      toast.error('You need to sign in');
+    }
+    dispatch(putFavorite(id));
+
+    if (categoryParam === 'favorite' && favorite) {
+      debouncedFetchFavorite();
+    }
   };
 
   if (!data) {
@@ -149,7 +172,7 @@ const ModalNotice = ({ onClose, isOpenedModal, id, children }) => {
         </MainDataWrapper>
         <ButtonsWrapper>
           <ContactBtn href={`tel:${data.phone}`}>Contact</ContactBtn>
-          <FavoriteBtn type="button">
+          <FavoriteBtn type="button" onClick={favoriteClickHandle}>
             <span>Add to</span>
             <Icon width={24} height={24}>
               <use href={spriteImage + '#icon-heart'}></use>

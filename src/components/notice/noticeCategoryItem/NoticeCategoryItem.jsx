@@ -156,6 +156,7 @@ const NoticesCategoryItem = ({
           </BtnLearn>
           {isModalOpen && (
             <ModalNotice
+              favorite={favorite}
               onClose={handleModal}
               id={cardId}
             />
