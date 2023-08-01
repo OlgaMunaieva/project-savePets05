@@ -3,7 +3,6 @@ import BigDog from '../../../images/homeImages/mobile/big-dog-mobile.png';
 import BigDog2x from '../../../images/homeImages/mobile/big-dog-mobile@2x.png';
 import SmallDog from '../../../images/homeImages/mobile/small-dog-mobile.png';
 import SmallDog2x from '../../../images/homeImages/mobile/small-dog-mobile@2x.png';
-import SmallDogWhole from '../../../images/homeImages/mobile/small-dog-whole-mobile.png';
 import Cat from '../../../images/homeImages/mobile/cat-mobile.png';
 import Cat2x from '../../../images/homeImages/mobile/cat-mobile@2x.png';
 import BigDogTablet from '../../../images/homeImages/tablet/big-dog-tablet.png';
