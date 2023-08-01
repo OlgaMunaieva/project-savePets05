@@ -11,6 +11,7 @@ const SharedLayout = () => {
   const ContainerToRender =
     location.pathname === '/notices/sell' ||
     location.pathname === '/notices' ||
+    location.pathname === '/user' ||
     // location.pathname === '/news' ||
     location.pathname === '/friends' ||
     location.pathname === '/notices/lost-found' ||

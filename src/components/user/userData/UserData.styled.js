@@ -15,10 +15,17 @@ export const StyledFormContainer = styled.div`
   padding-right: 24px;
   padding-bottom: 20px;
   padding-left: 16px;
-  width: 395px;
+  width: 280px;
+  height: 517px;
   border-radius: 40px;
   background-color: ${cardBgColor};
   box-shadow: ${shadowDefault};
+   ${variables.breakPoints.tablet} {
+
+  }
+  ${variables.breakPoints.desktop} {
+    width: 395px;
+  }
 `;
 
 export const ButtonEditUserInfo = styled.button`

@@ -15,11 +15,21 @@ export const StyledForm = styled(Form)`
   flex-direction: column;
 `;
 
+export const InputsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  /* margin-bottom: 10px; */
+  /* align-items: center; */
+
+`;
+
 export const InputContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
   /* align-items: center; */
+
 `;
 
 export const StyledInput = styled(Field)`

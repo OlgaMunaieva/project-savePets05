@@ -30,6 +30,7 @@ import {
   ErrorMessageContainer,
   UserAvatarThumb,
   StyledErrorImg,
+  InputsContainer,
 } from './UserForm.styled';
 
 // const yearNow = new Date().getFullYear();
@@ -207,6 +208,7 @@ export default function UserForm({ user, isFormDisabled, closeModal }) {
           onChange={handleAvatarPreview}
         />
 
+<InputsContainer>
         <InputContainer>
           <StyledLabel htmlFor="name">Name:</StyledLabel>
           <ErrorMessageContainer>
@@ -214,7 +216,6 @@ export default function UserForm({ user, isFormDisabled, closeModal }) {
             <StyledErrorMessage component="div" name="name" />
           </ErrorMessageContainer>
         </InputContainer>
-
         <InputContainer>
           <StyledLabel htmlFor="email">Email:</StyledLabel>
           <ErrorMessageContainer>
@@ -265,8 +266,10 @@ export default function UserForm({ user, isFormDisabled, closeModal }) {
               />
               <StyledErrorMessage component="p" name="city" />
             </ErrorMessageContainer>
-          </InputContainer>
-        )}
+            </InputContainer>
+
+          )}
+          </InputsContainer>
 
         {!isFormDisabled && (
           <Button
