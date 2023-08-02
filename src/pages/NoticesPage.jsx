@@ -8,18 +8,19 @@ import {
   fetchMyPets,
 } from 'redux/notices/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectNotices } from 'redux/notices/selectors';
+import { selectNotices, selectTotalPages } from 'redux/notices/selectors';
 import { useNavigate, useParams } from 'react-router-dom';
 import Pagination from 'components/pagination/Pagination';
 import { FixedButtonWrapper } from 'components/buttons/addPetBtn/addPetBtn.styled';
 import AddPetBtnCircle from 'components/buttons/addPetBtn/addPetBtnCircle';
 import { useResize } from 'hooks/useResize';
 import NoticesSearch from 'components/notice/noticesSearch/NoticesSearch';
+// import { debounce } from 'lodash';
 
 const NoticesPage = () => {
   // для кнопки add pet
   const { width } = useResize();
-
+  const totalPages = useSelector(selectTotalPages);
   const notices = useSelector(selectNotices);
   const dispatch = useDispatch();
   const params = useParams();
@@ -28,63 +29,77 @@ const NoticesPage = () => {
   const [page, setPage] = useState(0);
   const [title, setTitle] = useState('');
   const navigate = useNavigate(); // для кнопки add pet
+  const locationCategory = params.categoryName;
 
   // для кнопки add pet
-  const handleNavigate = source => {
+  function handleNavigate(source) {
     navigate(`/add-pet?source=${source}`);
+  }
+
+  const resizeHandler = width => {
+    if (width <= 766) {
+      return 11;
+    } else if (width < 1279) {
+      return 10;
+    } else if (width >= 1280) {
+      return 12;
+    }
   };
 
-  // const resizeHandler = width => {
-  //   if (width <= 766) {
-  //     setLimit(11);
-  //   } else if (width < 1279) {
-  //     setLimit(10);
-  //   } else if (width >= 1280) {
-  //     setLimit(12);
-  //   }
-  // };
-
-  const handlerQvery = qvery => {
-    setTitle(qvery);
+  const handlerQuery = query => {
+    setTitle(query);
   };
-  const handlerCleanQvery = () => {
+  const handlerCleanQuery = () => {
     setTitle('');
   };
-  const locationCategory = params.categoryName;
+
+  const handleCategoryChange = () => {
+    setPage(0);
+  };
+
   useEffect(() => {
-    // resizeHandler(width);
     if (locationCategory !== 'favorite' && locationCategory !== 'own') {
       dispatch(
         fetchByCategory({
           category: locationCategory,
-          limit: limit,
+          limit: resizeHandler(width),
           page: page + 1,
           title: title,
         })
       );
     }
     if (locationCategory === 'favorite') {
-      dispatch(fetchFavorite({ limit: limit }));
+      dispatch(fetchFavorite({ limit: resizeHandler(width) }));
     }
     if (locationCategory === 'own') {
-      dispatch(fetchMyPets({ limit: limit }));
+      dispatch(fetchMyPets({ limit: resizeHandler(width) }));
     }
-  }, [dispatch, locationCategory, limit, page, title]);
+  }, [dispatch, locationCategory, limit, page, title, width]);
 
   const handlePageClick = ({ selected }) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setPage(selected);
   };
+
+  const paginationKey = `${locationCategory}`;
+
   return (
     <>
       <TitlePage children={'Find your favorite pet'} />
-      <NoticesSearch clean={handlerCleanQvery} setQvery={handlerQvery} />
-      <NoticesCategoriesNav />
+      <NoticesSearch clean={handlerCleanQuery} setQvery={handlerQuery} />
+      <NoticesCategoriesNav onClick={handleCategoryChange} />
       <NoticesCategoriesList
         pets={notices}
         locationCategory={locationCategory}
-      />
-      <Pagination click={handlePageClick} limit={limit} page={page} />
+      />{' '}
+      {totalPages > 12 && (
+        <Pagination
+          key={paginationKey}
+          click={handlePageClick}
+          limit={limit}
+          page={page}
+        />
+      )}
       {width < 768 && (
         <FixedButtonWrapper>
           <AddPetBtnCircle onClick={() => handleNavigate('notices')} />

@@ -16,6 +16,7 @@ const noticesSlice = createSlice({
     error: null,
     status: 0,
     totalPages: null,
+    page: 2,
   },
 
   extraReducers: builder => {
@@ -27,14 +28,13 @@ const noticesSlice = createSlice({
       .addCase(fetchNotices.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        // state.items = payload;
       })
       .addCase(fetchNotices.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })
       // fetch category
-      .addCase(fetchByCategory.pending, state => {
+      .addCase(fetchByCategory.pending, (state, { payload }) => {
         state.isLoading = true;
       })
       .addCase(fetchByCategory.fulfilled, (state, { payload }) => {

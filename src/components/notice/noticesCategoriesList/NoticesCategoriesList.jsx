@@ -1,4 +1,5 @@
 import NoticesCategoryItem from '../noticeCategoryItem/NoticeCategoryItem';
+import information from '../../../images/no-information.png';
 
 import React from 'react';
 import { Container, List, Notification } from './NoticesCategoriesList.styled';
@@ -6,9 +7,9 @@ import { Container, List, Notification } from './NoticesCategoriesList.styled';
 const NoticesCategoriesList = ({ pets }) => {
   return (
     <Container>
-      {pets.length === 0 ? (
+      {pets.length === 0 || null ? (
         <Notification>
-          <p>Ooops, there is no post for your query</p>
+          <img src={information} alt="" />
         </Notification>
       ) : (
         <List>
