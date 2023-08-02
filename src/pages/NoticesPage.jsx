@@ -82,6 +82,7 @@ const NoticesPage = () => {
   };
 
   const paginationKey = `${locationCategory}`;
+  console.log(totalPages);
 
   return (
     <>
@@ -91,15 +92,17 @@ const NoticesPage = () => {
       <NoticesCategoriesList
         pets={notices}
         locationCategory={locationCategory}
-      />{' '}
-      {totalPages > 12 && (
-        <Pagination
-          key={paginationKey}
-          click={handlePageClick}
-          limit={limit}
-          page={page}
-        />
-      )}
+      />
+      {totalPages >= 12 &&
+        locationCategory !== 'favorite' &&
+        locationCategory !== 'own' && (
+          <Pagination
+            key={paginationKey}
+            click={handlePageClick}
+            limit={limit}
+            page={page}
+          />
+        )}
       {width < 768 && (
         <FixedButtonWrapper>
           <AddPetBtnCircle onClick={() => handleNavigate('notices')} />
