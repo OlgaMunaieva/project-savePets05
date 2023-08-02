@@ -96,7 +96,7 @@ const Step2 = ({
 
   const handleDateChange = event => {
     const inputValue = event.target.value;
-    let formattedValue = inputValue.replace(/\D/g, ''); // Видаляємо всі нецифрові символи (дефіси)
+    let formattedValue = inputValue.replace(/\D/g, '');
 
     if (formattedValue.length >= 2) {
       formattedValue = `${formattedValue.slice(0, 2)}-${formattedValue.slice(
@@ -109,9 +109,8 @@ const Step2 = ({
         9
       )}`;
     }
-    setFormattedDate(formattedValue); // Зберігаємо форматовану дату в стані компонента
+    setFormattedDate(formattedValue);
     handleChange({
-      // Викликаємо обробник зміни з форматованим значенням
       target: {
         name: 'petBirthDate',
         value: formattedValue,
@@ -169,7 +168,6 @@ const Step3 = ({ handleChange, petImage, adType, step }) => {
   const [selectedImage, setSelectedImage] = useState(petImage || null);
   const fileInputRef = useRef(null);
   const handleIconClick = () => {
-    // Викликаємо подію кліку на прихований input type="file"
     fileInputRef.current.click();
   };
 
