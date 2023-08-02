@@ -60,7 +60,7 @@ export const ModalContent = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 280px;
+  min-width: 280px;
   padding: 60px 16px;
   overflow: auto;
   &::-webkit-scrollbar {
@@ -68,13 +68,13 @@ export const ModalContent = styled.div`
   }
 
   @media (min-width: 479px) {
-    width: 450px;
+    min-width: 450px;
   }
   @media (min-width: 767px) {
-    width: 610px;
+    min-width: 610px;
     /* padding: 60px 130px; */
   }
-  width: fit-content;
+  /* width: fit-content; */
   background-color: white;
   border-radius: 20px;
 `;

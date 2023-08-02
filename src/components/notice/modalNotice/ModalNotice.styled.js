@@ -37,7 +37,7 @@ export const ModalContent = styled.div`
   padding-top: 44px;
   padding-left: 20px;
   padding-right: 20px;
-  width: fit-content;
+  min-width: 280px;
   background-color: white;
   border-radius: 20px;
   /* max-height: 90vh; */
