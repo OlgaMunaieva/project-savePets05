@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'components/modal/Modal';
 import { LogOutIcon } from '../buttons/LogoutBtn.styled';
 import { logOut } from 'redux/auth/authOperations';
+import { logoutPet } from 'redux/user/operations';
 
 const Navigation = () => {
   const { name } = useSelector(selectUserName);
@@ -32,6 +33,11 @@ const Navigation = () => {
   const handlerOpenModal = () => {
     setOpenModal(!openModal);
   };
+  const handleLogOut = () => {
+    dispatch(logOut());
+    dispatch(logoutPet());
+  };
+
   const { width } = useResize();
 
   const resizeHandler = width => {
@@ -86,7 +92,8 @@ const Navigation = () => {
                 </CancelBtn>
                 <DelBtn
                   onClick={() => {
-                    dispatch(logOut());
+                    // dispatch(logOut());
+                    handleLogOut();
                     handlerOpenModal();
                   }}
                 >

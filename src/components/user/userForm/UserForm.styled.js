@@ -1,4 +1,3 @@
-// import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Form, Field, ErrorMessage } from 'formik';
 import styled from 'styled-components';
 import variables from '../../../settings/variables';
@@ -10,51 +9,85 @@ const {
 } = variables;
 
 export const StyledForm = styled(Form)`
-  position: relative;
   display: flex;
   flex-direction: column;
+  gap: 59px;
+
+  ${variables.breakPoints.tablet} {
+    flex-direction: row-reverse;
+    gap: 71px;
+  }
+  ${variables.breakPoints.desktop} {
+    flex-direction: column;
+    gap: 63px;
+  }
 `;
 
-export const InputsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+export const AvatarContainer = styled.div`
+  position: relative;
+  /* display: flex;
+  flex-direction: column; */
   /* justify-content: space-between; */
   /* margin-bottom: 10px; */
   /* align-items: center; */
+`;
 
+export const UserInfoContainer = styled.div`
+  width: 264px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  ${variables.breakPoints.tablet} {
+    width: 355px;
+    gap: 10px;
+  }
+  ${variables.breakPoints.desktop} {
+  }
 `;
 
 export const InputContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
-  /* align-items: center; */
-
+  ${variables.breakPoints.tablet} {
+  }
+  ${variables.breakPoints.desktop} {
+  }
 `;
 
 export const StyledInput = styled(Field)`
-  padding: 4px 12px;
-  width: 255px;
+  padding: 6px 12px;
+  width: 190px;
   border: 1px solid ${buttonsHoverBg};
   border-radius: 20px;
   font-family: inherit;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 1.36;
   letter-spacing: 0.04em;
   color: ${simpleWhite};
   &:disabled {
     background-color: inherit;
   }
+  ${variables.breakPoints.tablet} {
+    width: 255px;
+    padding: 4px 12px;
+    font-size: 16px;
+  }
+  ${variables.breakPoints.desktop} {
+  }
 `;
 
 export const StyledLabel = styled.label`
   font-family: inherit;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.36;
   letter-spacing: 0.04em;
-  padding: 4px 0px;
   color: ${simpleWhite};
+  ${variables.breakPoints.tablet} {
+    font-size: 18px;
+  }
+  ${variables.breakPoints.desktop} {
+  }
 `;
 
 export const UserAvatar = styled.img`
@@ -71,7 +104,9 @@ export const UserAvatarThumb = styled.div`
 `;
 
 export const ButtonEditPhoto = styled.button`
-  margin: 0 auto 20px auto;
+  position: absolute;
+  left: 85px;
+  margin: 0 auto;
   padding: 5px;
   display: flex;
   align-items: center;
@@ -89,6 +124,12 @@ export const ButtonEditPhoto = styled.button`
   &:focus {
     box-shadow: ${shadowHover};
     border-radius: 5px;
+  }
+  ${variables.breakPoints.tablet} {
+    left: 43px;
+  }
+  ${variables.breakPoints.desktop} {
+    left: 135px;
   }
 `;
 
@@ -125,6 +166,8 @@ export const ButtonCancelUpload = styled.button`
 `;
 
 export const ContainerButtonsUpload = styled.div`
+  position: absolute;
+  left: 76px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,6 +179,12 @@ export const ContainerButtonsUpload = styled.div`
   line-height: 1.83;
   letter-spacing: 0.04em;
   color: ${simpleWhite};
+  ${variables.breakPoints.tablet} {
+    left: 36px;
+  }
+  ${variables.breakPoints.desktop} {
+    left: 126px;
+  }
 `;
 
 export const StyledErrorMessage = styled(ErrorMessage)`

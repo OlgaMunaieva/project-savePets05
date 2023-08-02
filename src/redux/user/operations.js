@@ -61,7 +61,17 @@ export const deleteUserPet = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.delete(`/api/pet/${id}`);
-      return response.id;
+      return response.data.id;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const logoutPet = createAsyncThunk(
+  'contacts/logoutPet',
+  async (_, thunkAPI) => {
+    try {
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

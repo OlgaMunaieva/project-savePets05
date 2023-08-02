@@ -8,8 +8,8 @@ const {
 } = variables;
 
 export const StyledFormContainer = styled.div`
-  position: relative;
-  display: flex;
+  /* position: relative; */
+  /* display: flex;
   flex-direction: column;
   padding-top: 20px;
   padding-right: 24px;
@@ -25,13 +25,13 @@ export const StyledFormContainer = styled.div`
   }
   ${variables.breakPoints.desktop} {
     width: 395px;
-  }
+  } */
 `;
 
 export const ButtonEditUserInfo = styled.button`
   position: absolute;
-  top: 18px;
-  right: 18px;
+  top: 14px;
+  right: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,6 +44,12 @@ export const ButtonEditUserInfo = styled.button`
   &:focus {
     box-shadow: ${shadowHover};
     border-radius: 50%;
+  }
+  ${variables.breakPoints.tablet} {
+    top: 18px;
+    right: 18px;
+  }
+  ${variables.breakPoints.desktop} {
   }
 `;
 

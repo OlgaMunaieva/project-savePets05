@@ -57,8 +57,16 @@ export default function UserData() {
         <Modal
           closeModal={closeUserProfileModal}
           isOpenedModal={showUserProfileModal}
-          width={'395px'}
-          padding={'20px 24px 20px 16px'}
+          // width={'395px'}
+          // padding={'20px 24px 20px 16px'}
+          style={{
+            width: '395px',
+            padding: '20px 24px 20px 16px',
+            '@media (minWidth: 767px)': {
+              width: '704px',
+              padding: '20px 76px 16px 20px',
+            },
+          }}
         >
           <UserForm
             user={user}
