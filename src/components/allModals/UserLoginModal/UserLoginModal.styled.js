@@ -1,21 +1,28 @@
-import variables from 'settings/variables';
 import styled from 'styled-components';
+import variables from 'settings/variables';
 
-export const Div = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  @media screen and (max-width: 1279px) and (min-width: 767px) {
-    padding-right: 60px;
+export const ModalWrapper = styled.div`
+  width: 280px;
+  padding-top: 80px;
+  padding-right: 12px;
+  padding-left: 12px;
+  padding-bottom: 60px;
+  border-radius: 40px;
+
+  ${variables.breakPoints.tablet} {
+    padding: 60px;
+    width: 608px;
   }
+  //   ${variables.breakPoints.desktop} {
+  //     width: 288px;
+  //   }
 `;
 
 export const TitleModal = styled.h2`
   margin-bottom: 14px;
-  font-weight: 500;
-  font-size: 24x;
-  line-height: 32px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33px;
   text-align: center;
   letter-spacing: 0.04em;
   ${variables.breakPoints.tablet} {
@@ -152,18 +159,26 @@ export const DelBtn = styled.button`
     stroke: ${variables.colors.secondaryText};
   }
 `;
+
 export const TitleDelBtn = styled.span`
   margin-right: 8px;
   color: ${variables.colors.secondaryText};
 `;
-export const ModalWraperr = styled.div`
-  max-width: 280px;
-  padding-top: 23px;
-  padding-bottom: 23px;
+
+export const Description = styled.p`
+  margin-bottom: 44px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: -0.01em;
 
   ${variables.breakPoints.tablet} {
-    padding-top: 47.5px;
-    padding-bottom: 47.5px;
-    min-width: 548px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  & span {
+    font-weight: 700;
   }
 `;

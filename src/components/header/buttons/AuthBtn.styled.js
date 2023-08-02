@@ -8,13 +8,9 @@ export const List = styled.ul`
   align-items: center;
   @media screen and (max-width: 766px) {
     flex-direction: column;
-    padding-top: 40px;
     row-gap: 12px;
   }
   gap: 20px;
-  @media screen and (max-width: 1279px) and (min-width: 767px) {
-    padding-right: 60px;
-  }
 `;
 export const ListItem = styled.li``;
 export const LinkLogin = styled(Link)`
