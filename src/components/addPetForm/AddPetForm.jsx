@@ -98,54 +98,40 @@ const AddPet = () => {
     setIsLoading(true);
     try {
       const formData = new FormData();
-      if (adType === 'sell') {
-        formData.append('title', values.addTitle.trim());
-        formData.append('category', values.adType.trim());
-        formData.append('name', values.petName.trim());
-        formData.append('birthday', values.petBirthDate.trim());
-        formData.append('type', values.petType.trim());
-        formData.append('sex', values.petSex);
-        formData.append('location', values.location.trim());
-        formData.append('price', values.price.trim());
-        formData.append('comments', values.comments.trim());
-        formData.append('notice', values.petImage);
-      } else if (adType === 'yourPet') {
-        formData.append('name', values.petName.trim());
-        formData.append('birthday', values.petBirthDate.trim());
-        formData.append('type', values.petType.trim());
-        formData.append('comments', values.comments.trim());
+      formData.append('name', values.petName.trim());
+      formData.append('birthday', values.petBirthDate.trim());
+      formData.append('type', values.petType.trim());
+      formData.append('comments', values.comments.trim());
+      if (adType === 'yourPet') {
         formData.append('pet', values.petImage);
-      } else if (adType === 'lostFound') {
+      }
+      if (
+        adType === 'sell' ||
+        adType === 'lostFound' ||
+        adType === 'inGoodHands'
+      ) {
         formData.append('title', values.addTitle.trim());
-        formData.append('category', 'lost-found');
-        formData.append('name', values.petName.trim());
-        formData.append('birthday', values.petBirthDate.trim());
-        formData.append('type', values.petType.trim());
         formData.append('sex', values.petSex);
         formData.append('location', values.location.trim());
-        formData.append('comments', values.comments.trim());
-        formData.append('notice', values.petImage);
-      } else if (adType === 'inGoodHands') {
-        formData.append('title', values.addTitle.trim());
-        formData.append('category', 'for-free');
-        formData.append('name', values.petName.trim());
-        formData.append('birthday', values.petBirthDate.trim());
-        formData.append('type', values.petType.trim());
-        formData.append('sex', values.petSex);
-        formData.append('location', values.location.trim());
-        formData.append('comments', values.comments.trim());
         formData.append('notice', values.petImage);
       }
-      console.log([...formData.entries()]);
-
+      if (adType === 'sell') {
+        formData.append('price', values.price.trim());
+        formData.append('category', values.adType.trim());
+      }
+      if (adType === 'lostFound') {
+        formData.append('category', 'lost-found');
+      }
+      if (adType === 'inGoodHands') {
+        formData.append('category', 'for-free');
+      }
+      // console.log([...formData.entries()]);
       let endpoint = 'https://project-savepets05-be.onrender.com/api/notices';
       if (adType === 'yourPet') {
         endpoint = 'https://project-savepets05-be.onrender.com/api/pet';
       }
-
       await sendData(formData, endpoint);
       console.log('Form submitted successfully');
-      console.log(source);
       resetForm();
       handleNavigate();
     } catch (error) {
@@ -193,7 +179,6 @@ const AddPet = () => {
   };
 
   const handleCancel = () => {
-    // window.history.back();
     if (source === 'notices') {
       navigate('/notices');
     } else if (source === 'user') {
