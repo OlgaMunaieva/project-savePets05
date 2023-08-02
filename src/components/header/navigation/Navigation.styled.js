@@ -154,8 +154,13 @@ export const TitleDelBtn = styled.span`
   color: ${variables.colors.secondaryText};
 `;
 export const ModalWraperr = styled.div`
-  margin-top: 77px;
+  max-width: 280px;
+  padding-top: 23px;
+  padding-bottom: 23px;
+
   ${variables.breakPoints.tablet} {
+    padding-top: 47.5px;
+    padding-bottom: 47.5px;
     min-width: 548px;
   }
 `;

@@ -20,6 +20,7 @@ import { LogOutIcon } from '../buttons/LogoutBtn.styled';
 import { logOut } from 'redux/auth/authOperations';
 import { logoutPet } from 'redux/user/operations';
 import useResizeHeader from 'hooks/useResizeHeader';
+import { useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
   const { name } = useSelector(selectUserName);
@@ -29,13 +30,14 @@ const Navigation = () => {
   const [sizeTab, setsizeTab] = useState(true);
   const [itsMobile, setitsMobile] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-
+  const navigate = useNavigate();
   const handlerOpenModal = () => {
     setOpenModal(!openModal);
   };
   const handleLogOut = () => {
     dispatch(logOut());
     dispatch(logoutPet());
+    navigate('/login', { redirect: true });
   };
 
   const width = useResizeHeader();
@@ -91,8 +93,8 @@ const Navigation = () => {
                   <span>Cancel</span>
                 </CancelBtn>
                 <DelBtn
+                  to="/notices/sell"
                   onClick={() => {
-                    // dispatch(logOut());
                     handleLogOut();
                     handlerOpenModal();
                   }}

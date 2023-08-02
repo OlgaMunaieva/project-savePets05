@@ -30,7 +30,7 @@ export const fetchByCategory = createAsyncThunk(
       const response = await axios.get(
         `/api/notices/category/?${searchParams.toString()}`
       );
-      console.log(response.message);
+
       return response.data;
     } catch (error) {
       // toast.error(error.message);
