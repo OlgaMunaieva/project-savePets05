@@ -32,7 +32,7 @@ z-index: 5;
   }
   ${variables.breakPoints.desktop} {
     width: 704px;
-    top: 0px;
+    top: -66px;
     left: 538px;
     margin: 0 32px;
   }
@@ -53,7 +53,7 @@ const BigDogImgBg = styled.img`
   ${variables.breakPoints.desktop} {
     display: none;
     width: 704px;
-    top: 0px;
+    top: -66px;
     left: 538px;
     margin: 0 32px;
   }
@@ -72,7 +72,7 @@ z-index: 5;
   }
   ${variables.breakPoints.desktop} {
     width: 637px;
-    top: 264px;
+    top: 198px;
     left: 303px;
   }
 `;
@@ -90,7 +90,7 @@ const SmallDogImgBg = styled.img`
   ${variables.breakPoints.desktop} {
     /* display: none; */
     min-width: 541px;
-    top: 263px;
+    top: 197px;
     left: 402px;
 
     /* width: 540px;
@@ -111,7 +111,7 @@ const CatImg = styled.img`
   }
   ${variables.breakPoints.desktop} {
     width: 420px;
-    top: 502px;
+    top: 436px;
     left: 796px;
   }
 `;
