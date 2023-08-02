@@ -7,8 +7,8 @@ const NewsList = ({items}) =>{
     return (
         <StyledList>
             {
-                items.map(item=>(
-                    <NewsItem key={item._id} item={item}/>
+                items.map((item,i)=>(
+                    <NewsItem key={i} item={item}/>
                 ))
             }
         </StyledList>
