@@ -1,16 +1,16 @@
-import { ArrovStyle, ArrovStyleLeft, Wraper } from "./newsPaginator.styled.js";
-import ReactPaginate from "react-paginate";
+import { ArrovStyle, ArrovStyleLeft, Wraper } from './newsPaginator.styled.js';
+import ReactPaginate from 'react-paginate';
 import './pagination.css';
 
-const NewsPaginator = ({click, page, limit,totalPages,news }) =>{
+const NewsPaginator = ({  setItems, limit, news }) => {
+  
+  const pageCount = Math.ceil(news.length / limit);
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * limit) % news.length;
+    console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
 
-    const handlePageClick = (event) => {
-        const newOffset = (event.selected * limit) % totalPages;
-        console.log(
-          `User requested page number ${event.selected}, which is offset ${newOffset}`
-        );
-        click(newOffset);
-      };
+    setItems(prevState => [...prevState,...news.slice(newOffset, newOffset + limit)]);
+  };
 
   return (
     <>
@@ -18,10 +18,10 @@ const NewsPaginator = ({click, page, limit,totalPages,news }) =>{
         <Wraper>
           <ReactPaginate
             nextLabel={<ArrovStyle />}
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={2}
+            onPageChange={(e)=>handlePageClick(e)}
+            pageRangeDisplayed={6}
             marginPagesDisplayed={1}
-            pageCount={Math.ceil(totalPages / limit) || 0}
+            pageCount={pageCount || 0}
             previousLabel={<ArrovStyleLeft />}
             pageClassName="page-item"
             pageLinkClassName="page-link"
@@ -40,6 +40,6 @@ const NewsPaginator = ({click, page, limit,totalPages,news }) =>{
       )}
     </>
   );
-}
+};
 
 export default NewsPaginator;
