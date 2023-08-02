@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { toast } from 'react-hot-toast';
+// import { toast } from 'react-hot-toast';
 
 axios.defaults.baseURL = 'https://project-savepets05-be.onrender.com';
 
@@ -32,7 +32,7 @@ export const fetchByCategory = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      toast.error(error.message);
+      // toast.error(error.message);
       return thunkAPI.rejectWithValue('');
     }
   }
@@ -45,7 +45,7 @@ export const fetchById = createAsyncThunk(
       const response = await axios.get(`/api/notices/notice/${id}`);
       return response.data;
     } catch (error) {
-      toast.error(error.message);
+      // toast.error(error.message);
       return thunkAPI.rejectWithValue('');
     }
   }
@@ -58,7 +58,7 @@ export const fetchFavorite = createAsyncThunk(
       const response = await axios.get(`/api/notices/favorite`);
       return response.data.notice;
     } catch (error) {
-      toast.error(error.message);
+      // toast.error(error.message);
       return thunkAPI.rejectWithValue('');
     }
   }
@@ -71,7 +71,7 @@ export const putFavorite = createAsyncThunk(
       const { data } = await axios.patch(`api/notices/favorite/${id}`);
       return data;
     } catch (error) {
-      toast.error(error.message);
+      // toast.error(error.message);
       return thunkAPI.rejectWithValue('');
     }
   }
@@ -83,7 +83,7 @@ export const fetchMyPets = createAsyncThunk(
       const response = await axios.get(`/api/notices/myads`);
       return response.data.notice;
     } catch (error) {
-      toast.error(error.message);
+      // toast.error(error.message);
       return thunkAPI.rejectWithValue('');
     }
   }
@@ -96,7 +96,7 @@ export const delMyPetsById = createAsyncThunk(
       console.log('myads', response);
       return response.data.notice;
     } catch (error) {
-      toast.error(error.message);
+      // toast.error(error.message);
       return thunkAPI.rejectWithValue('');
     }
   }

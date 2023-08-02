@@ -19,7 +19,7 @@ export const filters = [
   { filter: 'my ads', path: 'own' },
 ];
 
-export const NoticesCategoriesNav = () => {
+export const NoticesCategoriesNav = ({ onClick }) => {
   const { width } = useResize();
   const navigate = useNavigate(); // для кнопки AddPet
 
@@ -29,7 +29,7 @@ export const NoticesCategoriesNav = () => {
   };
 
   const isUser = useSelector(selectIsLoggedIn);
-  const items = filters.map(({ filter, path }, item) => {
+  const items = filters.map(({ filter, path }) => {
     const isAuthPage = path === 'favorite' || path === 'own';
 
     if (!isUser && isAuthPage) {
@@ -37,8 +37,10 @@ export const NoticesCategoriesNav = () => {
     }
 
     return (
-      <Item key={item}>
-        <Button to={`/notices/${path}`}>{filter}</Button>
+      <Item key={path}>
+        <Button to={`/notices/${path}`} onClick={() => onClick(path)}>
+          {filter}
+        </Button>
       </Item>
     );
   });

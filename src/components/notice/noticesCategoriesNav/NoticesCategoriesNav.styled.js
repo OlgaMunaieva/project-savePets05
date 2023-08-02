@@ -23,6 +23,7 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
+  height: 35px;
   display: flex;
 `;
 

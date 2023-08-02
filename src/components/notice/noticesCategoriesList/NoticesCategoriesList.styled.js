@@ -44,7 +44,8 @@ export const List = styled.ul`
 export const Notification = styled.div`
   display: flex;
   justify-content: center;
-  font-size: 24px;
+  // font-size: 35px;
+  // font-weight: bold;
   color: ${variables.colors.simpleWhite};
   margin: 0 auto;
   padding: 20px 0;

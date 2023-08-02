@@ -72,7 +72,6 @@ const NoticesCategoryItem = ({
     if (!isLoggedIn) {
       toast.error('You need to sign in');
     }
-    console.log('item', cardId);
     dispatch(delMyPetsById(cardId));
 
     if (categoryParam === 'own') {
