@@ -1,4 +1,4 @@
-import { toast } from 'react-hot-toast';
+// import { toast } from 'react-hot-toast';
 import { debounce } from 'lodash';
 import icons from '../../../images/icons/icons-card.svg';
 import variables from 'settings/variables';

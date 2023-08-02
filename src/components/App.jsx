@@ -75,13 +75,19 @@ const App = () => {
               <PrivateRoute redirectTo="/login" component={<NoticesPage />} />
             }
           />
+          <Route
+            path="/add-pet"
+            element={
+              <PrivateRoute redirectTo="/login" component={<AddPetPage />} />
+            }
+          />
           <Route path="/main" element={<MainPage />} />
           <Route path="/notices">
             <Route index element={<Navigate to="/notices/sell" />} />
             <Route path=":categoryName" element={<NoticesPage />} />
           </Route>
           <Route path="/friends" element={<OurFriendsPage />} />
-          <Route path="/add-pet" element={<AddPetPage />} />
+          {/* <Route path="/add-pet" element={<AddPetPage />} /> */}
           <Route path="/news" element={<NewsPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
