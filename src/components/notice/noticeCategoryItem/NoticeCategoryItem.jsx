@@ -31,6 +31,7 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import ModalNotice from '../modalNotice/ModalNotice';
 import { ModalConfirmDelete } from '../ModalDelMyPet/ModalDelMyPet';
+import { ModalUserLogin } from 'components/allModals/UserLoginModal/UserLoginModal';
 const BaseUrlImg = 'https://res.cloudinary.com/dfvviqdic/image/upload/';
 
 const NoticesCategoryItem = ({
@@ -55,10 +56,12 @@ const NoticesCategoryItem = ({
     }, 150);
 
     if (!isLoggedIn) {
-      toast.error('You need to sign in');
     }
     dispatch(putFavorite(cardId));
-
+    if (!isLoggedIn) {
+      handleModalUserLogin();
+      // setIsModalOpenUserLogin(true);
+    }
     if (categoryParam === 'favorite' && favorite) {
       debouncedFetchFavorite();
     }
@@ -69,9 +72,6 @@ const NoticesCategoryItem = ({
       dispatch(fetchMyPets());
     }, 150);
 
-    if (!isLoggedIn) {
-      toast.error('You need to sign in');
-    }
     dispatch(delMyPetsById(cardId));
 
     if (categoryParam === 'own') {
@@ -81,6 +81,7 @@ const NoticesCategoryItem = ({
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenDel, setIsModalOpenDel] = useState(false);
+  const [isModalOpenUserLogin, setIsModalOpenUserLogin] = useState(false);
 
   const handleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -88,6 +89,10 @@ const NoticesCategoryItem = ({
 
   const handleModalDel = () => {
     setIsModalOpenDel(!isModalOpenDel);
+  };
+
+  const handleModalUserLogin = () => {
+    setIsModalOpenUserLogin(!isModalOpenUserLogin);
   };
 
   return (
@@ -109,13 +114,13 @@ const NoticesCategoryItem = ({
                   <use href={icons + '#heart'}></use>
                 </Icon>
               </BtnFavorite>
-              {owner && categoryParam === 'own' ? (
+              {owner && isLoggedIn && (
                 <BtnRemoveMyPet onClick={handleModalDel}>
                   <Icon width={24} height={24}>
                     <use href={icons + '#trash'}></use>
                   </Icon>
                 </BtnRemoveMyPet>
-              ) : null}
+              )}
             </div>
           </Status>
           <Description>
@@ -167,6 +172,9 @@ const NoticesCategoryItem = ({
             name={title}
             handleDelete={handleDelete}
           />
+        )}
+        {isModalOpenUserLogin && (
+          <ModalUserLogin closeModal={handleModalUserLogin} />
         )}
       </Item>
     </>

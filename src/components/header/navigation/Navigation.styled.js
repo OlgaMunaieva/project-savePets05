@@ -6,6 +6,9 @@ export const Div = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media screen and (max-width: 1279px) and (min-width: 767px) {
+    padding-right: 60px;
+  }
 `;
 
 export const TitleModal = styled.h2`

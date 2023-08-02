@@ -26,14 +26,14 @@ export const BtnDel = styled(BtnSerch)`
   stroke: ${variables.colors.accentHeaderButton};
 `;
 export const Input = styled.input`
- width: 100%;
+  width: 100%;
   height: 44px;
   padding-left: 20px;
   font-family: 'Inter';
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-
+  min-width: 280px;
   color: #888888;
   background: ${variables.colors.cardBgColor};
   outline: none;
@@ -41,13 +41,9 @@ export const Input = styled.input`
   border: transparent;
   box-shadow: ${variables.shadow.shadowDefault};
   transition: all 0.25 ease;
-  &:hover, &:focus{
-     box-shadow: ${variables.shadow.transitionShadow};
-      
-  }
-  
-  @media screen and (min-width: 480px) {
-    width: 380px;
+  &:hover,
+  &:focus {
+    box-shadow: ${variables.shadow.transitionShadow};
   }
 
   @media screen and (min-width: 768px) {
@@ -55,8 +51,6 @@ export const Input = styled.input`
     font-size: 20px;
     line-height: 24px;
   }
- 
-}
 `;
 
 export const FormContainer = styled.div`
