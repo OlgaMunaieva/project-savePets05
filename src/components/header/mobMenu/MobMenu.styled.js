@@ -21,6 +21,7 @@ export const BtnWrapper = styled.div`
     top: 4px;
     right: 0;
   }
+  cursor: pointer;
   z-index: 51;
   top: 9px;
   right: 0;

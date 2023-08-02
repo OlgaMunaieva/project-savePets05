@@ -30,10 +30,11 @@ export const fetchByCategory = createAsyncThunk(
       const response = await axios.get(
         `/api/notices/category/?${searchParams.toString()}`
       );
+      console.log(response.message);
       return response.data;
     } catch (error) {
       // toast.error(error.message);
-      return thunkAPI.rejectWithValue('');
+      return thunkAPI.rejectWithValue();
     }
   }
 );
@@ -53,10 +54,19 @@ export const fetchById = createAsyncThunk(
 
 export const fetchFavorite = createAsyncThunk(
   'notices/favorite',
-  async (_, thunkAPI) => {
+  async (params, thunkAPI) => {
+    const searchParams = new URLSearchParams(params);
+
+    searchParams.forEach((value, key) => {
+      if (value === '') {
+        searchParams.delete(key);
+      }
+    });
     try {
-      const response = await axios.get(`/api/notices/favorite`);
-      return response.data.notice;
+      const response = await axios.get(
+        `/api/notices/favorite?${searchParams.toString()}`
+      );
+      return response.data;
     } catch (error) {
       // toast.error(error.message);
       return thunkAPI.rejectWithValue('');
@@ -78,10 +88,19 @@ export const putFavorite = createAsyncThunk(
 );
 export const fetchMyPets = createAsyncThunk(
   'notices/fetchMyPets',
-  async (_, thunkAPI) => {
+  async (params, thunkAPI) => {
+    const searchParams = new URLSearchParams(params);
+
+    searchParams.forEach((value, key) => {
+      if (value === '') {
+        searchParams.delete(key);
+      }
+    });
     try {
-      const response = await axios.get(`/api/notices/myads`);
-      return response.data.notice;
+      const response = await axios.get(
+        `/api/notices/myads?${searchParams.toString()}`
+      );
+      return response.data;
     } catch (error) {
       // toast.error(error.message);
       return thunkAPI.rejectWithValue('');

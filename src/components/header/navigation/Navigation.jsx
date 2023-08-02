@@ -13,13 +13,13 @@ import {
 import LogoComponent from '../logo/Logo';
 import { useEffect, useState } from 'react';
 import MobMenu from '../mobMenu/MobMenu';
-import { useResize } from 'hooks/useResize';
 import { selectIsLoggedIn, selectUserName } from 'redux/auth/authSelectors';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'components/modal/Modal';
 import { LogOutIcon } from '../buttons/LogoutBtn.styled';
 import { logOut } from 'redux/auth/authOperations';
 import { logoutPet } from 'redux/user/operations';
+import useResizeHeader from 'hooks/useResizeHeader';
 
 const Navigation = () => {
   const { name } = useSelector(selectUserName);
@@ -38,7 +38,7 @@ const Navigation = () => {
     dispatch(logoutPet());
   };
 
-  const { width } = useResize();
+  const width = useResizeHeader();
 
   const resizeHandler = width => {
     if (width <= 766) {

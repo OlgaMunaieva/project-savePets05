@@ -69,10 +69,22 @@ const NoticesPage = () => {
       );
     }
     if (locationCategory === 'favorite') {
-      dispatch(fetchFavorite({ limit: resizeHandler(width) }));
+      dispatch(
+        fetchFavorite({
+          limit: resizeHandler(width),
+          page: page + 1,
+          title: title,
+        })
+      );
     }
     if (locationCategory === 'own') {
-      dispatch(fetchMyPets({ limit: resizeHandler(width) }));
+      dispatch(
+        fetchMyPets({
+          limit: resizeHandler(width),
+          page: page + 1,
+          title: title,
+        })
+      );
     }
   }, [dispatch, locationCategory, limit, page, title, width]);
 
@@ -82,7 +94,6 @@ const NoticesPage = () => {
   };
 
   const paginationKey = `${locationCategory}`;
-  console.log(totalPages);
 
   return (
     <>
@@ -93,16 +104,14 @@ const NoticesPage = () => {
         pets={notices}
         locationCategory={locationCategory}
       />
-      {totalPages >= 12 &&
-        locationCategory !== 'favorite' &&
-        locationCategory !== 'own' && (
-          <Pagination
-            key={paginationKey}
-            click={handlePageClick}
-            limit={limit}
-            page={page}
-          />
-        )}
+      {totalPages >= 12 && (
+        <Pagination
+          key={paginationKey}
+          click={handlePageClick}
+          limit={limit}
+          page={page}
+        />
+      )}
       {width < 768 && (
         <FixedButtonWrapper>
           <AddPetBtnCircle onClick={() => handleNavigate('notices')} />

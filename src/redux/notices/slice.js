@@ -16,7 +16,6 @@ const noticesSlice = createSlice({
     error: null,
     status: 0,
     totalPages: null,
-    page: 2,
   },
 
   extraReducers: builder => {
@@ -46,6 +45,7 @@ const noticesSlice = createSlice({
       .addCase(fetchByCategory.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
+        state.items = [];
       })
       // fetch favorite
       .addCase(fetchFavorite.pending, state => {
@@ -53,7 +53,8 @@ const noticesSlice = createSlice({
       })
       .addCase(fetchFavorite.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.items = payload;
+        state.items = payload.notice;
+        state.totalPages = payload.total;
       })
       .addCase(fetchFavorite.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -79,7 +80,8 @@ const noticesSlice = createSlice({
       })
       .addCase(fetchMyPets.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.items = payload;
+        state.items = payload.notice;
+        state.totalPages = payload.total;
       })
       .addCase(fetchMyPets.rejected, (state, { payload }) => {
         state.isLoading = false;
