@@ -108,15 +108,19 @@ const ModalNotice = ({ onClose, isOpenedModal, id, favorite, children }) => {
     }
   };
 
-  if (!data) {
-    return <CircleLoader
-  color="#CCE4FB"
-  size={23}
-/>;
-  }
+//   if (!data) {
+//     return <CircleLoader
+//   color="#CCE4FB"
+//   size={23}
+// />;
+//   }
 
   return createPortal(
     <ModalWindow onClick={onClickOverlay}>
+      {!data ? <CircleLoader
+  color="#CCE4FB"
+  size={23}
+/> :
       <ModalContent>
         <ExitButton onClick={() => onClose()}>
           <img src={CrossIcon} alt="Cross" width={24} height={24} />
@@ -179,7 +183,7 @@ const ModalNotice = ({ onClose, isOpenedModal, id, favorite, children }) => {
             </Icon>
           </FavoriteBtn>
         </ButtonsWrapper>
-      </ModalContent>
+      </ModalContent>}
     </ModalWindow>,
     modalRoot
   );
