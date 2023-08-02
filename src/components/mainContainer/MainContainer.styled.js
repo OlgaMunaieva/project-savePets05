@@ -56,12 +56,20 @@ const PawContainer = styled.div`
   overflow: hidden;
   background-image: url(${pawprintMobile1}), url(${pawprintMobile2}),
     url(${pawprintMobile3}), url(${pawprintMobile4}), url(${pawprintMobile5}),
+    url(${pawprintMobile6}), url(${pawprintMobile7}), url(${pawprintMobile8}), url(${pawprintMobile1}), url(${pawprintMobile2}),
+    url(${pawprintMobile3}), url(${pawprintMobile4}), url(${pawprintMobile5}),
+    url(${pawprintMobile6}), url(${pawprintMobile7}), url(${pawprintMobile8}), url(${pawprintMobile1}), url(${pawprintMobile2}),
+    url(${pawprintMobile3}), url(${pawprintMobile4}), url(${pawprintMobile5}),
     url(${pawprintMobile6}), url(${pawprintMobile7}), url(${pawprintMobile8});
-  background-size: 79px, 79px, 79px, 29px, 29px, 28px, 28px, 28px, cover;
+  background-size: 79px, 79px, 79px, 29px, 29px, 28px, 28px, 28px, 79px, 79px, 79px, 29px, 29px, 28px, 28px, 28px, 79px, 79px, 79px, 29px, 29px, 28px, 28px, 28px, cover;
   background-repeat: no-repeat;
   background-position: top 338px left 98px, top 519px left 289px,
     top 314px left 326px, top 89px left 332px, top 143px left 12px,
-    top 378px left 12px, top 208px left 213px, top 508px left 60px, center;
+    top 378px left 12px, top 208px left 213px, top 508px left 60px, top 338px left 438px, top 519px left 629px,
+    top 314px left 666px, top 89px left 672px, top 143px left 352px,
+    top 378px left 352px, top 208px left 553px, top 508px left 400px, top 898px left 98px, top 1079px left 289px,
+    top 874px left 326px, top 649px left 332px, top 703px left 12px,
+    top 938px left 12px, top 768px left 213px, top 1068px left 60px, center;
 
   ${variables.breakPoints.tablet} {
     padding-top: 24px;
