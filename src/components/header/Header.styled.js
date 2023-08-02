@@ -1,10 +1,19 @@
+import variables from 'settings/variables';
 import styled from 'styled-components';
 
 export const Header = styled.div`
-z-index: 20;
+  z-index: 20;
   display: flex;
   z-index: 20;
   align-items: center;
   justify-content: space-between;
   position: relative;
+  max-width: 320px;
+  margin: 0 auto;
+  ${variables.breakPoints.tablet} {
+    max-width: 768px;
+  }
+  ${variables.breakPoints.desktop} {
+    max-width: 1280px;
+  }
 `;
