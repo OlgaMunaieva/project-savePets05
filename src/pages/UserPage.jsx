@@ -10,6 +10,7 @@ import ModalCongrats from 'components/modalCongrats/ModalCongrats';
 import {
   UserPageContainer,
   UserTitle,
+  UserContainer,
 } from 'components/user/userForm/utils/UserStyles.styled';
 
 export default function UserPage() {
@@ -39,11 +40,11 @@ export default function UserPage() {
 
       <UserPageContainer>
         <div>
-          <></>
           <UserTitle>My information:</UserTitle>
-          <UserData />
-
-          <Logout />
+          <UserContainer>
+            <UserData />
+            <Logout />
+          </UserContainer>
         </div>
 
         <PetsData />

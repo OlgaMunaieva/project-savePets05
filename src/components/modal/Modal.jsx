@@ -65,7 +65,13 @@ const Modal = ({ closeModal, isOpenedModal, children, width, padding }) => {
       transition={{ duration: 0.5 }}
     >
       <ModalWindow onClick={onClickOverlay}>
-        <ModalContent style={{ width: width, padding: padding }}>
+        <ModalContent
+          style={{
+            width: width,
+            padding: padding,
+            '@media (minWidth: 767px)': {},
+          }}
+        >
           <ExitButton onClick={() => closeModal()} />
           {children}
         </ModalContent>

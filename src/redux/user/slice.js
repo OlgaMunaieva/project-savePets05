@@ -5,6 +5,7 @@ import {
   addUserAvatar,
   fetchUserPets,
   deleteUserPet,
+  logoutPet,
 } from './operations';
 import { urlModify } from '../../components/user/userForm/utils/UrlModify';
 
@@ -97,10 +98,14 @@ const fetchUserPetsSuccessReducer = (state, action) => {
 };
 
 const deleteUserPetSuccessReducer = (state, action) => {
-  const index = state.user.pets.findIndex(
-    contact => contact.id === action.payload
-  );
+  const index = state.user.pets.findIndex(pet => pet.id === action.payload);
   state.user.pets.splice(index, 1);
+};
+
+const logoutPetSuccessReducer = state => {
+  state.user.userInfo = {};
+  state.user.avatar = null;
+  state.user.pets = [];
 };
 
 const userSlice = createSlice({
@@ -114,6 +119,7 @@ const userSlice = createSlice({
       .addCase(addUserAvatar.fulfilled, addUserAvatarSuccessReducer)
       .addCase(fetchUserPets.fulfilled, fetchUserPetsSuccessReducer)
       .addCase(deleteUserPet.fulfilled, deleteUserPetSuccessReducer)
+      .addCase(logoutPet.fulfilled, logoutPetSuccessReducer)
       // .addCase(fetchUserInformation.rejected, rejectedUserReducer)
       // .addCase(fetchUserPets.rejected, rejectedPetReducer)
       .addMatcher(getActions(status.PENDING), pendingReducer)
