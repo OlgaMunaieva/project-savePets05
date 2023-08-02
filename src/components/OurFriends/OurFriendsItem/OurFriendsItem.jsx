@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import {
   FriendCard,
   FriendTitle,
+  FriendImageThumb,
   FriendImg,
   FriendWrapper,
   FriendThumb,
@@ -15,6 +16,8 @@ import {
   WorkDayItem,
 } from '../OurFriendsItem/OurFriendsItem.styled';
 
+import noImage from '../../../images/noimage.jpg';
+
 const weekDays = ['MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
 
 const OurFriendsItem = ({ items, handleTimeHover, hoveredTime }) => {
@@ -24,7 +27,9 @@ const OurFriendsItem = ({ items, handleTimeHover, hoveredTime }) => {
         {item.title}
       </FriendTitle>
       <FriendThumb>
-        <FriendImg src={item.imageUrl} alt="partner logo" />
+        <FriendImageThumb>
+          <FriendImg src={item.imageUrl || noImage} alt="partner logo" />
+        </FriendImageThumb>
         <FriendWrapper>
           <FriendInfoThumb
             onMouseEnter={() => handleTimeHover(item.imageUrl)}
