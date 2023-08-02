@@ -12,7 +12,7 @@ const SharedLayout = () => {
     location.pathname === '/notices/sell' ||
     location.pathname === '/notices' ||
     location.pathname === '/user' ||
-    // location.pathname === '/news' ||
+    location.pathname === '/news' ||
     location.pathname === '/friends' ||
     location.pathname === '/notices/lost-found' ||
     location.pathname === '/notices/favorite' ||
