@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
 import {
   BtnDel,
   BtnSerch,
   BtnWrap,
   Form,
   FormContainer,
-  Icon,
+  IconSearch,
   IconX,
   Input,
 } from './NoticesSearch.styled';
-import icons from '../../../images/sprite.svg';
 
 const NoticesSearch = ({ setQvery, clean }) => {
   const [search, setSearch] = useState('');
 
   const handelInputChange = event => {
-    console.log(event.currentTarget.value);
     const qvery = event.currentTarget.value;
     if (qvery === '') {
       clean('');
@@ -33,32 +33,37 @@ const NoticesSearch = ({ setQvery, clean }) => {
   };
   return (
     <>
-      <Form onSubmit={handelSubmit}>
-        <FormContainer>
-          <Input
-            type="text"
-            placeholder="Search"
-            onChange={handelInputChange}
-            value={search}
-            autoComplete="off"
-            autoFocus
-          />
-          <BtnWrap>
-            <BtnSerch type="submit">
-              <Icon width={24} height={24}>
-                <use href={icons + '#icon-search'}></use>
-              </Icon>
-            </BtnSerch>
-            {search.length > 0 && (
-              <BtnDel onClick={() => cleanInput()}>
-                <IconX width={24} height={24}>
-                  <use href={icons + '#icon-cross'}></use>
-                </IconX>
-              </BtnDel>
-            )}
-          </BtnWrap>
-        </FormContainer>
-      </Form>
+      <AnimatePresence>
+        <Form onSubmit={handelSubmit}>
+          <FormContainer>
+            <Input
+              type="text"
+              placeholder="Search"
+              onChange={handelInputChange}
+              value={search}
+              autoComplete="off"
+              autoFocus
+            />
+            <BtnWrap>
+              <BtnSerch type="submit">
+                <IconSearch />
+              </BtnSerch>
+              {search.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0.5, scale: 0.2 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0.5, scale: 0.2 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <BtnDel onClick={() => cleanInput()}>
+                    <IconX />
+                  </BtnDel>
+                </motion.div>
+              )}
+            </BtnWrap>
+          </FormContainer>
+        </Form>
+      </AnimatePresence>
     </>
   );
 };
