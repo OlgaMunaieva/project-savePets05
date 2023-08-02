@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Field } from 'formik';
 import uploadImg from 'images/icons/uploadImg.svg';
+
 import {
   ErrorMessageText,
   Input,
@@ -90,51 +91,79 @@ const Step2 = ({
   petType,
   errors,
   touched,
-}) => (
-  <Step2Container>
-    <InputBlock>
-      <Step2Label>Pet's Name:</Step2Label>
-      <Input
-        className={`input ${touched.petName && errors.petName && 'error'}`}
-        touched={touched.petName?.toString()}
-        placeholder="Type name pet"
-        type="text"
-        name="petName"
-        value={petName}
-        onChange={handleChange}
-      />
-      <ErrorMessageText component="label" name="petName" />
-    </InputBlock>
-    <InputBlock>
-      <Step2Label>Date of Birth:</Step2Label>
-      <Input
-        className={`input ${
-          touched.petBirthDate && errors.petBirthDate && 'error'
-        }`}
-        touched={touched.petBirthDate?.toString()}
-        placeholder="Type date of birth"
-        type="text"
-        name="petBirthDate"
-        value={petBirthDate}
-        onChange={handleChange}
-      />
-      <ErrorMessageText component="label" name="petBirthDate" />
-    </InputBlock>
-    <InputBlock>
-      <Step2Label>Type of Pet:</Step2Label>
-      <Input
-        className={`input ${touched.petType && errors.petType && 'error'}`}
-        touched={touched.petType?.toString()}
-        placeholder="Type of pet"
-        type="text"
-        name="petType"
-        value={petType}
-        onChange={handleChange}
-      />
-      <ErrorMessageText component="label" name="petType" />
-    </InputBlock>
-  </Step2Container>
-);
+}) => {
+  const [formattedDate, setFormattedDate] = useState(petBirthDate);
+
+  const handleDateChange = event => {
+    const inputValue = event.target.value;
+    let formattedValue = inputValue.replace(/\D/g, ''); // Видаляємо всі нецифрові символи (дефіси)
+
+    if (formattedValue.length >= 2) {
+      formattedValue = `${formattedValue.slice(0, 2)}-${formattedValue.slice(
+        2
+      )}`;
+    }
+    if (formattedValue.length >= 5) {
+      formattedValue = `${formattedValue.slice(0, 5)}-${formattedValue.slice(
+        5,
+        9
+      )}`;
+    }
+    setFormattedDate(formattedValue); // Зберігаємо форматовану дату в стані компонента
+    handleChange({
+      // Викликаємо обробник зміни з форматованим значенням
+      target: {
+        name: 'petBirthDate',
+        value: formattedValue,
+      },
+    });
+  };
+  return (
+    <Step2Container>
+      <InputBlock>
+        <Step2Label>Pet's Name:</Step2Label>
+        <Input
+          className={`input ${touched.petName && errors.petName && 'error'}`}
+          touched={touched.petName?.toString()}
+          placeholder="Type name pet"
+          type="text"
+          name="petName"
+          value={petName}
+          onChange={handleChange}
+        />
+        <ErrorMessageText component="label" name="petName" />
+      </InputBlock>
+      <InputBlock>
+        <Step2Label>Date of Birth:</Step2Label>
+        <Input
+          className={`input ${
+            touched.petBirthDate && errors.petBirthDate && 'error'
+          }`}
+          touched={touched.petBirthDate?.toString()}
+          placeholder="Type date of birth"
+          type="text"
+          name="petBirthDate"
+          value={formattedDate}
+          onChange={handleDateChange}
+        />
+        <ErrorMessageText component="label" name="petBirthDate" />
+      </InputBlock>
+      <InputBlock>
+        <Step2Label>Type of Pet:</Step2Label>
+        <Input
+          className={`input ${touched.petType && errors.petType && 'error'}`}
+          touched={touched.petType?.toString()}
+          placeholder="Type of pet"
+          type="text"
+          name="petType"
+          value={petType}
+          onChange={handleChange}
+        />
+        <ErrorMessageText component="label" name="petType" />
+      </InputBlock>
+    </Step2Container>
+  );
+};
 
 const Step3 = ({ handleChange, petImage, adType, step }) => {
   const [selectedImage, setSelectedImage] = useState(petImage || null);
