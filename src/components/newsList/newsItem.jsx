@@ -1,6 +1,13 @@
-import {Datebox, NewsMedia, NewsText, NewsTitle, StyledItem} from './StyledItem.styled.js';
+import { DateNews, Datebox, NewsMedia, NewsText, NewsTitle, StyledItem} from './StyledItem.styled.js';
 
 const NewsItem = ({ item }) => {
+
+  const handleDate = (dateObj) =>{
+    const day = String(dateObj.getDate()).padStart(2, '0'); 
+    const month = String(dateObj.getMonth() + 1).padStart(2, '0'); 
+    const year = dateObj.getFullYear();
+    return`${day}/${month}/${year}`
+  }
   return (
     <StyledItem>
       <NewsMedia
@@ -13,7 +20,7 @@ const NewsItem = ({ item }) => {
       
       
       <Datebox className="box">
-        <p>{new Date(item.date).toLocaleDateString('en-EN')}</p>
+        <DateNews>{handleDate(new Date(item.date))}</DateNews>
         <a href={item.url} target="_blank" rel='noreferrer'>Read more</a>
       </Datebox>
     </StyledItem>

@@ -12,7 +12,7 @@ import {
   Input,
 } from './NoticesSearch.styled';
 
-const NoticesSearch = ({ setQvery, clean }) => {
+const NoticesSearch = ({ setQvery, clean, setIsSearch }) => {
   const [search, setSearch] = useState('');
 
   const handelInputChange = event => {
@@ -25,6 +25,9 @@ const NoticesSearch = ({ setQvery, clean }) => {
 
   const handelSubmit = event => {
     event.preventDefault();
+    if(setIsSearch){
+      setIsSearch(prev=>!prev)
+    }
     setQvery(search);
   };
   const cleanInput = () => {

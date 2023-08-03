@@ -5,14 +5,19 @@ const StyledList= styled.ul`
     display:grid;
     grid-template-columns: 280px;
     justify-content: center;
-    gap:31px;
-
+    column-gap:31px;
+    row-gap: 44px;
+    
     ${variables.breakPoints.tablet} {
       grid-template-columns: 336px 336px;
+      column-gap:31px;
+      row-gap: 46px;
     }
   
     ${variables.breakPoints.desktop} {
       grid-template-columns: 395px 395px 395px;
+      column-gap:32px;
+      row-gap: 46px;
     }
   `
 
