@@ -17,8 +17,8 @@ UserPage - **Ganna Baranenko (ganna1008)**\
 AddPetPage - **Alexander Shevchenko (AlexanderShevchenko112)**\
 OurFriendsPage - **Demchenko Sergii (Demniks)**\
 NewsPage - **Kiril Polozhenet (polokir)**
+# project description
 
-#project description\
 When you first enter the application using the link [Your Pets App](https://olgamunaieva.github.io/project-savePets05/), the user gets to the main page with a welcome message and a menu in the header (for mobile and desktop versions, this is a burger menu). By clicking on the logo, the user is taken to the main page.\
 The user can register by clicking on the register button. He gets to the registration page, where filling out the form with data in the required format (messages are displayed if the data does not match the format) and clicking the Registration button, he gets the created profile.
 
