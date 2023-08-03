@@ -8,7 +8,7 @@ export const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   position: relative;
-  min-width: 320px;
+  min-width: 280px;
   margin: 0 auto;
   ${variables.breakPoints.mobile} {
     max-width: 440px;
