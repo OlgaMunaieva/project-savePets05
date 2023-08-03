@@ -2,7 +2,7 @@
 Team: **Project-F**\
 # Team Project Name: ***Your Pets App***
 
-Team Members List:
+## Team Members List:
 
 Team Lead - **Olha Munaieva (OlgaMunaieva)**\
 Scrum Master - **Ganna Baranenko (ganna1008)**
