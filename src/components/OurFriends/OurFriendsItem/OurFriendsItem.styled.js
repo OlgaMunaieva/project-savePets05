@@ -35,7 +35,6 @@ export const FriendTitle = styled.a`
   margin-bottom: 16px;
   font-size: 20px;
   min-height: 54px;
-  /* min-height: 64px; */
 `;
 
 export const FriendImageThumb = styled.div``;
@@ -97,7 +96,7 @@ export const FriendInfoTitle = styled.p`
 export const FriendInfoData = styled.a`
   display: block;
   font-size: 12px;
-  font-weight: normal;
+  font-weight: 400;
   color: ${variables.colors.text};
 
   ${variables.breakPoints.tablet} {
@@ -111,11 +110,10 @@ export const FriendInfoData = styled.a`
 
 export const FriendAdress = styled.a`
   font-size: 12px;
-  font-weight: normal;
-  min-height: 58px;
   color: ${variables.colors.text};
 
   ${variables.breakPoints.tablet} {
+    min-height: 58px;
     font-size: 14px;
   }
 
@@ -158,8 +156,8 @@ export const WorkDayItem = styled.li`
   justify-content: space-between;
   align-items: center;
 
-  font-family: Manrope-Medium;
   font-size: 12px;
+  font-weight: 500;
 `;
 
 export const WorkDays = styled.p`
