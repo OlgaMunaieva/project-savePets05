@@ -20,10 +20,21 @@ export const StyledItem = styled.li`
   }
 
   &::before{
-    content:'',
-    width: 395px;
+    content:'';
+    position: absolute;
+    width: 280px;
     height: 8px;
-    background: #111;
+    background: linear-gradient(315deg, #419EF1 0%, #9BD0FF 100%);
+    border-radius: 40px;
+    top: -16px;
+
+    ${variables.breakPoints.tablet} {
+      width: 336px;
+      top: -18px;
+    }
+    ${variables.breakPoints.desktop} {
+      width: 395px;
+    }
   }
 
 `;
@@ -63,3 +74,21 @@ export const NewsMedia = styled.img`
   height: 252px;
   border-radius: 20px;
 `;
+
+export const DateNews = styled.p`
+color:  #888;
+font-family: 'Manrope';
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+`
+
+export const NewsLink = styled.a`
+color: #54ADFF;
+font-family: 'Manrope';
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+`

@@ -6,6 +6,7 @@ import './pagination.css';
 const NewsPaginator = ({  setItems, limit, news,current,find }) => {
 
   const handlePageClick = (event) => {
+    event.selected=0;
     const newOffset = (!find) ? (event.selected * limit) % news.length : (event.selected * limit) % current.length ;
     console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
     if(!find){
@@ -22,9 +23,9 @@ const NewsPaginator = ({  setItems, limit, news,current,find }) => {
           <ReactPaginate
             nextLabel={<ArrovStyle />}
             onPageChange={(e)=>handlePageClick(e)}
-            pageRangeDisplayed={6}
+            pageRangeDisplayed={5}
             marginPagesDisplayed={1}
-            pageCount={(current.length>0) ? Math.ceil(current.length/limit) : Math.ceil(news.length/limit)}
+            pageCount={((current.length>0) ? Math.ceil(current.length/limit) : Math.ceil(news.length/limit)) || 0 }
             previousLabel={<ArrovStyleLeft />}
             pageClassName="page-item"
             pageLinkClassName="page-link"

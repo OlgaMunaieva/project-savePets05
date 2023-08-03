@@ -1,10 +1,10 @@
-import SearchInput from 'components/searchInput/SearchInput';
 import NewsList from 'components/newsList/newsList';
 import Container from 'components/mainContainer/MainContainer.styled';
 import NewsPaginator from 'components/newsPaginator/newsPaginator';
 import allArticle from '../components/newsPaginator/allArticle';
 import { useEffect, useState } from 'react';
 import TitlePage from 'components/title/TitlePage';
+import NoticesSearch from 'components/notice/noticesSearch/NoticesSearch';
 
 const NewsPage = () => {
   const [displayed, setDisplayed] = useState(allArticle.slice(0, 6));
@@ -23,6 +23,10 @@ const NewsPage = () => {
     setDisplayed(searchResults.slice(0, 6));
   };
 
+  const cleanQuery = () =>{
+    setQuery('');
+  }
+
   useEffect(() => {
     if (query) {
       setResults([]);
@@ -38,11 +42,10 @@ const NewsPage = () => {
   return (
     <Container.MainContainer>
       <TitlePage children={"News"}/>
-      <SearchInput
-        setInput={setQuery}
-        setSearch={setIsSearch}
-        type="text"
-        placeholder="Search"
+      <NoticesSearch
+        clean={cleanQuery}
+        setQvery={setQuery}
+        setIsSearch={setIsSearch}
       />
       <NewsList items={displayed} />
       <NewsPaginator
