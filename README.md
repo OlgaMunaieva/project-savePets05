@@ -1,12 +1,14 @@
-**GoIT JavaScript Course**\
-Team: **luckyNine**\
-Team Project: **News App**
+**GoIT React and Node.js Course**\
+Team: **Project-F**\
+Team Project: **Your Pets App**
 
 Team Members List:
 
 Team Lead - **Olha Munaieva (OlgaMunaieva)**\
-Scrum Master - **Svitlana Dyshkant (SvitlanaDy)**
+Scrum Master - **Ganna Baranenko ()**
 
+
+SharedLayout - **Olha Munaieva (OlgaMunaieva)**\
 Header, page navigation, search by word and by date, theme switcher - **Dmytro
 Dobrobatko (Dobryotec)**\
 News categories, search by category and by date, pagination by category - **Alexander
