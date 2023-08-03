@@ -41,6 +41,7 @@ import {
   Flex2Container,
   SexSpan,
   SpinnerContainer,
+  Text,
 } from './AddPetForm.styled';
 import { InputContainer } from 'components/authForm/AuthForm.styled';
 
@@ -445,10 +446,18 @@ const AddPet = () => {
                 </NextButton>
               ) : null}
               {step === 3 && (
-                <NextButton type="submit">
-                  Done
-                  <img src={pawprint} alt="paw" width={24} height={24} />
-                </NextButton>
+                <InputBlock>
+                  <NextButton type="submit">
+                    Done
+                    <img src={pawprint} alt="paw" width={24} height={24} />
+                  </NextButton>
+                  {Object.keys(errors).length > 0 &&
+                    Object.keys(touched).length > 0 && (
+                      <Text>
+                        There are errors in the form. Please fix them.
+                      </Text>
+                    )}
+                </InputBlock>
               )}
               {step === 1 ? (
                 <BackButton type="button" onClick={handleCancel}>

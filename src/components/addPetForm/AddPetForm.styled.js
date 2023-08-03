@@ -209,6 +209,18 @@ export const ErrorText = styled.span`
   bottom: -30px;
 `;
 
+export const Text = styled.span`
+  color: #f43f5e;
+  font-family: Manrope, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 5px;
+  position: absolute;
+  bottom: 45px;
+`;
+
 export const stepTitleStyles = css`
   margin-bottom: 50px;
   margin-left: 12px;
