@@ -109,6 +109,20 @@ const Step2 = ({
         9
       )}`;
     }
+    if (inputValue.length < formattedValue.length) {
+      formattedValue = formattedValue.replace(/-/g, '');
+      if (formattedValue.length >= 4) {
+        formattedValue = `${formattedValue.slice(0, 2)}-${formattedValue.slice(
+          2
+        )}`;
+      }
+      if (formattedValue.length >= 7) {
+        formattedValue = `${formattedValue.slice(0, 5)}-${formattedValue.slice(
+          5,
+          9
+        )}`;
+      }
+    }
     setFormattedDate(formattedValue);
     handleChange({
       target: {
