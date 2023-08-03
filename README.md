@@ -18,10 +18,12 @@ AddPetPage - **[Alexander Shevchenko](https://github.com/AlexanderShevchenko112)
 OurFriendsPage - **[Demchenko Sergii](https://github.com/Demniks)**\
 NewsPage - **[Kiril Polozhenet](https://github.com/polokir)**
 
-## the following materials were used in the creation of the project
+## Materials used in the project
 
-[project layout](https://www.figma.com/file/0jlTykBnzSdnXWKtRMxhSV/Your-Pet-2.0)\
-[technical task](https://docs.google.com/spreadsheets/d/1dIjUkjuaTIrfkApsZXky48ftkJ-NDMkHYSL7hPSPr0Y/edit)
+[Project layout](https://www.figma.com/file/0jlTykBnzSdnXWKtRMxhSV/Your-Pet-2.0)\
+[Technical task](https://docs.google.com/spreadsheets/d/1dIjUkjuaTIrfkApsZXky48ftkJ-NDMkHYSL7hPSPr0Y/edit)
+[BackEnd on render](https://project-savepets05-be.onrender.com/api-docs/)
+[BackEnd project](https://github.com/VadimVyalov/project-savePets05-BE)
 
 ## Tools
 
@@ -40,13 +42,16 @@ Project is built using the following tools:
 - [Styled-components](https://www.styled-components.com/)
 - [yup](https://www.npmjs.com/package/yup)
 
-## project description
+## Project description
 
 When you first enter the application using the link [Your Pets App](https://olgamunaieva.github.io/project-savePets05/), the user gets to the main page with a welcome message and a menu in the header (for mobile and desktop versions, this is a burger menu). By clicking on the logo, the user is taken to the main page.\
 ![Open main page](./assets/main-page.png)
 
-The user can register by clicking on the register button. He gets to the registration page, where filling out the form with data in the required format (messages are displayed if the data does not match the format) and clicking the Registration button, he gets the created profile. If the user is already registered, then he can follow the login link at the bottom of the registration form.
+The user can register by clicking on the register button. He gets to the registration page, where filling out the form with data in the required format (messages are displayed if the data does not match the format) and clicking the Registration button, he gets the created profile. If the user is already registered, he will receive a message about this and can follow the login link at the bottom of the registration form.
 ![Registration page](./assets/registration-page.png)
+
+On the login page, the user needs to correctly fill in all the form fields, the form has hints for correct input. After filling in, by clicking on the login button, authorization occurs. If the user already exists in the database, then he is redirected to his profile page. Otherwise, a message is displayed stating that the user with the corresponding data does not exist in the database. From the login page, you can go to the registration page by clicking on the appropriate link at the bottom of the form.
+![Login page](./assets/login-page.png)
 
 
 P.S.: This project is a modified clone of the original OlgaMunaieva repository.
