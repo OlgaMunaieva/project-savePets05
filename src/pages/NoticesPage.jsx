@@ -20,6 +20,8 @@ import AddPetBtnCircle from 'components/buttons/addPetBtn/addPetBtnCircle';
 import { useResize } from 'hooks/useResize';
 import NoticesSearch from 'components/notice/noticesSearch/NoticesSearch';
 import Loader from 'components/Loader/Loader';
+import { selectIsLoggedIn } from 'redux/auth/authSelectors';
+import { ModalUserLogin } from 'components/allModals/UserLoginModal/UserLoginModal';
 
 const NoticesPage = () => {
   // для кнопки add pet
@@ -34,11 +36,17 @@ const NoticesPage = () => {
   const [title, setTitle] = useState('');
   const navigate = useNavigate(); // для кнопки add pet
   const locationCategory = params.categoryName;
+  const [isModalOpenUserLogin, setIsModalOpenUserLogin] = useState(false);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   // для кнопки add pet
-  function handleNavigate(source) {
-    navigate(`/add-pet?source=${source}`);
-  }
+  const handleNavigate = (source) => {
+    if (!isLoggedIn) {
+      setIsModalOpenUserLogin(true);
+    } else {
+      navigate(`/add-pet?source=${source}`);
+    }
+  };
 
   const isLoading = useSelector(selectIsNoticeLoading);
 
@@ -103,6 +111,9 @@ const NoticesPage = () => {
 
   return (
     <>
+       {isModalOpenUserLogin && (
+        <ModalUserLogin closeModal={() => setIsModalOpenUserLogin(false)} />
+      )}
       <TitlePage children={'Find your favorite pet'} />
       <NoticesSearch clean={handlerCleanQuery} setQvery={handlerQuery} />
       <NoticesCategoriesNav onClick={handleCategoryChange} />
