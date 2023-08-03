@@ -8,8 +8,11 @@ export const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   position: relative;
-  max-width: 320px;
+  min-width: 320px;
   margin: 0 auto;
+  ${variables.breakPoints.mobile} {
+    max-width: 440px;
+  }
   ${variables.breakPoints.tablet} {
     max-width: 768px;
   }

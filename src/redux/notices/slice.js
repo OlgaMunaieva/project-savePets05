@@ -37,10 +37,11 @@ const noticesSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchByCategory.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
         state.error = null;
         state.items = payload.notice;
         state.totalPages = payload.total;
+
+        state.isLoading = false;
       })
       .addCase(fetchByCategory.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -62,7 +63,7 @@ const noticesSlice = createSlice({
       })
       // put favorite
       .addCase(putFavorite.pending, state => {
-        state.isLoading = true;
+        state.isLoading = false;
       })
       .addCase(putFavorite.fulfilled, (state, { payload }) => {
         state.isLoading = false;
