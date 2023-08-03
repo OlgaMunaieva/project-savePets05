@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CircleLoader } from 'react-spinners';
 import { toast } from 'react-hot-toast';
+import { useResize } from '../../../hooks/useResize';
 
 import {
   selectUser,
@@ -23,11 +24,19 @@ export default function UserData() {
   const rejectedWithError = useSelector(selectError);
   const [showUserProfileModal, setShowUserProfileModal] = useState(false);
   const [isFormDisabled, setIsFormDisabled] = useState(true);
-  // const [user, setUser] = useState(null);
+  const { width } = useResize();
 
-  // console.log('userselect', user);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [isFormDisabled, setIsFormDisabled] = useState(false);
+  const handleScreenSize = width => {
+    if (width > 1280) {
+      return { width: '395px', padding: '20px 24px 20px 16px' };
+    } else if (width >= 767 && width < 1280) {
+      return { width: '704px', padding: '20px 76px 16px 20px' };
+    }
+    return { width: '280px', padding: '20px 8px 20px 8px' };
+  };
+
+  console.log(handleScreenSize(width).width);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -57,16 +66,8 @@ export default function UserData() {
         <Modal
           closeModal={closeUserProfileModal}
           isOpenedModal={showUserProfileModal}
-          // width={'395px'}
-          // padding={'20px 24px 20px 16px'}
-          style={{
-            width: '395px',
-            padding: '20px 24px 20px 16px',
-            '@media (minWidth: 767px)': {
-              width: '704px',
-              padding: '20px 76px 16px 20px',
-            },
-          }}
+          width={handleScreenSize(width).width}
+          padding={handleScreenSize(width).padding}
         >
           <UserForm
             user={user}
