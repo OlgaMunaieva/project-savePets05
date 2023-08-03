@@ -26,7 +26,9 @@ NewsPage - **[Kiril Polozhenet](https://github.com/polokir)**
 
 When you first enter the application using the link [Your Pets App](https://olgamunaieva.github.io/project-savePets05/), the user gets to the main page with a welcome message and a menu in the header (for mobile and desktop versions, this is a burger menu). By clicking on the logo, the user is taken to the main page.\
 ![Open main page](./assets/main-page.png)
-The user can register by clicking on the register button. He gets to the registration page, where filling out the form with data in the required format (messages are displayed if the data does not match the format) and clicking the Registration button, he gets the created profile.
+
+The user can register by clicking on the register button. He gets to the registration page, where filling out the form with data in the required format (messages are displayed if the data does not match the format) and clicking the Registration button, he gets the created profile. If the user is already registered, then he can follow the login link at the bottom of the registration form.
+![Registration page](./assets/registration-page.png)
 
 
 P.S.: This project is a modified clone of the original OlgaMunaieva repository.
