@@ -20,11 +20,8 @@ NewsPage - **[Kiril Polozhenet](https://github.com/polokir)**
 
 ## the following materials were used in the creation of the project
 
-[project layout][1]
-
-[1]: https://www.figma.com/file/0jlTykBnzSdnXWKtRMxhSV/Your-Pet-2.0{:target="_blank"}\
-[technical task][2]
-[2]: https://docs.google.com/spreadsheets/d/1dIjUkjuaTIrfkApsZXky48ftkJ-NDMkHYSL7hPSPr0Y/edit{:target="_blank"}\
+[project layout](https://www.figma.com/file/0jlTykBnzSdnXWKtRMxhSV/Your-Pet-2.0)\
+[technical task](https://docs.google.com/spreadsheets/d/1dIjUkjuaTIrfkApsZXky48ftkJ-NDMkHYSL7hPSPr0Y/edit)
 ## project description
 
 When you first enter the application using the link [Your Pets App](https://olgamunaieva.github.io/project-savePets05/), the user gets to the main page with a welcome message and a menu in the header (for mobile and desktop versions, this is a burger menu). By clicking on the logo, the user is taken to the main page.\
