@@ -16,11 +16,17 @@ export const StyledTitle = styled.h2`
   @media (min-width: 767px) {
     font-size: 36px;
     margin-bottom: 52px;
+    min-width: 350px;
   }
 `;
 
 export const StyledContainer = styled.div`
   text-align: center;
+  padding: 60px 16px;
+
+  @media (min-width: 767px) {
+    padding: 60px 130px;
+  }
 `;
 
 export const StyledText = styled.p`

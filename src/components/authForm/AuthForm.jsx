@@ -104,12 +104,10 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                     ) : (
                       <StyledIconCheck />
                     )}
-
                     <StyledError component="label" name="name" />
                   </InputContainer>
                 </>
               )}
-
               <InputContainer>
                 <StyledInput
                   className={`input ${
@@ -134,7 +132,6 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                 ) : (
                   <StyledIconCheck />
                 )}
-
                 <StyledError component="label" name="email" />
               </InputContainer>
               <InputContainer>
@@ -171,10 +168,8 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                     onClick={() => handleToggleField('password')}
                   />
                 )}
-
                 <StyledError component="label" name="password" />
               </InputContainer>
-
               {showConfirmPassword && isRegisterForm && (
                 <>
                   <InputContainer>
@@ -201,11 +196,9 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                         }
                       />
                     )}
-
                     {touched.confirmPassword && !errors.confirmPassword && (
                       <StyledIconCheck />
                     )}
-
                     {showFields.confirmPassword ? (
                       <StyledIconEyeOpen
                         onClick={() => handleToggleField('confirmPassword')}
@@ -217,7 +210,6 @@ function AuthForm({ formType, onSubmit, showNameField, showConfirmPassword }) {
                         onClick={() => handleToggleField('confirmPassword')}
                       />
                     )}
-
                     <StyledError component="label" name="confirmPassword" />
                   </InputContainer>
                 </>

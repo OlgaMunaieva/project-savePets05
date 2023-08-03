@@ -10,7 +10,10 @@ export const getValidationSchema = isRegisterForm => {
           .max(16, 'Name must be at most 16 characters')
           .trim()
           .required('Required')
-          .matches(/^[A-Z].*/, 'Name must start with an uppercase letter')
+          .matches(
+            /^[A-Z][a-z0-9]*$/,
+            'Name must start with an uppercase letter and can contain only lowercase letters and digits'
+          )
       : Yup.string().trim(),
 
     email: Yup.string()
