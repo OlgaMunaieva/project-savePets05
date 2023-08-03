@@ -1,6 +1,6 @@
 **GoIT React and Node.js Course**\
 Team: **Project-F**\
-Team Project Name: ***Your Pets App***
+# Team Project Name: ***Your Pets App***
 
 Team Members List:
 
