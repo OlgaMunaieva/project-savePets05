@@ -8,14 +8,18 @@ import {
   fetchMyPets,
 } from 'redux/notices/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectNotices, selectTotalPages } from 'redux/notices/selectors';
+import {
+  selectIsNoticeLoading,
+  selectNotices,
+  selectTotalPages,
+} from 'redux/notices/selectors';
 import { useNavigate, useParams } from 'react-router-dom';
 import Pagination from 'components/pagination/Pagination';
 import { FixedButtonWrapper } from 'components/buttons/addPetBtn/addPetBtn.styled';
 import AddPetBtnCircle from 'components/buttons/addPetBtn/addPetBtnCircle';
 import { useResize } from 'hooks/useResize';
 import NoticesSearch from 'components/notice/noticesSearch/NoticesSearch';
-// import { debounce } from 'lodash';
+import Loader from 'components/Loader/Loader';
 
 const NoticesPage = () => {
   // для кнопки add pet
@@ -35,6 +39,8 @@ const NoticesPage = () => {
   function handleNavigate(source) {
     navigate(`/add-pet?source=${source}`);
   }
+
+  const isLoading = useSelector(selectIsNoticeLoading);
 
   const resizeHandler = width => {
     if (width <= 766) {
@@ -100,16 +106,12 @@ const NoticesPage = () => {
       <TitlePage children={'Find your favorite pet'} />
       <NoticesSearch clean={handlerCleanQuery} setQvery={handlerQuery} />
       <NoticesCategoriesNav onClick={handleCategoryChange} />
-      <NoticesCategoriesList
-        pets={notices}
-        locationCategory={locationCategory}
-      />
-      {totalPages >= 12 && (
-        <Pagination
-          key={paginationKey}
-          click={handlePageClick}
-          limit={limit}
-          page={page}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <NoticesCategoriesList
+          pets={notices}
+          locationCategory={locationCategory}
         />
       )}
       {width < 768 && (
@@ -117,6 +119,14 @@ const NoticesPage = () => {
           <AddPetBtnCircle onClick={() => handleNavigate('notices')} />
         </FixedButtonWrapper>
       )}
+      {totalPages >= 12 && !isLoading ? (
+        <Pagination
+          key={paginationKey}
+          click={handlePageClick}
+          page={page}
+          limit={limit}
+        />
+      ) : null}
     </>
   );
 };

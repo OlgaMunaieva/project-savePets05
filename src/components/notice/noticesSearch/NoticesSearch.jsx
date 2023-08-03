@@ -35,33 +35,31 @@ const NoticesSearch = ({ setQvery, clean }) => {
     <>
       <AnimatePresence>
         <Form onSubmit={handelSubmit}>
-          <FormContainer>
-            <Input
-              type="text"
-              placeholder="Search"
-              onChange={handelInputChange}
-              value={search}
-              autoComplete="off"
-              autoFocus
-            />
-            <BtnWrap>
-              <BtnSerch type="submit">
-                <IconSearch />
-              </BtnSerch>
-              {search.length > 0 && (
-                <motion.div
-                  initial={{ opacity: 0.5, scale: 0.2 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0.5, scale: 0.2 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <BtnDel onClick={() => cleanInput()}>
-                    <IconX />
-                  </BtnDel>
-                </motion.div>
-              )}
-            </BtnWrap>
-          </FormContainer>
+          <Input
+            type="text"
+            placeholder="Search"
+            onChange={handelInputChange}
+            value={search}
+            autoComplete="off"
+            autoFocus
+          />
+          <BtnWrap>
+            <BtnSerch type="submit">
+              <IconSearch />
+            </BtnSerch>
+            {search.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0.5, scale: 0.2 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0.5, scale: 0.2 }}
+                transition={{ duration: 0.4 }}
+              >
+                <BtnDel onClick={() => cleanInput()}>
+                  <IconX />
+                </BtnDel>
+              </motion.div>
+            )}
+          </BtnWrap>
         </Form>
       </AnimatePresence>
     </>

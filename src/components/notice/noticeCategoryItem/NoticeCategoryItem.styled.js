@@ -3,12 +3,14 @@ import variables from 'settings/variables';
 
 export const Item = styled.li`
   list-style: none;
-  width: 280px;
+  min-width: 280px;
+  width: 100%;
   padding-bottom: 24px;
   user-select: none;
   background-color: ${variables.colors.cardBgColor};
   box-shadow: ${variables.shadow.shadowDefault};
   border-radius: 0px 0px 40px 40px;
+
   ${variables.breakPoints.tablet} {
     width: 336px;
   }

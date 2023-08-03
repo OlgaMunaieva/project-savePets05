@@ -31,6 +31,7 @@ const Navigation = () => {
   const [itsMobile, setitsMobile] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const navigate = useNavigate();
+
   const handlerOpenModal = () => {
     setOpenModal(!openModal);
   };
@@ -62,7 +63,7 @@ const Navigation = () => {
     resizeHandler(width);
   }, [width]);
   return (
-    <Div>
+    <Div data-islogin={isLogin}>
       <LogoComponent itsMobile={itsMobile} />
       {sizeDesk ? <Nav /> : null}
       {!isLogin ? (

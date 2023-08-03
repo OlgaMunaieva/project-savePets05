@@ -16,11 +16,15 @@ export const BtnSerch = styled.button`
 `;
 
 export const Form = styled.form`
-  text-align: center;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  ${variables.breakPoints.mobile} {
+    max-width: 480px;
+  }
+  @media screen and (min-width: 768px) {
+    max-width: 608px;
+  }
 `;
 export const BtnDel = styled(BtnSerch)`
   stroke: ${variables.colors.accentHeaderButton};
@@ -47,14 +51,9 @@ export const Input = styled.input`
   }
 
   @media screen and (min-width: 768px) {
-    width: 608px;
     font-size: 20px;
     line-height: 24px;
   }
-`;
-
-export const FormContainer = styled.div`
-  position: relative;
 `;
 
 export const IconX = styled(Cross)`
@@ -66,7 +65,8 @@ export const IconX = styled(Cross)`
 `;
 export const IconSearch = styled(Search)``;
 
-export const BtnWrap = styled.div`  border: 'none',
+export const BtnWrap = styled.div` 
+ border: 'none',
   background-color: inherit;
   position: absolute;
   right: 20px;

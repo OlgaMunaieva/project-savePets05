@@ -5,7 +5,7 @@ import { ArrovStyle, ArrovStyleLeft, Wraper } from './Pagination.styled';
 import { useSelector } from 'react-redux';
 import { selectNotices, selectTotalPages } from 'redux/notices/selectors';
 
-const Pagination = ({ click, limit }) => {
+const Pagination = ({ click, limit, page }) => {
   const totalPages = useSelector(selectTotalPages);
   const pets = useSelector(selectNotices);
 
@@ -32,6 +32,7 @@ const Pagination = ({ click, limit }) => {
             containerClassName="pagination"
             activeClassName="active-btn"
             renderOnZeroPageCount={null}
+            forcePage={page}
           />
         </Wraper>
       )}

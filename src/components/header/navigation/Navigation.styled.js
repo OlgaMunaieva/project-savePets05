@@ -7,7 +7,7 @@ export const Div = styled.div`
   align-items: center;
   justify-content: space-between;
   @media screen and (max-width: 1279px) and (min-width: 767px) {
-    padding-right: 60px;
+    padding-right: ${props => (props['data-islogin'] ? '10px' : '60px')};
   }
 `;
 
@@ -158,12 +158,12 @@ export const TitleDelBtn = styled.span`
 `;
 export const ModalWraperr = styled.div`
   max-width: 280px;
-  padding-top: 23px;
-  padding-bottom: 23px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 
   ${variables.breakPoints.tablet} {
-    padding-top: 47.5px;
-    padding-bottom: 47.5px;
-    min-width: 548px;
+    padding-top: 108px;
+    padding-bottom: 108px;
+    min-width: 608px;
   }
 `;
