@@ -5,15 +5,15 @@ Team Project: **Your Pets App**
 Team Members List:
 
 Team Lead - **Olha Munaieva (OlgaMunaieva)**\
-Scrum Master - **Ganna Baranenko ()**
+Scrum Master - **Ganna Baranenko (ganna1008)**
 
 
 SharedLayout, MainPage, ModalNotice - **Olha Munaieva (OlgaMunaieva)**\
-Header - **Sergiy Moroz ()**\
+Header - **Sergii Moroz (MorozSerhii)**\
 RegisterPage, LoginPage, ModalApproveAction - **Dmytro Dobrobatko (Dobryotec)**\
-NoticesPage, ModalApproveAction - **Ivan Tolmachov ()**\
-ModalApproveAction, ModalNotice - **Vitalii Grytsun ()**\
-UserPage - **Ganna Baranenko ()**\
+NoticesPage, ModalApproveAction - **Ivan Tolmachov (IvanTolmachev)**\
+ModalApproveAction, ModalNotice - **Vitalii Grytsun (Deus2214)**\
+UserPage - **Ganna Baranenko (ganna1008)**\
 AddPetPage - **Alexander Shevchenko (AlexanderShevchenko112)**\
 OurFriendsPage - **Demchenko Sergii (Demniks)**\
 NewsPage - **Kiril Polozhenet (polokir)**\
