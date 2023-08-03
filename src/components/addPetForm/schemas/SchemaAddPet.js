@@ -1,5 +1,78 @@
 import * as Yup from 'yup';
 
+// const schema = Yup.object().shape({
+//   patName: Yup.string()
+//     .trim()
+//     .required('Required')
+//     .matches(
+//       /^[\p{Lu}]{1}[\p{Ll}'`\d]{1,15}$/u,
+//       'Only letters are allowed and first leter uppercase'
+//     )
+//     .min(
+//       2,
+//       `Pet's Name must be at least 2 characters and first leter uppercase`
+//     )
+//     .max(
+//       16,
+//       `Pet's Name must be at most 16 characters and first leter uppercase`
+//     ),
+//   petBirthDate: Yup.string()
+//     .trim()
+//     .required('Required')
+//     .matches(
+//       /^(0[1-9]|1\d|2\d|3[01])-(0[1-9]|1[0-2])-(19[0-9]{2}|20[0-9]{2})$/,
+//       'Date of Birth must be in the format DD-MM-YYYY'
+//     ),
+//   petType: Yup.string()
+//     .trim()
+//     .required('Required')
+//     .matches(/^[\p{L}'`\d]{1,15}$/u, 'Only letters in English are allowed')
+//     .min(2, `Pet's Name must be at least 2 characters`)
+//     .max(16, `Pet's Name must be at most 16 characters`),
+//   petImage: Yup.mixed()
+//     .required('Required')
+//     .test(
+//       'fileSize',
+//       'Image size is too large',
+//       value => value && value.size <= 3 * 1024 * 1024
+//     ),
+//   comments: Yup.string(),
+//   location: Yup.string().when('categories', (categories, field) => {
+//     return categories === 'sell' ||
+//       categories === 'inGoodHands' ||
+//       categories === 'lostFound'
+//       ? field
+//           .required('Required')
+//           .matches(
+//             /^[\p{Lu}]{1}[\p{Ll}'`]{1,31}$/u,
+//             'Location must contain only letters and first leter uppercase'
+//           )
+//           .trim()
+//       : field.nullable(true);
+//   }),
+//   price: Yup.number().when('categories', (categories, field) => {
+//     return categories === 'sell'
+//       ? field
+//           .required('Required')
+//           .typeError('Price must be a number')
+//           .positive('Price must be greater than 0')
+//       : field.nullable(true);
+//   }),
+//   addTitle: Yup.string().when('categories', (categories, field) => {
+//     return categories === 'sell' ||
+//       categories === 'inGoodHands' ||
+//       categories === 'lostFound'
+//       ? field
+//           .required('Required')
+//           .matches(
+//             /^[\p{L}' `\d]{1,31}$/u,
+//             'Only letters in English are allowed'
+//           )
+//           .trim()
+//       : field.nullable(true);
+//   }),
+// });
+
 const yourPetSchema = Yup.object().shape({
   petName: Yup.string()
     .trim()
