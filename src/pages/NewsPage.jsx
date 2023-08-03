@@ -1,49 +1,43 @@
 import SearchInput from 'components/searchInput/SearchInput';
-import { Title } from 'components/title/TitlePage.styled';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 import NewsList from 'components/newsList/newsList';
 import Container from 'components/mainContainer/MainContainer.styled';
 import NewsPaginator from 'components/newsPaginator/newsPaginator';
-
-const API_KEY = '1e16297d452f42a18fd30eb2e7da87bf';
+import allArticle from '../components/newsPaginator/allArticle';
+import { useEffect, useState } from 'react';
+import TitlePage from 'components/title/TitlePage';
 
 const NewsPage = () => {
-  const [news, setNews] = useState([]);
-  const [query, setQuery] = useState('dog');
+  const [displayed, setDisplayed] = useState(allArticle.slice(0, 6));
+  const [query, setQuery] = useState('');
   const [isSearch, setIsSearch] = useState(false);
-  const [displayed, setDisplayed] = useState([]);
+  const [results, setResults] = useState([]);
 
-  // const [total, setTotal] = useState(0);
-
-  const getPopularNews = async () => {
-    try {
-      const url = `https://newsapi.org/v2/everything?q=${query}&p=2&sortBy=popularity&apiKey=${API_KEY}`;
-      const response = await axios.get(url);
-      //setTotal(response.data.totalResults);
-      console.log(response.data);
-      return response.data.articles;
-    } catch (error) {
-      console.error(error);
-    }
+  const findNews = query => {
+    const searchResults = allArticle.filter(article => {
+      const titleLower = article.title.toLowerCase();
+      const textLower = article.text.toLowerCase();
+      return titleLower.includes(query) || textLower.includes(query);
+    });
+    //setIsSearch(false);
+    setResults(searchResults);
+    setDisplayed(searchResults.slice(0, 6));
   };
 
   useEffect(() => {
-    const fetchNews = () => {
-      getPopularNews().then(articles =>{
-        setNews(articles)
-        setDisplayed(articles.slice(0, 6))});
-      setIsSearch(false);
-    };
-    console.log(news);
-
-    fetchNews();
-    // eslint-disable-next-line
+    if (query) {
+      setResults([]);
+      setDisplayed([]);
+      findNews(query);
+      //setIsSearch(false);
+    }
+    // eslint-disable-next-line 
   }, [isSearch]);
 
+  console.log(results);
+  console.log(displayed);
   return (
     <Container.MainContainer>
-      <Title>News</Title>
+      <TitlePage children={"News"}/>
       <SearchInput
         setInput={setQuery}
         setSearch={setIsSearch}
@@ -51,7 +45,13 @@ const NewsPage = () => {
         placeholder="Search"
       />
       <NewsList items={displayed} />
-      <NewsPaginator limit={6} setItems={setDisplayed} news={news} />
+      <NewsPaginator
+        limit={6}
+        setItems={setDisplayed}
+        news={allArticle}
+        current={results}
+        find={isSearch}
+      />
     </Container.MainContainer>
   );
 };

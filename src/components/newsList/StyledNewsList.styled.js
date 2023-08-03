@@ -4,6 +4,7 @@ const StyledList= styled.ul`
     padding: 80px 0 ;
     display:grid;
     grid-template-columns: 280px;
+    justify-content: center;
     gap:31px;
 
     ${variables.breakPoints.tablet} {
