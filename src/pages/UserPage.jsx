@@ -32,6 +32,7 @@ export default function UserPage() {
   const closeModal = () => {
     setIsModalOpen(false);
     localStorage.removeItem('redirectPath');
+    localStorage.removeItem('modalShow');
   };
 
   return (

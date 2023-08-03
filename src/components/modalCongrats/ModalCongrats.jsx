@@ -11,7 +11,7 @@ const ModalCongrats = ({ closeModal, openModal }) => {
   return (
     <Modal closeModal={closeModal} isOpenedModal={openModal}>
       <StyledContainer>
-        <StyledTitle>Congrats</StyledTitle>
+        <StyledTitle>Congrats!</StyledTitle>
         <StyledText>You're registration is success</StyledText>
         <StyledButton
           onClick={() => {
