@@ -1,6 +1,6 @@
 **GoIT React and Node.js Course**\
 Team: **Project-F**
-# Team Project Name: ***Your Pets App***
+# Team Project Name: ***Your Pets App (Front-end part)***
 
 ## Team Members List:
 
@@ -22,6 +22,24 @@ NewsPage - **[Kiril Polozhenet](https://github.com/polokir)**
 
 [project layout](https://www.figma.com/file/0jlTykBnzSdnXWKtRMxhSV/Your-Pet-2.0)\
 [technical task](https://docs.google.com/spreadsheets/d/1dIjUkjuaTIrfkApsZXky48ftkJ-NDMkHYSL7hPSPr0Y/edit)
+
+## Tools
+
+Project is built using the following tools:
+
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTTP)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
+- [Java Script](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [React](https://react.dev/reference/react)
+- [GitHub](https://github.com/)
+- [Postman](https://www.postman.com/)
+- [Redux](https://redux.js.org/)
+- [Axios](https://axios-http.com/ru/docs/intro)
+- [Formik](https://formik.org/)
+- [Lodash.debounce](https://lodash.com/docs/)
+- [Styled-components](https://www.styled-components.com/)
+- [yup](https://www.npmjs.com/package/yup)
+
 ## project description
 
 When you first enter the application using the link [Your Pets App](https://olgamunaieva.github.io/project-savePets05/), the user gets to the main page with a welcome message and a menu in the header (for mobile and desktop versions, this is a burger menu). By clicking on the logo, the user is taken to the main page.\
