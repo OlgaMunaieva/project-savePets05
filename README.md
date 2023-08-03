@@ -46,6 +46,8 @@ Project is built using the following tools:
 
 ### MainPage
 When you first enter the application using the link [Your Pets App](https://olgamunaieva.github.io/project-savePets05/), the user gets to the main page with a welcome message and a menu in the header (for mobile and desktop versions, this is a burger menu). By clicking on the logo, the user is taken to the main page.\
+### Header
+When clicking on the header menu items, an unauthorized user can get to Notices Page, NewsPage, OurFriendsPage with limited functionality (to be described below). For an authorized user, the functionality will be complete. On the right side of the window there is an authorization menu block. For an unauthorized user, this is Register and Login. For an authorized user, this is Logout and a link to UserPage.
 ![Open main page](./assets/main-page.png)
 
 ### Registration page
@@ -55,6 +57,10 @@ When you first enter the application using the link [Your Pets App](https://olga
 ### Login Page
  On the login page, the user needs to correctly fill in all the form fields, the form has hints for correct input. After filling in, by clicking on the login button, authorization occurs. If the user already exists in the database, then he is redirected to his profile page. Otherwise, a message is displayed stating that the user with the corresponding data does not exist in the database. From the login page, you can go to the registration page by clicking on the appropriate link at the bottom of the form.
 ![Login page](./assets/login-page.png)
+### Notices Page
+
+
+![Notices page](./assets/notice-page.png)
 
 
 P.S.: This project is a modified clone of the original OlgaMunaieva repository.
