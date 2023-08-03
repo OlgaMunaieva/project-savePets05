@@ -58,6 +58,10 @@ textarea {
 .body-fixed {
   overflow: hidden;
 }
+
+button {
+  cursor: pointer;
+}
 `;
 
 export default GlobalStyles;
