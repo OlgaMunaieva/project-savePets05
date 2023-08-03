@@ -3,8 +3,8 @@ import { StyledInput, Field } from './SearchInput.styled';
 const SearchInput = ({ setInput,setSearch}) => {
   return (
     <Field>
-      <StyledInput placeholder='Serach...' onChange={e => setInput(e.target.value)} />
-      <svg onClick={()=>{setSearch(true)}} style={{
+      <StyledInput placeholder='Search...' onChange={e => setInput(e.target.value)} />
+      <svg onClick={()=>{setSearch(prev=>!prev)}} style={{
         position:'absolute',
         top: '10px',
         right: '336px'
