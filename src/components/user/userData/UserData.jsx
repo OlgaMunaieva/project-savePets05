@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/user/selectors';
 
 import UserForm from '../userForm/UserForm';
-import Modal from 'components/modal/Modal';
+import Modal from 'pages/ModalApproveAction';
 import spriteImage from '../../../images/sprite.svg';
 
 import UserDefaultAvatar from '../../../images/icons/user-default-avatar.svg';

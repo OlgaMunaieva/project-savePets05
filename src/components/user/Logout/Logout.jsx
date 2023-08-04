@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { StyledButton } from './Logout.styled';
 import spriteImage from '../../../images/sprite.svg';
-import Modal from 'components/modal/Modal';
+import Modal from 'pages/ModalApproveAction';
 import {
   BtnWrapper,
   CancelBtn,

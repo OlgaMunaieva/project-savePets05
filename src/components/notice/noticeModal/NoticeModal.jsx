@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import Modal from '../../modal/Modal';
+import Modal from '../../../pages/ModalApproveAction';
 
 import HeartIcon from '../../../images/icons/HeartIcon.svg';
 import ImagePet from '../../../images/PetImage.jpg';
