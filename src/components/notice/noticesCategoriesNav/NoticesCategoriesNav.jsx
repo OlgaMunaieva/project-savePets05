@@ -3,9 +3,9 @@ import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { List, Button, Item, Wrapper } from './NoticesCategoriesNav.styled';
 
 // import { useNavigate } from 'react-router-dom';
-import { useResize } from 'hooks/useResize';
+// import { useResize } from 'hooks/useResize';
 // import { useState } from 'react';
-import { ModalUserLogin } from 'components/allModals/UserLoginModal/UserLoginModal';
+// import { ModalUserLogin } from 'components/allModals/UserLoginModal/UserLoginModal';
 
 export const filters = [
   { filter: 'sell', path: 'sell' },
