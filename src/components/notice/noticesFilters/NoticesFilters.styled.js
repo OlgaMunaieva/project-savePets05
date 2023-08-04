@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import variables from 'settings/variables';
 import { Form, Field } from 'formik';
+
 export const Wrapper = styled.div`
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 100;
+  z-index: 999;
 
   background-color: transparent;
 
@@ -18,25 +19,22 @@ export const BtnToOpen = styled.button`
   height: 40px;
   border-radius: 50%;
   border: none;
-  font-size: 16px;
-  font-weight: bold;
   position: absolute;
   right: 0;
   top: 0;
-
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background-color: ${variables.colors.cardBgColor};
-  color: ${variables.colors.buttonsHoverBg};
+  background-color: transparent;
+  color: transparent;
 
   transition: ${variables.transition.transitionColor},
     background-color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
 
   &:hover,
   &:focus {
-    color: ${variables.colors.cardBgColor};
+    // color: ${variables.colors.cardBgColor};
     border: none;
     background-color: transparent;
 
@@ -50,15 +48,12 @@ export const BtnToOpen = styled.button`
     width: 100%;
     height: 100%;
     border-radius: inherit;
-
     position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
-
     background: ${variables.colors.buttonsGr};
     opacity: 0;
-
     transition: opacity 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
   }
 
@@ -68,27 +63,38 @@ export const BtnToOpen = styled.button`
     width: 152px;
     border: 2px solid ${variables.colors.buttonsHoverBg};
     border-radius: 40px;
-
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
-
     background-color: transparent;
   }
 `;
+
+export const BtnOpenTitle = styled.span`
+  font-size: 16px;
+  font-weight: bold;
+  color: ${variables.colors.buttonsHoverBg};
+  ${BtnToOpen}:hover &, 
+  ${BtnToOpen}:focus & {
+    color: ${variables.colors.secondaryText};
+  }
+`;
+
 export const DropdownWrapper = styled.div`
   position: absolute;
   width: 152px;
   margin-top: 20px;
   padding: 8px;
   border-radius: 20px;
-
+  z-index: 100;
   background-color: ${variables.colors.cardBgColor};
   box-shadow: ${variables.shadow.shadowDefault};
 `;
 
 export const BtnOpenLabel = styled.span`
+  font-size: 16px;
+  font-weight: bold;
   display: none;
 `;
 
@@ -104,24 +110,11 @@ export const SubMenu = styled.div`
   width: 136px;
   margin-bottom: 8px;
   padding: 14px;
-  padding-top: 28px;
-
+  padding-top: ${props =>
+    props['data-ageopen'] || props['data-genderopen'] ? '38px' : '28px'};
   border-radius: 20px;
   color: ${variables.colors.buttonsHoverBg};
   background-color: ${variables.colors.cardsButtonBg};
-  //   transition: background-color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12),
-  //     color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
-
-  //   &:hover,
-  //   &:focus {
-  //     background-color: ${variables.colors.buttonsHoverBg};
-  //     color: ${variables.colors.cardBgColor};
-
-  //     & button {
-  //       background-color: ${variables.colors.buttonsHoverBg};
-  //       color: ${variables.colors.cardBgColor};
-  //     }
-  //   }
 `;
 
 export const BtnFilter = styled.button`
@@ -129,6 +122,7 @@ export const BtnFilter = styled.button`
   top: 0;
   left: 0;
   width: 100%;
+  height: 42px;
   padding: 6px 8px;
   border-radius: 20px;
   border: none;
@@ -170,7 +164,7 @@ export const Icon = styled.svg`
   transition: transform 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12),
     stroke 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
 
-  ${BtnFilter}:hover & {
+  ${BtnFilter}:hover &, ${BtnToOpen}:hover &, ${BtnToOpen}:focus & {
     stroke: ${variables.colors.secondaryText};
   }
 `;
