@@ -3,17 +3,20 @@ import ReactPaginate from 'react-paginate';
 import './pagination.css';
 
 
+
 const NewsPaginator = ({  setItems, limit, news,current,find }) => {
 
+  
   const handlePageClick = (event) => {
-    event.selected=0;
-    const newOffset = (!find) ? (event.selected * limit) % news.length : (event.selected * limit) % current.length ;
+   
+    const newOffset = (!find) ? (event.selected * limit) : (event.selected * limit) ;
     console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
     if(!find){
       setItems(prevState => [...prevState,...news.slice(newOffset, newOffset + limit)]);
     }else{
       setItems(prevState => [...prevState,...current.slice(newOffset, newOffset + limit)]);
     }
+  
   };
   console.log(find);
   return (
