@@ -108,7 +108,9 @@ const NoticesCategoryItem = ({
                   width={24}
                   height={24}
                   color={
-                    favorite ? `${variables.colors.buttonsHoverBg}` : 'current'
+                    favorite
+                      ? `${variables.colors.buttonsHoverBg}`
+                      : 'currentColor'
                   }
                 >
                   <use href={icons + '#heart'}></use>
