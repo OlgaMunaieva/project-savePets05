@@ -22,6 +22,7 @@ import NoticesSearch from 'components/notice/noticesSearch/NoticesSearch';
 import Loader from 'components/Loader/Loader';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { ModalUserLogin } from 'components/allModals/UserLoginModal/UserLoginModal';
+import NoticesFilters from 'components/notice/noticesFilters/NoticesFilters';
 
 const NoticesPage = () => {
   // для кнопки add pet
@@ -40,7 +41,7 @@ const NoticesPage = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   // для кнопки add pet
-  const handleNavigate = (source) => {
+  const handleNavigate = source => {
     if (!isLoggedIn) {
       setIsModalOpenUserLogin(true);
     } else {
@@ -111,12 +112,13 @@ const NoticesPage = () => {
 
   return (
     <>
-       {isModalOpenUserLogin && (
+      {isModalOpenUserLogin && (
         <ModalUserLogin closeModal={() => setIsModalOpenUserLogin(false)} />
       )}
       <TitlePage children={'Find your favorite pet'} />
       <NoticesSearch clean={handlerCleanQuery} setQvery={handlerQuery} />
       <NoticesCategoriesNav onClick={handleCategoryChange} />
+      <NoticesFilters />
       {isLoading ? (
         <Loader />
       ) : (
