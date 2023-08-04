@@ -22,5 +22,14 @@
     <symbol id="trash" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M24 8v16c0 1.473-1.194 2.667-2.667 2.667h-10.667c-1.473 0-2.667-1.194-2.667-2.667v-16M20 8v-1.333c0-1.473-1.194-2.667-2.667-2.667h-2.667c-1.473 0-2.667 1.194-2.667 2.667v1.333M5.333 8h21.333M13.333 13.333v8M18.667 13.333v8"></path>
 </symbol>
+<symbol id="filters" viewBox="0 0 33 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M6.344 5.333l6.667 10.667v8l8 4v-12l6.667-10.667h-21.333z"></path>
+</symbol>
+<symbol id="icon-check" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M26.667 9.333l-14.667 14.667-6.667-6.667"></path>
+</symbol>
+<symbol id="chevron-down" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M5.333 12l10.667 10.667 10.667-10.667"></path>
+</symbol>
   </defs>
 </svg>
