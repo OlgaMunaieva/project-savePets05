@@ -77,8 +77,7 @@ export const BtnFavorite = styled.button`
   color: transparent;
   transition: ${variables.transition.transitionColor};
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: ${variables.colors.buttonsHoverBg};
   }
 `;
@@ -94,8 +93,7 @@ export const BtnRemoveMyPet = styled.button`
   background-color: ${variables.colors.cardsButtonBg};
   background-color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: ${variables.colors.buttonsHoverBg};
   }
 `;
@@ -164,9 +162,7 @@ export const Icon = styled.svg`
   transition: stroke 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
 
   ${DescriptionItem}:hover &,
-   ${BtnRemoveMyPet}:hover &,
-     ${DescriptionItem}:focus &,
-   ${BtnRemoveMyPet}:focus & {
+   ${BtnRemoveMyPet}:hover & {
     stroke: ${variables.colors.secondaryText};
   }
 `;
