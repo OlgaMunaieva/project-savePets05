@@ -10,7 +10,6 @@ const NewsPaginator = ({  setItems, limit, news,current,find }) => {
   const handlePageClick = (event) => {
    
     const newOffset = (!find) ? (event.selected * limit) : (event.selected * limit) ;
-    console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
     if(!find){
       setItems(prevState => [...prevState,...news.slice(newOffset, newOffset + limit)]);
     }else{
@@ -18,7 +17,6 @@ const NewsPaginator = ({  setItems, limit, news,current,find }) => {
     }
   
   };
-  console.log(find);
   return (
     <>
       {(news.length > 6 || current.length > 6 ) && (

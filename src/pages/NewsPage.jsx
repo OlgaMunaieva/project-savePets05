@@ -34,8 +34,6 @@ const NewsPage = () => {
     // eslint-disable-next-line 
   }, [isSearch]);
 
-  console.log(results);
-  console.log(displayed);
   return (
     <>
       <TitlePage children={"News"}/>
