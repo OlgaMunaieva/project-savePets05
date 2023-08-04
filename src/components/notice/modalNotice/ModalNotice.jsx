@@ -22,9 +22,9 @@ import {
   Wrapper,
   ButtonsWrapper,
   NoticeLink,
+  Icon,
 } from './ModalNotice.styled';
 import {
-  Icon,
   Status,
   StatusText,
 } from '../noticeCategoryItem/NoticeCategoryItem.styled';
@@ -36,6 +36,7 @@ import { fetchFavorite, putFavorite } from 'redux/notices/operations';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { toast } from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
+import variables from 'settings/variables';
 
 const BaseUrlImg = 'https://res.cloudinary.com/dfvviqdic/image/upload/';
 
@@ -44,14 +45,16 @@ const modalRoot = document.body;
 const ModalNotice = ({ onClose, isOpenedModal, id, favorite, children }) => {
   const params = useParams();
   const categoryParam = params.categoryName;
-  const [data, setData] = useState(null)
+  const [data, setData] = useState(null);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch(id);
-
+  console.log(favorite);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://project-savepets05-be.onrender.com/api/notices/${id}`);
+        const response = await axios.get(
+          `https://project-savepets05-be.onrender.com/api/notices/${id}`
+        );
         const notice = response.data;
 
         setData(notice);
@@ -110,10 +113,9 @@ const ModalNotice = ({ onClose, isOpenedModal, id, favorite, children }) => {
 
   return createPortal(
     <ModalWindow onClick={onClickOverlay}>
-      {!data ? <CircleLoader
-        color="#CCE4FB"
-        size={23}
-      /> :
+      {!data ? (
+        <CircleLoader color="#CCE4FB" size={23} />
+      ) : (
         <ModalContent>
           <ExitButton onClick={() => onClose()}>
             <img src={CrossIcon} alt="Cross" width={24} height={24} />
@@ -121,7 +123,11 @@ const ModalNotice = ({ onClose, isOpenedModal, id, favorite, children }) => {
           <MainDataWrapper>
             <Wrapper>
               <ImgWrapper>
-                <Img src={BaseUrlImg + data.photoUrl} alt="pet" loading="lazy" />
+                <Img
+                  src={BaseUrlImg + data.photoUrl}
+                  alt="pet"
+                  loading="lazy"
+                />
                 <Status>
                   <StatusText>{data.category}</StatusText>
                 </Status>
@@ -151,7 +157,9 @@ const ModalNotice = ({ onClose, isOpenedModal, id, favorite, children }) => {
                   </DataWrapper>
                   <DataWrapper>
                     <Data>Email:</Data>
-                    <NoticeLink href={`mailto:${data.email}`}>{data.email}</NoticeLink>
+                    <NoticeLink href={`mailto:${data.email}`}>
+                      {data.email}
+                    </NoticeLink>
                   </DataWrapper>
                   <DataWrapper>
                     <Data>Phone:</Data>
@@ -171,12 +179,20 @@ const ModalNotice = ({ onClose, isOpenedModal, id, favorite, children }) => {
             <ContactBtn href={`tel:${data.phone}`}>Contact</ContactBtn>
             <FavoriteBtn type="button" onClick={favoriteClickHandle}>
               <span>Add to</span>
-              <Icon width={24} height={24}>
+              <Icon
+                width={24}
+                height={24}
+                color={
+                  favorite ? `${variables.colors.secondaryText}` : 'transparent'
+                }
+                stroke={`red`}
+              >
                 <use href={spriteImage + '#icon-heart'}></use>
               </Icon>
             </FavoriteBtn>
           </ButtonsWrapper>
-        </ModalContent>}
+        </ModalContent>
+      )}
     </ModalWindow>,
     modalRoot
   );
