@@ -3,7 +3,6 @@ import Container from './mainContainer/MainContainer.styled';
 import Header from './header/Header';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-// import PictureContainer from './pictureContainer/PictureContainer.styled';
 
 const SharedLayout = () => {
   const location = useLocation();
