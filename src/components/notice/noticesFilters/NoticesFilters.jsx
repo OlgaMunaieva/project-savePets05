@@ -22,7 +22,7 @@ const NoticesFilters = () => {
   const [genderOpen, setGenderOpen] = useState(false);
   const [rotationAge, setRotationAge] = useState(0);
   const [rotationGender, setRotationGender] = useState(0);
-
+  console.log(isOpen);
   const handleBtnClick = () => {
     setRotationAge(0);
     setRotationGender(0);
@@ -64,8 +64,9 @@ const NoticesFilters = () => {
         type="button"
         onClick={handleBtnClick}
         aria-label="toggle filters"
+        data-isopen={isOpen}
       >
-        <BtnOpenTitle>Filter</BtnOpenTitle>
+        <BtnOpenTitle data-isopen={isOpen}>Filter</BtnOpenTitle>
         <Icon width={24} height={24}>
           <use href={icons + '#filters'}></use>
         </Icon>

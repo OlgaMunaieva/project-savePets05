@@ -8,17 +8,19 @@ export const Wrapper = styled.div`
 `;
 export const WrapperLinks = styled.div`
   display: flex;
-  margin-top: 43px;
 `;
 
 export const List = styled.ul`
-  margin-top: 20px;
+  width: 205px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   ${variables.breakPoints.tablet} {
-    margin-top: 43px;
+    width: 319px;
     gap: 12px;
+  }
+  ${variables.breakPoints.desktop} {
+    width: 100%;
   }
 `;
 
@@ -29,8 +31,10 @@ export const Item = styled.li`
 
 export const Button = styled(NavLink)`
   position: relative;
-  padding: 8px 16px 8px 16px;
+  padding: 8px 16px;
   text-decoration: none;
+  font-size: 14px;
+  font-weight: medium;
   border: none;
   border-radius: 40px;
   color: ${variables.colors.buttonsHoverBg};

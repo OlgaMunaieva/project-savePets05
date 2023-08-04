@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 999;
+  z-index: 20;
 
   background-color: transparent;
 
@@ -25,16 +25,21 @@ export const BtnToOpen = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background-color: transparent;
+  background-color: ${props =>
+    props['data-isopen']
+      ? `${variables.colors.buttonsHoverBg}`
+      : `${variables.colors.cardsButtonBg}`};
   color: transparent;
+  stroke: ${props =>
+    props['data-isopen']
+      ? `${variables.colors.secondaryText}`
+      : `${variables.colors.buttonsHoverBg}`};
 
   transition: ${variables.transition.transitionColor},
     background-color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
 
   &:hover,
   &:focus {
-    // color: ${variables.colors.cardBgColor};
     border: none;
     background-color: transparent;
 
@@ -67,29 +72,43 @@ export const BtnToOpen = styled.button`
     justify-content: center;
     align-items: center;
     gap: 8px;
-    background-color: transparent;
+    background-color: ${props =>
+      props['data-isopen']
+        ? `${variables.colors.buttonsHoverBg}`
+        : 'transparent'};
   }
 `;
 
 export const BtnOpenTitle = styled.span`
   font-size: 16px;
   font-weight: bold;
-  color: ${variables.colors.buttonsHoverBg};
+  letter-spacing: 4%;
+  display: none;
+  color: ${props =>
+    props['data-isopen']
+      ? `${variables.colors.secondaryText}`
+      : `${variables.colors.buttonsHoverBg}`};
   ${BtnToOpen}:hover &, 
   ${BtnToOpen}:focus & {
     color: ${variables.colors.secondaryText};
   }
+  ${variables.breakPoints.tablet} {
+    display: block;
+  }
 `;
 
 export const DropdownWrapper = styled.div`
-  position: absolute;
-  width: 152px;
-  margin-top: 20px;
+  margin-top: 52px;
   padding: 8px;
+  width: 152px;
   border-radius: 20px;
   z-index: 100;
   background-color: ${variables.colors.cardBgColor};
   box-shadow: ${variables.shadow.shadowDefault};
+  ${variables.breakPoints.tablet} {
+    margin-top: 20px;
+    position: absolute;
+  }
 `;
 
 export const BtnOpenLabel = styled.span`
@@ -158,13 +177,13 @@ export const BtnLabel = styled.span`
 export const Icon = styled.svg`
   z-index: 2;
   fill: currentColor;
-  stroke: ${variables.colors.buttonsHoverBg};
+
   min-width: 24px;
 
   transition: transform 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12),
     stroke 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
 
-  ${BtnFilter}:hover &, ${BtnToOpen}:hover &, ${BtnToOpen}:focus & {
+  ${BtnFilter}:hover &, ${BtnToOpen}:hover & {
     stroke: ${variables.colors.secondaryText};
   }
 `;
