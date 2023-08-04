@@ -1,5 +1,4 @@
 import NewsList from 'components/newsList/newsList';
-import Container from 'components/mainContainer/MainContainer.styled';
 import NewsPaginator from 'components/newsPaginator/newsPaginator';
 import allArticle from '../components/newsPaginator/allArticle';
 import { useEffect, useState } from 'react';
@@ -18,7 +17,6 @@ const NewsPage = () => {
       const textLower = article.text.toLowerCase();
       return titleLower.includes(query) || textLower.includes(query);
     });
-    //setIsSearch(false);
     setResults(searchResults);
     setDisplayed(searchResults.slice(0, 6));
   };
@@ -32,7 +30,6 @@ const NewsPage = () => {
       setResults([]);
       setDisplayed([]);
       findNews(query);
-      //setIsSearch(false);
     }
     // eslint-disable-next-line 
   }, [isSearch]);
@@ -40,7 +37,7 @@ const NewsPage = () => {
   console.log(results);
   console.log(displayed);
   return (
-    <Container.MainContainer>
+    <>
       <TitlePage children={"News"}/>
       <NoticesSearch
         clean={cleanQuery}
@@ -49,13 +46,14 @@ const NewsPage = () => {
       />
       <NewsList items={displayed} />
       <NewsPaginator
+        key={`${query}`}
         limit={6}
         setItems={setDisplayed}
         news={allArticle}
         current={results}
         find={isSearch}
       />
-    </Container.MainContainer>
+    </>
   );
 };
 
