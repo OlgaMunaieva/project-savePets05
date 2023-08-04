@@ -4,7 +4,7 @@ Team: **Project-F**
 
 ## Team Members List:
 
-Team Lead - **[Olha Munaieva](https://github.com/OlgaMunaieva)**\
+Team Lead (FrontEnd)- **[Olha Munaieva](https://github.com/OlgaMunaieva)**\
 Scrum Master - **[Ganna Baranenko](https://github.com/ganna1008)**
 
 
@@ -16,11 +16,11 @@ ModalApproveAction, ModalNotice - **[Vitalii Grytsun](https://github.com/Deus221
 UserPage, Profile, UserData, UserForm, PetsCard, Action on the Avatar, Modals - **[Ganna Baranenko](https://github.com/ganna1008)**\
 AddPetPage (AddPetForm) - **[Alexander Shevchenko](https://github.com/AlexanderShevchenko112)**\
 OurFriendsPage - **[Demchenko Sergii](https://github.com/Demniks)**\
-NewsPage, integrated Search, Pagination News - **[Kiril Polozhenet](https://github.com/polokir)**
+NewsPage, integrated Search, Pagination News - **[Kiril Polozhenets](https://github.com/polokir)**
 
 ## Materials used in the project
 
-- [Project layout](https://www.figma.com/file/0jlTykBnzSdnXWKtRMxhSV/Your-Pet-2.0)\
+- [Project layout](https://www.figma.com/file/0jlTykBnzSdnXWKtRMxhSV/Your-Pet-2.0)
 - [Technical task](https://docs.google.com/spreadsheets/d/1dIjUkjuaTIrfkApsZXky48ftkJ-NDMkHYSL7hPSPr0Y/edit)
 - [BackEnd on render](https://project-savepets05-be.onrender.com/api-docs/)
 - [BackEnd project](https://github.com/VadimVyalov/project-savePets05-BE)
