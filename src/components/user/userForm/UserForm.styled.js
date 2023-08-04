@@ -1,6 +1,7 @@
 import { Form, Field, ErrorMessage } from 'formik';
 import styled from 'styled-components';
 import variables from '../../../settings/variables';
+import ReactInputMask from 'react-input-mask';
 
 const {
   colors: {
@@ -55,6 +56,28 @@ export const InputContainer = styled.div`
 `;
 
 export const StyledInput = styled(Field)`
+  padding: 6px 12px;
+  width: 190px;
+  border: 1px solid ${buttonsHoverBg};
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.36;
+  letter-spacing: 0.04em;
+  color: ${simpleWhite};
+  &:disabled {
+    background-color: inherit;
+  }
+  ${variables.breakPoints.tablet} {
+    width: 255px;
+    padding: 4px 12px;
+    font-size: 16px;
+  }
+  ${variables.breakPoints.desktop} {
+  }
+`;
+
+export const StyledInputMask = styled(ReactInputMask)`
   padding: 6px 12px;
   width: 190px;
   border: 1px solid ${buttonsHoverBg};
