@@ -15,7 +15,7 @@ import { useEffect, useState } from 'react';
 import MobMenu from '../mobMenu/MobMenu';
 import { selectIsLoggedIn, selectUserName } from 'redux/auth/authSelectors';
 import { useDispatch, useSelector } from 'react-redux';
-import Modal from 'components/modal/Modal';
+import Modal from 'pages/ModalApproveAction';
 import { LogOutIcon } from '../buttons/LogoutBtn.styled';
 import { logOut } from 'redux/auth/authOperations';
 import { logoutPet } from 'redux/user/operations';

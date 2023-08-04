@@ -4,7 +4,7 @@ import {
   ModalWrapper,
   TitleModal,
 } from './UserLoginModal.styled';
-import Modal from '../../modal/Modal';
+import Modal from '../../../pages/ModalApproveAction';
 import AuthBtn from 'components/header/buttons/AuthBtn';
 
 export const ModalUserLogin = ({ closeModal, title = 'Attention' }) => {

@@ -1,4 +1,4 @@
-import Modal from '../../components/modal/Modal';
+import Modal from '../../pages/ModalApproveAction';
 import spriteImage from '../../images/sprite.svg';
 import {
   StyledContainer,

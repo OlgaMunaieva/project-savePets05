@@ -7,15 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/auth/authSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
 
-
-// import AddPet from './addPetForm/AddPetForm';
-
-// AddPetForm-bugfix
-//import PetModal from './petModal/PetModal';
-//import ModalApproveAction from 'pages/ModalApproveAction';
-
-// import ModalApproveAction from 'pages/ModalApproveAction';
-
 const MainPage = lazy(() => import('../pages/MainPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
@@ -37,7 +28,6 @@ const App = () => {
 
   return (
     !isRefreshing && (
-      // <NoticeModal/>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<MainPage />} />
@@ -87,14 +77,10 @@ const App = () => {
             <Route path=":categoryName" element={<NoticesPage />} />
           </Route>
           <Route path="/friends" element={<OurFriendsPage />} />
-          {/* <Route path="/add-pet" element={<AddPetPage />} /> */}
           <Route path="/news" element={<NewsPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
-      // <div>
-      //   {/* <ModalApproveAction /> */}
-      // </div>
     )
   );
 };

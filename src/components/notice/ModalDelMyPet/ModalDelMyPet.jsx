@@ -9,7 +9,7 @@ import {
   TitleDelBtn,
   TitleModal,
 } from './ModalDelMyPet.styled';
-import Modal from '../../modal/Modal';
+import Modal from '../../../pages/ModalApproveAction';
 
 export const ModalConfirmDelete = ({
   closeModal,

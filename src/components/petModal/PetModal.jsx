@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Modal from "../modal/Modal";
+import Modal from "../../pages/ModalApproveAction";
 import HeartIcon from "../..//images//icons/HeartIcon.svg";
-import ImagePet  from "..//../images/PetImage.jpg";
+import ImagePet from "..//../images/PetImage.jpg";
 
 import {
   AddToButton,
@@ -37,26 +37,26 @@ const petСharacteristics = [
 ];
 
 const PetModal = ({
- closeModal
+  closeModal
 }) => {
   const [petData, setPetData] = useState(
     {
-    name: "Rich",
-    birthday: "21.09.2020",
-    type: "Pomeranian",
-    place: "Lviv",
-    theSex: "male",
-    email: "user@mail.com",
-    phone: "+380971234567",
-  }
+      name: "Rich",
+      birthday: "21.09.2020",
+      type: "Pomeranian",
+      place: "Lviv",
+      theSex: "male",
+      email: "user@mail.com",
+      phone: "+380971234567",
+    }
   );
   // const petDetailsList = Object.values(petDetails);
-  const [petDetailsList, setPetDetailsList] = useState (
-  []
+  const [petDetailsList, setPetDetailsList] = useState(
+    []
   )
-  useEffect(()=>{
-    setPetDetailsList( Object.values(petData))
-  },[petData]
+  useEffect(() => {
+    setPetDetailsList(Object.values(petData))
+  }, [petData]
   )
 
   const fetchPetData = async () => {
@@ -65,11 +65,11 @@ const PetModal = ({
   const onClickAddTo = async () => {
     ///
   };
-  const onClickContact= async () => {
+  const onClickContact = async () => {
     ///
   };
   return (
-    <Modal closeModal={()=>closeModal()}>
+    <Modal closeModal={() => closeModal()}>
       <Container>
         <PetMainWrapper>
           <ImageWrapper>

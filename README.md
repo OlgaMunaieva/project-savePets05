@@ -8,13 +8,13 @@ Team Lead - **[Olha Munaieva](https://github.com/OlgaMunaieva)**\
 Scrum Master - **[Ganna Baranenko](https://github.com/ganna1008)**
 
 
-SharedLayout, MainPage, NotFoundPage, ModalNotice - **[Olha Munaieva](https://github.com/OlgaMunaieva)**\
-Header - **[Sergii Moroz](https://github.com/MorozSerhii)**\
+SharedLayout, MainPage, ErrorPage, ModalNotice, MainContainer, Routes, GlobalStyles, Favicon - **[Olha Munaieva](https://github.com/OlgaMunaieva)**\
+Header, Burger menu, Pagination, ModalApproveAction, Loader on NoticesPage - **[Sergii Moroz](https://github.com/MorozSerhii)**\
 RegisterPage, LoginPage, ModalApproveAction - **[Dmytro Dobrobatko](https://github.com/Dobryotec)**\
 NoticesPage, ModalApproveAction - **[Ivan Tolmachov](https://github.com/IvanTolmachev)**\
 ModalApproveAction, ModalNotice - **[Vitalii Grytsun](https://github.com/Deus2214)**\
 UserPage - **[Ganna Baranenko](https://github.com/ganna1008)**\
-AddPetPage - **[Alexander Shevchenko](https://github.com/AlexanderShevchenko112)**\
+AddPetPage (AddPetForm) - **[Alexander Shevchenko](https://github.com/AlexanderShevchenko112)**\
 OurFriendsPage - **[Demchenko Sergii](https://github.com/Demniks)**\
 NewsPage - **[Kiril Polozhenet](https://github.com/polokir)**
 
