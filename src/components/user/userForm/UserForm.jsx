@@ -26,6 +26,7 @@ import {
   StyledErrorImg,
   UserInfoContainer,
   AvatarContainer,
+  StyledInputMask,
 } from './UserForm.styled';
 
 export default function UserForm({ isFormDisabled, closeModal }) {
@@ -208,18 +209,23 @@ export default function UserForm({ isFormDisabled, closeModal }) {
           </InputContainer>
 
           {!isBirthdayValid(birthday) && isFormDisabled ? null : (
-            <InputContainer>
-              <StyledLabel htmlFor="birthday">Birthday:</StyledLabel>
-              <ErrorMessageContainer>
-                <StyledInput
-                  name="birthday"
-                  type="text"
-                  disabled={isFormDisabled}
-                  placeholder="00-00-0000"
-                />
-                <StyledErrorMessage component="div" name="birthday" />
-              </ErrorMessageContainer>
-            </InputContainer>
+            <StyledInput name="birthday">
+              {({ field }) => (
+                <InputContainer>
+                  <StyledLabel htmlFor="birthday">Birthday:</StyledLabel>
+                  <ErrorMessageContainer>
+                    <StyledInputMask
+                      {...field}
+                      mask="99-99-9999" // Маска для формата "дд-мм-гггг"
+                      maskplaceholder="11-11-1970" // Заполнитель для маски
+                      type="text"
+                      disabled={isFormDisabled}
+                    />
+                    <StyledErrorMessage component="div" name="birthday" />
+                  </ErrorMessageContainer>
+                </InputContainer>
+              )}
+            </StyledInput>
           )}
 
           {!phone && isFormDisabled ? null : (
