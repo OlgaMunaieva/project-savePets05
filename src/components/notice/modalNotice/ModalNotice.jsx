@@ -46,14 +46,14 @@ const ModalNotice = ({ onClose, isOpenedModal, id, favorite, children }) => {
   const categoryParam = params.categoryName;
   const [data, setData] = useState(null)
   const isLoggedIn = useSelector(selectIsLoggedIn);
-    const dispatch = useDispatch(id);
+  const dispatch = useDispatch(id);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`https://project-savepets05-be.onrender.com/api/notices/${id}`);
         const notice = response.data;
-        console.log(notice);
+
         setData(notice);
       } catch (error) {
         console.error(error);
@@ -108,82 +108,75 @@ const ModalNotice = ({ onClose, isOpenedModal, id, favorite, children }) => {
     }
   };
 
-//   if (!data) {
-//     return <CircleLoader
-//   color="#CCE4FB"
-//   size={23}
-// />;
-//   }
-
   return createPortal(
     <ModalWindow onClick={onClickOverlay}>
       {!data ? <CircleLoader
-  color="#CCE4FB"
-  size={23}
-/> :
-      <ModalContent>
-        <ExitButton onClick={() => onClose()}>
-          <img src={CrossIcon} alt="Cross" width={24} height={24} />
-        </ExitButton>
-        <MainDataWrapper>
-          <Wrapper>
-            <ImgWrapper>
-              <Img src={BaseUrlImg + data.photoUrl} alt="pet" loading="lazy" />
-              <Status>
-                <StatusText>{data.category}</StatusText>
-              </Status>
-            </ImgWrapper>
-            <TitleWrapper>
-              <Title>{data.title}</Title>
-              <InformationWrapper>
-                <DataWrapper>
-                  <Data>Name:</Data>
-                  <Details>{data.name}</Details>
-                </DataWrapper>
-                <DataWrapper>
-                  <Data>Birthday:</Data>
-                  <Details>{data.birthday}</Details>
-                </DataWrapper>
-                <DataWrapper>
-                  <Data>Type:</Data>
-                  <Details>{data.type}</Details>
-                </DataWrapper>
-                <DataWrapper>
-                  <Data>Place:</Data>
-                  <Details>{data.location}</Details>
-                </DataWrapper>
-                <DataWrapper>
-                  <Data>The sex:</Data>
-                  <Details>{data.sex}</Details>
-                </DataWrapper>
-                <DataWrapper>
-                  <Data>Email:</Data>
-                  <NoticeLink href={`mailto:${data.email}`}>{data.email}</NoticeLink>
-                </DataWrapper>
-                <DataWrapper>
-                  <Data>Phone:</Data>
-                  <NoticeLink href={`tel:${data.phone}`}>
-              {data.phone}
-            </NoticeLink>
-                </DataWrapper>
-              </InformationWrapper>
-            </TitleWrapper>
-          </Wrapper>
-          <DescriptionWrapper>
-            <span style={{marginRight: 5}}>Comments:</span>
-            {data.comments}
-          </DescriptionWrapper>
-        </MainDataWrapper>
-        <ButtonsWrapper>
-          <ContactBtn href={`tel:${data.phone}`}>Contact</ContactBtn>
-          <FavoriteBtn type="button" onClick={favoriteClickHandle}>
-            <span>Add to</span>
-            <Icon width={24} height={24}>
-              <use href={spriteImage + '#icon-heart'}></use>
-            </Icon>
-          </FavoriteBtn>
-        </ButtonsWrapper>
-      </ModalContent>}
+        color="#CCE4FB"
+        size={23}
+      /> :
+        <ModalContent>
+          <ExitButton onClick={() => onClose()}>
+            <img src={CrossIcon} alt="Cross" width={24} height={24} />
+          </ExitButton>
+          <MainDataWrapper>
+            <Wrapper>
+              <ImgWrapper>
+                <Img src={BaseUrlImg + data.photoUrl} alt="pet" loading="lazy" />
+                <Status>
+                  <StatusText>{data.category}</StatusText>
+                </Status>
+              </ImgWrapper>
+              <TitleWrapper>
+                <Title>{data.title}</Title>
+                <InformationWrapper>
+                  <DataWrapper>
+                    <Data>Name:</Data>
+                    <Details>{data.name}</Details>
+                  </DataWrapper>
+                  <DataWrapper>
+                    <Data>Birthday:</Data>
+                    <Details>{data.birthday}</Details>
+                  </DataWrapper>
+                  <DataWrapper>
+                    <Data>Type:</Data>
+                    <Details>{data.type}</Details>
+                  </DataWrapper>
+                  <DataWrapper>
+                    <Data>Place:</Data>
+                    <Details>{data.location}</Details>
+                  </DataWrapper>
+                  <DataWrapper>
+                    <Data>The sex:</Data>
+                    <Details>{data.sex}</Details>
+                  </DataWrapper>
+                  <DataWrapper>
+                    <Data>Email:</Data>
+                    <NoticeLink href={`mailto:${data.email}`}>{data.email}</NoticeLink>
+                  </DataWrapper>
+                  <DataWrapper>
+                    <Data>Phone:</Data>
+                    <NoticeLink href={`tel:${data.phone}`}>
+                      {data.phone}
+                    </NoticeLink>
+                  </DataWrapper>
+                </InformationWrapper>
+              </TitleWrapper>
+            </Wrapper>
+            <DescriptionWrapper>
+              <span style={{ marginRight: 5 }}>Comments:</span>
+              {data.comments}
+            </DescriptionWrapper>
+          </MainDataWrapper>
+          <ButtonsWrapper>
+            <ContactBtn href={`tel:${data.phone}`}>Contact</ContactBtn>
+            <FavoriteBtn type="button" onClick={favoriteClickHandle}>
+              <span>Add to</span>
+              <Icon width={24} height={24}>
+                <use href={spriteImage + '#icon-heart'}></use>
+              </Icon>
+            </FavoriteBtn>
+          </ButtonsWrapper>
+        </ModalContent>}
     </ModalWindow>,
     modalRoot
   );
