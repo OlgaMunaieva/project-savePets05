@@ -25,7 +25,7 @@
 <symbol id="filters" viewBox="0 0 33 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M6.344 5.333l6.667 10.667v8l8 4v-12l6.667-10.667h-21.333z"></path>
 </symbol>
-<symbol id="icon-check" viewBox="0 0 32 32">
+<symbol id="check" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M26.667 9.333l-14.667 14.667-6.667-6.667"></path>
 </symbol>
 <symbol id="chevron-down" viewBox="0 0 32 32">
