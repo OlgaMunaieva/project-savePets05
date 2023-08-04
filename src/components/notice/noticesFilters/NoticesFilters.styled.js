@@ -152,6 +152,7 @@ export const BtnFilter = styled.button`
   font-weight: 400;
   font-size: 14px;
   color: transparent;
+  stroke: ${variables.colors.buttonsHoverBg};
   background-color: ${variables.colors.cardsButtonBg};
   transition: background-color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12),
     color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
@@ -262,28 +263,3 @@ export const Label = styled.label`
     border-color: ${variables.colors.cardBgColor};
   }
 `;
-
-// .openBtnIcon {
-//     stroke: currentColor;
-// }
-
-// @media screen and (max-width: 767px) {
-//     .dropdownContainer {
-//         right: 0;
-//         top: 0;
-//     }
-// }
-
-// @media screen and (min-width: 768px) {
-//     .wrapper {
-//         position: static;
-//     }
-
-//     .openBtnLabel {
-//         display: block;
-//     }
-
-//     .dropdownContainer {
-//         margin-top: 20px;
-//     }
-// }

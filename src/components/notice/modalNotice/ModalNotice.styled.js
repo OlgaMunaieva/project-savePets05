@@ -257,23 +257,91 @@ export const ContactBtn = styled.a`
   }
 `;
 
-export const FavoriteBtn = styled(ContactBtn)`
-  margin-bottom: 16px;
+export const FavoriteBtn = styled.button`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 248px;
+  height: 38px;
+  padding: 6px;
+  margin: 0 auto;
+  margin-bottom: 8px;
+  border: none;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  background: transparent;
+  background-color: ${variables.colors.buttonsHoverBg};
+  color: ${variables.colors.secondaryText};
+  stroke: ${variables.colors.secondaryText};
+
+  transition: ${variables.transition.transitionColor},
+    background-color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: ${variables.colors.buttonsGr};
+    border-radius: 40px;
+    opacity: 0;
+    transition: opacity 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
+  }
+
+  &:hover::before {
+    z-index: -1;
+    opacity: 1;
+  }
+
+  &:hover {
+    background-color: ${variables.colors.buttonsHoverBg};
+  }
+
+  &:hover {
+    color: ${variables.colors.secondaryText};
+    background: ${variables.colors.buttonsGr};
+    border: none;
+
+    & > ${BtnLearnIcon} {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
   ${variables.breakPoints.tablet} {
     margin: 0;
     width: 129px;
     height: 40px;
-    padding: 0;
+  }
+`;
+
+export const Icon = styled.svg`
+  z-index: 2;
+  fill: currentColor;
+  stroke: ${variables.colors.secondaryText};
+  min-width: 24px;
+
+  transition: stroke 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
+
   }
 `;
 
 export const NoticeLink = styled.a`
-display: block;
-font-weight: 500;
-font-size: 12px;
-line-height: 1.33;
-letter-spacing: 0px;
-text-align: left;
+  display: block;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0px;
+  text-align: left;
   color: ${variables.colors.accentHeaderButton};
 
   ${variables.breakPoints.tablet} {
