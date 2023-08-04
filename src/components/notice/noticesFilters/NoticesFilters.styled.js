@@ -220,7 +220,6 @@ export const Input = styled(Field)`
     height: 0.85em;
     transform: scale(0);
     box-shadow: inset 1em 1em 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
-    // clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
   }
 
   &:checked {
@@ -237,6 +236,7 @@ export const Input = styled(Field)`
 `;
 
 export const Label = styled.label`
+  position: relative;
   padding: 4px;
   display: flex;
   align-items: center;
@@ -262,28 +262,20 @@ export const Label = styled.label`
     border-color: ${variables.colors.cardBgColor};
   }
 `;
+export const IconCheck = styled.svg`
+  position: absolute;
+  left: 0;
+  top: 3px;
+  z-index: 2;
+  fill: currentColor;
+  color: transparent;
+  stroke: ${variables.colors.buttonsHoverBg};
+  min-width: 24px;
 
-// .openBtnIcon {
-//     stroke: currentColor;
-// }
+  transition: transform 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12),
+    stroke 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
 
-// @media screen and (max-width: 767px) {
-//     .dropdownContainer {
-//         right: 0;
-//         top: 0;
-//     }
-// }
-
-// @media screen and (min-width: 768px) {
-//     .wrapper {
-//         position: static;
-//     }
-
-//     .openBtnLabel {
-//         display: block;
-//     }
-
-//     .dropdownContainer {
-//         margin-top: 20px;
-//     }
-// }
+  ${Label}:hover &, ${Label}:hover & {
+    stroke: ${variables.colors.secondaryText};
+  }
+`;
