@@ -12,11 +12,10 @@ export const PetsCard = styled.li`
   gap: 20px;
   flex-direction: column;
   padding: 16px 20px 16px 20px;
-  border-radius: 20px;
+  border-radius: 40px;
   background-color: ${cardBgColor};
   box-shadow: ${shadowDefault};
   ${variables.breakPoints.tablet} {
-    border-radius: 40px;
     padding: 20px;
     flex-direction: row;
   }

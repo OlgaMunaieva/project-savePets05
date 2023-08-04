@@ -3,7 +3,7 @@ import {
   fetchUserInformation,
   addUserInformation,
   addUserAvatar,
-  fetchUserPets,
+  // fetchUserPets,
   deleteUserPet,
   logoutPet,
 } from './operations';
@@ -20,16 +20,13 @@ const userInitialState = {
   },
   isLoading: false,
   error: null,
-  // userError: null,
-  // petError: null,
+  isSubmitting: false,
 };
 
-// const extraActions = [fetchContacts, addContact, deleteContact];
 const extraActions = [
   fetchUserInformation,
   addUserInformation,
   addUserAvatar,
-  fetchUserPets,
   deleteUserPet,
 ];
 
@@ -55,46 +52,30 @@ const rejectedReducer = (state, action) => {
   state.error = action.payload;
 };
 
-// const rejectedUserReducer = (state, action) => {
-//   state.isLoading = false;
-//   state.userError = action.payload;
-// };
+const fetchUserInfoSuccessReducer = (state, action) => {
+  const { name, email, birthday, phone, city, avatarURL } = action.payload.user;
 
-// const rejectedPetReducer = (state, action) => {
-//   state.isLoading = false;
-//   state.petError = action.payload;
-// };
-
-const fetchUserSuccessReducer = (state, action) => {
-  // console.log('fetch');
-  const { name, email, birthday, phone, city, avatarURL } = action.payload;
   state.user.userInfo = { name, email, birthday, phone, city };
+
   if (avatarURL) {
     state.user.avatar = urlModify(AVATAR_CLOUDINARY_URL, avatarURL);
   } else {
     state.user.avatar = avatarURL;
   }
 
-  // state.isLoading = false;
-  // state.userError = null;
-  // state.user.pets = pets;
-  // state.user = action.payload;
+  state.user.pets = action.payload.pet;
 };
 
 const addUserInfoSuccessReducer = (state, action) => {
-  // console.log('Addaction', action.payload);
   state.user.userInfo = action.payload;
 };
 
 const addUserAvatarSuccessReducer = (state, action) => {
-  // console.log('AddAvatar', action.payload);
-  state.user.avatar = action.payload;
-};
-
-const fetchUserPetsSuccessReducer = (state, action) => {
-  state.user.pets = action.payload;
-  // state.isLoading = false;
-  // state.petError = null;
+  console.log(
+    'payloadavatar',
+    urlModify(AVATAR_CLOUDINARY_URL, action.payload)
+  );
+  state.user.avatar = urlModify(AVATAR_CLOUDINARY_URL, action.payload);
 };
 
 const deleteUserPetSuccessReducer = (state, action) => {
@@ -111,17 +92,15 @@ const logoutPetSuccessReducer = state => {
 const userSlice = createSlice({
   name: 'user',
   initialState: userInitialState,
+  reducers: {},
 
   extraReducers: builder => {
     builder
-      .addCase(fetchUserInformation.fulfilled, fetchUserSuccessReducer)
+      .addCase(fetchUserInformation.fulfilled, fetchUserInfoSuccessReducer)
       .addCase(addUserInformation.fulfilled, addUserInfoSuccessReducer)
       .addCase(addUserAvatar.fulfilled, addUserAvatarSuccessReducer)
-      .addCase(fetchUserPets.fulfilled, fetchUserPetsSuccessReducer)
       .addCase(deleteUserPet.fulfilled, deleteUserPetSuccessReducer)
       .addCase(logoutPet.fulfilled, logoutPetSuccessReducer)
-      // .addCase(fetchUserInformation.rejected, rejectedUserReducer)
-      // .addCase(fetchUserPets.rejected, rejectedPetReducer)
       .addMatcher(getActions(status.PENDING), pendingReducer)
       .addMatcher(getActions(status.REJECTED), rejectedReducer)
       .addMatcher(getActions(status.FULFILLED), fulfilledReducer);

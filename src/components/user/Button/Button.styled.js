@@ -11,7 +11,6 @@ export const StyledButton = styled.button`
   padding-top: 9px;
   padding-bottom: 9px;
   width: 129px;
-  /* border: 1px solid ${buttonsHoverBg}; */
   border-radius: 40px;
   font-family: inherit;
   font-size: 16px;

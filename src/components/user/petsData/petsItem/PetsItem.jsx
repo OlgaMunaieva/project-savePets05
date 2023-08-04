@@ -21,6 +21,7 @@ import {
   PetsInfoText,
   ButtonDeletePet,
 } from './PetsItem.styled';
+
 const AVATAR_CLOUDINARY_URL =
   'https://res.cloudinary.com/dfvviqdic/image/upload/';
 

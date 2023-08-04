@@ -19,7 +19,6 @@ export default function Logout() {
   const [openModal, setOpenModal] = useState(false);
   const dispatch = useDispatch();
   const handlerOpenModal = () => {
-    console.log('openm');
     setOpenModal(!openModal);
   };
   const handleLogOut = () => {

@@ -2,19 +2,13 @@ import { Formik } from 'formik';
 import { getValidationSchema } from './utils/SchemaValidateUserForm';
 
 import { useState, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from 'redux/user/selectors';
 import { addUserAvatar, addUserInformation } from 'redux/user/operations';
 import Button from '../Button/Button';
 import variables from 'settings/variables';
 import spriteImage from '../../../images/sprite.svg';
 import UserDefaultAvatar from '../../../images/icons/user-default-avatar.svg';
-// import {
-//   selectUser,
-//   // selectIsLoading,
-//   // selectError,
-//   // getUserError,
-// } from 'redux/user/selectors';
-// import { fetchUserInformation } from 'redux/user/operations';
 
 import {
   ButtonEditPhoto,
@@ -34,30 +28,22 @@ import {
   AvatarContainer,
 } from './UserForm.styled';
 
-export default function UserForm({ user, isFormDisabled, closeModal }) {
-  // const user = useSelector(selectUser);
+export default function UserForm({ isFormDisabled, closeModal }) {
+  const user = useSelector(selectUser);
+
   const {
     userInfo: { name, email, birthday, phone, city },
     avatar: avatarURL,
   } = user;
+
   const imgRef = useRef(null);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [imgUrl, setImgUrl] = useState(avatarURL);
   const [isAvatarUpdated, setIsAvatarUpdated] = useState(false);
   const [errorImg, setErrorImg] = useState('');
+  const [isAvatarSelected, setIsAvatarSelected] = useState(false);
 
-  // console.log('useeer', user.userInfo);
-  // console.log('avatar', user.avatar);
-
-  // console.log('🚀 ~ name:', name);
-  // console.log('🚀 ~   avatarURL:', avatarURL);
-  // console.log('🚀 ~ birthday:', birthday);
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   console.log('fetchuseefffect');
-  //   dispatch(fetchUserInformation());
-  // }, [dispatch]);
 
   const isBirthdayValid = value => {
     if (value === 'Invalid date') {
@@ -66,11 +52,6 @@ export default function UserForm({ user, isFormDisabled, closeModal }) {
     }
     return value;
   };
-
-  // useEffect(() => {
-  //   console.log('effect');
-  //   setNameForm(name);
-  // }, [imgUrl, name, email, birthday, phone, city]);
 
   const validationSchema = getValidationSchema();
 
@@ -95,39 +76,40 @@ export default function UserForm({ user, isFormDisabled, closeModal }) {
   };
 
   const handleAvatarUpload = () => {
+    console.log('selected', selectedAvatar);
     if (!selectedAvatar) {
       alert('Please select a file!');
       return;
     }
-
-    if (selectedAvatar.size > 3145728) {
+    if (selectedAvatar?.size > 3145728) {
       setErrorImg('Image is too big please select image below 3 MB');
-    } else {
-      dispatch(addUserAvatar(selectedAvatar));
+      return;
     }
+    setIsAvatarSelected(true);
+
     setIsAvatarUpdated(false);
   };
 
   const cancelAvatarUpload = () => {
-    // setImgUrl(UserDefaultAvatar);
     setImgUrl('');
-
-    // const file = new File([img_11], 'defaultImg', {
-    //   type: 'image/jpeg',
-    // });
-
-    // dispatch(file);
 
     setIsAvatarUpdated(false);
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    const { name, email, birthday, phone, city } = values;
-    dispatch(addUserInformation({ name, email, birthday, phone, city }));
-    // updateProps();
-    closeModal();
+    if (!isAvatarSelected) {
+      setErrorImg('Please select an avatar');
+      return;
+    } else {
+      dispatch(addUserAvatar(selectedAvatar));
+    }
 
-    // resetForm();
+    const { name, email, birthday, phone, city } = values;
+
+    dispatch(addUserInformation({ name, email, birthday, phone, city }));
+    setSelectedAvatar(false);
+
+    closeModal();
   };
 
   return (

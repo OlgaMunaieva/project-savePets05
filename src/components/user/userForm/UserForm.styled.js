@@ -16,7 +16,7 @@ const {
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  gap: 59px;
+  gap: 21px;
 
   ${variables.breakPoints.tablet} {
     flex-direction: row-reverse;
@@ -24,17 +24,12 @@ export const StyledForm = styled(Form)`
   }
   ${variables.breakPoints.desktop} {
     flex-direction: column;
-    gap: 63px;
+    gap: 25px;
   }
 `;
 
 export const AvatarContainer = styled.div`
   position: relative;
-  /* display: flex;
-  flex-direction: column; */
-  /* justify-content: space-between; */
-  /* margin-bottom: 10px; */
-  /* align-items: center; */
 `;
 
 export const UserInfoContainer = styled.div`
@@ -174,13 +169,11 @@ export const ButtonCancelUpload = styled.button`
 `;
 
 export const ContainerButtonsUpload = styled.div`
-  /* position: absolute; */
-  /* left: 73px; */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   gap: 5px;
   font-family: inherit;
   font-size: 12px;
@@ -188,10 +181,8 @@ export const ContainerButtonsUpload = styled.div`
   letter-spacing: 0.04em;
   color: ${simpleWhite};
   ${variables.breakPoints.tablet} {
-    /* left: 33px; */
   }
   ${variables.breakPoints.desktop} {
-    /* left: 123px; */
   }
 `;
 
@@ -216,5 +207,5 @@ export const StyledErrorImg = styled.p`
   line-height: 1.83;
   letter-spacing: 0.04em;
   margin-top: 5px;
-  margin: 5px auto;
+  text-align: center;
 `;

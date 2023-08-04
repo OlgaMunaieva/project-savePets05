@@ -20,23 +20,7 @@ export const getValidationSchema = () => {
       .required('Name is a required field'),
     email: yup.string().email().required('Email is a required field'),
     birthday: yup
-      // .date()
-      // .transform(currentValue => {
-      //   // check to see if the previous transform already parsed the date
-      //   // if (context.isType(value)) return value;
 
-      //   const formats = 'DD-MM-YYYY';
-      //   // // the default coercion failed so let's try it with Moment.js instead
-      //   // value = moment(currentValue).format(formats);
-      //   // console.log('value', value);
-      //   console.log('org', currentValue);
-
-      //   // if it's valid return the date object, otherwise return an `InvalidDate`
-      //   // return value.isValid() ? value.toDate() : new Date('');
-      // })
-
-      // .typeError('please enter a valid date')
-      // .max(new Date(), "Your birthday can't be in the future!")
       .string()
       .matches(
         birthdayRegExp,
