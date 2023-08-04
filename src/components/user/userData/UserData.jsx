@@ -1,45 +1,43 @@
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { CircleLoader } from 'react-spinners';
-import { toast } from 'react-hot-toast';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import {
-  selectUser,
-  selectIsLoading,
-  selectError,
-  // getUserError,
-} from 'redux/user/selectors';
-import { fetchUserInformation } from 'redux/user/operations';
+import { selectUser } from 'redux/user/selectors';
 
 import UserForm from '../userForm/UserForm';
 import Modal from 'components/modal/Modal';
 import spriteImage from '../../../images/sprite.svg';
 
-import { StyledFormContainer, ButtonEditUserInfo } from './UserData.styled';
+import UserDefaultAvatar from '../../../images/icons/user-default-avatar.svg';
+
+import {
+  ButtonEditUserInfo,
+  StyledUserDataForm,
+  StyledUserDataLabel,
+  StyledUserDataInput,
+  UserAvatarUserDataThumb,
+  UserAvatarUserData,
+  ModalWrapper,
+} from './UserData.styled';
+import { InputContainer, UserInfoContainer } from '../userForm/UserForm.styled';
 
 export default function UserData() {
   const user = useSelector(selectUser);
-  const isLoading = useSelector(selectIsLoading);
-  const rejectedWithError = useSelector(selectError);
+
+  const {
+    userInfo: { name, email, birthday, phone, city },
+    avatar: avatarURL,
+  } = user;
+
   const [showUserProfileModal, setShowUserProfileModal] = useState(false);
   const [isFormDisabled, setIsFormDisabled] = useState(true);
-  // const [user, setUser] = useState(null);
 
-  // console.log('userselect', user);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [isFormDisabled, setIsFormDisabled] = useState(false);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    // console.log('fetchuseefffect');
-    dispatch(fetchUserInformation());
-  }, [dispatch]);
-
-  // const updateProps = () => {
-  //   if (!userSelector) {
-  //     setUser({ userSelector });
-  //   }
-  // };
+  const isBirthdayValid = value => {
+    if (value === 'Invalid date') {
+      value = null;
+      return value;
+    }
+    return value;
+  };
 
   const closeUserProfileModal = () => {
     setShowUserProfileModal(false);
@@ -57,64 +55,66 @@ export default function UserData() {
         <Modal
           closeModal={closeUserProfileModal}
           isOpenedModal={showUserProfileModal}
-          // width={'395px'}
-          // padding={'20px 24px 20px 16px'}
-          style={{
-            width: '395px',
-            padding: '20px 24px 20px 16px',
-            '@media (minWidth: 767px)': {
-              width: '704px',
-              padding: '20px 76px 16px 20px',
-            },
-          }}
         >
-          <UserForm
-            user={user}
-            isFormDisabled={isFormDisabled}
-            closeModal={closeUserProfileModal}
-          />
+          <ModalWrapper>
+            <UserForm
+              isFormDisabled={isFormDisabled}
+              closeModal={closeUserProfileModal}
+            />
+          </ModalWrapper>
         </Modal>
       )}
 
-      {/* !showUserProfileModal &&  */}
+      <StyledUserDataForm>
+        <UserAvatarUserDataThumb>
+          <UserAvatarUserData
+            src={!avatarURL ? UserDefaultAvatar : avatarURL}
+            width="182"
+            height="182"
+            alt="User avatar"
+            loading="lazy"
+          />
+        </UserAvatarUserDataThumb>
 
-      {Object.keys(user.userInfo).length > 0 && (
-        <StyledFormContainer>
-          <UserForm user={user} isFormDisabled={isFormDisabled} />
+        <UserInfoContainer>
+          <InputContainer>
+            <StyledUserDataLabel>Name:</StyledUserDataLabel>
+            <StyledUserDataInput>{name}</StyledUserDataInput>
+          </InputContainer>
 
-          <ButtonEditUserInfo type="button" onClick={handleFormDisabled}>
-            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-              <use href={spriteImage + '#icon-edit-2'} />
-            </svg>
-          </ButtonEditUserInfo>
-        </StyledFormContainer>
-      )}
+          <InputContainer>
+            <StyledUserDataLabel>Email:</StyledUserDataLabel>
+            <StyledUserDataInput>{email}</StyledUserDataInput>
+          </InputContainer>
 
-      <CircleLoader
-        loading={isLoading}
-        color="#CCE4FB"
-        cssOverride={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: ' translate(-50%, -50%)',
-        }}
-        size={100}
-        aria-label="Loading Spinner"
-      />
-      {rejectedWithError &&
-        toast.error('User not found', {
-          duration: 2000,
-          position: 'top-center',
-          style: {
-            textAlign: 'center',
-            backgroundColor: '#54ADFF',
-            borderRadius: '20px',
-            color: '#fef9f9',
-            fontFamily: 'Manrope, sans-serif',
-            fontWeight: '700',
-          },
-        })}
+          {isBirthdayValid(birthday) && (
+            <InputContainer>
+              <StyledUserDataLabel>Birthday:</StyledUserDataLabel>
+              <StyledUserDataInput>{birthday}</StyledUserDataInput>
+            </InputContainer>
+          )}
+
+          {phone && (
+            <InputContainer>
+              <StyledUserDataLabel>Phone:</StyledUserDataLabel>
+              <StyledUserDataInput>{phone}</StyledUserDataInput>
+            </InputContainer>
+          )}
+
+          {city && (
+            <InputContainer>
+              <StyledUserDataLabel>City:</StyledUserDataLabel>
+              <StyledUserDataInput>{city}</StyledUserDataInput>
+            </InputContainer>
+          )}
+        </UserInfoContainer>
+
+        <ButtonEditUserInfo type="button" onClick={handleFormDisabled}>
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <use href={spriteImage + '#icon-edit-2'} />
+          </svg>
+        </ButtonEditUserInfo>
+      </StyledUserDataForm>
     </>
   );
 }

@@ -2,10 +2,8 @@ import styled from 'styled-components';
 import variables from '../../../../settings/variables';
 
 const {
-  colors: { cardBgColor },
-
+  colors: { cardBgColor, cardsButtonBg },
   shadow: { shadowHover, shadowDefault },
-  transition: { transitionShadow },
 } = variables;
 
 export const PetsCard = styled.li`
@@ -14,11 +12,10 @@ export const PetsCard = styled.li`
   gap: 20px;
   flex-direction: column;
   padding: 16px 20px 16px 20px;
-  border-radius: 20px;
+  border-radius: 40px;
   background-color: ${cardBgColor};
   box-shadow: ${shadowDefault};
   ${variables.breakPoints.tablet} {
-    border-radius: 40px;
     padding: 20px;
     flex-direction: row;
   }
@@ -82,24 +79,27 @@ export const PetsInfoText = styled.p`
 
 export const ButtonDeletePet = styled.button`
   position: absolute;
-  top: 272px;
-  right: 16px;
+  width: 40px;
+  height: 40px;
+  top: 264px;
+  right: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
   background-color: inherit;
   border: none;
+  border-radius: 50%;
   cursor: pointer;
-  transition: ${transitionShadow};
+  transition: background-color 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
   &:hover,
   &:focus {
     box-shadow: ${shadowHover};
-    border-radius: 50%;
+    background-color: ${cardsButtonBg};
   }
   ${variables.breakPoints.tablet} {
-    top: 20px;
-    right: 20px;
+    top: 12px;
+    right: 12px;
   }
   ${variables.breakPoints.desktop} {
   }

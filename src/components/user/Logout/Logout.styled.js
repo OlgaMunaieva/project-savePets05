@@ -4,10 +4,10 @@ import variables from '../../../settings/variables';
 const {
   colors: { placeHolderColor },
   shadow: { shadowHover },
-  transition: { transitionShadow },
 } = variables;
 
 export const StyledButton = styled.button`
+  width: 129px;
   padding: 5px;
   display: flex;
   align-items: center;
@@ -18,15 +18,15 @@ export const StyledButton = styled.button`
   line-height: 1.38;
   letter-spacing: 0.04em;
   color: ${placeHolderColor};
-
+  border-radius: 40px;
   background-color: inherit;
   border: none;
   cursor: pointer;
-  transition: ${transitionShadow};
+
+  transition: box-shadow 250ms cubic-bezier(0.21, 0.65, 0.66, 0.12);
 
   &:hover,
   &:focus {
     box-shadow: ${shadowHover};
-    border-radius: 40px;
   }
 `;

@@ -19,7 +19,6 @@ export default function Logout() {
   const [openModal, setOpenModal] = useState(false);
   const dispatch = useDispatch();
   const handlerOpenModal = () => {
-    console.log('openm');
     setOpenModal(!openModal);
   };
   const handleLogOut = () => {
@@ -30,7 +29,7 @@ export default function Logout() {
   return (
     <>
       <StyledButton onClick={handlerOpenModal}>
-        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <svg width="24" height="24" stroke="currentColor" viewBox="0 0 24 24">
           <use href={spriteImage + '#icon-logout'} />
         </svg>
         <p>Log Out</p>

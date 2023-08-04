@@ -7,7 +7,7 @@ export const fetchUserInformation = createAsyncThunk(
   'user/fetchUser',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/api/users/current');
+      const response = await axios.get('/api/pet');
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -38,18 +38,6 @@ export const addUserAvatar = createAsyncThunk(
       });
 
       return response.data.avatarURL;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
-
-export const fetchUserPets = createAsyncThunk(
-  'user/fetchPets',
-  async (_, thunkAPI) => {
-    try {
-      const response = await axios.get('/api/pet');
-      return response.data.pet;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

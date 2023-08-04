@@ -9,6 +9,7 @@ import UserDefaultAvatar from '../../../../images/icons/user-default-avatar.svg'
 
 export default function PetsList() {
   const pets = useSelector(selectPets);
+
   const defaultPet = [
     {
       id: 1,

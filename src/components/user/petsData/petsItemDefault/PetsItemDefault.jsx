@@ -43,7 +43,7 @@ export default function PetsItemDefault({
             {birthday}
           </PetsInfoText>
           <PetsInfoText>
-            <PetsInfoTitle>Type:</PetsInfoTitle>
+            <PetsInfoTitle>Type: </PetsInfoTitle>
             {type}
           </PetsInfoText>
           {comments && (

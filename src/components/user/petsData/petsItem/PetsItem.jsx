@@ -21,6 +21,7 @@ import {
   PetsInfoText,
   ButtonDeletePet,
 } from './PetsItem.styled';
+
 const AVATAR_CLOUDINARY_URL =
   'https://res.cloudinary.com/dfvviqdic/image/upload/';
 
@@ -34,6 +35,10 @@ export default function PetsItem({
 }) {
   const [openModalPetDelete, setOpenModalPetDelete] = useState(false);
   const dispatch = useDispatch();
+
+  const changeBirthdayFormat = data => {
+    return data.replaceAll('-', '.');
+  };
 
   const handleOpenModal = () => {
     setOpenModalPetDelete(!openModalPetDelete);
@@ -58,7 +63,7 @@ export default function PetsItem({
           </PetsInfoText>
           <PetsInfoText>
             <PetsInfoTitle>Date of birth: </PetsInfoTitle>
-            {birthday}
+            {changeBirthdayFormat(birthday)}
           </PetsInfoText>
           <PetsInfoText>
             <PetsInfoTitle>Type:</PetsInfoTitle>
@@ -92,7 +97,6 @@ export default function PetsItem({
                   onClick={() => {
                     deletePet();
                     handleOpenModal();
-                    // 'syda dopisat'
                   }}
                 >
                   <TitleDelBtn>Yes</TitleDelBtn>
