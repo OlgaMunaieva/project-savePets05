@@ -126,18 +126,15 @@ const AddPet = () => {
       if (adType === 'inGoodHands') {
         formData.append('category', 'for-free');
       }
-      // console.log([...formData.entries()]);
       let endpoint = 'https://project-savepets05-be.onrender.com/api/notices';
       if (adType === 'yourPet') {
         endpoint = 'https://project-savepets05-be.onrender.com/api/pet';
       }
       await sendData(formData, endpoint);
-      console.log('Form submitted successfully');
       resetForm();
       handleNavigate();
     } catch (error) {
       console.error('Error submitting form:', error.message);
-      console.log(source);
     }
     setIsLoading(false);
   };
