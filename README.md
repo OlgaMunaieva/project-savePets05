@@ -9,14 +9,14 @@ Scrum Master - **[Ganna Baranenko](https://github.com/ganna1008)**
 
 
 SharedLayout, MainPage, ErrorPage, ModalNotice, MainContainer, Routes, GlobalStyles, Favicon - **[Olha Munaieva](https://github.com/OlgaMunaieva)**\
-Header, Burger menu, Pagination, ModalApproveAction, Loader on NoticesPage - **[Sergii Moroz](https://github.com/MorozSerhii)**\
-RegisterPage, LoginPage, ModalApproveAction - **[Dmytro Dobrobatko](https://github.com/Dobryotec)**\
-NoticesPage, ModalApproveAction - **[Ivan Tolmachov](https://github.com/IvanTolmachev)**\
+Header, Navigation, Burger menu, Pagination, ModalApproveAction, Loader on NoticesPage - **[Sergii Moroz](https://github.com/MorozSerhii)**\
+RegisterPage, LoginPage, AuthForm, ModalCongrats, ModalApproveAction - **[Dmytro Dobrobatko](https://github.com/Dobryotec)**\
+NoticesPage, Add to Favorite, Filter by Category, Filter by Age and Gender, Deleting Notice, ModalApproveAction - **[Ivan Tolmachov](https://github.com/IvanTolmachev)**\
 ModalApproveAction, ModalNotice - **[Vitalii Grytsun](https://github.com/Deus2214)**\
-UserPage - **[Ganna Baranenko](https://github.com/ganna1008)**\
+UserPage, Profile, UserData, UserForm, PetsCard, Action on the Avatar, Modals - **[Ganna Baranenko](https://github.com/ganna1008)**\
 AddPetPage (AddPetForm) - **[Alexander Shevchenko](https://github.com/AlexanderShevchenko112)**\
 OurFriendsPage - **[Demchenko Sergii](https://github.com/Demniks)**\
-NewsPage - **[Kiril Polozhenet](https://github.com/polokir)**
+NewsPage, integrated Search, Pagination News - **[Kiril Polozhenet](https://github.com/polokir)**
 
 ## Materials used in the project
 
