@@ -22,6 +22,8 @@ import NoticesSearch from 'components/notice/noticesSearch/NoticesSearch';
 import Loader from 'components/Loader/Loader';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { ModalUserLogin } from 'components/allModals/UserLoginModal/UserLoginModal';
+import { WrapperBtn, WrapperFilter } from './NoticesPage.styled';
+import AddPetBtn from 'components/buttons/addPetBtn/addPetBtn';
 import NoticesFilters from 'components/notice/noticesFilters/NoticesFilters';
 
 const NoticesPage = () => {
@@ -72,6 +74,10 @@ const NoticesPage = () => {
     setPage(0);
   };
 
+  const handleModalUserLogin = () => {
+    setIsModalOpenUserLogin(!isModalOpenUserLogin);
+  };
+
   useEffect(() => {
     if (locationCategory !== 'favorite' && locationCategory !== 'own') {
       dispatch(
@@ -117,8 +123,15 @@ const NoticesPage = () => {
       )}
       <TitlePage children={'Find your favorite pet'} />
       <NoticesSearch clean={handlerCleanQuery} setQvery={handlerQuery} />
-      <NoticesCategoriesNav onClick={handleCategoryChange} />
-      <NoticesFilters />
+      <WrapperFilter>
+        <NoticesCategoriesNav onClick={handleCategoryChange} />
+        <WrapperBtn>
+          <NoticesFilters />
+          {width >= 768 && (
+            <AddPetBtn onClick={() => handleNavigate('notices')} />
+          )}
+        </WrapperBtn>
+      </WrapperFilter>
       {isLoading ? (
         <Loader />
       ) : (
@@ -127,6 +140,7 @@ const NoticesPage = () => {
           locationCategory={locationCategory}
         />
       )}
+
       {width < 768 && (
         <FixedButtonWrapper>
           <AddPetBtnCircle onClick={() => handleNavigate('notices')} />
@@ -140,6 +154,9 @@ const NoticesPage = () => {
           limit={limit}
         />
       ) : null}
+      {isModalOpenUserLogin && (
+        <ModalUserLogin closeModal={handleModalUserLogin} />
+      )}
     </>
   );
 };
