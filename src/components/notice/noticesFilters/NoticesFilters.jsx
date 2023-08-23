@@ -22,7 +22,6 @@ const NoticesFilters = () => {
   const [genderOpen, setGenderOpen] = useState(false);
   const [rotationAge, setRotationAge] = useState(0);
   const [rotationGender, setRotationGender] = useState(0);
-  console.log(isOpen);
   const handleBtnClick = () => {
     setRotationAge(0);
     setRotationGender(0);

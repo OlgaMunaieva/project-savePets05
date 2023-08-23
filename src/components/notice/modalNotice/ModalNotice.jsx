@@ -178,7 +178,7 @@ const ModalNotice = ({ onClose, isOpenedModal, id, favorite, children }) => {
           <ButtonsWrapper>
             <ContactBtn href={`tel:${data.phone}`}>Contact</ContactBtn>
             <FavoriteBtn type="button" onClick={favoriteClickHandle}>
-              <span>Add to</span>
+              {favorite ? <span>Favorite</span> : <span>Add to</span>}
               <Icon
                 width={24}
                 height={24}
